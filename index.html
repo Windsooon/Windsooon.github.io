@@ -76,14 +76,17 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="What-is-Process"><a href="#What-is-Process" class="headerlink" title="What is Process"></a>What is Process</h1><blockquote>
+        <h1 id="What-is-Process"><a href="#What-is-Process" class="headerlink" title="What is Process"></a>What is Process</h1><p>When I first know process，I thought I understand it. But then I meet multiprocess, multithread in mutliprocess, coroutine.These start confuce me.Because I don’t know how computer inside duel with them.</p>
+<p>Let’s have a quick look.</p>
+<blockquote>
 <p>In computing, a process is an instance of a computer program that is being executed. It contains the program code and its current activity. Depending on the operating system (OS), a process may be made up of multiple threads of execution that execute instructions concurrently</p>
 <p>–Wikipedia</p>
 </blockquote>
-<p>This is 100% correct but People don’t know what this mean at the beginning, this margin is too small to contain.</p>
+<p>This is 100% correct but I don’t know what this mean at the beginning, this margin is too small to contain.</p>
 <p><a href="http://" target="_blank" rel="external">what?</a></p>
-<h4 id="hello-world-program"><a href="#hello-world-program" class="headerlink" title="hello world program"></a>hello world program</h4><p>No matter what languages you use, for example, C, Python or Java.The code will finally become 0 and 1 which computer understand.</p>
-<p>C:</p>
+<p>At this article, I try to explain how process really implement in the computer.</p>
+<p>At first, We assume our computer only have one CPU core, and CPU can only execute one process each time.</p>
+<h4 id="Hello-world-program"><a href="#Hello-world-program" class="headerlink" title="Hello world program"></a>Hello world program</h4><p>This program will print “Hello world” in the console.<br>C:</p>
 <pre><code>#include &lt;stdio.h&gt;
 
 int main()
@@ -92,15 +95,17 @@ int main()
 }
 </code></pre><p>Python:</p>
 <pre><code>print(&quot;Hello world&quot;)
-</code></pre><p>Relax if you not familiar with code, C language code still scare me sometimes. </p>
+</code></pre><p>Relax if you not familiar with code, C language code still scare me sometimes :D.</p>
 <p>SO when you run </p>
 <pre><code>user&gt;gcc -o hello hello.c
 </code></pre><p>Or</p>
 <pre><code>user&gt;python hello.py
-</code></pre><p>Which tell one of your CPU(Computer usually have more than one core nowadays, in this case, you just use one of them.) to excuate this program.</p>
-<p>Let’s imagine the “hello world” program finally been convert to</p>
+</code></pre><p>Your terminal which is also a process will create a child process to execute this Hello world program. So now, your computer is running two processes.</p>
+<p>(In fact, your computer will run some processes after you open it, you can use PS -A to list all or them or tasklist when you using Windows. We don’t have to care about this processes right now.)</p>
+<p>Remember, CPU only understand 0 and 1. In most case, no matter what computer languages you use, for example, C, Python or Java. The code will finally become 0 and 1 then let CPU to execute.<br>Let’s assume the “Hello world” program finally been convert to</p>
 <pre><code>000 001 011 111
-</code></pre>
+</code></pre><p>and deliver to CPU.</p>
+
       
     </div>
     <footer class="article-footer">
