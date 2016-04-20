@@ -11,7 +11,7 @@
 <meta property="og:url" content="https://windsooon.github.io/2016/04/19/What is Process /index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="What is ProcessWhen I first know process，I thought I understand it. But then I meet multiprocess, multithread in mutliprocess, coroutine.These start confuce me.Because I don’t know how computer inside">
-<meta property="og:updated_time" content="2016-04-20T16:50:26.000Z">
+<meta property="og:updated_time" content="2016-04-20T17:28:35.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo">
 <meta name="twitter:description" content="What is ProcessWhen I first know process，I thought I understand it. But then I meet multiprocess, multithread in mutliprocess, coroutine.These start confuce me.Because I don’t know how computer inside">
@@ -54,7 +54,7 @@
         
           <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Zoeken"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Søk"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://windsooon.github.io"></form>
@@ -84,7 +84,7 @@
 <p>This is 100% correct but I don’t know what this mean at the beginning, this margin is too small to contain.</p>
 <p><a href="http://" target="_blank" rel="external">what?</a></p>
 <p>At this article, I try to explain how process really implement in the computer.</p>
-<p>At first, We assume our computer only have one CPU core, and CPU can only execute one process each time.</p>
+<p>At first, We assume our computer only have one CPU core, and CPU can only execute one process each time.So any time in our computer, only one process is running.</p>
 <h4 id="Hello-world-program"><a href="#Hello-world-program" class="headerlink" title="Hello world program"></a>Hello world program</h4><p>This program will print “Hello world” in the console.<br>C:</p>
 <pre><code>#include &lt;stdio.h&gt;
 
@@ -99,16 +99,22 @@ int main()
 <pre><code>user&gt;gcc -o hello hello.c
 </code></pre><p>Or</p>
 <pre><code>user&gt;python hello.py
-</code></pre><p>Your terminal which is also a process will create a child process to execute this Hello world program. So now, your computer is running two processes.</p>
-<p>(In fact, your computer will run some processes after you open it, you can use PS -A to list all or them or tasklist when you using Windows. We don’t have to care about this processes right now.)</p>
-<p>Remember, CPU only understand 0 and 1. In most case, no matter what computer languages you use, for example, C, Python or Java. The code will finally become 0 and 1 then let CPU to execute.<br>Let’s assume the “Hello world” program finally been convert to</p>
+</code></pre><p>At this moment, </p>
+<p>your terminal which is also a process will create a child process,</p>
+<blockquote>
+<p>When a process is created, it is almost identical to its parent. It receives a (logical) copy of the parent’s address<br>space and executes the same code as the parent, beginning at the next instruction following the process<br>creation system call.</p>
+</blockquote>
+<p>This child process were tell to compile the Hello world program to machine code.</p>
+<p>So now, your computer is running two processes.<br>(In fact, your computer will run some processes after you open it, you can use PS -A to list all or them or tasklist when you using Windows to list all of them. We don’t have to care about these processes right now.)</p>
+<p>CPU only understand 0 and 1. In most case, no matter what computer languages you use, for example, C, Python or Java. The code will finally become 0 and 1 then let CPU to execute.<br>Let’s assume the “Hello world” program finally been convert to</p>
 <pre><code>000 001 011 111
 </code></pre><p>and deliver to CPU.</p>
+<p>As I told earlier, </p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://windsooon.github.io/2016/04/19/What is Process /" data-id="cin7m5tpm0001okzbd8q3ysjn" class="article-share-link">Delen</a>
+      <a data-url="https://windsooon.github.io/2016/04/19/What is Process /" data-id="cin7m5tpm0001okzbd8q3ysjn" class="article-share-link">Share</a>
       
       
     </footer>
@@ -119,7 +125,7 @@ int main()
   
   
     <a href="/2016/04/19/process/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Ouder</strong>
+      <strong class="article-nav-caption">Older</strong>
       <div class="article-nav-title"></div>
     </a>
   
@@ -142,7 +148,7 @@ int main()
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Archieven</h3>
+    <h3 class="widget-title">Arkiv</h3>
     <div class="widget">
       <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a></li></ul>
     </div>
@@ -152,7 +158,7 @@ int main()
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Recente berichten</h3>
+    <h3 class="widget-title">Siste innlegg</h3>
     <div class="widget">
       <ul>
         
