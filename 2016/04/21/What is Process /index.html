@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> What is Process · Tech blog of Unicooo</title><meta name="description" content="What is Process - Unicooo"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="short icon" href="/favicon.png"><link rel="stylesheet" href="/css/apollo.css"><link rel="stylesheet" href="http://fonts.useso.com/css?family=Source+Sans+Pro:400,600" type="text/css"></head><body><div id="mask" style="display: none;"><img id="mask-image" src="#" style=" "></div><div class="wrap"><header><a href="/" class="logo-link"><img src="/favicon.png"></a><ul class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" class="nav-list-link">BLOG</a></li><li class="nav-list-item"><a href="/archives/" target="_self" class="nav-list-link">ARCHIVE</a></li><li class="nav-list-item"><a href="http://weibo.com/sunchongsheng" target="_blank" class="nav-list-link">WEIBO</a></li><li class="nav-list-item"><a href="https://github.com/pinggod" target="_blank" class="nav-list-link">GITHUB</a></li><li class="nav-list-item"><a href="/atom.xml" target="_self" class="nav-list-link">RSS</a></li></ul></header><section class="container"><div class="post"><article class="post-block"><h1 class="post-title">What is Process</h1><div class="post-time">Apr 21, 2016</div><div class="post-content"><p>When I first know process，I thought I understand it. But then I meet multiprocess, multithread in mutliprocess, coroutine.These start confuce me.Because I don’t know how computer inside duel with them.</p>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title>  · Tech blog of Unicooo</title><meta name="description" content=" - Unicooo"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="short icon" href="/favicon.png"><link rel="stylesheet" href="/css/apollo.css"><link rel="stylesheet" href="http://fonts.useso.com/css?family=Source+Sans+Pro:400,600" type="text/css"></head><body><div id="mask" style="display: none;"><img id="mask-image" src="#" style=" "></div><div class="wrap"><header><a href="/" class="logo-link"><img src="/favicon.png"></a><ul class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" class="nav-list-link">BLOG</a></li><li class="nav-list-item"><a href="/archives/" target="_self" class="nav-list-link">ARCHIVE</a></li><li class="nav-list-item"><a href="http://weibo.com/sunchongsheng" target="_blank" class="nav-list-link">WEIBO</a></li><li class="nav-list-item"><a href="https://github.com/pinggod" target="_blank" class="nav-list-link">GITHUB</a></li><li class="nav-list-item"><a href="/atom.xml" target="_self" class="nav-list-link">RSS</a></li></ul></header><section class="container"><div class="post"><article class="post-block"><h1 class="post-title"></h1><div class="post-time">Apr 21, 2016</div><div class="post-content"><h1 id="What-is-Process"><a href="#What-is-Process" class="headerlink" title="What is Process"></a>What is Process</h1><p>When I first know process，I thought I understand it. But then I meet multiprocess, multithread in mutliprocess, coroutine.These start confuce me.Because I don’t know how computer inside duel with them.</p>
 <p>Let’s have a quick look.</p>
 <blockquote>
 <p>In computing, a process is an instance of a computer program that is being executed. It contains the program code and its current activity. Depending on the operating system (OS), a process may be made up of multiple threads of execution that execute instructions concurrently</p>
@@ -7,8 +7,19 @@
 <p>This is 100% correct but I don’t know what this mean at the beginning, this margin is too small to contain.</p>
 <p><a href="http://" target="_blank" rel="external">what?</a></p>
 <p>At this article, I try to explain how process really implement in the computer.</p>
-<p>At first, We assume our computer only have one CPU core, and CPU can only execute one process each time.So any time in our computer, only one process is running.</p>
-<h4 id="Hello-world-program"><a href="#Hello-world-program" class="headerlink" title="Hello world program"></a>Hello world program</h4><p>This program will print “Hello world” in the console.<br>C:</p>
+<h3 id="Laundry"><a href="#Laundry" class="headerlink" title="Laundry"></a>Laundry</h3><p>let’s look an example</p>
+<ul>
+<li>First, Your wife/husband ask you to do the laundry,<br>you choose the clothes need wished. </li>
+<li>Second, check if any clothes left in the washing machine, if have any, take them off the machine. </li>
+<li>Third, put the dirty clothes into it.</li>
+</ul>
+<p>Computer process just like do the laundry.</p>
+<ul>
+<li>First, a father process will create a child process and ask it to execute the same code as father process does.The different bewteen father process and child process is they have their own stack. </li>
+<li>Second, check if any process is running, if it does, the child process has to wait after that process finish, because anytime in one CPU, only one process is running. </li>
+<li>Third, the child process begin to run.</li>
+</ul>
+<h3 id="Hello-world-program"><a href="#Hello-world-program" class="headerlink" title="Hello world program"></a>Hello world program</h3><p>This program will print “Hello world” in the console.<br>C:</p>
 <pre><code>#include &lt;stdio.h&gt;
 
 int main()
@@ -27,10 +38,9 @@ int main()
 <blockquote>
 <p>When a process is created, it is almost identical to its parent. It receives a (logical) copy of the parent’s address<br>space and executes the same code as the parent, beginning at the next instruction following the process<br>creation system call.</p>
 </blockquote>
-<p>This child process were tell to compile the Hello world program to machine code.</p>
-<p>So now, your computer is running two processes.<br>(In fact, your computer will run some processes after you open it, you can use PS -A to list all or them or tasklist when you using Windows to list all of them. We don’t have to care about these processes right now.)</p>
+<p>In short, The child process were tell to compile the Hello world program to machine code.</p>
+<p>So now, your computer is running two processes.<br>(In fact, your computer will run some processes after you open it, you can use PS -A when your computer base on *nix or tasklist when you using Windows to list all of them. But now, We don’t have to care about these processes right.)</p>
 <p>CPU only understand 0 and 1. In most case, no matter what computer languages you use, for example, C, Python or Java. The code will finally become 0 and 1 then let CPU to execute.<br>Let’s assume the “Hello world” program finally been convert to</p>
 <pre><code>000 001 011 111
 </code></pre><p>and deliver to CPU.</p>
-<p>As I told earlier, </p>
 </div></article></div></section><footer><div class="paginator"></div><div class="copyright"><p>© 2015 - 2016 <a href="https://windsooon.github.io">Unicooo</a>, unless otherwise noted.</p></div></footer></div><script>(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;e=o.createElement(i);r=o.getElementsByTagName(i)[0];e.src='//www.google-analytics.com/analytics.js';r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));ga('create',"UA-65933410-1",'auto');ga('send','pageview');</script><script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script></body></html>
