@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Hexo</title>
+  
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="https://windsooon.github.io/"/>
+  <updated>2016-04-20T17:28:35.000Z</updated>
+  <id>https://windsooon.github.io/</id>
+  
+  <author>
+    <name>John Doe</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title></title>
+    <link href="https://windsooon.github.io/2016/04/19/What%20is%20Process%20/"/>
+    <id>https://windsooon.github.io/2016/04/19/What is Process /</id>
+    <published>2016-04-18T16:19:52.000Z</published>
+    <updated>2016-04-20T17:28:35.000Z</updated>
+    
+    <content type="html">&lt;h1 id=&quot;What-is-Process&quot;&gt;&lt;a href=&quot;#What-is-Process&quot; class=&quot;headerlink&quot; title=&quot;What is Process&quot;&gt;&lt;/a&gt;What is Process&lt;/h1&gt;&lt;p&gt;When I first know process，I thought I understand it. But then I meet multiprocess, multithread in mutliprocess, coroutine.These start confuce me.Because I don’t know how computer inside duel with them.&lt;/p&gt;
+&lt;p&gt;Let’s have a quick look.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;In computing, a process is an instance of a computer program that is being executed. It contains the program code and its current activity. Depending on the operating system (OS), a process may be made up of multiple threads of execution that execute instructions concurrently&lt;/p&gt;
+&lt;p&gt;–Wikipedia&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;This is 100% correct but I don’t know what this mean at the beginning, this margin is too small to contain.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;what?&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;At this article, I try to explain how process really implement in the computer.&lt;/p&gt;
+&lt;p&gt;At first, We assume our computer only have one CPU core, and CPU can only execute one process each time.So any time in our computer, only one process is running.&lt;/p&gt;
+&lt;h4 id=&quot;Hello-world-program&quot;&gt;&lt;a href=&quot;#Hello-world-program&quot; class=&quot;headerlink&quot; title=&quot;Hello world program&quot;&gt;&lt;/a&gt;Hello world program&lt;/h4&gt;&lt;p&gt;This program will print “Hello world” in the console.&lt;br&gt;C:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;#include &amp;lt;stdio.h&amp;gt;
+
+int main()
+{
+  printf(&amp;quot;Hello world\n&amp;quot;);
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Python:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;print(&amp;quot;Hello world&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Relax if you not familiar with code, C language code still scare me sometimes :D.&lt;/p&gt;
+&lt;p&gt;SO when you run &lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;user&amp;gt;gcc -o hello hello.c
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Or&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;user&amp;gt;python hello.py
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;At this moment, &lt;/p&gt;
+&lt;p&gt;your terminal which is also a process will create a child process,&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;When a process is created, it is almost identical to its parent. It receives a (logical) copy of the parent’s address&lt;br&gt;space and executes the same code as the parent, beginning at the next instruction following the process&lt;br&gt;creation system call.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;This child process were tell to compile the Hello world program to machine code.&lt;/p&gt;
+&lt;p&gt;So now, your computer is running two processes.&lt;br&gt;(In fact, your computer will run some processes after you open it, you can use PS -A to list all or them or tasklist when you using Windows to list all of them. We don’t have to care about these processes right now.)&lt;/p&gt;
+&lt;p&gt;CPU only understand 0 and 1. In most case, no matter what computer languages you use, for example, C, Python or Java. The code will finally become 0 and 1 then let CPU to execute.&lt;br&gt;Let’s assume the “Hello world” program finally been convert to&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;000 001 011 111
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;and deliver to CPU.&lt;/p&gt;
+&lt;p&gt;As I told earlier, &lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;What-is-Process&quot;&gt;&lt;a href=&quot;#What-is-Process&quot; class=&quot;headerlink&quot; title=&quot;What is Process&quot;&gt;&lt;/a&gt;What is Process&lt;/h1&gt;&lt;p&gt;When I first know 
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title></title>
+    <link href="https://windsooon.github.io/2016/04/19/process/"/>
+    <id>https://windsooon.github.io/2016/04/19/process/</id>
+    <published>2016-04-18T16:04:53.000Z</published>
+    <updated>2016-04-18T16:04:53.000Z</updated>
+    
+    <content type="html"></content>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="https://windsooon.github.io/2016/04/10/hello-world/"/>
+    <id>https://windsooon.github.io/2016/04/10/hello-world/</id>
+    <published>2016-04-10T04:47:42.000Z</published>
+    <updated>2016-04-10T04:47:42.000Z</updated>
+    
+    <content type="html">&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;documentation&lt;/a&gt; for more info. If you get any problems when using Hexo, you can find the answer in &lt;a href=&quot;https://hexo.io/docs/troubleshooting.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;troubleshooting&lt;/a&gt; or you can ask me on &lt;a href=&quot;https://github.com/hexojs/hexo/issues&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&quot;Quick-Start&quot;&gt;&lt;a href=&quot;#Quick-Start&quot; class=&quot;headerlink&quot; title=&quot;Quick Start&quot;&gt;&lt;/a&gt;Quick Start&lt;/h2&gt;&lt;h3 id=&quot;Create-a-new-post&quot;&gt;&lt;a href=&quot;#Create-a-new-post&quot; class=&quot;headerlink&quot; title=&quot;Create a new post&quot;&gt;&lt;/a&gt;Create a new post&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ hexo new &lt;span class=&quot;string&quot;&gt;&quot;My New Post&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;More info: &lt;a href=&quot;https://hexo.io/docs/writing.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Writing&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;Run-server&quot;&gt;&lt;a href=&quot;#Run-server&quot; class=&quot;headerlink&quot; title=&quot;Run server&quot;&gt;&lt;/a&gt;Run server&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ hexo server&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;More info: &lt;a href=&quot;https://hexo.io/docs/server.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Server&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;Generate-static-files&quot;&gt;&lt;a href=&quot;#Generate-static-files&quot; class=&quot;headerlink&quot; title=&quot;Generate static files&quot;&gt;&lt;/a&gt;Generate static files&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ hexo generate&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;More info: &lt;a href=&quot;https://hexo.io/docs/generating.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Generating&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;Deploy-to-remote-sites&quot;&gt;&lt;a href=&quot;#Deploy-to-remote-sites&quot; class=&quot;headerlink&quot; title=&quot;Deploy to remote sites&quot;&gt;&lt;/a&gt;Deploy to remote sites&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ hexo deploy&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;More info: &lt;a href=&quot;https://hexo.io/docs/deployment.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Deployment&lt;/a&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.
+    
+    </summary>
+    
+    
+  </entry>
+  
+</feed>
