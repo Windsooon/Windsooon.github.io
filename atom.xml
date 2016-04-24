@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://windsooon.github.io/"/>
-  <updated>2016-04-21T16:57:28.000Z</updated>
+  <updated>2016-04-24T15:07:03.000Z</updated>
   <id>https://windsooon.github.io/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="https://windsooon.github.io/2016/04/21/What%20is%20Process%20/"/>
     <id>https://windsooon.github.io/2016/04/21/What is Process /</id>
     <published>2016-04-21T15:31:54.000Z</published>
-    <updated>2016-04-21T16:57:28.000Z</updated>
+    <updated>2016-04-24T15:07:03.000Z</updated>
     
     <content type="html">&lt;h1 id=&quot;What-is-Process&quot;&gt;&lt;a href=&quot;#What-is-Process&quot; class=&quot;headerlink&quot; title=&quot;What is Process&quot;&gt;&lt;/a&gt;What is Process&lt;/h1&gt;&lt;p&gt;When I first know process，I thought I understand it. But then I meet multiprocess, multithread in mutliprocess, coroutine.These start confuce me.Because I don’t know how computer inside duel with them.&lt;/p&gt;
 &lt;p&gt;Let’s have a quick look.&lt;/p&gt;
@@ -31,7 +31,7 @@
 &lt;p&gt;This is 100% correct but I don’t know what this mean at the beginning, this margin is too small to contain.&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;http://&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;what?&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;At this article, I try to explain how process really implement in the computer.&lt;/p&gt;
-&lt;h3 id=&quot;Laundry&quot;&gt;&lt;a href=&quot;#Laundry&quot; class=&quot;headerlink&quot; title=&quot;Laundry&quot;&gt;&lt;/a&gt;Laundry&lt;/h3&gt;&lt;p&gt;let’s look an example&lt;/p&gt;
+&lt;h3 id=&quot;Laundry-Example&quot;&gt;&lt;a href=&quot;#Laundry-Example&quot; class=&quot;headerlink&quot; title=&quot;Laundry Example&quot;&gt;&lt;/a&gt;Laundry Example&lt;/h3&gt;&lt;p&gt;let’s look an example&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;First, Your wife/husband ask you to do the laundry,&lt;br&gt;you choose the clothes need wished. &lt;/li&gt;
 &lt;li&gt;Second, check if any clothes left in the washing machine, if have any, take them off the machine. &lt;/li&gt;
@@ -40,7 +40,7 @@
 &lt;p&gt;Computer process just like do the laundry.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;First, a father process will create a child process and ask it to execute the same code as father process does.The different bewteen father process and child process is they have their own stack. &lt;/li&gt;
-&lt;li&gt;Second, check if any process is running, if it does, the child process has to wait after that process finish, because anytime in one CPU, only one process is running. &lt;/li&gt;
+&lt;li&gt;Second, check if CPU running any process, if it does, the child process has to wait after that process finish, because CPU can only run one process in the same time&lt;/li&gt;
 &lt;li&gt;Third, the child process begin to run.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id=&quot;Hello-world-program&quot;&gt;&lt;a href=&quot;#Hello-world-program&quot; class=&quot;headerlink&quot; title=&quot;Hello world program&quot;&gt;&lt;/a&gt;Hello world program&lt;/h3&gt;&lt;p&gt;This program will print “Hello world” in the console.&lt;br&gt;C:&lt;/p&gt;
