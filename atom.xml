@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://windsooon.github.io/"/>
-  <updated>2016-04-24T15:07:03.000Z</updated>
+  <updated>2017-03-30T16:42:20.000Z</updated>
   <id>https://windsooon.github.io/</id>
   
   <author>
@@ -14,6 +14,459 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>机器学习实战(url分类)</title>
+    <link href="https://windsooon.github.io/2017/03/31/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-url%E5%88%86%E7%B1%BB/"/>
+    <id>https://windsooon.github.io/2017/03/31/机器学习实战-url分类/</id>
+    <published>2017-03-30T16:40:44.000Z</published>
+    <updated>2017-03-30T16:42:20.000Z</updated>
+    
+    <content type="html">&lt;p&gt;实际应用中，我们经常需要对集合进行分类，一方面可以进行统计，另一方面也可以用作去重。常见的例如&lt;strong&gt;url分类&lt;/strong&gt;（本质上是字符串分类，不过又因为url的特殊性使其需要特别处理），&lt;strong&gt;地址分类&lt;/strong&gt;（经纬度分类），&lt;strong&gt;文章分类&lt;/strong&gt;（文章分类我们之后会介绍）。分类的其中一种思路是先把集合量化为几项特征值，使其可以计算出个体间的距离。然后通过分类算法（这里使用的是k-means算法）进行分类。&lt;/p&gt;
+&lt;p&gt;  这里举的例子是url分类，我们从爬虫获取到url，需要把它们分成不同的类别。我们先分析一个url：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;https://www.example.com/abc/123?id=1 
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;我们可以把url抽象成几个特征：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;http还是https，域名，目录，目录深度，参数，参数数量，域名在Alexa上的排名。域名在搜索引擎的收录数&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;这一步非常重要，有些开发者往往只在乎算法的效率和实现，忽略了从需求角度去对数据进行分析和提取。就像理查德费曼所说的，“无论计算机多少神奇，你给它的是垃圾，它出来的也是垃圾”。&lt;/p&gt;
+&lt;p&gt;分析以上的url我们可以得到：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;访问安全性：https&lt;/li&gt;
+&lt;li&gt;域名为：www.example.com&lt;/li&gt;
+&lt;li&gt;目录：abc/123&lt;/li&gt;
+&lt;li&gt;目录深度：三级&lt;/li&gt;
+&lt;li&gt;参数：id=1&lt;/li&gt;
+&lt;li&gt;参数数量：1个&lt;/li&gt;
+&lt;li&gt;Alexa排名：10000（非真实）&lt;/li&gt;
+&lt;li&gt;搜索引擎收录数：1000（非真实）&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;我们根据需求给这8个特征赋予不同的权重&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Similarity = 域名 * 0.4 + 目录 * 0.2 + 目录深度 * 0.2 + 参数 * 0.1 + 参数数量 * 0.1 
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;在这里我们只使用5个特征，特征的数量对具体实现并没有影响。不过这里需要注意一个问题，在计算距离的时候我们可以使用&lt;strong&gt;欧式距离（Euclidean Distance）&lt;/strong&gt;，&lt;strong&gt;编辑距离（Edit Distance）&lt;/strong&gt;，&lt;strong&gt;余弦相似性（Cosine Similarity）&lt;/strong&gt;。欧式距离公式如下：&lt;/p&gt;
+&lt;p&gt;在这里我们可以看到，不同的特征由于它的绝对值范围不同（例如域名一般会在20个字符串内，而Alexa排名却可以在一到几百万的区间），对最终距离影响的范围也不同。例如在所有url中Alexa排名最前的拍在第100位，最后为2000位。那么这两个url的距离因为排名这个特征被过度放大了。所以在计算距离之前，我们常常需要归一化数值，将特征值的取值范围局限在0到1或者-1到1之间，公式如下：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;newValue = (oldValue - min) / (max - min)
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;假如集合中一个url的排名为500，那么在计算过之后就变成&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;newValue = (500 - 100) / (2000 - 100) = 0.21
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;之后可以计算url之间每个特征的编辑距离。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;https://www.example.com/abc/123?id=1
+https://www.example.com/abc/cdf/258?id=19
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这里的编辑距离分别为，0，6，1，1，0，（这是归一化数值之前的编辑距离，实际应用需要先获得每个特征值的距离最大最小值，之后再把编辑距离转化为0到1之间）计算编辑距离的代码如下：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;import numpy as np
+
+def levenshtein(source, target):
+    &amp;apos;&amp;apos;&amp;apos; 使用矩阵计算比其他方法快40% &amp;apos;&amp;apos;&amp;apos;
+    if len(source) = len(target).
+    if len(target) == 0:
+        return len(source)
+
+    # We call tuple() to force strings to be used as sequences
+    # (&amp;apos;c&amp;apos;, &amp;apos;a&amp;apos;, &amp;apos;t&amp;apos;, &amp;apos;s&amp;apos;) - numpy uses them as values by default.
+    source = np.array(tuple(source))
+    target = np.array(tuple(target))
+
+    # We use a dynamic programming algorithm, but with the
+    # added optimization that we only need the last two rows
+    # of the matrix.
+    previous_row = np.arange(target.size + 1)
+    for s in source:
+        # Insertion (target grows longer than source):
+        current_row = previous_row + 1
+
+        # Substitution or matching:
+        # Target and source items are aligned, and either
+        # are different (cost of 1), or are the same (cost of 0).
+        current_row[1:] = np.minimum(
+                current_row[1:],
+                np.add(previous_row[:-1], target != s))
+
+        # Deletion (target grows shorter than source):
+        current_row[1:] = np.minimum(
+                current_row[1:],
+                current_row[0:-1] + 1)
+
+        previous_row = current_row
+
+    return previous_row[-1]
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;其他实现方法可以参考&lt;a href=&quot;https://en.wikibooks.org/wiki/Algorithm_Implementation/Strings/Levenshtein_distance#Python&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;编辑距离&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;知道怎么计算距离，就可以使用分类算法，简单的可以使用k-means。这里为了讲解，并不是用numpy库&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;import random
+import functools
+from ml_logging import setup_logging
+
+
+setup_logging(__name__)
+
+
+def read_from_file(file_name, dimension_num, split_char):
+    &amp;apos;&amp;apos;&amp;apos;从文件读取数据
+       file_name: 数据源文件名
+       dimension_num: 选择的数据维度数量
+       split_char: 数据分隔符
+    &amp;apos;&amp;apos;&amp;apos;
+    def list_to_float(
+            line, dimension_num=dimension_num, split_char=split_char):
+        l = [float(x) for x in line.replace(&amp;quot;\n&amp;quot;, &amp;quot;&amp;quot;).split(
+            split_char)[:dimension_num]]
+        return l
+
+    try:
+        with open(file_name, &amp;apos;r&amp;apos;) as data:
+            # 若每行数据源为a1 a2 a3
+            # 返回格式为float数值
+            # [[a1, a2, a3], [b1, b2, b3], [c1, c2, c3]]
+            dataset = [list_to_float(x) for x in data]
+    except IOError:
+        pass
+    return dataset
+
+
+def cluster_random(dataset, chuster_num):
+    &amp;apos;&amp;apos;&amp;apos;随机选择质点
+       dataset: 数据源
+       chuster_num: 质点数量
+    &amp;apos;&amp;apos;&amp;apos;
+    return random.sample(dataset, chuster_num)
+
+
+def cal_distance(a, b):
+    &amp;apos;&amp;apos;&amp;apos;计算两个数据源之间的欧几里得距离
+       dataset: 数据源
+       chuster_num: 质点数量
+    &amp;apos;&amp;apos;&amp;apos;
+    return functools.reduce(
+        lambda x, y: x+y, [(x - y) ** 2 for x, y in zip(a, b)]) ** 0.5
+
+
+def cal_multi(cluster_list, dataset):
+    &amp;apos;&amp;apos;&amp;apos;把每一个点分到最近的质心，返回分组后的情况
+       cluster_list: 质心列表
+       dataset: 数据源
+    &amp;apos;&amp;apos;&amp;apos;
+    di = {}
+    for i in dataset:
+        ans = list(map(lambda x: cal_distance(i, x), cluster_list))
+        cluster_index = ans.index(min(ans))
+        di.setdefault(cluster_index, []).append(i)
+        # di返回的格式应该如下：
+        # di = {
+        #          1: [[a1, a2], [c1, c2]],
+        #          2: [[b1, b2], [d1, d2]]
+        #      }
+    return di
+
+
+def new_cluster(cluster_dict):
+    &amp;apos;&amp;apos;&amp;apos;获取新的聚簇点
+       cluster_dict: 包含分组信息的字典
+    &amp;apos;&amp;apos;&amp;apos;
+    def average(nums):
+        return sum(nums)/len(nums)
+
+    return list(
+        map(lambda x: (average(n) for n in zip(*x.values())), cluster_dict))
+
+
+def main(file_name, dimension_num, split_char, k):
+    # 读取数据
+    dataset = read_from_file(file_name, dimension_num, split_char)
+    # 选择初始的k个质点
+    cluster_list = cluster_random(dataset, k)
+    # 这是第一次分组
+    cluster_before = False
+    # 默认分组为空
+    cluster_dict = {}
+    while 1:
+        if cluster_before:
+            # 根据现有分组情况计算新的质心
+            new_cluster(cluster_dict)
+        else:
+            cur_dict = cal_multi(cluster_list, dataset)
+            cluster_before = True
+            if cur_dict == cluster_dict:
+                break
+            else:
+                cluster_dict = cur_dict
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;使用numpy实现可以参考&lt;a href=&quot;https://datasciencelab.wordpress.com/2013/12/12/clustering-with-k-means-in-python/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;python的k-means实现&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;这里使用k-means算法，太受随机起始点的影响，可以结合二分k-means和k-means++进行分类，使分类更加稳定。&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;实际应用中，我们经常需要对集合进行分类，一方面可以进行统计，另一方面也可以用作去重。常见的例如&lt;strong&gt;url分类&lt;/strong&gt;（本质上是字符串分类，不过又因为url的特殊性使其需要特别处理），&lt;strong&gt;地址分类&lt;/strong&gt;（经纬度分类），&lt;stron
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>docker基础(-)</title>
+    <link href="https://windsooon.github.io/2017/03/31/docker%E5%9F%BA%E7%A1%80/"/>
+    <id>https://windsooon.github.io/2017/03/31/docker基础/</id>
+    <published>2017-03-30T16:39:00.000Z</published>
+    <updated>2017-03-30T16:39:51.000Z</updated>
+    
+    <content type="html">&lt;p&gt;当一个项目组件以及功能越来越多，开发人员越来越多的时候，很难保证大家都熟悉某一种语言或者框架。传统的项目模块间互相依赖，代码量大，项目臃肿。现在软件开发更提倡微服务，小型的模块架构，模块之间减少互相依赖而只提供对外的API，docker非常适合微服务架构。&lt;/p&gt;
+&lt;p&gt;docker原意是码头工人，container原意集装箱,集装箱把货物之间分隔，提高轮船运输率，是运输业革命性的创新。docker把每个组件之间之间分隔。不同于传统的虚拟机，docker模拟的是一个个容器，每个容器都建立在images基础上，docker容器实际上是给镜像上添加一个读写层。 &lt;/p&gt;
+&lt;p&gt;docker文档里面包含很多工具，网上许多教程都是基于这些工具而写的，初学者如果一开始没有接触过，很容易混淆，并且不知道哪些是自己需要用的：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Dockerfile&lt;/li&gt;
+&lt;li&gt;docker-compose&lt;/li&gt;
+&lt;li&gt;docker-machine&lt;/li&gt;
+&lt;li&gt;docker swarm&lt;/li&gt;
+&lt;li&gt;docker hub&lt;/li&gt;
+&lt;li&gt;docker toolbox&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;我们先不管上面的概念，以先从最基础的指令开始了解，再一步步介绍：&lt;br&gt;&lt;img src=&quot;http://172.16.8.219/acwiki/wp-content/uploads/2016/11/docker-helloworld-300x200.png&quot; alt=&quot;docker-helloworld&quot; width=&quot;300&quot; height=&quot;200&quot; class=&quot;alignnone size-medium wp-image-184&quot;&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;docker run ubuntu（ubuntu默认bash就是 /bin/bash，所以后面不加此指令也可以）
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这条指令的意思就是利用docker运行一个基于ubuntu镜像的容器:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Unable to find image &amp;apos;ubuntu:latest&amp;apos; locally
+latest: Pulling from library/ubuntu
+6bbedd9b76a4: Downloading [======&amp;gt;      ] 5.997 MB/49.87 MB
+fc19d60a83f1: Download complete 
+de413bb911fd: Download complete 
+2879a7ad3144: Download complete 
+668604fde02e: Download complete 
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;docker会先尝试从本地寻找ubuntu这个镜像，如果没有找到的话，会从docker hub这个公有仓库里面下载到本地。ubuntu镜像包含了什么呢，从&lt;a href=&quot;https://hub.docker.com/_/ubuntu/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;docker-ubuntu&lt;/a&gt;可以看到这个镜像是用官方的tar包构建。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;What’s in this image?&lt;br&gt;This image is built from official rootfs tarballs provided by Canonical (specifically, &lt;a href=&quot;https://partner-images.canonical.com/core/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://partner-images.canonical.com/core/&lt;/a&gt;).&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;下载完之后运行&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;docker ps -a
+
+CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS                      PORTS               NAMES
+7e74b2522c3a        ubuntu              &amp;quot;/bin/bash&amp;quot;         14 seconds ago      Exited (0) 12 seconds ago                       hopeful_pare
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这句指令列出现在所有容器的状态与基本信息，我们可以看到&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;CONTAINER ID 容器唯一ID为7e74b2522c3a（在你的电脑会有所不同），&lt;/li&gt;
+&lt;li&gt;IMAGE 基于ubuntu官方镜像构建（ubuntu镜像也可以选择不同的版本以及不同个人或组织修改过的版本）&lt;/li&gt;
+&lt;li&gt;COMMAND &lt;a href=&quot;https://github.com/dockerfile/ubuntu/blob/master/Dockerfile&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://github.com/dockerfile/ubuntu/blob/master/Dockerfile&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;CREATED 创建时间&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;STATUS  状态, 状态分为下面几种，具体含义可以参考官方文档&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;created &lt;/li&gt;
+&lt;li&gt;restarting&lt;/li&gt;
+&lt;li&gt;running&lt;/li&gt;
+&lt;li&gt;paused&lt;/li&gt;
+&lt;li&gt;exited    &lt;/li&gt;
+&lt;li&gt;dead&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;PORTS 运行的端口&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;docker run -it -p 6677:6677 ubuntu
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;这条指令告诉docker把宿主，也就是此物理机的6677端口，与容器的6677端口相绑定。除了端口可以相互绑定，文件系统，也就是docker里面的volume也可以用类似的方法绑定。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;NAMES 容器的名字&lt;br&gt;可以通过 -name 指定，没有指定的话docker会自己分配一个给容器&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;回到例子1，我们看到这个容器运行之后STATUS显示马上退出了，但是第二个例子进入了容器内的终端，（通过 -it）并且STATUS是UP…，这里我一开始也觉得很困惑，为什么刚启动马上就退出了。后来了解到根据docker容器设计的思想，容器的生命周期是短暂的。它基于镜像，运行完指定的指令之后就会退出。而常规的数据库服务与web服务是一直运行的，所以不会退出。当有时候你需要做一些一次性的工作，例如数据库表的建立，此处以Django为例，建立migration记录：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;docker run -d your_images python manage.py makemigrations
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;运行完之后这个container就EXITED了。也可以删除此container了。&lt;br&gt;关于docker run的具体资料可以参考&lt;a href=&quot;https://docs.docker.com/engine/reference/run/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Docker run reference&lt;/a&gt;，&lt;/p&gt;
+&lt;p&gt;先介绍第一个工具。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Dockerfile&lt;br&gt;默认的docker官方image都是以最少组件为目的，和虚拟机不同，拉一个ubuntu镜像下来很多基本命令都用不了，例如curl，因为官方image默认就没有安装。如果你需要安装curl，那你就可以基于官方镜像建立自己的镜像，这时候就可以使用&lt;a href=&quot;https://docs.docker.com/engine/reference/builder/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Dockerfile&lt;/a&gt;，建立文件名为Dockerfile的文件，然后写入：&lt;/p&gt;
+&lt;p&gt;  FROM ubuntu&lt;br&gt;  RUN apt-get update&lt;br&gt;  RUN apt-get install -y curl&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;之后在该文件同级目录运行（注意最后的.）&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;docker build -t my_ubuntu .
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;就建立了你自己的可以自带curl的镜像：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;docker run -it my_ubuntu 
+curl --help
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Dockerfile里面有几个常用的命令：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;FROM ubuntu&lt;br&gt;从ubuntu镜像的基础上建立镜像&lt;/li&gt;
+&lt;li&gt;RUN apt-get update&lt;br&gt;运行apt-get update命令（通常是安装包与组件）&lt;/li&gt;
+&lt;li&gt;CMD echo “Hello world”&lt;br&gt;运行echo “Hello world” 命令（常规命令）&lt;br&gt;RUN与CMD的区别可以参考这里&lt;a href=&quot;http://goinbigdata.com/docker-run-vs-cmd-vs-entrypoint/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Docker RUN vs CMD vs ENTRYPOINT&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;EXPOSE 3306&lt;br&gt;基于此镜像建立的容器对外界暴露的端口&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;The EXPOSE instruction indicates the ports on which a container will listen for connections. Consequently, you should use the common, traditional port for your application. For example, an image containing the Apache web server would use EXPOSE 80, while an image containing MongoDB would use EXPOSE 27017 and so on.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;ENV PATH /usr/local/postgres-$PG_MAJOR/bin:$PATH&lt;br&gt;设置容器的环境变量&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;ADD or COPY&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;COPY requirements.txt /tmp/
+RUN pip install --requirement /tmp/requirements.txt
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;因为RUN里的命令是在镜像内部进行的，假如你需要读取宿主的文件来执行命令。如上面所示，先把当前目录下的requirements.txt拷贝到容器中的/tmp/文件夹里，然后运行RUN命令。之后基于此镜像运行容器的时候，只要你没有使用-v绑定宿主与容器的文件系统，/tmp/就都会有requirements.txt这个文件。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;VOLUME&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;FROM ubuntu
+RUN mkdir /myvol
+RUN echo &amp;quot;hello world&amp;quot; &amp;gt; /myvol/greeting
+VOLUME /myvol
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;镜像中先创建了/myvol文件夹，运行echo “hello world”，之后创建了/myvol文件夹&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;docker build -t volume-example .
+docker run -it -v /tmp/:/myvol volume-example
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;通过-v参数可以把宿主的/tmp文件夹与容器的/myvol文件夹绑定在一起，只要修改其中一方，另外一方也会被修改。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;docoker-compose&lt;br&gt;Dockerfile可以说帮我们简化了许多工作，docker-compose则进一步减少我们的工作量，我们看看docker-compose的例子：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;version: &amp;apos;2&amp;apos;
+services:
+  mysqldb:
+    restart: always
+    image: mysql:latest
+    ports:
+      - &amp;quot;3306:3306&amp;quot;
+    environment:
+      MYSQL_ROOT_PASSWORD: example
+      MYSQL_USER: www
+      MYSQL_PASSWORD: www
+      MYSQL_DATABASE: example_database
+    volumes:
+      - mysqldata:/var/lib/mysql
+      - ./config/:/etc/mysql/conf.d
+  web:
+    restart: always
+    build: ./example_code
+    env_file: .env
+    environment:
+      DEBUG: &amp;apos;true&amp;apos;
+      PYTHONPATH: &amp;apos;/usr/src/app/app_platform&amp;apos;
+    command: bash -c &amp;quot;python manage.py runserver&amp;quot;
+    volumes:
+      - ./example_code:/usr/src/app
+      - /usr/src/app/static
+    ports:
+      - &amp;quot;8000&amp;quot;
+    dns:
+        - 114.114.114.114
+        - 8.8.8.8
+    links:
+      - mysqldb
+  nginx:
+    restart: always
+    build: ./nginx/
+    ports:
+      - &amp;quot;80:80&amp;quot;
+    volumes:
+      - ./example_code:/usr/src/app
+      - ./nginx/sites-enabled/:/etc/nginx/sites-enabled
+    links:
+      - web:web
+volumes:
+    mysqldata:
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;一开始看可能一头雾水，放松点，我们慢慢一步步分析这个文件，首先整个服务分为三大块，&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;mysql数据库，web服务，nginx服务&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;先看代码&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;version: &amp;apos;2&amp;apos;
+services:
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;因为docker-compose暂时有两个版本，新版本多了一些参数和选项，我们这里使用第二个版本，下面的代码都是compose中的组件&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;mysql&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;mysqldb:
+    restart: always //1
+    image: mysql:latest //2
+    ports: //3
+      - &amp;quot;3306:3306&amp;quot;
+    environment: //4
+      MYSQL_ROOT_PASSWORD: example
+      MYSQL_USER: www
+      MYSQL_PASSWORD: www
+      MYSQL_DATABASE: example_database
+    volumes: //5
+      - mysqldata:/var/lib/mysql
+      - ./config/:/etc/mysql/conf.d
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol&gt;
+&lt;li&gt;如果遇到错误自动重启（如果错误没有解决会不断重启）&lt;/li&gt;
+&lt;li&gt;使用mysql官方镜像（也可以使用自己基于其修改的镜像，这里可以使用build，指定Dockerfile的位置）&lt;/li&gt;
+&lt;li&gt;主机的3306端口与容器的3306端口相连接。&lt;/li&gt;
+&lt;li&gt;设置mysql的环境变量，具体设置docker hub的官方镜像里一般都有，可以参考&lt;a href=&quot;https://hub.docker.com/_/mysql/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;docker-hub-mysql&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;mysqldata:/var/lib/mysql，在代码的最下面可以看到 &lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;volumes: 
+    mysqldata:
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt; docker1.9之后专门为数据持久化而推出named volume，&lt;a href=&quot;https://docs.docker.com/engine/tutorials/dockervolumes/#/creating-and-mounting-a-data-volume-container&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Manage data in containers&lt;/a&gt;，通过此指令创建一个独立的volume，不会因为删除container，image而丢失，可以通过&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;docker volume list
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt; 查看现有宿主的volume，所以这里指把容器中/var/lib/mysql中所有数据都独立存储在mysqldata这个volume中，接下来&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;./config/:/etc/mysql/conf.d
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt; 把当前目录中的config文件夹与容器中/etc/mysql/conf.d想关联，这里等于重写了mysql的默认配置。具体可以参考&lt;a href=&quot;http://severalnines.com/blog/mysql-docker-containers-understanding-basics&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;MySQL Docker Containers: Understanding the basics&lt;/a&gt;，&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;web&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;web:
+    restart: always
+    build: ./example_code //1
+    env_file: .env //2
+    environment:
+      DEBUG: &amp;apos;true&amp;apos;
+      PYTHONPATH: &amp;apos;/usr/src/app/app_platform&amp;apos;
+    command: bash -c &amp;quot;python manage.py runserver&amp;quot; //3
+    volumes:
+      - ./example_code:/usr/src/app
+      - /usr/src/app/static
+    ports:
+      - &amp;quot;8000&amp;quot;
+    dns:
+        - 114.114.114.114
+        - 8.8.8.8
+    links: //4
+      - mysqldb
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol&gt;
+&lt;li&gt;从./example_code文件夹中的Dockerfile建立并使用该镜像&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;可以把你需要的环境变量都写在一个文件里，然后通过env_file引用，注意&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Environment variables specified in environment override these values.&lt;br&gt;如果同时你也指定了environment变量，env_file中变量将被覆盖&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;容器启动时运行的指令&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;因为web服务需要连接mysql，原本代码可能是通过IP+端口的方式连接，使用links的意思是通过查找mysqldb就能直接连接数据库，相当于数据库别名，这里以django为例：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;DATABASES = {
+    &amp;apos;default&amp;apos;: {
+        &amp;apos;ENGINE&amp;apos;: &amp;apos;django.db.backends.mysql&amp;apos;,
+        &amp;apos;NAME&amp;apos;: &amp;apos;example&amp;apos;,
+        &amp;apos;USER&amp;apos;: &amp;apos;www&amp;apos;,
+        &amp;apos;PASSWORD&amp;apos;: &amp;apos;www&amp;apos;,
+        &amp;apos;HOST&amp;apos;: &amp;apos;mysqldb&amp;apos;,
+        &amp;apos;PORT&amp;apos;: &amp;apos;3306&amp;apos;,
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;留意HOST参数，我们直接使用了mysqldb取代了之前的IP&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;nginx&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;nginx:
+    restart: always
+    build: ./nginx/
+    ports:
+      - &amp;quot;80:80&amp;quot;
+    volumes:
+      - ./example_code:/usr/src/app
+      - ./nginx/sites-enabled/:/etc/nginx/sites-enabled
+    links:
+      - web:web
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这部分基本与web一样，接着运行&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;docker-compose build
+docker-compose up -d
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;建立镜像，并且基于docker-compose中的设置建立容器。&lt;strong&gt;容器会按照compose中的顺序启动，但后面的容器不会等前面的准备就绪才启动&lt;/strong&gt;，也就是说一开始docker启动mysql-&amp;gt;web-&amp;gt;nginx，不过因为mysql启动与建立需要时间比较久，所以当web与nginx都启动后mysql有可能还没有准备好，这时候查看log的话就会看到无法连接mysqldb的日志，不过只需要等待一会就好。文档有强调这点：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;You can control the order of service startup with the depends_on option. Compose always starts containers in dependency order, where dependencies are determined by depends_on, links, volumes_from and network_mode: “service:…”.&lt;/p&gt;
+&lt;p&gt;However, Compose will not wait until a container is “ready” (whatever that means for your particular application) - only until it’s running. There’s a good reason for this.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;下一章我们会继续介绍接下来的几款工具。&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;当一个项目组件以及功能越来越多，开发人员越来越多的时候，很难保证大家都熟悉某一种语言或者框架。传统的项目模块间互相依赖，代码量大，项目臃肿。现在软件开发更提倡微服务，小型的模块架构，模块之间减少互相依赖而只提供对外的API，docker非常适合微服务架构。&lt;/p&gt;
+&lt;p&gt;d
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>What is Process</title>
