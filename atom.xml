@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://windsooon.github.io/"/>
-  <updated>2017-03-31T14:43:45.000Z</updated>
+  <updated>2017-03-31T14:44:13.000Z</updated>
   <id>https://windsooon.github.io/</id>
   
   <author>
@@ -16,11 +16,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>What Bayes&#39;theorem tell us.md</title>
+    <title>What Bayes theorem tell us</title>
     <link href="https://windsooon.github.io/2017/03/31/What%20Bayes'theorem%20tell%20us/"/>
     <id>https://windsooon.github.io/2017/03/31/What Bayes'theorem tell us/</id>
-    <published>2017-03-31T14:43:45.000Z</published>
-    <updated>2017-03-31T14:43:45.000Z</updated>
+    <published>2017-03-31T14:44:13.000Z</published>
+    <updated>2017-03-31T14:44:13.000Z</updated>
     
     <content type="html">&lt;h1 id=&quot;What-Bayes-tell-us&quot;&gt;&lt;a href=&quot;#What-Bayes-tell-us&quot; class=&quot;headerlink&quot; title=&quot;What-Bayes-tell-us-&quot;&gt;&lt;/a&gt;What-Bayes-tell-us-&lt;/h1&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/Windsooon/What-Bayes-tell-us-/blob/master/README_CHINESE.md&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;中文版本&lt;/a&gt;&lt;/p&gt;
 &lt;h3 id=&quot;If-a-person-is-infected-by-the-disease-the-probability-of-a-positive-test-result-will-be-90-However-if-someone-is-not-infected-there-still-will-have-9-chances-to-get-the-positive-result-We-have-already-known-that-the-prevalence-of-this-disease-is-1&quot;&gt;&lt;a href=&quot;#If-a-person-is-infected-by-the-disease-the-probability-of-a-positive-test-result-will-be-90-However-if-someone-is-not-infected-there-still-will-have-9-chances-to-get-the-positive-result-We-have-already-known-that-the-prevalence-of-this-disease-is-1&quot; class=&quot;headerlink&quot; title=&quot;If a person is infected by the disease, the probability of a positive test result will be 90%. However, if someone is not infected, there still will have 9% chances to get the positive result. We have already known that the prevalence of this disease is 1%.&quot;&gt;&lt;/a&gt;If a person is infected by the disease, the probability of a positive test result will be 90%. However, if someone is not infected, there still will have 9% chances to get the positive result. We have already known that the prevalence of this disease is 1%.&lt;/h3&gt;&lt;h2 id=&quot;If-I-am-tested-to-be-positive-what-is-the-probability-of-getting-a-true-infection&quot;&gt;&lt;a href=&quot;#If-I-am-tested-to-be-positive-what-is-the-probability-of-getting-a-true-infection&quot; class=&quot;headerlink&quot; title=&quot;If I am tested to be positive, what is the probability of getting a true infection?&quot;&gt;&lt;/a&gt;If I am tested to be positive, what is the probability of getting a true infection?&lt;/h2&gt;&lt;h2 id=&quot;70&quot;&gt;&lt;a href=&quot;#70&quot; class=&quot;headerlink&quot; title=&quot;70%?&quot;&gt;&lt;/a&gt;70%?&lt;/h2&gt;&lt;h2 id=&quot;60&quot;&gt;&lt;a href=&quot;#60&quot; class=&quot;headerlink&quot; title=&quot;60%?&quot;&gt;&lt;/a&gt;60%?&lt;/h2&gt;&lt;h2 id=&quot;50&quot;&gt;&lt;a href=&quot;#50&quot; class=&quot;headerlink&quot; title=&quot;50%?&quot;&gt;&lt;/a&gt;50%?&lt;/h2&gt;&lt;h2 id=&quot;40&quot;&gt;&lt;a href=&quot;#40&quot; class=&quot;headerlink&quot; title=&quot;40%?&quot;&gt;&lt;/a&gt;40%?&lt;/h2&gt;&lt;h2 id=&quot;10&quot;&gt;&lt;a href=&quot;#10&quot; class=&quot;headerlink&quot; title=&quot;10%?&quot;&gt;&lt;/a&gt;10%?&lt;/h2&gt;&lt;h2 id=&quot;Answer&quot;&gt;&lt;a href=&quot;#Answer&quot; class=&quot;headerlink&quot; title=&quot;Answer&quot;&gt;&lt;/a&gt;Answer&lt;/h2&gt;&lt;p&gt;Just &lt;strong&gt;9%&lt;/strong&gt;, the key is not the reliability of the test but the prevalence of this disease&lt;/p&gt;
