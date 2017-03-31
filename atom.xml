@@ -711,7 +711,7 @@ def main(file_name, dimension_num, split_char, k):
     <link href="https://windsooon.github.io/2017/03/31/docker%E5%9F%BA%E7%A1%80/"/>
     <id>https://windsooon.github.io/2017/03/31/docker基础/</id>
     <published>2017-03-30T16:39:00.000Z</published>
-    <updated>2017-03-30T16:39:51.000Z</updated>
+    <updated>2017-03-31T14:49:13.000Z</updated>
     
     <content type="html">&lt;p&gt;当一个项目组件以及功能越来越多，开发人员越来越多的时候，很难保证大家都熟悉某一种语言或者框架。传统的项目模块间互相依赖，代码量大，项目臃肿。现在软件开发更提倡微服务，小型的模块架构，模块之间减少互相依赖而只提供对外的API，docker非常适合微服务架构。&lt;/p&gt;
 &lt;p&gt;docker原意是码头工人，container原意集装箱,集装箱把货物之间分隔，提高轮船运输率，是运输业革命性的创新。docker把每个组件之间之间分隔。不同于传统的虚拟机，docker模拟的是一个个容器，每个容器都建立在images基础上，docker容器实际上是给镜像上添加一个读写层。 &lt;/p&gt;
@@ -724,7 +724,7 @@ def main(file_name, dimension_num, split_char, k):
 &lt;li&gt;docker hub&lt;/li&gt;
 &lt;li&gt;docker toolbox&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;我们先不管上面的概念，以先从最基础的指令开始了解，再一步步介绍：&lt;br&gt;&lt;img src=&quot;http://172.16.8.219/acwiki/wp-content/uploads/2016/11/docker-helloworld-300x200.png&quot; alt=&quot;docker-helloworld&quot; width=&quot;300&quot; height=&quot;200&quot; class=&quot;alignnone size-medium wp-image-184&quot;&gt;&lt;/p&gt;
+&lt;p&gt;我们先不管上面的概念，以先从最基础的指令开始了解，再一步步介绍：&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;docker run ubuntu（ubuntu默认bash就是 /bin/bash，所以后面不加此指令也可以）
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这条指令的意思就是利用docker运行一个基于ubuntu镜像的容器:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;Unable to find image &amp;apos;ubuntu:latest&amp;apos; locally
