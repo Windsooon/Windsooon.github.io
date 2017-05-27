@@ -1,0 +1,47 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> 配置Docker开发环境) · Tech blog of Unicooo</title><meta name="description" content="配置Docker开发环境) - Unicooo"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="short icon" href="/favicon.png"><link rel="stylesheet" href="/css/apollo.css"><link rel="stylesheet" href="http://fonts.useso.com/css?family=Source+Sans+Pro:400,600" type="text/css"></head><body><div id="mask" style="display: none;"><img id="mask-image" src="#" style=" "></div><div class="wrap"><header><a href="/" class="logo-link"><img src="/favicon.png"></a><ul class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" class="nav-list-link">BLOG</a></li><li class="nav-list-item"><a href="/archives/" target="_self" class="nav-list-link">ARCHIVE</a></li><li class="nav-list-item"><a href="https://github.com/Windsooon" target="_blank" class="nav-list-link">GITHUB</a></li></ul></header><section class="container"><div class="post"><article class="post-block"><h1 class="post-title">配置Docker开发环境)</h1><div class="post-time">May 27, 2017</div><div class="post-content"><h2 id="配置Docker开发环境"><a href="#配置Docker开发环境" class="headerlink" title="配置Docker开发环境"></a>配置Docker开发环境</h2><p>我们开始安装一些工具来方便我们学习编程，一般初接触编程的同学使用的都是Windows系统或者macOS系统。从这节课开始我们将使用Linux系统来学习编程，不同于Windows以及macOS系统个，Linux系统是一个开源(open source)系统，也就是说它的所有源代码都可以让大家浏览以及审核，提出修改。如何在Windows系统或者macOS系统上运行Linux系统呢？我们可以使用<a href="https://www.docker.com/" target="_blank" rel="external">Docker</a>来在本地使用Linux系统</p>
+<p>###macOS系统安装docker教程<br>(官方英文教程)[<a href="https://docs.docker.com/toolbox/toolbox_install_mac/" target="_blank" rel="external">https://docs.docker.com/toolbox/toolbox_install_mac/</a>]</p>
+<ul>
+<li><p>System Requirements: Docker for Mac will launch only if all of these requirements are met.</p>
+<ul>
+<li>Mac must be a 2010 or newer model, with Intel’s hardware support for memory management unit (MMU) virtualization; i.e., Extended Page Tables (EPT) and Unrestricted Mode.</li>
+<li>OS X El Capitan 10.11 and newer macOS releases are supported. At a minimum, Docker for Mac requires macOS Yosemite 10.10.3 or newer, with the caveat that going forward 10.10.x is a use-at-your-own risk proposition.</li>
+<li>Starting with Docker for Mac Stable release 1.13 (upcoming), and concurrent Edge releases, we will no longer address issues specific to OS X Yosemite 10.10. In future releases, Docker for Mac could stop working on OS X Yosemite 10.10 due to the deprecated status of this OS X version. We recommend upgrading to the latest version of macOS.<br>At least 4GB of RAM</li>
+<li>VirtualBox prior to version 4.3.30 must NOT be installed (it is incompatible with Docker for Mac). If you have a newer version of VirtualBox installed, it’s fine.</li>
+</ul>
+</li>
+<li><p>系统必须满足以下全部要求：</p>
+<ul>
+<li>2010后的苹果电脑，支持英特尔MMU内存虚拟</li>
+<li>10.10.3或者更新的苹果系统</li>
+<li>从Docker1.13版本（准备推出）之后不再支持10.10版本（OS X 10.10 Yosemite）</li>
+<li>不能安装4.3.30版本之前的VirtualBox</li>
+</ul>
+</li>
+</ul>
+<ol>
+<li>下载软件<a href="https://download.docker.com/mac/stable/Docker.dmg" target="_blank" rel="external">Docker for macOS</a></li>
+<li><p>双击Docker.dmg安装</p>
+<p> <img src="https://github.com/EngineGirl/basic-tutorial/blob/master/imgs/install_docker/docker-app-drag.png?raw=true" alt="docker-app-drap"></p>
+</li>
+<li><p>双击应用程序中的Docker.app来启动Docker</p>
+<p> <img src="https://github.com/EngineGirl/basic-tutorial/blob/master/imgs/install_docker/docker-app-in-apps.png?raw=true" alt="docker-app-inapp"></p>
+</li>
+<li>系统会请求你输入密码来启动Docker，Docker需要特殊权限来安装网络组件</li>
+<li><p>然后可以在屏幕右上角看到Docker的标志</p>
+<p> <img src="https://github.com/EngineGirl/basic-tutorial/blob/master/imgs/install_docker/whale-in-menu-bar.png?raw=true" alt="docker-app-inapp"></p>
+</li>
+<li><p>然后可以点击这个标志修改设置</p>
+<p> <img src="https://github.com/EngineGirl/basic-tutorial/blob/master/imgs/install_docker/docker-menu.png?raw=true" alt="docker-app-inapp"></p>
+</li>
+<li><p>如此简单就安装成功啦，可以吃点巧克力奖励下自己了。:D</p>
+</li>
+</ol>
+</div></article></div></section><footer><div class="paginator"><a href="/2017/03/31/What Bayes'theorem tell us/" class="next">NEXT</a></div><div id="disqus_thread"></div><script>var disqus_shortname = 'windsonYang';
+var disqus_identifier = '2017/05/27/配置Docker开发环境/';
+var disqus_title = '配置Docker开发环境)';
+var disqus_url = 'https://windsooon.github.io/2017/05/27/配置Docker开发环境/';
+(function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();</script><script id="dsq-count-scr" src="//windsonYang.disqus.com/count.js" async></script><div class="copyright"><p>© 2016 - 2017 <a href="https://windsooon.github.io">Unicooo</a>, unless otherwise noted.</p></div></footer></div><script>(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;e=o.createElement(i);r=o.getElementsByTagName(i)[0];e.src='//www.google-analytics.com/analytics.js';r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));ga('create',"UA-65933410-1",'auto');ga('send','pageview');</script><script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script></body></html>
