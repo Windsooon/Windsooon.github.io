@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://windsooon.github.io/"/>
-  <updated>2017-05-27T15:33:33.000Z</updated>
+  <updated>2017-05-27T15:42:02.000Z</updated>
   <id>https://windsooon.github.io/</id>
   
   <author>
@@ -16,13 +16,146 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>配置Docker开发环境)</title>
+    <title>终端</title>
+    <link href="https://windsooon.github.io/2017/05/27/%E7%BB%88%E7%AB%AF/"/>
+    <id>https://windsooon.github.io/2017/05/27/终端/</id>
+    <published>2017-05-27T03:41:00.000Z</published>
+    <updated>2017-05-27T15:42:02.000Z</updated>
+    
+    <content type="html">&lt;h2 id=&quot;终端&quot;&gt;&lt;a href=&quot;#终端&quot; class=&quot;headerlink&quot; title=&quot;终端&quot;&gt;&lt;/a&gt;终端&lt;/h2&gt;&lt;p&gt;现代的个人电脑通常都会配有图形化界面，也就是说假如你要删除一个文件，可能会先找到这个文件，然后把它拖到回收站，不过你也可以通过直接输入指令的方式删除。Windsows7或之后的版本大家可以使用Powershell：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Windows 7：打开 开始 菜单，在搜索框里输入 powershell，点击结果里的 Windows Powershell。
+
+Windows 8+：win + Q，搜索 powershell。
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;删除文件的指令是：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# Windsons
+Remove-Item [FilePath]
+# OSX
+rm [FilePath]
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;编程会经常接触终端，因为我们的指令都需要在终端中输入，或者保存在文件，然后由终端执行，例如要计算7的25次方：&lt;/p&gt;
+&lt;p&gt;方法一：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;终端中输入python&lt;/li&gt;
+&lt;li&gt;输入7**25 回车&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;方法儿：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;新建一个以py为后缀的文件，例如cal.py&lt;/li&gt;
+&lt;li&gt;文件中输入print(7**25) 保存，回车&lt;/li&gt;
+&lt;li&gt;在终端直接输入python cal.py &lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;以上两个方法都可以得到答案1341068619663964900807，当然如果是这类计算一般可以是用系统自带的计算机，不过假如要读取数据，或者做一些文件处理，定时任务的话，那就必须使用终端啦。&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;终端&quot;&gt;&lt;a href=&quot;#终端&quot; class=&quot;headerlink&quot; title=&quot;终端&quot;&gt;&lt;/a&gt;终端&lt;/h2&gt;&lt;p&gt;现代的个人电脑通常都会配有图形化界面，也就是说假如你要删除一个文件，可能会先找到这个文件，然后把它拖到回收站，不过你也可以通过直接输入指令的
+    
+    </summary>
+    
+      <category term="EngineGirls" scheme="https://windsooon.github.io/categories/EngineGirls/"/>
+    
+    
+      <category term="基础 EngineGirls" scheme="https://windsooon.github.io/tags/%E5%9F%BA%E7%A1%80-EngineGirls/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>路径</title>
+    <link href="https://windsooon.github.io/2017/05/27/%E8%B7%AF%E5%BE%84/"/>
+    <id>https://windsooon.github.io/2017/05/27/路径/</id>
+    <published>2017-05-27T03:41:00.000Z</published>
+    <updated>2017-05-27T15:43:11.000Z</updated>
+    
+    <content type="html">&lt;p&gt;当你打开终端的时候，会看到例如：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Windsons
+C:\Administor\foo\:
+
+OSX
+WindsondeMacBook-Air:~
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;（这篇文章中，统一使用windows的\，如果使用的是其它系统，只需要替换为\）&lt;/p&gt;
+&lt;p&gt;这样的字符在行首，这个就是当前执行指令的路径。也就是你的当前路径，那什么是绝对路径和相对路径呢？&lt;/p&gt;
+&lt;p&gt;举个现实生活的例子：&lt;br&gt;你在路上遇到你的好朋友李会玩，她问你的公司地址在哪里，你可能有两种答案：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;中国广东省广州市思哲路石室大厦 &lt;/li&gt;
+&lt;li&gt;以这里为起点，西南方向500米的石室大厦 &lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;第一个答案从国家到省份城市全部巨细无遗地描述出来就相当于绝对路径， 第二个答案以当前的位置为起点所描述的就是相对路径。&lt;br&gt;例如：有个文件存放在&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;C:\Administor\foo\test.txt
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;那么你要读取它可以直接读取这个路径&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;with open(&amp;apos;C:\Administor\foo\test.txt&amp;apos;, &amp;apos;r&amp;apos;, encoding=&amp;apos;utf-8&amp;apos;) as f:
+    txt = f.readlines()
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;你也可以根据当前自己的位置找这个文件，假如你打开终端，当前路径是&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;C:\Administor\foo\:
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;那么你也可以这样读取 &lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;with open(&amp;apos;test.txt&amp;apos;, &amp;apos;r&amp;apos;, encoding=&amp;apos;utf-8&amp;apos;) as f:
+    txt = f.readlines()
+&lt;/code&gt;&lt;/pre&gt;&lt;blockquote&gt;
+&lt;p&gt;相对路径地址 ＝ 绝对路径的地址－当前路径&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;pre&gt;&lt;code&gt;test.txt = C:\Administor\foo\test.txt - C:\Administor\foo\
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt; 有些特殊的情况是.以及.. 这两个符号分别代表当前路径以及上一级目录，也就是说如果你当前路径是：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;C:\Administor\foo\
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;那么&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;.\ = C:\Administor\foo\
+..\ = C:\Administor\
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;问题来了，假如文件在&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;C:\Administor\foo\test.txt
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;你当前路径为&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;C:\Administor\foo\cherry\
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;要如何读取此文件呢？你既可以使用绝对路径的方式直接读取&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;with open(&amp;apos;C:\Administor\foo\test.txt&amp;apos;, &amp;apos;r&amp;apos;, encoding=&amp;apos;utf-8&amp;apos;) as f:
+    txt = f.readlines()
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;也可以&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;with open(&amp;apos;..\test.txt&amp;apos;, &amp;apos;r&amp;apos;, encoding=&amp;apos;utf-8&amp;apos;) as f:
+    txt = f.readlines()
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;其实意思就是返回上一层目录就是先到&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;C:\Administor\foo
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;然后再读取文件&lt;/p&gt;
+&lt;p&gt;###如何在终端显示当前的绝对路径&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# Windows
+pwd
+
+# OSX
+pwd
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;###如何切换路径&lt;br&gt;可以使用cd指令&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;cd [PATH]
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这里的path既可以是绝对路径也可以是相对路径，如果当前路径为：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;C:\Administor\foo\:
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;你要跳到&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;C:\whatever\sunkist\:
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;就可以&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;cd C:\whatever\sunkist\
+# 或者
+cd ..\..\whatever\sunkist\
+&lt;/code&gt;&lt;/pre&gt;</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;当你打开终端的时候，会看到例如：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Windsons
+C:\Administor\foo\:
+
+OSX
+WindsondeMacBook-Air:~
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;（这篇文章中，统一使用windows的\，如果使用的是其它系统，
+    
+    </summary>
+    
+      <category term="EngineGirls" scheme="https://windsooon.github.io/categories/EngineGirls/"/>
+    
+    
+      <category term="基础 EngineGirls" scheme="https://windsooon.github.io/tags/%E5%9F%BA%E7%A1%80-EngineGirls/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>配置Docker开发环境</title>
     <link href="https://windsooon.github.io/2017/05/27/%E9%85%8D%E7%BD%AEDocker%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/"/>
     <id>https://windsooon.github.io/2017/05/27/配置Docker开发环境/</id>
     <published>2017-05-27T03:28:44.000Z</published>
-    <updated>2017-05-27T15:33:33.000Z</updated>
+    <updated>2017-05-27T15:38:11.000Z</updated>
     
-    <content type="html">&lt;h2 id=&quot;配置Docker开发环境&quot;&gt;&lt;a href=&quot;#配置Docker开发环境&quot; class=&quot;headerlink&quot; title=&quot;配置Docker开发环境&quot;&gt;&lt;/a&gt;配置Docker开发环境&lt;/h2&gt;&lt;p&gt;我们开始安装一些工具来方便我们学习编程，一般初接触编程的同学使用的都是Windows系统或者macOS系统。从这节课开始我们将使用Linux系统来学习编程，不同于Windows以及macOS系统个，Linux系统是一个开源(open source)系统，也就是说它的所有源代码都可以让大家浏览以及审核，提出修改。如何在Windows系统或者macOS系统上运行Linux系统呢？我们可以使用&lt;a href=&quot;https://www.docker.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Docker&lt;/a&gt;来在本地使用Linux系统&lt;/p&gt;
+    <content type="html">&lt;p&gt;我们开始安装一些工具来方便我们学习编程，一般初接触编程的同学使用的都是Windows系统或者macOS系统。从这节课开始我们将使用Linux系统来学习编程，不同于Windows以及macOS系统个，Linux系统是一个开源(open source)系统，也就是说它的所有源代码都可以让大家浏览以及审核，提出修改。如何在Windows系统或者macOS系统上运行Linux系统呢？我们可以使用&lt;a href=&quot;https://www.docker.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Docker&lt;/a&gt;来在本地使用Linux系统&lt;/p&gt;
 &lt;p&gt;###macOS系统安装docker教程&lt;br&gt;(官方英文教程)[&lt;a href=&quot;https://docs.docker.com/toolbox/toolbox_install_mac/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://docs.docker.com/toolbox/toolbox_install_mac/&lt;/a&gt;]&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;System Requirements: Docker for Mac will launch only if all of these requirements are met.&lt;/p&gt;
@@ -64,7 +197,7 @@
     
     <summary type="html">
     
-      &lt;h2 id=&quot;配置Docker开发环境&quot;&gt;&lt;a href=&quot;#配置Docker开发环境&quot; class=&quot;headerlink&quot; title=&quot;配置Docker开发环境&quot;&gt;&lt;/a&gt;配置Docker开发环境&lt;/h2&gt;&lt;p&gt;我们开始安装一些工具来方便我们学习编程，一般初接触编程的同学
+      &lt;p&gt;我们开始安装一些工具来方便我们学习编程，一般初接触编程的同学使用的都是Windows系统或者macOS系统。从这节课开始我们将使用Linux系统来学习编程，不同于Windows以及macOS系统个，Linux系统是一个开源(open source)系统，也就是说它的所有源代
     
     </summary>
     

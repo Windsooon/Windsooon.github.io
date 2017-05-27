@@ -1,0 +1,70 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> 路径 · Tech blog of Unicooo</title><meta name="description" content="路径 - Unicooo"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="short icon" href="/favicon.png"><link rel="stylesheet" href="/css/apollo.css"><link rel="stylesheet" href="http://fonts.useso.com/css?family=Source+Sans+Pro:400,600" type="text/css"></head><body><div id="mask" style="display: none;"><img id="mask-image" src="#" style=" "></div><div class="wrap"><header><a href="/" class="logo-link"><img src="/favicon.png"></a><ul class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" class="nav-list-link">BLOG</a></li><li class="nav-list-item"><a href="/archives/" target="_self" class="nav-list-link">ARCHIVE</a></li><li class="nav-list-item"><a href="https://github.com/Windsooon" target="_blank" class="nav-list-link">GITHUB</a></li></ul></header><section class="container"><div class="post"><article class="post-block"><h1 class="post-title">路径</h1><div class="post-time">May 27, 2017</div><div class="post-content"><p>当你打开终端的时候，会看到例如：</p>
+<pre><code>Windsons
+C:\Administor\foo\:
+
+OSX
+WindsondeMacBook-Air:~
+</code></pre><p>（这篇文章中，统一使用windows的\，如果使用的是其它系统，只需要替换为\）</p>
+<p>这样的字符在行首，这个就是当前执行指令的路径。也就是你的当前路径，那什么是绝对路径和相对路径呢？</p>
+<p>举个现实生活的例子：<br>你在路上遇到你的好朋友李会玩，她问你的公司地址在哪里，你可能有两种答案：</p>
+<ol>
+<li>中国广东省广州市思哲路石室大厦 </li>
+<li>以这里为起点，西南方向500米的石室大厦 </li>
+</ol>
+<p>第一个答案从国家到省份城市全部巨细无遗地描述出来就相当于绝对路径， 第二个答案以当前的位置为起点所描述的就是相对路径。<br>例如：有个文件存放在</p>
+<pre><code>C:\Administor\foo\test.txt
+</code></pre><p>那么你要读取它可以直接读取这个路径</p>
+<pre><code>with open(&apos;C:\Administor\foo\test.txt&apos;, &apos;r&apos;, encoding=&apos;utf-8&apos;) as f:
+    txt = f.readlines()
+</code></pre><p>你也可以根据当前自己的位置找这个文件，假如你打开终端，当前路径是</p>
+<pre><code>C:\Administor\foo\:
+</code></pre><p>那么你也可以这样读取 </p>
+<pre><code>with open(&apos;test.txt&apos;, &apos;r&apos;, encoding=&apos;utf-8&apos;) as f:
+    txt = f.readlines()
+</code></pre><blockquote>
+<p>相对路径地址 ＝ 绝对路径的地址－当前路径</p>
+</blockquote>
+<pre><code>test.txt = C:\Administor\foo\test.txt - C:\Administor\foo\
+</code></pre><p> 有些特殊的情况是.以及.. 这两个符号分别代表当前路径以及上一级目录，也就是说如果你当前路径是：</p>
+<pre><code>C:\Administor\foo\
+</code></pre><p>那么</p>
+<pre><code>.\ = C:\Administor\foo\
+..\ = C:\Administor\
+</code></pre><p>问题来了，假如文件在</p>
+<pre><code>C:\Administor\foo\test.txt
+</code></pre><p>你当前路径为</p>
+<pre><code>C:\Administor\foo\cherry\
+</code></pre><p>要如何读取此文件呢？你既可以使用绝对路径的方式直接读取</p>
+<pre><code>with open(&apos;C:\Administor\foo\test.txt&apos;, &apos;r&apos;, encoding=&apos;utf-8&apos;) as f:
+    txt = f.readlines()
+</code></pre><p>也可以</p>
+<pre><code>with open(&apos;..\test.txt&apos;, &apos;r&apos;, encoding=&apos;utf-8&apos;) as f:
+    txt = f.readlines()
+</code></pre><p>其实意思就是返回上一层目录就是先到</p>
+<pre><code>C:\Administor\foo
+</code></pre><p>然后再读取文件</p>
+<p>###如何在终端显示当前的绝对路径</p>
+<pre><code># Windows
+pwd
+
+# OSX
+pwd
+</code></pre><p>###如何切换路径<br>可以使用cd指令</p>
+<pre><code>cd [PATH]
+</code></pre><p>这里的path既可以是绝对路径也可以是相对路径，如果当前路径为：</p>
+<pre><code>C:\Administor\foo\:
+</code></pre><p>你要跳到</p>
+<pre><code>C:\whatever\sunkist\:
+</code></pre><p>就可以</p>
+<pre><code>cd C:\whatever\sunkist\
+# 或者
+cd ..\..\whatever\sunkist\
+</code></pre></div></article></div></section><footer><div class="paginator"><a href="/2017/05/27/终端/" class="prev">PREV</a><a href="/2017/05/27/配置Docker开发环境/" class="next">NEXT</a></div><div id="disqus_thread"></div><script>var disqus_shortname = 'windsonYang';
+var disqus_identifier = '2017/05/27/路径/';
+var disqus_title = '路径';
+var disqus_url = 'https://windsooon.github.io/2017/05/27/路径/';
+(function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();</script><script id="dsq-count-scr" src="//windsonYang.disqus.com/count.js" async></script><div class="copyright"><p>© 2016 - 2017 <a href="https://windsooon.github.io">Unicooo</a>, unless otherwise noted.</p></div></footer></div><script>(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;e=o.createElement(i);r=o.getElementsByTagName(i)[0];e.src='//www.google-analytics.com/analytics.js';r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));ga('create',"UA-65933410-1",'auto');ga('send','pageview');</script><script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script></body></html>
