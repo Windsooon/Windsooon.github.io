@@ -64,13 +64,13 @@ rm [FilePath]
     <link href="https://windsooon.github.io/2017/05/27/%E8%B7%AF%E5%BE%84/"/>
     <id>https://windsooon.github.io/2017/05/27/路径/</id>
     <published>2017-05-27T03:41:00.000Z</published>
-    <updated>2017-05-27T15:43:11.000Z</updated>
+    <updated>2017-05-27T15:46:07.000Z</updated>
     
     <content type="html">&lt;p&gt;当你打开终端的时候，会看到例如：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;Windsons
+&lt;pre&gt;&lt;code&gt;#Windows
 C:\Administor\foo\:
 
-OSX
+#OSX
 WindsondeMacBook-Air:~
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;（这篇文章中，统一使用windows的\，如果使用的是其它系统，只需要替换为\）&lt;/p&gt;
 &lt;p&gt;这样的字符在行首，这个就是当前执行指令的路径。也就是你的当前路径，那什么是绝对路径和相对路径呢？&lt;/p&gt;
@@ -112,10 +112,10 @@ WindsondeMacBook-Air:~
 &lt;pre&gt;&lt;code&gt;C:\Administor\foo
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;然后再读取文件&lt;/p&gt;
 &lt;p&gt;###如何在终端显示当前的绝对路径&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;# Windows
+&lt;pre&gt;&lt;code&gt;#Windows
 pwd
 
-# OSX
+#OSX
 pwd
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;###如何切换路径&lt;br&gt;可以使用cd指令&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;cd [PATH]
@@ -132,12 +132,12 @@ cd ..\..\whatever\sunkist\
     <summary type="html">
     
       &lt;p&gt;当你打开终端的时候，会看到例如：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;Windsons
+&lt;pre&gt;&lt;code&gt;#Windows
 C:\Administor\foo\:
 
-OSX
+#OSX
 WindsondeMacBook-Air:~
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;（这篇文章中，统一使用windows的\，如果使用的是其它系统，
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;（这篇文章中，统一使用windows的\，如果使用的是其它系统
     
     </summary>
     
