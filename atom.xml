@@ -109,7 +109,7 @@ WindsondeMacBook-Air:~
     <link href="https://windsooon.github.io/2017/05/27/%E9%85%8D%E7%BD%AEDocker%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/"/>
     <id>https://windsooon.github.io/2017/05/27/配置Docker开发环境/</id>
     <published>2017-05-27T03:28:44.000Z</published>
-    <updated>2017-05-27T15:38:11.000Z</updated>
+    <updated>2017-05-27T16:38:34.000Z</updated>
     
     <content type="html">&lt;p&gt;我们开始安装一些工具来方便我们学习编程，一般初接触编程的同学使用的都是Windows系统或者macOS系统。从这节课开始我们将使用Linux系统来学习编程，不同于Windows以及macOS系统个，Linux系统是一个开源(open source)系统，也就是说它的所有源代码都可以让大家浏览以及审核，提出修改。如何在Windows系统或者macOS系统上运行Linux系统呢？我们可以使用&lt;a href=&quot;https://www.docker.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Docker&lt;/a&gt;来在本地使用Linux系统&lt;/p&gt;
 &lt;p&gt;###macOS系统安装docker教程&lt;br&gt;(官方英文教程)[&lt;a href=&quot;https://docs.docker.com/toolbox/toolbox_install_mac/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://docs.docker.com/toolbox/toolbox_install_mac/&lt;/a&gt;]&lt;/p&gt;
