@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://windsooon.github.io/"/>
-  <updated>2017-06-14T12:24:45.000Z</updated>
+  <updated>2017-06-14T12:28:19.000Z</updated>
   <id>https://windsooon.github.io/</id>
   
   <author>
@@ -17,13 +17,12 @@
   
   <entry>
     <title>How to use selenium when using docker container</title>
-    <link href="https://windsooon.github.io/2017/06/14/How%20to%20use%20selenium%20when%20using%20docker%20container/"/>
-    <id>https://windsooon.github.io/2017/06/14/How to use selenium when using docker container/</id>
+    <link href="https://windsooon.github.io/2017/06/14/How%20to%20use%20selenium%20with%20docker/"/>
+    <id>https://windsooon.github.io/2017/06/14/How to use selenium with docker/</id>
     <published>2017-06-14T12:39:00.000Z</published>
-    <updated>2017-06-14T12:24:45.000Z</updated>
+    <updated>2017-06-14T12:28:19.000Z</updated>
     
-    <content type="html">&lt;p&gt;###TL;DR&lt;/p&gt;
-&lt;p&gt;Use &lt;a href=&quot;https://github.com/zalando/zalenium&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;zalenium&lt;/a&gt;(for video recording) or &lt;a href=&quot;https://github.com/SeleniumHQ/docker-selenium&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;docker-selenium&lt;/a&gt;, follow the docs, pay attantion to&lt;/p&gt;
+    <content type="html">&lt;h3 id=&quot;TL-DR&quot;&gt;&lt;a href=&quot;#TL-DR&quot; class=&quot;headerlink&quot; title=&quot;TL;DR&quot;&gt;&lt;/a&gt;TL;DR&lt;/h3&gt;&lt;p&gt;Use &lt;a href=&quot;https://github.com/zalando/zalenium&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;zalenium&lt;/a&gt;(for video recording) or &lt;a href=&quot;https://github.com/SeleniumHQ/docker-selenium&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;docker-selenium&lt;/a&gt;, follow the docs, pay attantion to&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;container port connection&lt;/li&gt;
 &lt;li&gt;set liveserver if you are using django &lt;/li&gt;
@@ -53,8 +52,7 @@
         cls.driver.quit()
         super(BaseTestStaticLiveServerTestCase, cls).tearDownClass()
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;And everything is done.&lt;/p&gt;
-&lt;p&gt;###Long version: &lt;/p&gt;
-&lt;p&gt;Althought my project use docker, but at first I’m not use &lt;a href=&quot;https://github.com/zalando/zalenium&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;zalenium&lt;/a&gt; or &lt;a href=&quot;https://github.com/SeleniumHQ/docker-selenium&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;docker-selenium&lt;/a&gt;, and just try to follow the &lt;a href=&quot;https://selenium-python.readthedocs.io/getting-started.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Selenium docs&lt;/a&gt; do it by myself.&lt;/p&gt;
+&lt;h3 id=&quot;Long-version&quot;&gt;&lt;a href=&quot;#Long-version&quot; class=&quot;headerlink&quot; title=&quot;Long version:&quot;&gt;&lt;/a&gt;Long version:&lt;/h3&gt;&lt;p&gt;Althought my project use docker, but at first I’m not use &lt;a href=&quot;https://github.com/zalando/zalenium&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;zalenium&lt;/a&gt; or &lt;a href=&quot;https://github.com/SeleniumHQ/docker-selenium&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;docker-selenium&lt;/a&gt;, and just try to follow the &lt;a href=&quot;https://selenium-python.readthedocs.io/getting-started.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Selenium docs&lt;/a&gt; do it by myself.&lt;/p&gt;
 &lt;p&gt;first just test selenium in laptop(mac osX), create a virtual environment&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;virtualenv -p python3 selenium_test 
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;active it&lt;/p&gt;
@@ -72,8 +70,7 @@ assert(&amp;quot;Python&amp;quot; in driver.title)
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;run it&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;python test_for_fun.py
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;If your laptop have GUI and already install Firefox, everything should work well, the script auto open the Firefox browser then done. If you are not using Firefox, you may use &lt;a href=&quot;https://sites.google.com/a/chromium.org/chromedriver/getting-started&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;ChromeDriver&lt;/a&gt; instead. &lt;/p&gt;
-&lt;p&gt;###Now I try to config it with docker, I using Debian as my server. Things become intersting.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/Windsooon/blog/master/imgs/program_work.jpg&quot; alt=&quot;fun&quot;&gt;&lt;/p&gt;
+&lt;h3 id=&quot;Now-I-try-to-config-it-with-docker-I-using-Debian-as-my-server-Things-become-intersting&quot;&gt;&lt;a href=&quot;#Now-I-try-to-config-it-with-docker-I-using-Debian-as-my-server-Things-become-intersting&quot; class=&quot;headerlink&quot; title=&quot;Now I try to config it with docker, I using Debian as my server. Things become intersting.&quot;&gt;&lt;/a&gt;Now I try to config it with docker, I using Debian as my server. Things become intersting.&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/Windsooon/blog/master/imgs/program_work.jpg&quot; alt=&quot;fun&quot;&gt;&lt;/p&gt;
 &lt;p&gt;Before spend dozen of time to debug this test, first you should make sure do you really need a real browser to run the test, actually, you have some options.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Use &lt;a href=&quot;http://phantomjs.org/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;PhantomJS&lt;/a&gt; &lt;/li&gt;
@@ -139,8 +136,7 @@ window.onerror=function(msg){
 &lt;pre&gt;&lt;code&gt;body = self.browser.find_element_by_tag_name(&amp;apos;body&amp;apos;)
 print(body.get_attribute(&amp;quot;JSError&amp;quot;)
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Now you know the javascript error when you run the test even if you don’t have GUI. &lt;/p&gt;
-&lt;p&gt;###Finally, use docker remote webdriver! &lt;/p&gt;
-&lt;p&gt;Docker is great, docker images installed all stuff you need and you just need to connetc it then it work. Wait, if you not care about the port or the network connecting, it will become devil.You may have a look at &lt;/p&gt;
+&lt;h3 id=&quot;Finally-use-docker-remote-webdriver&quot;&gt;&lt;a href=&quot;#Finally-use-docker-remote-webdriver&quot; class=&quot;headerlink&quot; title=&quot;Finally, use docker remote webdriver!&quot;&gt;&lt;/a&gt;Finally, use docker remote webdriver!&lt;/h3&gt;&lt;p&gt;Docker is great, docker images installed all stuff you need and you just need to connetc it then it work. Wait, if you not care about the port or the network connecting, it will become devil.You may have a look at &lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;https://github.com/zalando/zalenium&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;zalenium&lt;/a&gt;(video recording) &lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;https://github.com/SeleniumHQ/docker-selenium&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;docker-selenium&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Since zalenium have video recording, so I choose it. you should add –network in the docker run command, you can find the network by&lt;/p&gt;
@@ -170,8 +166,7 @@ print(body.get_attribute(&amp;quot;JSError&amp;quot;)
     
     <summary type="html">
     
-      &lt;p&gt;###TL;DR&lt;/p&gt;
-&lt;p&gt;Use &lt;a href=&quot;https://github.com/zalando/zalenium&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;zalenium&lt;/a&gt;(for video recording) or &lt;a 
+      &lt;h3 id=&quot;TL-DR&quot;&gt;&lt;a href=&quot;#TL-DR&quot; class=&quot;headerlink&quot; title=&quot;TL;DR&quot;&gt;&lt;/a&gt;TL;DR&lt;/h3&gt;&lt;p&gt;Use &lt;a href=&quot;https://github.com/zalando/zalenium&quot; target=&quot;
     
     </summary>
     
