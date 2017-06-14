@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://windsooon.github.io/"/>
-  <updated>2017-06-14T12:20:09.000Z</updated>
+  <updated>2017-06-14T12:24:45.000Z</updated>
   <id>https://windsooon.github.io/</id>
   
   <author>
@@ -16,13 +16,13 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title></title>
+    <title>How to use selenium when using docker container</title>
     <link href="https://windsooon.github.io/2017/06/14/How%20to%20use%20selenium%20when%20using%20docker%20container/"/>
     <id>https://windsooon.github.io/2017/06/14/How to use selenium when using docker container/</id>
-    <published>2017-06-14T12:20:09.000Z</published>
-    <updated>2017-06-14T12:20:09.000Z</updated>
+    <published>2017-06-14T12:39:00.000Z</published>
+    <updated>2017-06-14T12:24:45.000Z</updated>
     
-    <content type="html">&lt;h2 id=&quot;How-to-use-selenium-when-using-docker-container&quot;&gt;&lt;a href=&quot;#How-to-use-selenium-when-using-docker-container&quot; class=&quot;headerlink&quot; title=&quot;How to use selenium when using docker container&quot;&gt;&lt;/a&gt;How to use selenium when using docker container&lt;/h2&gt;&lt;p&gt;###TL;DR&lt;/p&gt;
+    <content type="html">&lt;p&gt;###TL;DR&lt;/p&gt;
 &lt;p&gt;Use &lt;a href=&quot;https://github.com/zalando/zalenium&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;zalenium&lt;/a&gt;(for video recording) or &lt;a href=&quot;https://github.com/SeleniumHQ/docker-selenium&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;docker-selenium&lt;/a&gt;, follow the docs, pay attantion to&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;container port connection&lt;/li&gt;
@@ -170,28 +170,13 @@ print(body.get_attribute(&amp;quot;JSError&amp;quot;)
     
     <summary type="html">
     
-      &lt;h2 id=&quot;How-to-use-selenium-when-using-docker-container&quot;&gt;&lt;a href=&quot;#How-to-use-selenium-when-using-docker-container&quot; class=&quot;headerlink&quot; title
+      &lt;p&gt;###TL;DR&lt;/p&gt;
+&lt;p&gt;Use &lt;a href=&quot;https://github.com/zalando/zalenium&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;zalenium&lt;/a&gt;(for video recording) or &lt;a 
     
     </summary>
     
     
-  </entry>
-  
-  <entry>
-    <title></title>
-    <link href="https://windsooon.github.io/2017/06/14/README/"/>
-    <id>https://windsooon.github.io/2017/06/14/README/</id>
-    <published>2017-06-14T11:49:42.000Z</published>
-    <updated>2017-06-14T11:49:42.000Z</updated>
-    
-    <content type="html">&lt;h1 id=&quot;blog&quot;&gt;&lt;a href=&quot;#blog&quot; class=&quot;headerlink&quot; title=&quot;blog&quot;&gt;&lt;/a&gt;blog&lt;/h1&gt;</content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;blog&quot;&gt;&lt;a href=&quot;#blog&quot; class=&quot;headerlink&quot; title=&quot;blog&quot;&gt;&lt;/a&gt;blog&lt;/h1&gt;
-    
-    </summary>
-    
+      <category term="selenium django docker" scheme="https://windsooon.github.io/tags/selenium-django-docker/"/>
     
   </entry>
   
