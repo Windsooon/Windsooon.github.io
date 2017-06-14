@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://windsooon.github.io/2017/06/14/How%20to%20use%20selenium%20when%20using%20docker%20container/</loc>
+    
+    <lastmod>2017-06-14T12:20:09.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://windsooon.github.io/2017/06/14/README/</loc>
+    
+    <lastmod>2017-06-14T11:49:42.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://windsooon.github.io/2017/05/27/%E9%85%8D%E7%BD%AEDocker%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/</loc>
     
     <lastmod>2017-05-27T16:38:34.000Z</lastmod>
