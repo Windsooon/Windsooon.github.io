@@ -17,22 +17,23 @@
 </ul>
 <p>So I do a little research about youtube channel classified, I found<br>which also classfied the youtube channels. I think their application is for data analyse instead of normal youtube users, and they also miss some important categories like Product Review, Unboxings. I totally understand why, when you wanna classfied lots channels, you will just want to limit to 20-30 category because it’s impossible to correctly classfied all the channels in subcategory.So the categories will be 100% correct but useless.</p>
 <p>How about YouTube itself? When I search <a href="https://www.youtube.com/channel/UCkcRYjXjAhsBPVH4aeIPxmQ" target="_blank" rel="external">basketball</a>, YouTube will recommend relative channels in the bottom.</p>
-<p><a href="">Basketball</a></p>
+<p><img src="https://raw.githubusercontent.com/Windsooon/blog/master/imgs/how%20I%20build%20the%20MVP/basketball_channel.png" alt="Basketball"></p>
 <p>But when I search <a href="https://www.youtube.com/channel/UCOpNcN46UbXVtpKMrmU4Abg" target="_blank" rel="external">game</a></p>
 <p><a href="">Gaming</a></p>
 <p>YouTube will not recommend relate channels. </p>
 <p>Another point is if I going to work at USA, I wanna know more about its culture, but all my subscribed channels are chinese.So <a href="http://www.youtubeclassified.com/" target="_blank" rel="external">YouTueb classified</a> may help. Find your main users is very important.</p>
 <p>By now, my base idea is classified some hotest channels for the categories that  users want. like Computer under Sciencs, Make up under Beauty&amp;Fashion, Tech Product under Reviews. Business model? I guess once we get big, we can recommend some channel for ad, Because there are so many new channels wanna standout. Now I start programing.</p>
 <p>###Host your code<br>Usually I open source all my code in Github. Like <a href="https://unicooo.com/" target="_blank" rel="external">Unicooo</a> on <a href="https://github.com/Windsooon/Unicooo-django" target="_blank" rel="external">Github</a>. Not just because it’s free, <strong>I also think Code should be open soure by default</strong>. But this time I choose to use a private one just for pratice, and I’m really to open source. <a href="https://bitbucket.org/product" target="_blank" rel="external">Bitbucket</a> is great and offer Unlimited private repos. I only got one problem when I using it. I misset my ssh key on the repo instead of my personal page</p>
-<p>[repo]</p>
-<p>[personal]</p>
+<p><img src="https://raw.githubusercontent.com/Windsooon/blog/master/imgs/how%20I%20build%20the%20MVP/bitbucket_ca.png" alt="repo"></p>
+<p><a href="https://raw.githubusercontent.com/Windsooon/blog/master/imgs/how%20I%20build%20the%20MVP/bitbucket_personal.png?raw=true" target="_blank" rel="external">personal</a></p>
 <p>###Run your code<br>I choose <a href="http://pythonanywhere.com/" target="_blank" rel="external">pythonanywhere</a>, you can use AWS or Digitalocean or whatever you like. But I find pythonanywhere is super easy to set up and their customer service is quite and helpful. Most importantis, you don’t have to worry about the nginx settings or other stuff.</p>
 <p>###Signing certificates<br><a href="https://letsencrypt.org/" target="_blank" rel="external">Let’s encrypt</a> with no doubt, and <a href="https://github.com/lukas2511/dehydrated" target="_blank" rel="external">dehydrated</a> is great tool to set it up.</p>
 <p>###Choose your Domain<br>Since I focus on youtube users, I use something start of youtube. So when you type youbute on the broswer, the broswer will recommend the website.</p>
 <p><a href="">broswer</a></p>
 <p>I choose Godaddy for domain hosting. I searched the coupon for buying a .com domain, At first, it work well, the price get 90% off. But when I pay for it, I get payment error. I ask the godaddy guys for help, They said the coupon is invalid. So I gave up and pay about $8 for youtubeclassified for a year.(I can get better price when I pay two years together, but I’m not sure this business idea work, so I choose just pay for one year.)</p>
 <p>###Domain Email hosting<br>There are a lot of Email hosting on web, I only found <a href="https://www.zoho.com/mail/" target="_blank" rel="external">Zoho Mail</a> have a free plan, So I choose it. After some easy setup it works.</p>
-<p>###Add Google analytics<br>For people who haven’t use google analytics before. It will let you know which page you user focus and where are they come form like this<br>[page]<br>[location]</p>
+<p>###Add Google analytics<br>For people who haven’t use google analytics before. It will let you know which page you user focus and where are they come form like this</p>
+<p><img src="https://raw.githubusercontent.com/Windsooon/blog/master/imgs/how%20I%20build%20the%20MVP/category_view.png" alt="page"><br><img src="https://raw.githubusercontent.com/Windsooon/blog/master/imgs/how%20I%20build%20the%20MVP/location.png" alt="location"></p>
 <p>Remember to filter your own IP in settings.</p>
 <p>###Manager Email subscribe<br>I use <a href="https://mailchimp.com/" target="_blank" rel="external">mailchimp</a> to manager subscribe users, They have great api docs, great customer service as well as a free plan.My use case is When user subscribe, we also get the page url to identify which category he is interesd. At first I get lost at group and segment, after some research I found out what I have to do is.  </p>
 <ul>

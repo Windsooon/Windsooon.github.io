@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://windsooon.github.io/"/>
-  <updated>2017-07-13T13:14:33.000Z</updated>
+  <updated>2017-07-13T13:23:31.000Z</updated>
   <id>https://windsooon.github.io/</id>
   
   <author>
@@ -19,8 +19,8 @@
     <title></title>
     <link href="https://windsooon.github.io/2017/07/13/How%20I%20build%20the%20MVP/"/>
     <id>https://windsooon.github.io/2017/07/13/How I build the MVP/</id>
-    <published>2017-07-13T13:14:33.000Z</published>
-    <updated>2017-07-13T13:14:33.000Z</updated>
+    <published>2017-07-13T13:23:31.000Z</published>
+    <updated>2017-07-13T13:23:31.000Z</updated>
     
     <content type="html">&lt;p&gt;##How I build my MVP in two weeks&lt;/p&gt;
 &lt;p&gt;Since I built my last MVP &lt;a href=&quot;https://unicooo.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Unicooo&lt;/a&gt; using more than a year. Spending lots of time to add features I &lt;strong&gt;Guess&lt;/strong&gt; users will need.So when I come up with the idea &lt;a href=&quot;http://www.youtubeclassified.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;YouTueb classified&lt;/a&gt; and looking at my todo side-project list which contain more than 20 ideas.&lt;/p&gt;
@@ -41,22 +41,23 @@
 &lt;/ul&gt;
 &lt;p&gt;So I do a little research about youtube channel classified, I found&lt;br&gt;which also classfied the youtube channels. I think their application is for data analyse instead of normal youtube users, and they also miss some important categories like Product Review, Unboxings. I totally understand why, when you wanna classfied lots channels, you will just want to limit to 20-30 category because it’s impossible to correctly classfied all the channels in subcategory.So the categories will be 100% correct but useless.&lt;/p&gt;
 &lt;p&gt;How about YouTube itself? When I search &lt;a href=&quot;https://www.youtube.com/channel/UCkcRYjXjAhsBPVH4aeIPxmQ&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;basketball&lt;/a&gt;, YouTube will recommend relative channels in the bottom.&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;&quot;&gt;Basketball&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/Windsooon/blog/master/imgs/how%20I%20build%20the%20MVP/basketball_channel.png&quot; alt=&quot;Basketball&quot;&gt;&lt;/p&gt;
 &lt;p&gt;But when I search &lt;a href=&quot;https://www.youtube.com/channel/UCOpNcN46UbXVtpKMrmU4Abg&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;game&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;&quot;&gt;Gaming&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;YouTube will not recommend relate channels. &lt;/p&gt;
 &lt;p&gt;Another point is if I going to work at USA, I wanna know more about its culture, but all my subscribed channels are chinese.So &lt;a href=&quot;http://www.youtubeclassified.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;YouTueb classified&lt;/a&gt; may help. Find your main users is very important.&lt;/p&gt;
 &lt;p&gt;By now, my base idea is classified some hotest channels for the categories that  users want. like Computer under Sciencs, Make up under Beauty&amp;amp;Fashion, Tech Product under Reviews. Business model? I guess once we get big, we can recommend some channel for ad, Because there are so many new channels wanna standout. Now I start programing.&lt;/p&gt;
 &lt;p&gt;###Host your code&lt;br&gt;Usually I open source all my code in Github. Like &lt;a href=&quot;https://unicooo.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Unicooo&lt;/a&gt; on &lt;a href=&quot;https://github.com/Windsooon/Unicooo-django&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Github&lt;/a&gt;. Not just because it’s free, &lt;strong&gt;I also think Code should be open soure by default&lt;/strong&gt;. But this time I choose to use a private one just for pratice, and I’m really to open source. &lt;a href=&quot;https://bitbucket.org/product&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Bitbucket&lt;/a&gt; is great and offer Unlimited private repos. I only got one problem when I using it. I misset my ssh key on the repo instead of my personal page&lt;/p&gt;
-&lt;p&gt;[repo]&lt;/p&gt;
-&lt;p&gt;[personal]&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/Windsooon/blog/master/imgs/how%20I%20build%20the%20MVP/bitbucket_ca.png&quot; alt=&quot;repo&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://raw.githubusercontent.com/Windsooon/blog/master/imgs/how%20I%20build%20the%20MVP/bitbucket_personal.png?raw=true&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;personal&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;###Run your code&lt;br&gt;I choose &lt;a href=&quot;http://pythonanywhere.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;pythonanywhere&lt;/a&gt;, you can use AWS or Digitalocean or whatever you like. But I find pythonanywhere is super easy to set up and their customer service is quite and helpful. Most importantis, you don’t have to worry about the nginx settings or other stuff.&lt;/p&gt;
 &lt;p&gt;###Signing certificates&lt;br&gt;&lt;a href=&quot;https://letsencrypt.org/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Let’s encrypt&lt;/a&gt; with no doubt, and &lt;a href=&quot;https://github.com/lukas2511/dehydrated&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;dehydrated&lt;/a&gt; is great tool to set it up.&lt;/p&gt;
 &lt;p&gt;###Choose your Domain&lt;br&gt;Since I focus on youtube users, I use something start of youtube. So when you type youbute on the broswer, the broswer will recommend the website.&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;&quot;&gt;broswer&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;I choose Godaddy for domain hosting. I searched the coupon for buying a .com domain, At first, it work well, the price get 90% off. But when I pay for it, I get payment error. I ask the godaddy guys for help, They said the coupon is invalid. So I gave up and pay about $8 for youtubeclassified for a year.(I can get better price when I pay two years together, but I’m not sure this business idea work, so I choose just pay for one year.)&lt;/p&gt;
 &lt;p&gt;###Domain Email hosting&lt;br&gt;There are a lot of Email hosting on web, I only found &lt;a href=&quot;https://www.zoho.com/mail/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Zoho Mail&lt;/a&gt; have a free plan, So I choose it. After some easy setup it works.&lt;/p&gt;
-&lt;p&gt;###Add Google analytics&lt;br&gt;For people who haven’t use google analytics before. It will let you know which page you user focus and where are they come form like this&lt;br&gt;[page]&lt;br&gt;[location]&lt;/p&gt;
+&lt;p&gt;###Add Google analytics&lt;br&gt;For people who haven’t use google analytics before. It will let you know which page you user focus and where are they come form like this&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/Windsooon/blog/master/imgs/how%20I%20build%20the%20MVP/category_view.png&quot; alt=&quot;page&quot;&gt;&lt;br&gt;&lt;img src=&quot;https://raw.githubusercontent.com/Windsooon/blog/master/imgs/how%20I%20build%20the%20MVP/location.png&quot; alt=&quot;location&quot;&gt;&lt;/p&gt;
 &lt;p&gt;Remember to filter your own IP in settings.&lt;/p&gt;
 &lt;p&gt;###Manager Email subscribe&lt;br&gt;I use &lt;a href=&quot;https://mailchimp.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;mailchimp&lt;/a&gt; to manager subscribe users, They have great api docs, great customer service as well as a free plan.My use case is When user subscribe, we also get the page url to identify which category he is interesd. At first I get lost at group and segment, after some research I found out what I have to do is.  &lt;/p&gt;
 &lt;ul&gt;
