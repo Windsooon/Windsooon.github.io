@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://windsooon.github.io/"/>
-  <updated>2017-07-13T13:23:31.000Z</updated>
+  <updated>2017-07-13T13:28:40.000Z</updated>
   <id>https://windsooon.github.io/</id>
   
   <author>
@@ -16,14 +16,13 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title></title>
+    <title>How I built my MVP in two weeks</title>
     <link href="https://windsooon.github.io/2017/07/13/How%20I%20build%20the%20MVP/"/>
     <id>https://windsooon.github.io/2017/07/13/How I build the MVP/</id>
-    <published>2017-07-13T13:23:31.000Z</published>
-    <updated>2017-07-13T13:23:31.000Z</updated>
+    <published>2017-07-13T13:25:00.000Z</published>
+    <updated>2017-07-13T13:28:40.000Z</updated>
     
-    <content type="html">&lt;p&gt;##How I build my MVP in two weeks&lt;/p&gt;
-&lt;p&gt;Since I built my last MVP &lt;a href=&quot;https://unicooo.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Unicooo&lt;/a&gt; using more than a year. Spending lots of time to add features I &lt;strong&gt;Guess&lt;/strong&gt; users will need.So when I come up with the idea &lt;a href=&quot;http://www.youtubeclassified.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;YouTueb classified&lt;/a&gt; and looking at my todo side-project list which contain more than 20 ideas.&lt;/p&gt;
+    <content type="html">&lt;p&gt;Since I built my last MVP &lt;a href=&quot;https://unicooo.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Unicooo&lt;/a&gt; using more than a year. Spending lots of time to add features I &lt;strong&gt;Guess&lt;/strong&gt; users will need.So when I come up with the idea &lt;a href=&quot;http://www.youtubeclassified.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;YouTueb classified&lt;/a&gt; and looking at my todo side-project list which contain more than 20 ideas.&lt;/p&gt;
 &lt;p&gt;I just wanna deploy it base on the standerd by Harry Percival&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;blockquote&gt;
@@ -32,8 +31,7 @@
 &lt;/blockquote&gt;
 &lt;p&gt;&lt;a href=&quot;http://www.obeythetestinggoat.com/book/chapter_manual_deployment.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Testing Deployment Using a Staging Site&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;So if your answer is yes either, deploy it now. Forget about the bugs.&lt;/p&gt;
-&lt;p&gt;###Come up with the idea&lt;/p&gt;
-&lt;p&gt;I live in China, so it’s not easy to use YouTube since the &lt;a href=&quot;https://en.wikipedia.org/wiki/Great_Firewall&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Great Firewall&lt;/a&gt;. And when I finally start using it a year ago, I found it hard to find channels I need. I’m interested in Tech and Science. What I can do at first is &lt;/p&gt;
+&lt;h3 id=&quot;Come-up-with-the-idea&quot;&gt;&lt;a href=&quot;#Come-up-with-the-idea&quot; class=&quot;headerlink&quot; title=&quot;Come up with the idea&quot;&gt;&lt;/a&gt;Come up with the idea&lt;/h3&gt;&lt;p&gt;I live in China, so it’s not easy to use YouTube since the &lt;a href=&quot;https://en.wikipedia.org/wiki/Great_Firewall&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Great Firewall&lt;/a&gt;. And when I finally start using it a year ago, I found it hard to find channels I need. I’m interested in Tech and Science. What I can do at first is &lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;search the keyword &lt;strong&gt;science youtube channels recommendation&lt;/strong&gt; on google&lt;/li&gt;
 &lt;li&gt;click all the websites show in first page. &lt;/li&gt;
@@ -43,32 +41,32 @@
 &lt;p&gt;How about YouTube itself? When I search &lt;a href=&quot;https://www.youtube.com/channel/UCkcRYjXjAhsBPVH4aeIPxmQ&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;basketball&lt;/a&gt;, YouTube will recommend relative channels in the bottom.&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/Windsooon/blog/master/imgs/how%20I%20build%20the%20MVP/basketball_channel.png&quot; alt=&quot;Basketball&quot;&gt;&lt;/p&gt;
 &lt;p&gt;But when I search &lt;a href=&quot;https://www.youtube.com/channel/UCOpNcN46UbXVtpKMrmU4Abg&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;game&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;&quot;&gt;Gaming&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/Windsooon/blog/master/imgs/how%20I%20build%20the%20MVP/game_channel.png&quot; alt=&quot;Gaming&quot;&gt;&lt;/p&gt;
 &lt;p&gt;YouTube will not recommend relate channels. &lt;/p&gt;
 &lt;p&gt;Another point is if I going to work at USA, I wanna know more about its culture, but all my subscribed channels are chinese.So &lt;a href=&quot;http://www.youtubeclassified.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;YouTueb classified&lt;/a&gt; may help. Find your main users is very important.&lt;/p&gt;
 &lt;p&gt;By now, my base idea is classified some hotest channels for the categories that  users want. like Computer under Sciencs, Make up under Beauty&amp;amp;Fashion, Tech Product under Reviews. Business model? I guess once we get big, we can recommend some channel for ad, Because there are so many new channels wanna standout. Now I start programing.&lt;/p&gt;
-&lt;p&gt;###Host your code&lt;br&gt;Usually I open source all my code in Github. Like &lt;a href=&quot;https://unicooo.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Unicooo&lt;/a&gt; on &lt;a href=&quot;https://github.com/Windsooon/Unicooo-django&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Github&lt;/a&gt;. Not just because it’s free, &lt;strong&gt;I also think Code should be open soure by default&lt;/strong&gt;. But this time I choose to use a private one just for pratice, and I’m really to open source. &lt;a href=&quot;https://bitbucket.org/product&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Bitbucket&lt;/a&gt; is great and offer Unlimited private repos. I only got one problem when I using it. I misset my ssh key on the repo instead of my personal page&lt;/p&gt;
+&lt;h3 id=&quot;Host-your-code&quot;&gt;&lt;a href=&quot;#Host-your-code&quot; class=&quot;headerlink&quot; title=&quot;Host your code&quot;&gt;&lt;/a&gt;Host your code&lt;/h3&gt;&lt;p&gt;Usually I open source all my code in Github. Like &lt;a href=&quot;https://unicooo.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Unicooo&lt;/a&gt; on &lt;a href=&quot;https://github.com/Windsooon/Unicooo-django&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Github&lt;/a&gt;. Not just because it’s free, &lt;strong&gt;I also think Code should be open soure by default&lt;/strong&gt;. But this time I choose to use a private one just for pratice, and I’m really to open source. &lt;a href=&quot;https://bitbucket.org/product&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Bitbucket&lt;/a&gt; is great and offer Unlimited private repos. I only got one problem when I using it. I misset my ssh key on the repo instead of my personal page&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/Windsooon/blog/master/imgs/how%20I%20build%20the%20MVP/bitbucket_ca.png&quot; alt=&quot;repo&quot;&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;https://raw.githubusercontent.com/Windsooon/blog/master/imgs/how%20I%20build%20the%20MVP/bitbucket_personal.png?raw=true&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;personal&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;###Run your code&lt;br&gt;I choose &lt;a href=&quot;http://pythonanywhere.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;pythonanywhere&lt;/a&gt;, you can use AWS or Digitalocean or whatever you like. But I find pythonanywhere is super easy to set up and their customer service is quite and helpful. Most importantis, you don’t have to worry about the nginx settings or other stuff.&lt;/p&gt;
-&lt;p&gt;###Signing certificates&lt;br&gt;&lt;a href=&quot;https://letsencrypt.org/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Let’s encrypt&lt;/a&gt; with no doubt, and &lt;a href=&quot;https://github.com/lukas2511/dehydrated&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;dehydrated&lt;/a&gt; is great tool to set it up.&lt;/p&gt;
-&lt;p&gt;###Choose your Domain&lt;br&gt;Since I focus on youtube users, I use something start of youtube. So when you type youbute on the broswer, the broswer will recommend the website.&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;&quot;&gt;broswer&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;Run-your-code&quot;&gt;&lt;a href=&quot;#Run-your-code&quot; class=&quot;headerlink&quot; title=&quot;Run your code&quot;&gt;&lt;/a&gt;Run your code&lt;/h3&gt;&lt;p&gt;I choose &lt;a href=&quot;http://pythonanywhere.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;pythonanywhere&lt;/a&gt;, you can use AWS or Digitalocean or whatever you like. But I find pythonanywhere is super easy to set up and their customer service is quite and helpful. Most importantis, you don’t have to worry about the nginx settings or other stuff.&lt;/p&gt;
+&lt;h3 id=&quot;Signing-certificates&quot;&gt;&lt;a href=&quot;#Signing-certificates&quot; class=&quot;headerlink&quot; title=&quot;Signing certificates&quot;&gt;&lt;/a&gt;Signing certificates&lt;/h3&gt;&lt;p&gt;&lt;a href=&quot;https://letsencrypt.org/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Let’s encrypt&lt;/a&gt; with no doubt, and &lt;a href=&quot;https://github.com/lukas2511/dehydrated&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;dehydrated&lt;/a&gt; is great tool to set it up.&lt;/p&gt;
+&lt;h3 id=&quot;Choose-your-Domain&quot;&gt;&lt;a href=&quot;#Choose-your-Domain&quot; class=&quot;headerlink&quot; title=&quot;Choose your Domain&quot;&gt;&lt;/a&gt;Choose your Domain&lt;/h3&gt;&lt;p&gt;Since I focus on youtube users, I use something start of youtube. So when you type youbute on the broswer, the broswer will recommend the website.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/Windsooon/blog/master/imgs/how%20I%20build%20the%20MVP/broswer.png&quot; alt=&quot;broswer&quot;&gt;&lt;/p&gt;
 &lt;p&gt;I choose Godaddy for domain hosting. I searched the coupon for buying a .com domain, At first, it work well, the price get 90% off. But when I pay for it, I get payment error. I ask the godaddy guys for help, They said the coupon is invalid. So I gave up and pay about $8 for youtubeclassified for a year.(I can get better price when I pay two years together, but I’m not sure this business idea work, so I choose just pay for one year.)&lt;/p&gt;
-&lt;p&gt;###Domain Email hosting&lt;br&gt;There are a lot of Email hosting on web, I only found &lt;a href=&quot;https://www.zoho.com/mail/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Zoho Mail&lt;/a&gt; have a free plan, So I choose it. After some easy setup it works.&lt;/p&gt;
-&lt;p&gt;###Add Google analytics&lt;br&gt;For people who haven’t use google analytics before. It will let you know which page you user focus and where are they come form like this&lt;/p&gt;
+&lt;h3 id=&quot;Domain-Email-hosting&quot;&gt;&lt;a href=&quot;#Domain-Email-hosting&quot; class=&quot;headerlink&quot; title=&quot;Domain Email hosting&quot;&gt;&lt;/a&gt;Domain Email hosting&lt;/h3&gt;&lt;p&gt;There are a lot of Email hosting on web, I only found &lt;a href=&quot;https://www.zoho.com/mail/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Zoho Mail&lt;/a&gt; have a free plan, So I choose it. After some easy setup it works.&lt;/p&gt;
+&lt;h3 id=&quot;Add-Google-analytics&quot;&gt;&lt;a href=&quot;#Add-Google-analytics&quot; class=&quot;headerlink&quot; title=&quot;Add Google analytics&quot;&gt;&lt;/a&gt;Add Google analytics&lt;/h3&gt;&lt;p&gt;For people who haven’t use google analytics before. It will let you know which page you user focus and where are they come form like this&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/Windsooon/blog/master/imgs/how%20I%20build%20the%20MVP/category_view.png&quot; alt=&quot;page&quot;&gt;&lt;br&gt;&lt;img src=&quot;https://raw.githubusercontent.com/Windsooon/blog/master/imgs/how%20I%20build%20the%20MVP/location.png&quot; alt=&quot;location&quot;&gt;&lt;/p&gt;
 &lt;p&gt;Remember to filter your own IP in settings.&lt;/p&gt;
-&lt;p&gt;###Manager Email subscribe&lt;br&gt;I use &lt;a href=&quot;https://mailchimp.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;mailchimp&lt;/a&gt; to manager subscribe users, They have great api docs, great customer service as well as a free plan.My use case is When user subscribe, we also get the page url to identify which category he is interesd. At first I get lost at group and segment, after some research I found out what I have to do is.  &lt;/p&gt;
+&lt;h3 id=&quot;Manager-Email-subscribe&quot;&gt;&lt;a href=&quot;#Manager-Email-subscribe&quot; class=&quot;headerlink&quot; title=&quot;Manager Email subscribe&quot;&gt;&lt;/a&gt;Manager Email subscribe&lt;/h3&gt;&lt;p&gt;I use &lt;a href=&quot;https://mailchimp.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;mailchimp&lt;/a&gt; to manager subscribe users, They have great api docs, great customer service as well as a free plan.My use case is When user subscribe, we also get the page url to identify which category he is interesd. At first I get lost at group and segment, after some research I found out what I have to do is.  &lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Send email and url to my backend.&lt;/li&gt;
 &lt;li&gt;Create group use the group api &lt;a href=&quot;https://developer.mailchimp.com/documentation/mailchimp/reference/lists/interest-categories/interests/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Create the group&lt;/a&gt;, (If the group alreally exist, it will return a 400, but just ignore it)&lt;/li&gt;
 &lt;li&gt;Loop over the groups by group name inside your interest-category to get the group id. &lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;https://developer.mailchimp.com/documentation/mailchimp/reference/lists/members/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Add the email to this group&lt;/a&gt;.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;###Coding&lt;br&gt;I started coding at 2017-06-28, Before that, I build a &lt;a href=&quot;https://github.com/Windsooon/awesome-youtube-category&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;repos&lt;/a&gt; in Github then submit it on hackernews to attract hackers help classfied together. It didn’t get a lot attention, But you can use Github and hackernews for help, there is so many awesome-xxx right now.&lt;/p&gt;
+&lt;h3 id=&quot;Coding&quot;&gt;&lt;a href=&quot;#Coding&quot; class=&quot;headerlink&quot; title=&quot;Coding&quot;&gt;&lt;/a&gt;Coding&lt;/h3&gt;&lt;p&gt;I started coding at 2017-06-28, Before that, I build a &lt;a href=&quot;https://github.com/Windsooon/awesome-youtube-category&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;repos&lt;/a&gt; in Github then submit it on hackernews to attract hackers help classfied together. It didn’t get a lot attention, But you can use Github and hackernews for help, there is so many awesome-xxx right now.&lt;/p&gt;
 &lt;p&gt;As you can see, the application is dead simple, just use youtube api to get some data then display. as I said, I choose to make it simple.At first, I used &lt;a href=&quot;https://github.com/Windsooon/django-hackathon&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;django-hackathon&lt;/a&gt; which for hackathon, I just use some hours for the backend, (Thanks for awesome django and django restframework).Of course I know I have to spend a lot of time on frontend to make it look better. I tried full page ajax which gives users better experience. But I found it hard to maintain when the application have more and more logic. So I delete that part of code then rewriteit.&lt;/p&gt;
-&lt;p&gt;###Business model&lt;br&gt;After I finish my first version, I immediately send to my friends and ask for suggestion. I asked them &lt;/p&gt;
+&lt;h3 id=&quot;Business-model&quot;&gt;&lt;a href=&quot;#Business-model&quot; class=&quot;headerlink&quot; title=&quot;Business model&quot;&gt;&lt;/a&gt;Business model&lt;/h3&gt;&lt;p&gt;After I finish my first version, I immediately send to my friends and ask for suggestion. I asked them &lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Anything confuce when you’re using it.&lt;/li&gt;
 &lt;li&gt;Any business model advice.&lt;/li&gt;
@@ -76,8 +74,7 @@
 &lt;p&gt;Both of them are not programmer,and both of them give me excellent advise. Philip said I should add a subcategory. Before it, When you click Science, it will list all subjects like Math, Computer, Physics. I fixed it within a day. Julian said why not let users choose categories they love. These will let user come back. I didn’t choose to implement it right away because is too complicated and I not sure other users would need this. &lt;/p&gt;
 &lt;p&gt;I also think what we can have but YouTube don’t, I have thought add story about youtuber. How they build their channel, how to maintain. It’s fun to their followers and useful to new youtuber. But finally I choose to add recommend website at the bottom of subcategory. People interested in Math will also interest in Science American website and other science blogs. I don’t have time to complete it yet.So I let user submit website they recommend.I also ask my workmate to use the application in front of me. So I could know which part will confuced him. Where he will try to click. Does he know how to search the subcategory. After that, I change some button styles and some remove some href make the application better. I also learn from my cofounder Jessica, She also gave me some good advise about how to navigate, how to sort the channels. Actully, what they asked is very reasonable, and I don’t know why I missed when I programing. I just focus the structure of code instead of what user really need. So, listen to your friends before you spend a lot of time in a new feature. They may not hackers, but they are real users and they will spend their time on your MVP.&lt;/p&gt;
 &lt;p&gt;Now we just recommend the hotest channels more than 100k subscribes. But I realized we also stand in the youtubers’s shoes. What if I’m a youtuber, What can the application can do for me. There’re so many channels already, a new youtuber can’t find a way to standout. So my next step is add new channels in it.&lt;/p&gt;
-&lt;p&gt;###Marketing&lt;/p&gt;
-&lt;p&gt;I find a list to submit my applicaation&lt;/p&gt;
+&lt;h3 id=&quot;Marketing&quot;&gt;&lt;a href=&quot;#Marketing&quot; class=&quot;headerlink&quot; title=&quot;Marketing&quot;&gt;&lt;/a&gt;Marketing&lt;/h3&gt;&lt;p&gt;I find a list to submit my applicaation&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;&lt;a href=&quot;https://news.ycombinator.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;hackernews&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;https://www.producthunt.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;producthunts&lt;/a&gt;&lt;/li&gt;
@@ -90,14 +87,13 @@
 &lt;li&gt;&lt;a href=&quot;https://www.reddit.com/r/Entrepreneur/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;reddit/Entrepreneur&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;https://www.reddit.com/r/SideProject/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;reddit/SideProject&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;####Others&lt;/p&gt;
-&lt;ol&gt;
+&lt;h4 id=&quot;Others&quot;&gt;&lt;a href=&quot;#Others&quot; class=&quot;headerlink&quot; title=&quot;Others&quot;&gt;&lt;/a&gt;Others&lt;/h4&gt;&lt;ol&gt;
 &lt;li&gt;&lt;a href=&quot;https://medium.com/@PitchMantra/100-best-places-to-promote-your-startup-6ad7a52d79c0&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Tech website&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;https://triphappy.com/blog/131-startup-directories-to-promote-your-startup/1&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Tech website2&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;http://www.inboundio.com/blog/27-websites-to-submit-your-startup/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Tech website3&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;####Quora and blog&lt;br&gt;We answer question on Quora and post comments on blogs about youtube channel. We carefully choose the channels that really useful to the users and other comments didn’t mention.&lt;/p&gt;
-&lt;p&gt;###Feed back&lt;br&gt;Once again, hackernews guys don’t pay any attentaion on my application, Actually, I know why. At first, it’s not geek enough, just use YouTube api then classfied some channels. Second, it’s not fun and not impressed. Third, As a tool, I don’t need it. You know what, I think so, Before I build the first version, I had thought to classfied the channels by the its title and description use machine learning. Because I just learn something about machine learning and I wanna have a try. And I also thought of build a iOS application instead of a website for the same reason. &lt;/p&gt;
+&lt;h4 id=&quot;Quora-and-blog&quot;&gt;&lt;a href=&quot;#Quora-and-blog&quot; class=&quot;headerlink&quot; title=&quot;Quora and blog&quot;&gt;&lt;/a&gt;Quora and blog&lt;/h4&gt;&lt;p&gt;We answer question on Quora and post comments on blogs about youtube channel. We carefully choose the channels that really useful to the users and other comments didn’t mention.&lt;/p&gt;
+&lt;h3 id=&quot;Feed-back&quot;&gt;&lt;a href=&quot;#Feed-back&quot; class=&quot;headerlink&quot; title=&quot;Feed back&quot;&gt;&lt;/a&gt;Feed back&lt;/h3&gt;&lt;p&gt;Once again, hackernews guys don’t pay any attentaion on my application, Actually, I know why. At first, it’s not geek enough, just use YouTube api then classfied some channels. Second, it’s not fun and not impressed. Third, As a tool, I don’t need it. You know what, I think so, Before I build the first version, I had thought to classfied the channels by the its title and description use machine learning. Because I just learn something about machine learning and I wanna have a try. And I also thought of build a iOS application instead of a website for the same reason. &lt;/p&gt;
 &lt;p&gt;But this remind me of a post on &lt;a href=&quot;https://news.ycombinator.com/item?id=14238005&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Ask HN: Who is hiring? (May 2017)&lt;/a&gt; the comment from xando&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Hey, a friendly reminder. I’m parsing the thread, all job offers added here are also available on the map on&lt;br&gt;&lt;a href=&quot;https://whoishiring.io&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://whoishiring.io&lt;/a&gt; or just HN items &lt;a href=&quot;https://whoishiring.io/search/36.0440/-90.8984/4?source=hn&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://whoishiring.io/search/36.0440/-90.8984/4?source=hn&lt;/a&gt;&lt;br&gt;If you post here, please use the below format to help me with parsing. If you won’t, no worries, I will do my best to get all the things right.&lt;/p&gt;
@@ -105,16 +101,17 @@
 &lt;p&gt;This guy build &lt;a href=&quot;https://whoishiring.io&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://whoishiring.io&lt;/a&gt; and want more people submit their jobs there. Instead using machine learning or geek algorithm to scrapy the data and classified it, he just asked people for help. So I think, Is my purpose to build this application is to show others I’m geek or for users to really use it. And what if I spend a lot of time in machine learning then people don’t like this idea at all.So I just control myself and get the shit done.&lt;/p&gt;
 &lt;p&gt;As Paul Graham write in hacker and painter ( I can’t find the the original because I read the chinese version.)&lt;/p&gt;
 &lt;p&gt;People think hacker design everything before coding. But they are not, they just coding-&amp;gt;thinking-&amp;gt;change-&amp;gt;coding.&lt;/p&gt;
-&lt;p&gt;###What is next&lt;br&gt;Build four side projects in a month. Happy coding.&lt;/p&gt;
+&lt;h3 id=&quot;What-is-next&quot;&gt;&lt;a href=&quot;#What-is-next&quot; class=&quot;headerlink&quot; title=&quot;What is next&quot;&gt;&lt;/a&gt;What is next&lt;/h3&gt;&lt;p&gt;Build four side projects in a month. Happy coding.&lt;/p&gt;
 </content>
     
     <summary type="html">
     
-      &lt;p&gt;##How I build my MVP in two weeks&lt;/p&gt;
-&lt;p&gt;Since I built my last MVP &lt;a href=&quot;https://unicooo.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Unicooo&lt;
+      &lt;p&gt;Since I built my last MVP &lt;a href=&quot;https://unicooo.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Unicooo&lt;/a&gt; using more than a year. Spending lots
     
     </summary>
     
+    
+      <category term="MVP django" scheme="https://windsooon.github.io/tags/MVP-django/"/>
     
   </entry>
   
