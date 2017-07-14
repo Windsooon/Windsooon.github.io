@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://windsooon.github.io/"/>
-  <updated>2017-07-13T14:01:55.000Z</updated>
+  <updated>2017-07-14T02:00:50.000Z</updated>
   <id>https://windsooon.github.io/</id>
   
   <author>
@@ -20,9 +20,9 @@
     <link href="https://windsooon.github.io/2017/07/13/How%20I%20build%20the%20MVP/"/>
     <id>https://windsooon.github.io/2017/07/13/How I build the MVP/</id>
     <published>2017-07-13T13:25:00.000Z</published>
-    <updated>2017-07-13T14:01:55.000Z</updated>
+    <updated>2017-07-14T02:00:50.000Z</updated>
     
-    <content type="html">&lt;p&gt;Since I built my last MVP &lt;a href=&quot;https://unicooo.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Unicooo&lt;/a&gt; using more than a year. Spending lots of time to add features I &lt;strong&gt;Guess&lt;/strong&gt; users will need.So when I come up with the idea &lt;a href=&quot;http://www.youtubeclassified.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;YouTube classified&lt;/a&gt; and looking at my todo side-project list which contain more than 20 ideas.&lt;/p&gt;
+    <content type="html">&lt;p&gt;Since I built my last MVP &lt;a href=&quot;https://unicooo.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Unicooo&lt;/a&gt; using more than a year. Spending lots of time to add features I &lt;strong&gt;Guess&lt;/strong&gt; users will need. So when I come up with the idea &lt;a href=&quot;http://www.youtubeclassified.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;YouTube classified&lt;/a&gt; and looking at my todo side-project list which contain more than 20 ideas.&lt;/p&gt;
 &lt;p&gt;I just wanna deploy it base on the standard by Harry Percival&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;blockquote&gt;
@@ -30,7 +30,7 @@
 &lt;/blockquote&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;&lt;a href=&quot;http://www.obeythetestinggoat.com/book/chapter_manual_deployment.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Testing Deployment Using a Staging Site&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;So if your answer is yes either, deploy it now. Forget about the bugs.&lt;/p&gt;
+&lt;p&gt;So if your answer is yes two, deploy it now. Forget about the bugs.&lt;/p&gt;
 &lt;h3 id=&quot;Come-up-with-the-idea&quot;&gt;&lt;a href=&quot;#Come-up-with-the-idea&quot; class=&quot;headerlink&quot; title=&quot;Come up with the idea&quot;&gt;&lt;/a&gt;Come up with the idea&lt;/h3&gt;&lt;p&gt;I live in China, so it’s not easy to use YouTube since the &lt;a href=&quot;https://en.wikipedia.org/wiki/Great_Firewall&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Great Firewall&lt;/a&gt;. And when I finally start using it a year ago, I found it hard to find channels I need. I’m interested in Tech and Science. What I can do at first is &lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;search the keyword &lt;strong&gt;sciences youtube channels recommendation&lt;/strong&gt; on google&lt;/li&gt;
