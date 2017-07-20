@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://windsooon.github.io/"/>
-  <updated>2017-07-20T11:53:41.000Z</updated>
+  <updated>2017-07-20T12:00:27.000Z</updated>
   <id>https://windsooon.github.io/</id>
   
   <author>
@@ -16,9 +16,149 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>How to make it to Product Hunt front page in 2 weeks</title>
+    <link href="https://windsooon.github.io/2017/07/16/How%20I%20build%20the%20MVP/"/>
+    <id>https://windsooon.github.io/2017/07/16/How I build the MVP/</id>
+    <published>2017-07-16T12:00:00.000Z</published>
+    <updated>2017-07-20T12:00:27.000Z</updated>
+    
+    <content type="html">&lt;p&gt;After spending more than one year developing features I thought users might need on my last MVP, &lt;a href=&quot;https://unicooo.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Unicooo&lt;/a&gt;. I picked the idea of &lt;a href=&quot;https://www.youtubeclassified.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;YouTube Classified&lt;/a&gt; from my side project to-do list and planned to finish it in two weeks. &lt;/p&gt;
+&lt;p&gt;Update: &lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/Windsooon/blog/master/imgs/how%20I%20build%20the%20MVP/product.png&quot; alt=&quot;product&quot;&gt;&lt;/p&gt;
+&lt;p&gt;We are on the Product Hunt front page today! Thanks guys!&lt;/p&gt;
+&lt;h3 id=&quot;Coming-Up-With-The-Idea&quot;&gt;&lt;a href=&quot;#Coming-Up-With-The-Idea&quot; class=&quot;headerlink&quot; title=&quot;Coming Up With The Idea&quot;&gt;&lt;/a&gt;Coming Up With The Idea&lt;/h3&gt;&lt;p&gt;Since I live in China, the Great Firewall blocks the easy access to YouTube that the rest of the world takes for granted. When I finally started to use it about a year ago, I found it hard to find the tech and science related channels that I needed. What I did at first was:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Searching the keyword “Science YouTube Channels Recommendation” on Google.&lt;/li&gt;
+&lt;li&gt;Clicking all the websites displayed on the first page.&lt;/li&gt;
+&lt;li&gt;Building a channel set on my mind because many of them repeatedly recommend the most popular channels such as &lt;a href=&quot;https://www.youtube.com/user/minutephysics&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;minutephysics&lt;/a&gt; and &lt;a href=&quot;https://www.youtube.com/user/destinws2&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;SmarterEveryDay&lt;/a&gt; which are awesome indeed.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;What the heck.&lt;/p&gt;
+&lt;p&gt;To make things easier, I also did a little research on “YouTube Channels Classified,” and found &lt;a href=&quot;https://socialblade.com/youtube/top/100/mostsubscribed&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;socialblade&lt;/a&gt;. SocialBlade classifies some YouTube channels, but instead of targeting toward the regular YouTube users, the application is for data analysis, where important categories like Product Review and Unboxing are nowhere to be seen. I totally understand. When there are simply too many channels on YouTube, the easiest way is to limit to 20-30 categories because it’s impossible to correctly classify all the channels under the subcategories. Therefore, those categories are 100% correct, but unfortunately useless. &lt;/p&gt;
+&lt;p&gt;How about YouTube itself? Doesn’t YouTube put channels into categories? When I search &lt;a href=&quot;https://www.youtube.com/channel/UCkcRYjXjAhsBPVH4aeIPxmQ&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;basketball&lt;/a&gt;, YouTube does recommend related channels at the bottom. &lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/Windsooon/blog/master/imgs/how%20I%20build%20the%20MVP/basketball_channel.png&quot; alt=&quot;Basketball&quot;&gt;&lt;/p&gt;
+&lt;p&gt;However, when I search &lt;a href=&quot;https://www.youtube.com/channel/UCOpNcN46UbXVtpKMrmU4Abg&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;game&lt;/a&gt;, YouTube does not recommend related channels at the bottom, which is very confusing.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/Windsooon/blog/master/imgs/how%20I%20build%20the%20MVP/game_channel.png&quot; alt=&quot;Gaming&quot;&gt;&lt;/p&gt;
+&lt;p&gt;Finding the main users is very important, and in this case of &lt;a href=&quot;https://www.youtubeclassified.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;YouTube Classified&lt;/a&gt;, we have a very broad user range. Not only can it help English speaking users, people who want to get to know another culture can also make great use of it. For example, if I go to the United States, I would like to know more about its culture, but all of my currently subscribed channels are Chinese, so YouTube Classified may help me by letting me explore popular American channels I’m interested in. &lt;/p&gt;
+&lt;p&gt;For now, my main idea is to classify some of the most popular channels into categories and subcategories, such as Computer under Science, Make-Up under Beauty&amp;amp;Fashion, and Tech Products (Reviews) under Reviews. What about our business model? I think once we grow big, we can advertise some channels because a lot of new channels want to stand out in the massive crowd. Now, I’ll move on to start programming. &lt;/p&gt;
+&lt;h3 id=&quot;Business-model&quot;&gt;&lt;a href=&quot;#Business-model&quot; class=&quot;headerlink&quot; title=&quot;Business model&quot;&gt;&lt;/a&gt;Business model&lt;/h3&gt;&lt;p&gt;I think we should have some features that YouTube doesn’t have, and I thought of adding stories about YouTubers, on how they built and maintain their channels. It’s fun to their followers and useful for new YouTubers. But in the end, I chose to just add recommended websites at the bottom of each subcategory. People interested in math are likely to be also interested in science related websites and blogs. I don’t have time to implement it yet, so I simply let users submit websites they recommend.&lt;br&gt;For now, we just recommend the hottest channels with more than 100k subscribers. But I realized that we should also be standing in the YouTubers’ shoes and think of them. If I were a YouTubers, what can this application do for me? There are so many popular channels already, and it’s very hard for a new YouTuber to stand out, therefore my next step goes to adding newer channels.&lt;/p&gt;
+&lt;h3 id=&quot;Version-Control&quot;&gt;&lt;a href=&quot;#Version-Control&quot; class=&quot;headerlink&quot; title=&quot;Version Control&quot;&gt;&lt;/a&gt;Version Control&lt;/h3&gt;&lt;p&gt;I usually open source my entire code on Github, just like &lt;a href=&quot;https://github.com/Windsooon/Unicooo-django&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Unicooo-django&lt;/a&gt;. Not only because it’s free, but also because I think the code, in general, should be open source by default.(Now &lt;a href=&quot;https://bitbucket.org/WindsonYang/youtube-category&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;youtube-category&lt;/a&gt; is open source),&lt;br&gt;&lt;a href=&quot;https://bitbucket.org/product&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Bitbucket&lt;/a&gt; is great and offers unlimited private repos. My only problem when using it is that I have to set my ssh key to my personal page instead of the repo. &lt;/p&gt;
+&lt;p&gt;You should not set your ssh key here.&lt;br&gt;&lt;img src=&quot;https://raw.githubusercontent.com/Windsooon/blog/master/imgs/how%20I%20build%20the%20MVP/bitbucket_ca.png&quot; alt=&quot;repo&quot;&gt;&lt;/p&gt;
+&lt;p&gt;Instead, add to your personal page.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/Windsooon/blog/master/imgs/how%20I%20build%20the%20MVP/bitbucket_personal.png?raw=true&quot; alt=&quot;personal&quot;&gt;&lt;/p&gt;
+&lt;h3 id=&quot;Hosting-the-code&quot;&gt;&lt;a href=&quot;#Hosting-the-code&quot; class=&quot;headerlink&quot; title=&quot;Hosting the code&quot;&gt;&lt;/a&gt;Hosting the code&lt;/h3&gt;&lt;p&gt;I compared among &lt;a href=&quot;https://www.pythonanywhere.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;PythonAnywhere&lt;/a&gt;, &lt;a href=&quot;https://www.heroku.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Heroku&lt;/a&gt;, &lt;a href=&quot;https://aws.amazon.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;AWS&lt;/a&gt;, and &lt;a href=&quot;https://www.digitalocean.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;DigitalOcean&lt;/a&gt;.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;PythonAnywhere costs less than Heroku. &lt;a href=&quot;https://blog.pythonanywhere.com/65/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Difference between PythonAnywhere and Heroku&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;AWS is not easy for the beginners, and it may take quite a long time to set up. If you would like to know more about AWS, this guide may help.&lt;a href=&quot;https://github.com/open-guides/og-aws&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Amazon Web Services — a practical guide&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;DigitalOcean is great, and it also has some useful &lt;a href=&quot;https://blog.digitalocean.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;blogs&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;I choose PythonAnywhere for at least these four reasons.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Super easy to set up and you can usually deploy it in 10 minutes.&lt;/li&gt;
+&lt;li&gt;Offers a &lt;a href=&quot;https://www.pythonanywhere.com/pricing/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;free plan&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Customer service is quite helpful(Usually reply under two hours). &lt;/li&gt;
+&lt;li&gt;The author of Test-Driven-Development with Python, Harry Percival, used to work here. I learned a lot from this book. Thanks, Harry Percival.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;Coding&quot;&gt;&lt;a href=&quot;#Coding&quot; class=&quot;headerlink&quot; title=&quot;Coding&quot;&gt;&lt;/a&gt;Coding&lt;/h3&gt;&lt;p&gt;I started coding on June 28th, 2017. Before that, I built a &lt;a href=&quot;https://github.com/Windsooon/awesome-youtube-category&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;repo&lt;/a&gt; in Github and submitted it on HackerNews to attract hackers to help classify together. It didn’t get much attention, but Github and HackerNews are still great places to ask for help and to find resources. There are so many awesome-xxx going on right now. &lt;/p&gt;
+&lt;p&gt;As you can see, the application is indeed simple. Use YouTube API to get some data and then display it. At first, I used &lt;a href=&quot;https://github.com/Windsooon/django-hackathon&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;django-hackathon&lt;/a&gt; which is for Hackathon, and I spent some hours on building the backend (a shout-out to the awesome Diango and Diango Rest FrameWork). I tried full page Ajax that gives users a better experience, but I find it hard to run when the application begins to have more logic, so I deleted that part of the code and rewrote it. Remember, delete the useless code as early as possible.&lt;/p&gt;
+&lt;p&gt;I followed &lt;a href=&quot;http://jgthms.com/web-design-in-4-minutes/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Web Design in 4 minutes&lt;/a&gt; for the basic design. Then spend some time on responsive design. I use &lt;a href=&quot;https://purecss.io/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;pure&lt;/a&gt; as my front end framework, it works well except for the font size. If you’re also not familiar with it, check these excellent articles &lt;a href=&quot;http://www.creativebloq.com/css3/handling-typography-responsive-design-4122794&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;How to make your typography responsive&lt;/a&gt; and &lt;a href=&quot;https://zellwk.com/blog/responsive-typography/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Everything I know about Responsive Web Typography&lt;/a&gt;. Basically, what you have to do is to use vw: &lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;@media only screen and (max-width: 767px) {
+    .font-class {
+        font-size: 6vw;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;Signing-certificates&quot;&gt;&lt;a href=&quot;#Signing-certificates&quot; class=&quot;headerlink&quot; title=&quot;Signing certificates&quot;&gt;&lt;/a&gt;Signing certificates&lt;/h3&gt;&lt;p&gt;&lt;a href=&quot;https://letsencrypt.org/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Let’s encrypt&lt;/a&gt; and use &lt;a href=&quot;https://github.com/lukas2511/dehydrated&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;dehydrated&lt;/a&gt; as a great tool to set it up. Be aware that every time after you re-apply the certificate, you have to notify PythonAnywhere people for updating.&lt;/p&gt;
+&lt;h3 id=&quot;Domain&quot;&gt;&lt;a href=&quot;#Domain&quot; class=&quot;headerlink&quot; title=&quot;Domain&quot;&gt;&lt;/a&gt;Domain&lt;/h3&gt;&lt;p&gt;Since YouTube Classified is based on YouTube and that I want to attract YouTube users as our users, I titled something that starts with YouTube, so that when the users type in YouTube on the browser, it will show the website. &lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/Windsooon/blog/master/imgs/how%20I%20build%20the%20MVP/broswer.png&quot; alt=&quot;browser&quot;&gt;&lt;/p&gt;
+&lt;p&gt;After picking Godaddy as the domain hosting, I searched the coupon for buying a “.com” domain. At first, the 90% off coupon looked great, but when I was paying for it, I received a payment error. When I asked people who work at Godaddy for help, they told me that the coupon was no longer valid, so I gave up the idea of coupon and paid about $8 for “youtubeclassified.com” for a year. I can get a better pricing if I pay for two years at a time, but since I’m not sure if this business idea will work, I just paid for one year. &lt;/p&gt;
+&lt;h3 id=&quot;Professional-Email&quot;&gt;&lt;a href=&quot;#Professional-Email&quot; class=&quot;headerlink&quot; title=&quot;Professional Email&quot;&gt;&lt;/a&gt;Professional Email&lt;/h3&gt;&lt;p&gt;There are a lot of business email hosting on the internet, but &lt;a href=&quot;https://www.zoho.com/mail/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Zoho mail&lt;/a&gt; is the only one I found with a free plan, so that’s my pick. It worked after some easy setup. &lt;/p&gt;
+&lt;h3 id=&quot;Uptime-Monitor&quot;&gt;&lt;a href=&quot;#Uptime-Monitor&quot; class=&quot;headerlink&quot; title=&quot;Uptime Monitor&quot;&gt;&lt;/a&gt;Uptime Monitor&lt;/h3&gt;&lt;p&gt;I use &lt;a href=&quot;https://uptimerobot.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;UptimeRobot&lt;/a&gt;, it gives you 50 monitors and every check for 5 minutes for free.&lt;/p&gt;
+&lt;h3 id=&quot;Adding-Google-analytics&quot;&gt;&lt;a href=&quot;#Adding-Google-analytics&quot; class=&quot;headerlink&quot; title=&quot;Adding Google analytics&quot;&gt;&lt;/a&gt;Adding Google analytics&lt;/h3&gt;&lt;p&gt;For people who don’t know what google analytics is, it’s a tool that shows you which page your users focus on and what regions the users are from.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/Windsooon/blog/master/imgs/how%20I%20build%20the%20MVP/category_view.png&quot; alt=&quot;page&quot;&gt;&lt;br&gt;&lt;img src=&quot;https://raw.githubusercontent.com/Windsooon/blog/master/imgs/how%20I%20build%20the%20MVP/location.png&quot; alt=&quot;location&quot;&gt;&lt;/p&gt;
+&lt;p&gt;Remember to filter out your own IP address in the setting.&lt;/p&gt;
+&lt;h3 id=&quot;Email-Subscription-Management&quot;&gt;&lt;a href=&quot;#Email-Subscription-Management&quot; class=&quot;headerlink&quot; title=&quot;Email Subscription Management&quot;&gt;&lt;/a&gt;Email Subscription Management&lt;/h3&gt;&lt;p&gt;I use &lt;a href=&quot;https://mailchimp.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;MailChimp&lt;/a&gt; to manage subscription from users. It has great API docs, great customer service, as well as a free plan. When a user subscribes under a certain subcategory, I get a page URL to identify with the sub category page that the user is interested in. At first, I got lost at group and segment, but after some research, I found out what I have to do:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Send email and URL to my backend.&lt;/li&gt;
+&lt;li&gt;Use the group API to &lt;a href=&quot;https://developer.mailchimp.com/documentation/mailchimp/reference/lists/interest-categories/interests/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Create the group&lt;/a&gt;. (If the group already exists, it will return a 400, but you can just ignore it.)&lt;/li&gt;
+&lt;li&gt;Loop over the groups by group name inside your interested subcategory to get the group ID.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://developer.mailchimp.com/documentation/mailchimp/reference/lists/members/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Add the email to this group&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/Windsooon/blog/master/imgs/how%20I%20build%20the%20MVP/mail.png&quot; alt=&quot;ui&quot;&gt;&lt;/p&gt;
+&lt;h3 id=&quot;Suggestion-from-Users&quot;&gt;&lt;a href=&quot;#Suggestion-from-Users&quot; class=&quot;headerlink&quot; title=&quot;Suggestion from Users&quot;&gt;&lt;/a&gt;Suggestion from Users&lt;/h3&gt;&lt;p&gt;After finishing my first version, I immediately sent the link to my friends and asked for their suggestion. Specifically, I asked them:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Any confusion when using it?&lt;/li&gt;
+&lt;li&gt;Any business model idea?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;None of them are programmers, but both of them gave me excellent advice. Philip suggested giving each subcategory an individual page. Before that idea was given, under a certain category page, it lists all the subcategories on the same page, such as Math, Computer, and Physics under the Science category. I changed it within a day. Julian suggested to let users choose the categories they love so that they will be more likely to come back. It’s a great idea, but I didn’t implement it right away because it’s too complicated and I wasn’t sure if many users would need this feature. I also let my workmate use the website in front of me so that I could know which part confuses him. I paid attention to where he clicked, and that if he knew how to search for subcategories. After that, I changed some button styles and removed some href to beautify the website. I also learned from my co-founder, Jessica. She gave me some good advice on navigation and sorting of the channels. &lt;/p&gt;
+&lt;p&gt;To be honest, what they suggested are quite useful and obviously, and I don’t know why I missed these ideas when programming. I focused more on the structure of the code instead of what the users really need. Thus, I’d say listen to your friends before you spend a lot of time on a new feature, because they may not be hackers, but they represent the real users who will be spending time on your MVP.&lt;/p&gt;
+&lt;h3 id=&quot;Marketing&quot;&gt;&lt;a href=&quot;#Marketing&quot; class=&quot;headerlink&quot; title=&quot;Marketing&quot;&gt;&lt;/a&gt;Marketing&lt;/h3&gt;&lt;p&gt;I made a list to submit and advertise my application:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&quot;https://news.ycombinator.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;hackernews&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.producthunt.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;producthunts&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.wired.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Wired&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://betalist.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Betalist&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://thenextweb.com&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;TheNextWeb&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://lifehacker.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;lifehacker&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.reddit.com/r/startups/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;reddit/startup&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.reddit.com/r/youtube/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;reddit/youtube&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.reddit.com/r/Entrepreneur/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;reddit/Entrepreneur&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.reddit.com/r/SideProject/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;reddit/SideProject&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4 id=&quot;Others&quot;&gt;&lt;a href=&quot;#Others&quot; class=&quot;headerlink&quot; title=&quot;Others&quot;&gt;&lt;/a&gt;Others&lt;/h4&gt;&lt;ol&gt;
+&lt;li&gt;&lt;a href=&quot;https://medium.com/@PitchMantra/100-best-places-to-promote-your-startup-6ad7a52d79c0&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Tech websites&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://triphappy.com/blog/131-startup-directories-to-promote-your-startup/1&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Tech websites&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.inboundio.com/blog/27-websites-to-submit-your-startup/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Tech websites&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Quora and other blogs&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;We answer questions on Quora and post comments on blogs about YouTube channel recommendation, as ways to advertise our application. We carefully choose the really useful channels that other comments didn’t mention. Then, I wrote this article to share my experience on how to build this MVP.&lt;/p&gt;
+&lt;h3 id=&quot;Hi-hackers&quot;&gt;&lt;a href=&quot;#Hi-hackers&quot; class=&quot;headerlink&quot; title=&quot;Hi hackers&quot;&gt;&lt;/a&gt;Hi hackers&lt;/h3&gt;&lt;p&gt;Once again, HackerNews guys didn’t pay any attention to my application, but I understand. Firstly, it’s not geeky enough to just use YouTube API and then classify some channels. Secondly, it’s not impressive. Thirdly, as a tool, it’s not that useful. I think so too. Before building the first version, I thought about classifying the channels by their titles and description using Naive Bayes, a tool that I have recently learned about and wanted to give it a try. I also thought of building an iOS application instead of a website for the same reason. &lt;/p&gt;
+&lt;p&gt;This reminds me of a comment made by “xando” under the post on &lt;a href=&quot;https://news.ycombinator.com/item?id=14238005&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Ask HN: Who is hiring? (May 2017)&lt;/a&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Hey, a friendly reminder. I’m parsing the thread, all job offers added here are also available on the map on&lt;br&gt;&lt;a href=&quot;https://whoishiring.io&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://whoishiring.io&lt;/a&gt; or just HN items &lt;a href=&quot;https://whoishiring.io/search/36.0440/-90.8984/4?source=hn&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://whoishiring.io/search/36.0440/-90.8984/4?source=hn&lt;/a&gt;&lt;br&gt;If you post here, please use the below format to help me with parsing. If you won’t, no worries, I will do my best to get all the things right.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;pre&gt;&lt;code&gt;1) {company} | {job title} | {locations} | {attrs: ONSITE, REMOTE, INTERNS, VISA, SALARY, company-url}
+Google | Software Developer | SF | VISA https://google.com
+DuckDuckGo | Software Developer | Paoli PA | REMOTE, VISA, SALARY:100k-120k
+Facebook | Web-developer | Zurich | SALARY:120k CHF 
+Google | Site Reliability Engineer | London | SALARY:120k GBP, VISA, REMOTE
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;or&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;2) {company} | {job title} | {location}
+Google | Site Reliability Engineer | Sydney
+Facebook | Web-developer | Zurich
+&lt;/code&gt;&lt;/pre&gt;&lt;blockquote&gt;
+&lt;p&gt;I’m using this regex to test the first line, you can test it here &lt;a href=&quot;https://regex101.com/r/relwQD/3&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://regex101.com/r/relwQD/3&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;pre&gt;&lt;code&gt;\s*(?P&amp;lt;company&amp;gt;[^|]+?)\s*\|\s*(?P&amp;lt;title&amp;gt;[^|]+?)\s*\|\s*(?P&amp;lt;locations&amp;gt;[^|]+?)\s*(?:\|\s*(?P&amp;lt;attrs&amp;gt;.+))?$
+&lt;/code&gt;&lt;/pre&gt;&lt;blockquote&gt;
+&lt;p&gt;Check bellow for the SALARY regex.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;pre&gt;&lt;code&gt;SALARY:(?P&amp;lt;salary_min&amp;gt;\d+(?:k|K)?)(?:\s*\-\s*(?P&amp;lt;salary_max&amp;gt;\d+(?:k|K)?)?)?(?:\s?(?P&amp;lt;currency&amp;gt;[A-Z]{3}))?     
+&lt;/code&gt;&lt;/pre&gt;&lt;blockquote&gt;
+&lt;p&gt;and you can test it as well &lt;a href=&quot;https://regex101.com/r/SRWkMz/2/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://regex101.com/r/SRWkMz/2/&lt;/a&gt;&lt;br&gt;—— xando, AskHN&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;This guy built &lt;a href=&quot;https://whoishiring.io&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://whoishiring.io&lt;/a&gt; and wants more people to submit their jobs there. Instead of using machine learning or algorithm to crawl the data and format it, he just simply asked people format their comments! So I think, my purpose is to build this application for YouTube users to really make use of it, so how can I spend so much time on machine learning risking the outcome that people don’t like the idea at all? So, I just control myself and try to get this shit done.&lt;br&gt;At this point, I just simply want to evaluate it base on Harry Percival’s three standards on &lt;a href=&quot;http://www.obeythetestinggoat.com/book/chapter_manual_deployment.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Test-Driven-Development with Python&lt;/a&gt;: &lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Is the site usable? Is it better than nothing? Can we make lists on it?&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;The rule of thumb is, if “yes” is the only answer, then don’t mind the bugs and deploy it now. Fortunately, the idea of YouTube Classified passed. &lt;/p&gt;
+&lt;p&gt;As Paul Graham once written in Hacker and Painter (I can’t find the original quote because I read the Chinese version):&lt;br&gt;“ People think hackers design everything before coding. But they don’t. They are just: coding-&amp;gt;thinking-&amp;gt;change-&amp;gt;coding.”&lt;/p&gt;
+&lt;h3 id=&quot;What-is-next&quot;&gt;&lt;a href=&quot;#What-is-next&quot; class=&quot;headerlink&quot; title=&quot;What is next&quot;&gt;&lt;/a&gt;What is next&lt;/h3&gt;&lt;p&gt;Hackathon in a month: Build four side projects in a month. Happy coding.&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;After spending more than one year developing features I thought users might need on my last MVP, &lt;a href=&quot;https://unicooo.com/&quot; target=&quot;_
+    
+    </summary>
+    
+    
+      <category term="mvp django side-project" scheme="https://windsooon.github.io/tags/mvp-django-side-project/"/>
+    
+  </entry>
+  
+  <entry>
     <title>How to get onto Product Hunt front page in 2 weeks</title>
-    <link href="https://windsooon.github.io/2017/07/16/How%20to%20get%20onto%20Product%20Hunt%20front%20page%20in%202%20weeks/"/>
-    <id>https://windsooon.github.io/2017/07/16/How to get onto Product Hunt front page in 2 weeks/</id>
+    <link href="https://windsooon.github.io/2017/07/16/How%20to%20make%20it%20to%20Product%20Hunt%20front%20page%20in%202%20weeks/"/>
+    <id>https://windsooon.github.io/2017/07/16/How to make it to Product Hunt front page in 2 weeks/</id>
     <published>2017-07-16T12:00:00.000Z</published>
     <updated>2017-07-20T11:53:41.000Z</updated>
     
