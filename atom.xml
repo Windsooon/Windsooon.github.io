@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://windsooon.github.io/"/>
-  <updated>2017-08-08T13:24:09.000Z</updated>
+  <updated>2017-08-08T13:29:03.000Z</updated>
   <id>https://windsooon.github.io/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="https://windsooon.github.io/2017/07/16/How%20to%20make%20it%20to%20Product%20Hunt%20front%20page%20in%202%20weeks/"/>
     <id>https://windsooon.github.io/2017/07/16/How to make it to Product Hunt front page in 2 weeks/</id>
     <published>2017-07-16T12:00:00.000Z</published>
-    <updated>2017-08-08T13:24:09.000Z</updated>
+    <updated>2017-08-08T13:29:03.000Z</updated>
     
     <content type="html">&lt;p&gt;After spending more than one year developing features I thought users might need on my last MVP, &lt;a href=&quot;https://unicooo.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Unicooo&lt;/a&gt;. I picked the idea of &lt;a href=&quot;https://www.channelshunt.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;YouTube Classified&lt;/a&gt; from my side project to-do list and planned to finish it in two weeks. &lt;/p&gt;
 &lt;p&gt;Update: &lt;/p&gt;
@@ -70,7 +70,7 @@
 &lt;h3 id=&quot;Domain&quot;&gt;&lt;a href=&quot;#Domain&quot; class=&quot;headerlink&quot; title=&quot;Domain&quot;&gt;&lt;/a&gt;Domain&lt;/h3&gt;&lt;p&gt;Since YouTube Classified is based on YouTube and that I want to attract YouTube users as our users, I titled something that starts with YouTube, so that when the users type in YouTube on the browser, it will show the website. &lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/Windsooon/blog/master/imgs/how%20I%20build%20the%20MVP/broswer.png&quot; alt=&quot;browser&quot;&gt;&lt;/p&gt;
 &lt;p&gt;After picking Godaddy as the domain hosting, I searched the coupon for buying a “.com” domain. At first, the 90% off coupon looked great, but when I was paying for it, I received a payment error. When I asked people who work at Godaddy for help, they told me that the coupon was no longer valid, so I gave up the idea of coupon and paid about $8 for “youtubeclassified.com” for a year. I can get a better pricing if I pay for two years at a time, but since I’m not sure if this business idea will work, I just paid for one year. &lt;/p&gt;
-&lt;p&gt;####Update&lt;br&gt;Don’t use a domain name that contain other company’s trademark. Or you may be caught in a legal dispute and change domain is a nightmare.&lt;/p&gt;
+&lt;h4 id=&quot;Update&quot;&gt;&lt;a href=&quot;#Update&quot; class=&quot;headerlink&quot; title=&quot;Update&quot;&gt;&lt;/a&gt;Update&lt;/h4&gt;&lt;p&gt;Don’t use a domain name that contain other company’s trademark. Or you may be caught in a legal dispute and change domain is a nightmare.&lt;/p&gt;
 &lt;h3 id=&quot;Professional-Email&quot;&gt;&lt;a href=&quot;#Professional-Email&quot; class=&quot;headerlink&quot; title=&quot;Professional Email&quot;&gt;&lt;/a&gt;Professional Email&lt;/h3&gt;&lt;p&gt;There are a lot of business email hosting on the internet, but &lt;a href=&quot;https://www.zoho.com/mail/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Zoho mail&lt;/a&gt; is the only one I found with a free plan, so that’s my pick. It worked after some easy setup. &lt;/p&gt;
 &lt;h3 id=&quot;Uptime-Monitor&quot;&gt;&lt;a href=&quot;#Uptime-Monitor&quot; class=&quot;headerlink&quot; title=&quot;Uptime Monitor&quot;&gt;&lt;/a&gt;Uptime Monitor&lt;/h3&gt;&lt;p&gt;I use &lt;a href=&quot;https://uptimerobot.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;UptimeRobot&lt;/a&gt;, it gives you 50 monitors and every check for 5 minutes for free.&lt;/p&gt;
 &lt;h3 id=&quot;Adding-Google-analytics&quot;&gt;&lt;a href=&quot;#Adding-Google-analytics&quot; class=&quot;headerlink&quot; title=&quot;Adding Google analytics&quot;&gt;&lt;/a&gt;Adding Google analytics&lt;/h3&gt;&lt;p&gt;For people who don’t know what google analytics is, it’s a tool that shows you which page your users focus on and what regions the users are from.&lt;/p&gt;
