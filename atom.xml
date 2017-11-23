@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://windsooon.github.io/"/>
-  <updated>2017-11-23T15:18:07.000Z</updated>
+  <updated>2017-11-23T15:21:24.000Z</updated>
   <id>https://windsooon.github.io/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="https://windsooon.github.io/2017/11/23/Why%20we%20never%20thank%20open%20source%20maintainers/"/>
     <id>https://windsooon.github.io/2017/11/23/Why we never thank open source maintainers/</id>
     <published>2017-11-23T02:57:00.000Z</published>
-    <updated>2017-11-23T15:18:07.000Z</updated>
+    <updated>2017-11-23T15:21:24.000Z</updated>
     
     <content type="html">&lt;h4 id=&quot;TL-DR&quot;&gt;&lt;a href=&quot;#TL-DR&quot; class=&quot;headerlink&quot; title=&quot;TL;DR&quot;&gt;&lt;/a&gt;TL;DR&lt;/h4&gt;&lt;p&gt;Write a thank-you note to your favorite open source project on NGO &lt;a href=&quot;https://www.thankyouopensource.com&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Thank you, open source&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Here is what I thoughts about why we never thank open source maintainers.&lt;/p&gt;
@@ -64,15 +64,15 @@
 &lt;li&gt;Lots of our servers are running Linux. &lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;&lt;strong&gt;Our projects would not have made it without these open-source projects.&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;10 minutes can do nothing. Modern social media forms us a habit of clicking an upvote button or a like button instead of spending 10 minutes to write a thank-you note, while a great project can save us so much more than 10 minutes. After I posted www.thankyouopensource.com on ProductHunt, some users complained about the 300-character requirement .  That’s because we want to avoid  simple notes such as: &lt;/p&gt;
+&lt;p&gt;10 minutes can do nothing. Modern social media forms us a habit of clicking an upvote button or a like button instead of spending 10 minutes to write a thank-you note, while a great project can save us so much more than 10 minutes. After I posted www.thankyouopensource.com on ProductHunt, some users complained about the 300-character requirement.  That’s because we want to avoid  simple notes such as: &lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;“Thank you, you guys rock.”&lt;/p&gt;
 &lt;p&gt;“Thank you so much.”&lt;/p&gt;
 &lt;p&gt;“I love your project.”&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;I think these users are too “busy” to write a thank-you note. But this looks like meaningless spam to me and I think reading these is just a waste of time. &lt;strong&gt;We want notes out of genuinity instead of obligation.&lt;/strong&gt; They are very different and we can all tell the difference by word . We want the maintainers to know that why we love their work and how their projects have helped us, so that our genuine notes could serve as a motivation to them. &lt;strong&gt;And most importantly, we want to welcome everyone interested to join the maintaining community because it is indeed a cool job.  Once you have become a maintainer, your work would be sincerely appreciated through the thank-you notes.&lt;/strong&gt; I suggest Github to add a tab titled “thanks” for every project, not just to appreciate the maintainers, but also to invite more people to join the project.&lt;/p&gt;
-&lt;h4 id=&quot;Final-thoughts&quot;&gt;&lt;a href=&quot;#Final-thoughts&quot; class=&quot;headerlink&quot; title=&quot;Final thoughts:&quot;&gt;&lt;/a&gt;Final thoughts:&lt;/h4&gt;&lt;p&gt;Maintainers are the friends we want and the employees companies look for. They have passion, willingness to share, and persistance. They are the real MVP and they deserve a thank-you note.&lt;/p&gt;
-&lt;h4 id=&quot;What-is-Thank-you-open-source&quot;&gt;&lt;a href=&quot;#What-is-Thank-you-open-source&quot; class=&quot;headerlink&quot; title=&quot;What is Thank you, open source&quot;&gt;&lt;/a&gt;What is &lt;a href=&quot;https://www.thankyouopensource.com&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Thank you, open source&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;This is a NGO project providing a platform for people to express gratitude toward open source maintainers and authors. It also provide a platform for maintainers to advertise their side-projects. Cheers.&lt;/p&gt;
+&lt;p&gt;I think these users are too “busy” to write a thank-you note. But this looks like meaningless spam to me and I think reading these is just a waste of time. &lt;strong&gt;We want notes out of genuinity instead of obligation.&lt;/strong&gt; They are very different and we can all tell the difference by word. We want the maintainers to know that why we love their work and how their projects have helped us so that our genuine notes could serve as a motivation to them. &lt;strong&gt;And most importantly, we want to welcome everyone interested to join the maintaining community because it is indeed a cool job.  Once you have become a maintainer, your work would be sincerely appreciated through the thank-you notes.&lt;/strong&gt; I suggest Github add a tab titled “thanks” for every project, not just to appreciate the maintainers, but also to invite more people to join the project.&lt;/p&gt;
+&lt;h4 id=&quot;Final-thoughts&quot;&gt;&lt;a href=&quot;#Final-thoughts&quot; class=&quot;headerlink&quot; title=&quot;Final thoughts:&quot;&gt;&lt;/a&gt;Final thoughts:&lt;/h4&gt;&lt;p&gt;Maintainers are the friends we want and the employees companies look for. They have passion, willingness to share, and persistence. They are the real MVP and they deserve a thank-you note.&lt;/p&gt;
+&lt;h4 id=&quot;What-is-Thank-you-open-source&quot;&gt;&lt;a href=&quot;#What-is-Thank-you-open-source&quot; class=&quot;headerlink&quot; title=&quot;What is Thank you, open source&quot;&gt;&lt;/a&gt;What is &lt;a href=&quot;https://www.thankyouopensource.com&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Thank you, open source&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;This is an NGO project providing a platform for people to express gratitude toward open source maintainers and authors. It also provides a platform for maintainers to advertise their side-projects. Cheers.&lt;/p&gt;
 </content>
     
     <summary type="html">
