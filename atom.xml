@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://windsooon.github.io/"/>
-  <updated>2017-08-08T13:29:03.000Z</updated>
+  <updated>2017-11-23T14:58:14.000Z</updated>
   <id>https://windsooon.github.io/</id>
   
   <author>
@@ -14,6 +14,79 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Why we never thank open source maintainers</title>
+    <link href="https://windsooon.github.io/2017/11/23/Why%20we%20never%20thank%20open%20source%20maintainers/"/>
+    <id>https://windsooon.github.io/2017/11/23/Why we never thank open source maintainers/</id>
+    <published>2017-11-23T02:57:00.000Z</published>
+    <updated>2017-11-23T14:58:14.000Z</updated>
+    
+    <content type="html">&lt;h4 id=&quot;I-can-build-it-by-myself&quot;&gt;&lt;a href=&quot;#I-can-build-it-by-myself&quot; class=&quot;headerlink&quot; title=&quot;I can build it by myself&quot;&gt;&lt;/a&gt;I can build it by myself&lt;/h4&gt;&lt;blockquote&gt;
+&lt;p&gt;“Come on, this is so easy to me”&lt;/p&gt;
+&lt;p&gt;“I can do a better version in a weekend”&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;It is true that some of you guys can build a tool in a hackathon, but maintaining a project is a lot more difficult than building a project. Most of the time they are not writing code, but:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Writing the docs&lt;/li&gt;
+&lt;li&gt;Reviewing the pull requests&lt;/li&gt;
+&lt;li&gt;Looking at the issues &lt;/li&gt;
+&lt;li&gt;Adding new features&lt;/li&gt;
+&lt;li&gt;Answering questions on StackOverflow&lt;/li&gt;
+&lt;li&gt;Discussing on google groups. &lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;A maintainer has to do all the hard work day after day, year after year without pay. &lt;/p&gt;
+&lt;h4 id=&quot;It’s-too-easy-to-forget-when-it’s-too-easy-to-make-use-of-their-work&quot;&gt;&lt;a href=&quot;#It’s-too-easy-to-forget-when-it’s-too-easy-to-make-use-of-their-work&quot; class=&quot;headerlink&quot; title=&quot;It’s too easy to forget when it’s too easy to make use of their work&quot;&gt;&lt;/a&gt;It’s too easy to forget when it’s too easy to make use of their work&lt;/h4&gt;&lt;p&gt;How do we use an open source project? &lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;We search for the solution to our problem.&lt;/li&gt;
+&lt;li&gt;We visit some blogs and websites. (maybe just stackoverflow.com)&lt;/li&gt;
+&lt;li&gt;We click on the project URL, read the README. We install and try it out. It works perfectly. Woohoo!&lt;/li&gt;
+&lt;li&gt;We move onto our next problem.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;While this also happens to be sometimes, &lt;strong&gt;because open source projects are so important just like air and water&lt;/strong&gt;. We don’t say thank you to air or water because we don’t know who built it. But We do know we built these awesome open source projects. It’s sad that I have to write this article on the Thanksgiving day to remind everyone to write a thank-you note to have their work openly appreciated.&lt;/p&gt;
+&lt;h4 id=&quot;The-maintainers-don’t-care-about-this&quot;&gt;&lt;a href=&quot;#The-maintainers-don’t-care-about-this&quot; class=&quot;headerlink&quot; title=&quot;The maintainers don’t care about this&quot;&gt;&lt;/a&gt;The maintainers don’t care about this&lt;/h4&gt;&lt;blockquote&gt;
+&lt;p&gt;“They don’t need this, they need to pull requests or fix bugs.”&lt;/p&gt;
+&lt;p&gt;“I think they would prefer donations.”&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;They do care, &lt;a href=&quot;https://news.ycombinator.com/item?id=15623604&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Sometimes all a maintainer needs is a “thank you” &lt;/a&gt;. Of course. It’s great if you could also donate some money, but most maintainers I know are not for profit. They can eventually make money but money is more of a byproduct than the main incentive. I’ve noticed that open source projects are always better than non-open source projects. because the most talented engineers do it out of passion and altruism. If you can’t donate some money, you can write a note.&lt;/p&gt;
+&lt;h4 id=&quot;We-are-too-“busy”&quot;&gt;&lt;a href=&quot;#We-are-too-“busy”&quot; class=&quot;headerlink&quot; title=&quot;We are too “busy”&quot;&gt;&lt;/a&gt;We are too “busy”&lt;/h4&gt;&lt;blockquote&gt;
+&lt;p&gt;We are changing the world with our hands.&lt;/p&gt;
+&lt;p&gt;My project has to launch in a week.&lt;/p&gt;
+&lt;p&gt;We have hundreds of emails to reply everyday.&lt;/p&gt;
+&lt;p&gt;We just don’t have time for it.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;These open-source projects have more potential to change the world; or maybe they have already changed the world. &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Github uses Rails on Ruby &lt;/li&gt;
+&lt;li&gt;Instagram uses django&lt;/li&gt;
+&lt;li&gt;Lots of our servers are running Linux. &lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Our projects would not have made it without these open-source projects.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;10 minutes can do nothing. Modern social media forms us a habit of clicking an upvote button or a like button instead of spending 10 minutes to write a thank-you note, while a great project can save us so much more than 10 minutes. After I posted www.thankyouopensource.com on ProductHunt, some users complained about the 300-character requirement .  That’s because we want to avoid  simple notes such as: &lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;“Thank you, you guys rock.”&lt;/p&gt;
+&lt;p&gt;“Thank you so much.”&lt;/p&gt;
+&lt;p&gt;“I love your project.”&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;I think these users are too busy to write a thank-you note. But this looks like meaningless spam to me and I think reading these is just a waste of time. &lt;strong&gt;We want notes out of genuinity instead of obligation.&lt;/strong&gt; They are very different and we can all tell the difference by word . We want the maintainers to know that why we love their work and how their projects have helped us, so that our genuine notes could serve as a motivation to them. &lt;strong&gt;And most importantly, we want to welcome everyone interested to join the maintaining community because it is indeed a cool job.  Once you have become a maintainer, your work would be sincerely appreciated through the thank-you notes.&lt;/strong&gt; I suggest Github to add a tab titled “thanks” for every project, not just to appreciate the maintainers, but also to invite more people to join the project.&lt;/p&gt;
+&lt;h4 id=&quot;Final-thoughts&quot;&gt;&lt;a href=&quot;#Final-thoughts&quot; class=&quot;headerlink&quot; title=&quot;Final thoughts:&quot;&gt;&lt;/a&gt;Final thoughts:&lt;/h4&gt;&lt;p&gt;Maintainers are the friends we want and the employees companies look for. They have passion, willingness to share, and persistance. They are the real MVP and they deserve a thank-you note.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;What is &lt;a href=&quot;www.thankyouopensource.com&quot;&gt;Thank you, open source&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;  This is a NGO project providing a platform for people to express gratitude toward open source maintainers and authors. It also provide a platform for maintainers to advertise their side-projects. Cheers.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h4 id=&quot;I-can-build-it-by-myself&quot;&gt;&lt;a href=&quot;#I-can-build-it-by-myself&quot; class=&quot;headerlink&quot; title=&quot;I can build it by myself&quot;&gt;&lt;/a&gt;I can build it
+    
+    </summary>
+    
+    
+      <category term="thank you open source" scheme="https://windsooon.github.io/tags/thank-you-open-source/"/>
+    
+  </entry>
   
   <entry>
     <title>How to make it to Product Hunt front page in 2 weeks</title>
