@@ -1,0 +1,140 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title>  · Tech blog of Unicooo</title><meta name="description" content=" - Unicooo"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="short icon" href="/favicon.png"><link rel="stylesheet" href="/css/apollo.css"></head><body><div id="mask" style="display: none;"><img id="mask-image" src="#" style=" "></div><div class="wrap"><header><a href="/" class="logo-link"><img src="/favicon.png"></a><ul class="nav nav-list"><li class="nav-list-item"><a href="https://www.enginego.org" target="_blank" class="nav-list-link">编程基础</a></li><li class="nav-list-item"><a href="https://github.com/Windsooon" target="_blank" class="nav-list-link">GITHUB</a></li></ul></header><section class="container"><div class="post"><article class="post-block"><h1 class="post-title"></h1><div class="post-time">Sep 20, 2018</div><div class="post-content"><h2 id="Day-1-Coroutine-or-Coroutine-Function"><a href="#Day-1-Coroutine-or-Coroutine-Function" class="headerlink" title="Day 1 Coroutine or Coroutine Function"></a>Day 1 Coroutine or Coroutine Function</h2><p><strong>If you like to work for an open source friendly company, try <a href="www.osjobs.net">Open Source Jobs</a>.</strong></p>
+<p>I’m going to Review 30 <a href="https://github.com/python/cpython/pulls" target="_blank" rel="external">python pull requests</a> in 30 days (In these series, python=cpython). Today is day one.</p>
+<h3 id="Why"><a href="#Why" class="headerlink" title="Why?"></a>Why?</h3><ol>
+<li><p>Python need reviewers</p>
+<p> <a href="https://devguide.python.org/pullrequest/#how-to-review-a-pull-request" target="_blank" rel="external">developer guide</a> points out:</p>
+<blockquote>
+<p>One of the bottlenecks in the Python development process is the lack of code reviews. If you browse the bug tracker, you will see that numerous issues have a fix, but cannot be merged into the main source code repository, because no one has reviewed the proposed solution. </p>
+</blockquote>
+<p>I used to think large companies like Google and Apple who are using python would donate a lot of money to The Python Software Foundation. The reality is the python maintainers didn’t get a penny for their work. I need money just like others, but I also like to work with <strong>people who enthusiasm with open source projects and do not work for money</strong>.</p>
+</li>
+<li><p>Improve and give back to the community</p>
+<p> About two years ago, I asked a question about Scrapy on Stackoverflow. Dimitrios, the author of <strong>Learn Scrapy</strong> gave a <a href="https://stackoverflow.com/questions/38800942/scrapy-i-o-block-when-downloading-files" target="_blank" rel="external">beatuful answer</a>. After answered my last question, He told me that:</p>
+<blockquote>
+<p>Just subscribe to Stack Overflow to get some questions and you may be able to answer a few of them here and there… it’s fun! :)</p>
+</blockquote>
+<p> So I started a challenge named <a href="https://stackoverflow.com/users/4879270/windsooon?tab=answers" target="_blank" rel="external">Answer 30 question in 30 days</a>. After I finished the challenge, I gained some reputations in StackOverflow, plenty of <strong>thank you</strong> and most importantly, <strong>I learned quite a lot from by answering these questions</strong> which I didn’t expect. </p>
+<p> If you ask someone how to learn programming, they would recommend you some books or MOOCs which are great. However, answer questions is also a great way to learn programming. Some people never answer a question on StackOverflow because they are not capable enough in their mind. This also happens in people who afraid to get involved in an open source project, they think they can’t understand the code and <strong>the project are written by God. They can’t do anything to improve it</strong>. But the truth is, some open source projects are so large that even the maintainers do not understand every part of it. It’s more important to understand the idea and structure than the code itself.</p>
+<p> I use python for more than three years. Since I quit my job last month, I do have some time to improve myself and give back to the community, so we are not owing each other, :D</p>
+</li>
+<li><p>Call for contributors</p>
+<p> Python has millions of users but less than 700 contributors. In this series, I try to show how I review a PR step and step (feel free to give me some advises if you have a better workflow). I hope this would let people feel easier to contribute to a large open source project. BTW, I didn’t study computer science at my college. So if I can do this, most people can do this.</p>
+</li>
+</ol>
+<ol>
+<li><p>Practice my writing skills</p>
+<p> These series are not written by a 12 years old child, I’m not a native speaker but I am doing my best to write some great articles. </p>
+</li>
+</ol>
+<h4 id="Step-1-commits-message-and-files-changed"><a href="#Step-1-commits-message-and-files-changed" class="headerlink" title="Step 1: commits message and files changed"></a>Step 1: commits message and files changed</h4><p>I started on September 19, 2018, the newest pull request is at this time is <a href="https://github.com/python/cpython/pull/9408" target="_blank" rel="external">pull_9408</a>. </p>
+<h5 id="commits-message"><a href="#commits-message" class="headerlink" title="commits message"></a>commits message</h5><p>Every PR <a href="https://devguide.python.org/pullrequest/#making-good-commits" target="_blank" rel="external">should have an issue number</a> in its commit message, like <strong>bpo-34732: …</strong>. But this PR doesn’t have one so I can’t find any discussions about it.</p>
+<h5 id="files-changed"><a href="#files-changed" class="headerlink" title="files changed"></a>files changed</h5><p>It looks like a piece of cake because it just adds two characters in the document. </p>
+<p><img src="" alt=""></p>
+<p>But the devil is in the detail. The files changed are about coroutine, one of the hardest topics in python. It’s so complicated that this repo even has a label call <a href="https://github.com/python/cpython/labels" target="_blank" rel="external">expert-asyncio</a>. I can’t tell the difference between coroutine and coroutine function, So it’s not as easy as it looks like.</p>
+<h4 id="Step-2-dive-into-the-source-code"><a href="#Step-2-dive-into-the-source-code" class="headerlink" title="Step 2: dive into the source code"></a>Step 2: dive into the source code</h4><h5 id="Search-context"><a href="#Search-context" class="headerlink" title="Search context"></a>Search context</h5><p><strong>The first thing we have to do is find out what type of parameters push_async_exit accept.</strong> I searched push_async_exit in python repo and found:</p>
+<pre><code>def push_async_exit(self, exit):
+    &quot;&quot;&quot;Registers a coroutine function with the standard __aexit__ method
+    signature.
+    Can suppress exceptions the same way __aexit__ method can.
+    Also accepts any object with an __aexit__ method (registering a call
+    to the method instead of the object itself).
+    &quot;&quot;&quot;
+    _cb_type = type(exit)
+    try:
+        exit_method = _cb_type.__aexit__
+    except AttributeError:
+        # Not an async context manager, so assume it&apos;s a coroutine function
+        self._push_exit_callback(exit, False)
+    else:
+        self._push_async_cm_exit(exit, exit_method)
+    return exit  # Allow use as a decorator
+</code></pre><p>Before I read the code, the comments said:</p>
+<blockquote>
+<p>Registers a coroutine function with the standard __aexit__ method signature.</p>
+</blockquote>
+<p>It looks like this function accepts a coroutine function as a parameter. We should accept the PR, right? Here is the funniest part, just like when you are going to solve a Leetcode problem you have to find out all the edge case. Is it possible that the PR and the comments are wrong at the same time? The push_async_exit should accept a coroutine which I don’t know what it is yet? Let’s use <strong>git blame</strong> to figure it out:</p>
+<pre><code>&gt;&gt;&gt; git blame cpython/Lib/contextlib.py
+
+1aa094f7403 (Ilya Kulakov       2018-01-25 12:51:18 -0800 556)     def push_async_exit(self, exit):
+1aa094f7403 (Ilya Kulakov       2018-01-25 12:51:18 -0800 557)         &quot;&quot;&quot;Registers a coroutine function with the standard __aexit__ method
+1aa094f7403 (Ilya Kulakov       2018-01-25 12:51:18 -0800 558)         signature.
+1aa094f7403 (Ilya Kulakov       2018-01-25 12:51:18 -0800 559) 
+1aa094f7403 (Ilya Kulakov       2018-01-25 12:51:18 -0800 560)         Can suppress exceptions the same way __aexit__ method can.
+1aa094f7403 (Ilya Kulakov       2018-01-25 12:51:18 -0800 561)         Also accepts any object with an __aexit__ method (registering a call
+1aa094f7403 (Ilya Kulakov       2018-01-25 12:51:18 -0800 562)         to the method instead of the object itself).
+1aa094f7403 (Ilya Kulakov       2018-01-25 12:51:18 -0800 563)         &quot;&quot;&quot;
+1aa094f7403 (Ilya Kulakov       2018-01-25 12:51:18 -0800 565)         try:
+1aa094f7403 (Ilya Kulakov       2018-01-25 12:51:18 -0800 566)             exit_method = _cb_type.__aexit__
+1aa094f7403 (Ilya Kulakov       2018-01-25 12:51:18 -0800 567)         except AttributeError:
+</code></pre><p>They shared the same commit id so it is likely that the comment are telling the truth.</p>
+<h5 id="Find-call-stack"><a href="#Find-call-stack" class="headerlink" title="Find call stack"></a>Find call stack</h5><p>Then I followed the function call stack</p>
+<pre><code># Call stack
+push_async_exit(coroutine) -&gt; _push_exit_callback(coroutine) -&gt; _exit_callbacks.append((is_sync, coroutine))
+
+# How AsyncExitStack use _exit_callbacks
+while self._exit_callbacks:
+    is_sync, cb = self._exit_callbacks.pop()
+    try:
+        if is_sync:
+            # Here is the trick
+            cb_suppress = cb(*exc_details)
+        else:
+            cb_suppress = await cb(*exc_details)
+</code></pre><p>The code shows that <strong>cb</strong> is a callable object. <strong>So The next thing we have to do is find out  coroutine function or coroutine is callable or not.</strong> </p>
+<h4 id="Step-3-understand-coroutine"><a href="#Step-3-understand-coroutine" class="headerlink" title="Step 3: understand coroutine"></a>Step 3: understand coroutine</h4><h5 id="What-is-coroutine"><a href="#What-is-coroutine" class="headerlink" title="What is coroutine"></a>What is coroutine</h5><p>One of the lessons I learned from the python community is <strong>You should not submit or review the code you don’t understand, even it looks work.</strong> So I have to make sure I understand the difference between coroutine and coroutine function. </p>
+<p>From the <a href="https://docs.python.org/3/glossary.html#term-coroutine" target="_blank" rel="external">docs</a></p>
+<blockquote>
+<p>coroutine</p>
+<ul>
+<li>Coroutines is a more generalized form of subroutines. Subroutines are entered at one point and exited at another point. Coroutines can be entered, exited, and resumed at many different points. They can be implemented with the async def statement. See also PEP 492.</li>
+</ul>
+<p>coroutine function</p>
+<ul>
+<li>A function which returns a coroutine object. A coroutine function may be defined with the async def statement and may contain await, async for, and async with keywords. These were introduced by PEP 492.</li>
+</ul>
+</blockquote>
+<p><a href="https://docs.python.org/3/c-api/coro.html" target="_blank" rel="external">coroutine object</a></p>
+<blockquote>
+<p>Coroutine objects are what functions declared with an async keyword return.</p>
+</blockquote>
+<p><a href="https://docs.python.org/3/library/asyncio-task.html#awaitables" target="_blank" rel="external">And finally, how this confusion happens</a></p>
+<blockquote>
+<p>Note that in this documentation the term “coroutine” can be used for two closely related concepts:</p>
+<p>a coroutine function: an async def function;<br>a coroutine object: object returned by calling a coroutine function.</p>
+</blockquote>
+<p>(At this time, I found the PR had been merged by the author of PEP 492)</p>
+<h4 id="Step-3-Prove-speculation"><a href="#Step-3-Prove-speculation" class="headerlink" title="Step 3: Prove speculation"></a>Step 3: Prove speculation</h4><p>Now I see, <strong>coroutine function</strong> is a function return a coroutine object,  <strong>coroutine object</strong> is an abstract object return by <strong>coroutine function</strong>. I wrote an example to prove my speculation.</p>
+<pre><code>import asyncio
+
+# coroutine function
+async def foo():
+    return 42
+
+async def main():
+    # print &lt;class &apos;function&apos;&gt;
+    print(type(foo))
+    # print &lt;class &apos;coroutine&apos;&gt;
+    print(type(foo()))
+    # TypeError: &apos;coroutine&apos; object is not callable
+    print(type(foo()()))
+
+asyncio.run(main())
+</code></pre><p>We make it! <strong>coroutine object</strong> is not callable. The coroutine in the document is ambiguous and we should use a coroutine function alternative, and yes, we should accept the PR.</p>
+<h3 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h3><p>I’m not familiar with coroutine, I spend 3 hours to review this <strong>tiny PR</strong> when some expert would only need 1 minute. Before I figured it out the PR already been merged, Does it worth? My answer is yes, of course. </p>
+<h5 id="I-found-some-document-to-improve"><a href="#I-found-some-document-to-improve" class="headerlink" title="I found some document to improve"></a>I found some document to improve</h5><p>Since we accept the PR, we could improve the document about coroutine. For instance, search <a href="https://github.com/python/cpython/search?l=reStructuredText&amp;q=a+coroutine" target="_blank" rel="external">a coroutine in GitHub</a>, I will create a PR to fix some of them. These also happen at <a href="https://www.python.org/dev/peps/pep-0492/#new-coroutine-declaration-syntax" target="_blank" rel="external">PEP492</a></p>
+<blockquote>
+<p>The following new syntax is used to declare a native coroutine:</p>
+<p>async def read_data(db):<br>   pass</p>
+</blockquote>
+<p>I can improve the document after this <strong>useless review.</strong></p>
+<h5 id="I-know-more-about-coroutine-now"><a href="#I-know-more-about-coroutine-now" class="headerlink" title="I know more about coroutine now"></a>I know more about coroutine now</h5><p>Concurrency is a hard topic in python and I want to be an expert in it. I’m kinda moving forward, right? See you tomorrow, feel free to leave any advice.</p>
+<p><strong>If you like to work for an open source friendly company, try <a href="www.osjobs.net">Open Source Jobs</a>.</strong></p>
+</div></article></div></section><footer><div class="paginator"><a href="/2017/11/23/Why we never thank open source maintainers/" class="next">NEXT</a></div><div id="disqus_thread"></div><script>var disqus_shortname = 'windsonYang';
+var disqus_identifier = '2018/09/20/Day One/';
+var disqus_title = '';
+var disqus_url = 'https://windsooon.github.io/2018/09/20/Day One/';
+(function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();</script><script id="dsq-count-scr" src="//windsonYang.disqus.com/count.js" async></script><div class="copyright"><p>© 2016 - 2018 <a href="https://windsooon.github.io">Unicooo</a>, unless otherwise noted.</p></div></footer></div><script>(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;e=o.createElement(i);r=o.getElementsByTagName(i)[0];e.src='//www.google-analytics.com/analytics.js';r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));ga('create',"UA-65933410-1",'auto');ga('send','pageview');</script><script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script></body></html>
