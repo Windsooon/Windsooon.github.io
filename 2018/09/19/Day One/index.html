@@ -5,7 +5,7 @@
 <blockquote>
 <p>One of the bottlenecks in the Python development process is the lack of code reviews. If you browse the bug tracker, you will see that numerous issues have a fix, but cannot be merged into the main source code repository, because no one has reviewed the proposed solution. </p>
 </blockquote>
-<p>Python only have 90 reviewers, I used to think large companies like Google and Apple who are using python would donate a lot of money to The Python Software Foundation. The reality is python maintainers didn’t get pay for their work. I need money just like others, <strong>but I also like to work with people who enthusiasm with open source projects and do not work for money</strong>. If you also want to work for an open source friendly company, try <a href="www.osjobs.net">Open Source Jobs</a>.</p>
+<p>Python only have 90 reviewers, I used to think large companies like Google and Apple who are using python would donate a lot of money to The Python Software Foundation. However, the reality is python maintainers didn’t get pay for their work. I need money just like others, <strong>but I also like to work with people who enthusiasm with open source projects and do not work for money</strong>. If you also want to work for an open source friendly company, try <a href="www.osjobs.net">Open Source Jobs</a>.</p>
 </li>
 <li><p>learn by contributing and give back to the community</p>
 <p> About two years ago, I asked a question about Scrapy on Stackoverflow. Dimitrios, the author of <strong>Learn Scrapy</strong> gave a <a href="https://stackoverflow.com/questions/38800942/scrapy-i-o-block-when-downloading-files" target="_blank" rel="external">beatuful answer</a>. After answered my last question, He told me:</p>
@@ -68,7 +68,9 @@
 </code></pre><p>They shared the same commit id so it is likely that the comment are correct. I’m not sure, so let’s dive into the code.</p>
 <h5 id="Find-call-stack"><a href="#Find-call-stack" class="headerlink" title="Find call stack"></a>Find call stack</h5><p>I followed the function call stack</p>
 <pre><code># Call stack
-push_async_exit(coroutine) -&gt; _push_exit_callback(coroutine) -&gt; _exit_callbacks.append((is_sync, coroutine))
+_exit_callbacks.append((is_sync, coroutine)) # stack top
+_push_exit_callback(coroutine) 
+push_async_exit(coroutine) # stack bottom
 
 # How AsyncExitStack use _exit_callbacks
 while self._exit_callbacks:
@@ -124,7 +126,7 @@ asyncio.run(main())
 </blockquote>
 <p>I can improve the document after this <strong>useless review.</strong> and I created <a href="https://bugs.python.org/issue34753" target="_blank" rel="external">an issue</a></p>
 <h5 id="I-know-more-about-coroutine-now"><a href="#I-know-more-about-coroutine-now" class="headerlink" title="I know more about coroutine now"></a>I know more about coroutine now</h5><p>Concurrency is a hard topic in python and I want to be an expert in it. I’m kinda moving forward, right? </p>
-<p>See you tomorrow, feel free to leave any suggestions.</p>
+<p>See you tomorrow and feel free to leave any suggestions.</p>
 </div></article></div></section><footer><div class="paginator"><a href="/2017/11/23/Why we never thank open source maintainers/" class="next">NEXT</a></div><div id="disqus_thread"></div><script>var disqus_shortname = 'windsonYang';
 var disqus_identifier = '2018/09/19/Day One/';
 var disqus_title = 'Day 1 - Coroutine or Coroutine Function';
