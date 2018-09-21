@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://windsooon.github.io/"/>
-  <updated>2018-09-21T03:28:09.217Z</updated>
+  <updated>2018-09-21T16:19:52.538Z</updated>
   <id>https://windsooon.github.io/</id>
   
   <author>
@@ -14,6 +14,71 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Day 2 - Remove redundant overflow checks</title>
+    <link href="https://windsooon.github.io/2018/09/21/Day%20Two/"/>
+    <id>https://windsooon.github.io/2018/09/21/Day Two/</id>
+    <published>2018-09-21T03:49:00.000Z</published>
+    <updated>2018-09-21T16:19:52.538Z</updated>
+    
+    <content type="html">&lt;p&gt;&lt;a href=&quot;../Day One.md&quot;&gt;Day One&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Today I’m going to review &lt;a href=&quot;https://github.com/python/cpython/pull/8757&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;pull_8757&lt;/a&gt;, My selection criteria it’s the PR should be &lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Neither too new or too old&lt;/li&gt;
+&lt;li&gt;Passed most of the tests and been labeled &lt;strong&gt;awaiting review&lt;/strong&gt; &lt;/li&gt;
+&lt;li&gt;I can review it in a day.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&quot;Step-1-discussion&quot;&gt;&lt;a href=&quot;#Step-1-discussion&quot; class=&quot;headerlink&quot; title=&quot;Step 1: discussion&quot;&gt;&lt;/a&gt;Step 1: discussion&lt;/h3&gt;&lt;p&gt;Search the &lt;a href=&quot;https://bugs.python.org/issue34397&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;issue discussion&lt;/a&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Max size of list and tuples is limited by PY_SSIZE_T_MAX / sizeof(PyObject*), so the sum of any two list/tuples sizes always &amp;lt;= PY_SSIZE_T_MAX if sizeof(PyObject*) &amp;gt; 1, which seems true for all supported (existing?) platforms.&lt;br&gt;It means that overflow checks in app1, ins1, list_concat and tupleconcat are redundant and can be safely removed.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;It looks like we overflow checks in app1, ins1, list_concat function.&lt;/p&gt;
+&lt;h3 id=&quot;Step-2-commit-messages-and-files-changed&quot;&gt;&lt;a href=&quot;#Step-2-commit-messages-and-files-changed&quot; class=&quot;headerlink&quot; title=&quot;Step 2: commit messages and files changed&quot;&gt;&lt;/a&gt;Step 2: commit messages and files changed&lt;/h3&gt;&lt;h4 id=&quot;commit-messages&quot;&gt;&lt;a href=&quot;#commit-messages&quot; class=&quot;headerlink&quot; title=&quot;commit messages:&quot;&gt;&lt;/a&gt;commit messages:&lt;/h4&gt;&lt;blockquote&gt;
+&lt;p&gt;Remove redundant overflow checks in list and tuple implementation&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&quot;files-changed&quot;&gt;&lt;a href=&quot;#files-changed&quot; class=&quot;headerlink&quot; title=&quot;files changed:&quot;&gt;&lt;/a&gt;files changed:&lt;/h4&gt;&lt;p&gt;&lt;img src=&quot;&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;I’mo familiar with C, it’s kinda uncomfortable to understand code familiar with. But this is also a good way to learn c in a real project. This PR replace &lt;strong&gt;PY_SSIZE_T_MAX&lt;/strong&gt; to &lt;strong&gt;PY_SSIZE_T_MAX / sizeof(PyObject*)&lt;/strong&gt;, let’s dive into the code.&lt;/p&gt;
+&lt;h3 id=&quot;Step-3-dive-into-the-code&quot;&gt;&lt;a href=&quot;#Step-3-dive-into-the-code&quot; class=&quot;headerlink&quot; title=&quot;Step 3: dive into the code&quot;&gt;&lt;/a&gt;Step 3: dive into the code&lt;/h3&gt;&lt;h5 id=&quot;Search-context&quot;&gt;&lt;a href=&quot;#Search-context&quot; class=&quot;headerlink&quot; title=&quot;Search context&quot;&gt;&lt;/a&gt;Search context&lt;/h5&gt;&lt;p&gt;The changed locate at &lt;a href=&quot;https://github.com/python/cpython/blob/2fc46979b8c802675ca7fd51c6f2108a305001c8/Objects/listobject.c#L255&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;function ins1&lt;/a&gt; which lack of comments.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;ins1(PyListObject *self, Py_ssize_t where, PyObject *v)
+{
+    Py_ssize_t i, n = Py_SIZE(self);
+    ...
+    /* Check the list is full
+    if (n == PY_SSIZE_T_MAX) {    
+        PyErr_SetString(PyExc_OverflowError,    
+            &amp;quot;cannot add more objects to list&amp;quot;);    
+        return -1;    
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;After I search the call stack, we use this method to insert item in a list. A example in Python:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;lst = []
+# We will call function ins1
+lst.insert(10, 0)
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;The code raise an error if n == PY_SSIZE_T_MAX. So I did some search on &lt;a href=&quot;https://stackoverflow.com/questions/42777725/how-can-we-access-py-ssize-t-max-value-from-python&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;PY_SSIZE_T_MAX&lt;/a&gt; which led me to &lt;a href=&quot;https://docs.python.org/3/library/sys.html#sys.maxsize&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;sys.maxsize&lt;/a&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;An integer giving the maximum value a variable of type Py_ssize_t can take. It’s usually 2**31 - 1 on a 32-bit platform and 2**63 - 1 on a 64-bit platform.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;And &lt;a href=&quot;https://docs.python.org/3/c-api/structures.html#c.PyObject&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;PyObject&lt;/a&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;All object types are extensions of this type. This is a type which contains the information Python needs to treat a pointer to an object as an object. In a normal “release” build, it contains only the object’s reference count and a pointer to the corresponding type object. Nothing is actually declared to be a PyObject, but every pointer to a Python object can be cast to a PyObject*. Access to the members must be done by using the macros Py_REFCNT and Py_TYPE.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Now I have some basic knowlegde about it, let’s move forward.&lt;/p&gt;
+&lt;p&gt;PY_SSIZE_T_MAX / sizeof(PyObject *)&lt;/p&gt;
+&lt;p&gt;So if the list already full, we raise an error. it looks correct. it take me an hour to find out what size_t mean.&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;a href=&quot;../Day One.md&quot;&gt;Day One&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Today I’m going to review &lt;a href=&quot;https://github.com/python/cpython/pull/8757&quot; target=&quot;_blank
+    
+    </summary>
+    
+    
+      <category term="python open source" scheme="https://windsooon.github.io/tags/python-open-source/"/>
+    
+  </entry>
   
   <entry>
     <title>Day 1 - Coroutine or Coroutine Function</title>
