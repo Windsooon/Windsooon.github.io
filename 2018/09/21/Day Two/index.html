@@ -14,7 +14,7 @@
 <h3 id="Step-2-commit-messages-and-files-changed"><a href="#Step-2-commit-messages-and-files-changed" class="headerlink" title="Step 2: commit messages and files changed"></a>Step 2: commit messages and files changed</h3><h4 id="commit-messages"><a href="#commit-messages" class="headerlink" title="commit messages:"></a>commit messages:</h4><blockquote>
 <p>Remove redundant overflow checks in list and tuple implementation</p>
 </blockquote>
-<h4 id="files-changed"><a href="#files-changed" class="headerlink" title="files changed:"></a>files changed:</h4><p><img src="" alt=""></p>
+<h4 id="files-changed"><a href="#files-changed" class="headerlink" title="files changed:"></a>files changed:</h4><p><img src="https://raw.githubusercontent.com/Windsooon/blog/master/imgs/30days/day2_pull_8757.png" alt="pull_8757"></p>
 <p>I’mo familiar with C, it’s kinda uncomfortable to review code I’m not familiar with. However, this is also a good way to learn c in a real project, right? let’s dive into the code.</p>
 <h3 id="Step-3-dive-into-the-code"><a href="#Step-3-dive-into-the-code" class="headerlink" title="Step 3: dive into the code"></a>Step 3: dive into the code</h3><h5 id="Search-context"><a href="#Search-context" class="headerlink" title="Search context"></a>Search context</h5><p>The changed locate at <a href="https://github.com/python/cpython/blob/2fc46979b8c802675ca7fd51c6f2108a305001c8/Objects/listobject.c#L255" target="_blank" rel="external">function ins1</a> which lack of comments.</p>
 <pre><code>ins1(PyListObject *self, Py_ssize_t where, PyObject *v)
@@ -49,7 +49,7 @@ if (new_allocated &gt; (size_t)PY_SSIZE_T_MAX / sizeof(PyObject *)) {
 </blockquote>
 <p>I don’t know why we use siez_t here, so I asked at <a href="https://python.zulipchat.com/#narrow/stream/116742-core.2Fhelp/topic/pull_8757" target="_blank" rel="external">python.zulipchat</a>, Ammar Askar gave me a great answer. So, after that, I left some comments on the <a href="https://github.com/python/cpython/pull/8757/files#diff-cde4fb3109c243b2c2badb10eeab7fcd" target="_blank" rel="external">PR</a>, I suggested to keep the error messages add some edit.</p>
 <h3 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h3><p>I’m not afraid of C that much, I reviewed the C syntax and I found it’s much easier than I learned before, I also found another challenge for myself, find the difference of sys.max, PY_SSIZE_T_MAX and SIZE_MAX.</p>
-</div></article></div></section><footer><div class="paginator"><a href="/2018/09/19/Day One/" class="next">NEXT</a></div><div id="disqus_thread"></div><script>var disqus_shortname = 'windsonYang';
+</div></article></div></section><footer><div class="paginator"><a href="/2018/09/22/Day Three/" class="prev">PREV</a><a href="/2018/09/19/Day One/" class="next">NEXT</a></div><div id="disqus_thread"></div><script>var disqus_shortname = 'windsonYang';
 var disqus_identifier = '2018/09/21/Day Two/';
 var disqus_title = 'Day 2 - Remove redundant overflow checks';
 var disqus_url = 'https://windsooon.github.io/2018/09/21/Day Two/';

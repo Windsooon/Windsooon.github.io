@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://windsooon.github.io/"/>
-  <updated>2018-09-22T03:42:25.048Z</updated>
+  <updated>2018-09-22T07:56:51.829Z</updated>
   <id>https://windsooon.github.io/</id>
   
   <author>
@@ -16,11 +16,50 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Day 3 -  Skip deleted attributes while calling reset_mock</title>
+    <link href="https://windsooon.github.io/2018/09/22/Day%20Three/"/>
+    <id>https://windsooon.github.io/2018/09/22/Day Three/</id>
+    <published>2018-09-22T07:51:00.000Z</published>
+    <updated>2018-09-22T07:56:51.829Z</updated>
+    
+    <content type="html">&lt;p&gt;&lt;a href=&quot;http://windsooon.github.io/2018/09/19/Day%20One/&quot;&gt;Day One: Coroutine or Coroutine Function&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://windsooon.github.io/2018/09/19/Day%20Two/&quot;&gt;Day Two: Remove redundant overflow checks&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Today I’m going to review &lt;a href=&quot;https://github.com/python/cpython/pull/9302&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;pull_9302&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;Step-1-discussion&quot;&gt;&lt;a href=&quot;#Step-1-discussion&quot; class=&quot;headerlink&quot; title=&quot;Step 1: discussion&quot;&gt;&lt;/a&gt;Step 1: discussion&lt;/h3&gt;&lt;blockquote&gt;
+&lt;p&gt;When using a mock and deleting a attribute reset_mock cannot be used anymore since it tries to call reset_mock on the _deleted sentinel value.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;pre&gt;&lt;code&gt;from unittest.mock import MagicMock
+mock = MagicMock()
+mock.a = &amp;apos;test&amp;apos;
+del mock.a
+mock.reset_mock()
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Gives:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Traceback (most recent call last):
+  File &amp;quot;&amp;lt;stdin&amp;gt;&amp;quot;, line 1, in &amp;lt;module&amp;gt;
+  File &amp;quot;/usr/lib/python3.5/unittest/mock.py&amp;quot;, line 544, in reset_mock
+    child.reset_mock(visited)
+AttributeError: &amp;apos;_SentinelObject&amp;apos; object has no attribute &amp;apos;reset_mock&amp;apos;
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;Step-2-commit-messages-and-files-changed&quot;&gt;&lt;a href=&quot;#Step-2-commit-messages-and-files-changed&quot; class=&quot;headerlink&quot; title=&quot;Step 2: commit messages and files changed&quot;&gt;&lt;/a&gt;Step 2: commit messages and files changed&lt;/h3&gt;&lt;h4 id=&quot;commit-messages&quot;&gt;&lt;a href=&quot;#commit-messages&quot; class=&quot;headerlink&quot; title=&quot;commit messages:&quot;&gt;&lt;/a&gt;commit messages:&lt;/h4&gt;&lt;blockquote&gt;
+&lt;p&gt;Skip deleted attributes while calling reset_mock&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&quot;files-changed&quot;&gt;&lt;a href=&quot;#files-changed&quot; class=&quot;headerlink&quot; title=&quot;files changed:&quot;&gt;&lt;/a&gt;files changed:&lt;/h4&gt;</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;a href=&quot;http://windsooon.github.io/2018/09/19/Day%20One/&quot;&gt;Day One: Coroutine or Coroutine Function&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://windsooon.gith
+    
+    </summary>
+    
+    
+      <category term="python open source" scheme="https://windsooon.github.io/tags/python-open-source/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Day 2 - Remove redundant overflow checks</title>
     <link href="https://windsooon.github.io/2018/09/21/Day%20Two/"/>
     <id>https://windsooon.github.io/2018/09/21/Day Two/</id>
     <published>2018-09-21T03:49:00.000Z</published>
-    <updated>2018-09-22T03:42:25.048Z</updated>
+    <updated>2018-09-22T08:00:04.229Z</updated>
     
     <content type="html">&lt;p&gt;&lt;a href=&quot;http://windsooon.github.io/2018/09/19/Day%20One/&quot;&gt;Day One: Coroutine or Coroutine Function&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Today I’m going to review &lt;a href=&quot;https://github.com/python/cpython/pull/8757&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;pull_8757&lt;/a&gt;, My selection criteria it’s the PR should be &lt;/p&gt;
@@ -38,7 +77,7 @@
 &lt;h3 id=&quot;Step-2-commit-messages-and-files-changed&quot;&gt;&lt;a href=&quot;#Step-2-commit-messages-and-files-changed&quot; class=&quot;headerlink&quot; title=&quot;Step 2: commit messages and files changed&quot;&gt;&lt;/a&gt;Step 2: commit messages and files changed&lt;/h3&gt;&lt;h4 id=&quot;commit-messages&quot;&gt;&lt;a href=&quot;#commit-messages&quot; class=&quot;headerlink&quot; title=&quot;commit messages:&quot;&gt;&lt;/a&gt;commit messages:&lt;/h4&gt;&lt;blockquote&gt;
 &lt;p&gt;Remove redundant overflow checks in list and tuple implementation&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;h4 id=&quot;files-changed&quot;&gt;&lt;a href=&quot;#files-changed&quot; class=&quot;headerlink&quot; title=&quot;files changed:&quot;&gt;&lt;/a&gt;files changed:&lt;/h4&gt;&lt;p&gt;&lt;img src=&quot;&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h4 id=&quot;files-changed&quot;&gt;&lt;a href=&quot;#files-changed&quot; class=&quot;headerlink&quot; title=&quot;files changed:&quot;&gt;&lt;/a&gt;files changed:&lt;/h4&gt;&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/Windsooon/blog/master/imgs/30days/day2_pull_8757.png&quot; alt=&quot;pull_8757&quot;&gt;&lt;/p&gt;
 &lt;p&gt;I’mo familiar with C, it’s kinda uncomfortable to review code I’m not familiar with. However, this is also a good way to learn c in a real project, right? let’s dive into the code.&lt;/p&gt;
 &lt;h3 id=&quot;Step-3-dive-into-the-code&quot;&gt;&lt;a href=&quot;#Step-3-dive-into-the-code&quot; class=&quot;headerlink&quot; title=&quot;Step 3: dive into the code&quot;&gt;&lt;/a&gt;Step 3: dive into the code&lt;/h3&gt;&lt;h5 id=&quot;Search-context&quot;&gt;&lt;a href=&quot;#Search-context&quot; class=&quot;headerlink&quot; title=&quot;Search context&quot;&gt;&lt;/a&gt;Search context&lt;/h5&gt;&lt;p&gt;The changed locate at &lt;a href=&quot;https://github.com/python/cpython/blob/2fc46979b8c802675ca7fd51c6f2108a305001c8/Objects/listobject.c#L255&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;function ins1&lt;/a&gt; which lack of comments.&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;ins1(PyListObject *self, Py_ssize_t where, PyObject *v)
