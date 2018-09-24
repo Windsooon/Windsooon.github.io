@@ -17,7 +17,31 @@ AttributeError: &apos;_SentinelObject&apos; object has no attribute &apos;reset_
 </code></pre><h3 id="Step-2-commit-messages-and-files-changed"><a href="#Step-2-commit-messages-and-files-changed" class="headerlink" title="Step 2: commit messages and files changed"></a>Step 2: commit messages and files changed</h3><h4 id="commit-messages"><a href="#commit-messages" class="headerlink" title="commit messages:"></a>commit messages:</h4><blockquote>
 <p>Skip deleted attributes while calling reset_mock</p>
 </blockquote>
-<h4 id="files-changed"><a href="#files-changed" class="headerlink" title="files changed:"></a>files changed:</h4></div></article></div></section><footer><div class="paginator"><a href="/2018/09/21/Day Two/" class="next">NEXT</a></div><div id="disqus_thread"></div><script>var disqus_shortname = 'windsonYang';
+<h4 id="files-changed"><a href="#files-changed" class="headerlink" title="files changed:"></a>files changed:</h4><p><img src="" alt=""></p>
+<p>The PR add a or statment and some test cases, let’s move to next step.</p>
+<h3 id="Step-3-dive-into-the-code"><a href="#Step-3-dive-into-the-code" class="headerlink" title="Step 3: dive into the code"></a>Step 3: dive into the code</h3><pre><code>def reset_mock(self,  visited=None,*, return_value=False, side_effect=False):
+    &quot;Restore the mock object to its initial state.&quot;
+    ...
+
+    for child in self._mock_children.values():
+        if isinstance(child, _SpecState):
+            continue
+        child.reset_mock(visited)
+
+    ret = self._mock_return_value
+    if _is_instance_mock(ret) and ret is not self:
+        ret.reset_mock(visited)
+</code></pre><blockquote>
+<p>reset_mock(*, return_value=False, side_effect=False)<br>The reset_mock method resets all the call attributes on a mock object:</p>
+<blockquote>
+<p>&gt;</p>
+<blockquote>
+<p>mock = Mock(return_value=None)<br>mock(‘hello’)<br>mock.called<br>    True<br>mock.reset_mock()<br>mock.called<br>    False</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>I used [unittest.mock] couple of times but I never use reset_mock() featuer, It’s time to walk through the document.</p>
+</div></article></div></section><footer><div class="paginator"><a href="/2018/09/21/Day Two/" class="next">NEXT</a></div><div id="disqus_thread"></div><script>var disqus_shortname = 'windsonYang';
 var disqus_identifier = '2018/09/22/Day Three/';
 var disqus_title = 'Day 3 -  Skip deleted attributes while calling reset_mock';
 var disqus_url = 'https://windsooon.github.io/2018/09/22/Day Three/';
