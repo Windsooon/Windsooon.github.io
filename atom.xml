@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://windsooon.github.io/"/>
-  <updated>2018-09-25T13:58:19.887Z</updated>
+  <updated>2018-09-25T16:45:45.338Z</updated>
   <id>https://windsooon.github.io/</id>
   
   <author>
@@ -20,25 +20,24 @@
     <link href="https://windsooon.github.io/2018/09/25/Why%20we%20should%20hire%20open%20source%20contributors/"/>
     <id>https://windsooon.github.io/2018/09/25/Why we should hire open source contributors/</id>
     <published>2018-09-25T13:57:00.000Z</published>
-    <updated>2018-09-25T13:58:19.887Z</updated>
+    <updated>2018-09-25T16:45:45.338Z</updated>
     
-    <content type="html">&lt;p&gt;### &lt;/p&gt;
-&lt;p&gt;I launched &lt;a href=&quot;www.osjobs.net&quot;&gt;Open Source Jobs&lt;/a&gt; a week ago to let enterprises hire open source contributors, I try to explain why I’m doing this.&lt;/p&gt;
-&lt;h2 id=&quot;Hiring-is-really-hard&quot;&gt;&lt;a href=&quot;#Hiring-is-really-hard&quot; class=&quot;headerlink&quot; title=&quot;Hiring is really hard&quot;&gt;&lt;/a&gt;Hiring is really hard&lt;/h2&gt;&lt;h3 id=&quot;Suitable-candidates-are-hard-to-find&quot;&gt;&lt;a href=&quot;#Suitable-candidates-are-hard-to-find&quot; class=&quot;headerlink&quot; title=&quot;Suitable candidates are hard to find&quot;&gt;&lt;/a&gt;Suitable candidates are hard to find&lt;/h3&gt;&lt;p&gt;I spent 2.5 years in a startup as a software engineer, we have 15 engineers and we proud of our products. Like other companies does, we desire to hire the best engineers. However, in the last two years, &lt;strong&gt;we only received 3 resumes from the top schools and 2 resumes from the top companies&lt;/strong&gt;, and we know why.&lt;/p&gt;
+    <content type="html">&lt;p&gt;I launched &lt;a href=&quot;https://www.osjobs.net&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Open Source Jobs&lt;/a&gt; a week ago to let enterprises hire open source contributors, why I’m doing this?&lt;/p&gt;
+&lt;h3 id=&quot;Hiring-is-really-hard&quot;&gt;&lt;a href=&quot;#Hiring-is-really-hard&quot; class=&quot;headerlink&quot; title=&quot;Hiring is really hard&quot;&gt;&lt;/a&gt;Hiring is really hard&lt;/h3&gt;&lt;h4 id=&quot;Suitable-candidates-are-hard-to-find&quot;&gt;&lt;a href=&quot;#Suitable-candidates-are-hard-to-find&quot; class=&quot;headerlink&quot; title=&quot;Suitable candidates are hard to find&quot;&gt;&lt;/a&gt;Suitable candidates are hard to find&lt;/h4&gt;&lt;p&gt;I spent 2.5 years in a startup as a software engineer, we have 15 engineers and we proud of our products. Like other companies, we desire to hire the best engineers. But hiring is really hard, I remember a popular article in &lt;a href=&quot;https://danluu.com/programmer-moneyball/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;HN&lt;/a&gt;, the article quoted from &lt;a href=&quot;https://news.ycombinator.com/item?id=11290662&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Thomas Ptacek&lt;/a&gt;:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;My experience is that running a hiring process that lights up only on the kind of talent that qualifies itself with a standard tech interview is ludicrously expensive. People that do well in standard tech interviews can work anywhere they want. If you can only hire those people, you are competing for talent with the wealthiest (or most overfunded) tech companies in the market.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;In the last two years, &lt;strong&gt;we only received 3 resumes from top schools and 2 resumes from top companies&lt;/strong&gt;, we know why.&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;Strong background candidates prefer to work for a big enterprise instead of a startup.&lt;/li&gt;
 &lt;li&gt;We can’t offer a better salary/benefits than the big enterprise.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;It reminds me of a popular article in &lt;a href=&quot;https://danluu.com/programmer-moneyball/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;HN&lt;/a&gt;, the article quoted from &lt;a href=&quot;https://news.ycombinator.com/item?id=11290662&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Thomas Ptacek&lt;/a&gt;:&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;My experience is that running a hiring process that lights up only on the kind of talent that qualifies itself with a standard tech interview is ludicrously expensive. People that do well in standard tech interviews can work anywhere they want. If you can only hire those people, you are competing for talent with the wealthiest (or most overfunded) tech companies in the market.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;For a startup, it’s easy to lose in this competition. &lt;/p&gt;
-&lt;h3 id=&quot;It’s-hard-to-judge-candidates-in-several-rounds-interview&quot;&gt;&lt;a href=&quot;#It’s-hard-to-judge-candidates-in-several-rounds-interview&quot; class=&quot;headerlink&quot; title=&quot;It’s hard to judge candidates in several rounds interview&quot;&gt;&lt;/a&gt;It’s hard to judge candidates in several rounds interview&lt;/h3&gt;&lt;p&gt;Enterprises spend lots of time and money to interview the candidates. In my point of view, lots of enterprises did it wrong. &lt;strong&gt;We wouldn’t hire a mathematician by asking them to solve a definite integral, but the enterprises try to find the talents by asking them to solve some kind of Leetcode problems.&lt;/strong&gt; I’ve been searching for a job for the last month, I cracked around 130 Leetcode problems and I can always found the same Leetcode problem show up on the online assessment. Some enterprises claim that they want to hire a creative programmer but they can’t even come up with a creative question, I feel tired to solved this kind of problem again and again. What they really found are the candidates who are good at tech interview and willing to spend two months on Leetcode. Are they great programmers? Yes, some of them. &lt;/p&gt;
+&lt;p&gt;It’s easy to lose in this competition. &lt;/p&gt;
+&lt;h4 id=&quot;It’s-hard-to-judge-candidates-in-several-rounds-interview&quot;&gt;&lt;a href=&quot;#It’s-hard-to-judge-candidates-in-several-rounds-interview&quot; class=&quot;headerlink&quot; title=&quot;It’s hard to judge candidates in several rounds interview&quot;&gt;&lt;/a&gt;It’s hard to judge candidates in several rounds interview&lt;/h4&gt;&lt;p&gt;Enterprises spend lots of time and money to interview candidates. In my point of view, lots of enterprises did it wrong. &lt;strong&gt;We wouldn’t hire a mathematician by asking them to solve a definite integral, but enterprises try to find talents by asking them to solve Leetcode problems.&lt;/strong&gt; I’ve been searching for a job for the last month, I cracked around 130 Leetcode problems and I can always found a original Leetcode problem on the online assessment. Some enterprises claim that they want to hire a creative programmer but they can’t even come up with a creative question, I tired of solving this kind of problem again and again. What they really want are the candidates who are good at tech interview and willing to spend two months on Leetcode. Are they great programmers? Yes, some of them. &lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/Windsooon/blog/master/imgs/osjobs/great_programmers.png&quot; alt=&quot;great_programmers&quot;&gt;&lt;/p&gt;
-&lt;p&gt;The enterprises miss quite a lot of great programmers, right? Most importantly, even we spend so much time and money in the tech interview, we still don’t know much about the candidate. A resume and tech interview wouldn’t tell us the candidate’s coding skills (unless it’s open source) as well as teamwork. Can the candidate have a good conversation with other engineers? Can the candidate be a good mentor? We don’t know because we never work with them on real projects.&lt;/p&gt;
-&lt;p&gt;Some companies prefer internal referral instead. But I can always find engineers would like to refer me even we don’t know each other before. I understand why this happened, the referrer would get a bonus once the candidates get hired. On the other hand, the candidates can get a job easier because of the referrer, a win-win situation, right? No, since they never work together, the referrer can only judge the candidates by their resumes. This kind of internal referral happened everywhere and it only turns the engineers to an HR, instead of saving any time to interview the candidates.&lt;/p&gt;
-&lt;h3 id=&quot;So-What-should-we-do&quot;&gt;&lt;a href=&quot;#So-What-should-we-do&quot; class=&quot;headerlink&quot; title=&quot;So, What should we do&quot;&gt;&lt;/a&gt;So, What should we do&lt;/h3&gt;&lt;p&gt;Forget about the top school or top company, let’s recap what kind of engineers we are really looking for:&lt;/p&gt;
+&lt;p&gt;Most importantly, even we spend so much time and money in the tech interview, we still don’t know much about the candidate. A resume and tech interview wouldn’t tell us the candidate’s coding skills (unless it’s open source) as well as teamwork ability. Can the candidate have a good conversation with other engineers? Can the candidate be a good mentor? We don’t know because we never work with them on a real project.&lt;/p&gt;
+&lt;p&gt;How about internal referral? I can always find engineers would like to refer me even we don’t know each other before. I understand why this happened, the referrer would get a bonus once the candidate get hired. On the other hand, the candidate can get the job easier, a win-win situation? No, since they never work together, the referrer can only judge the candidates by their resumes. Therefore, this kind of internal referral has nothing to do with hire a great programmer but only turns the engineers into HR.&lt;/p&gt;
+&lt;h4 id=&quot;So-What-should-we-do&quot;&gt;&lt;a href=&quot;#So-What-should-we-do&quot; class=&quot;headerlink&quot; title=&quot;So, What should we do&quot;&gt;&lt;/a&gt;So, What should we do&lt;/h4&gt;&lt;p&gt;Forget about the top school or top company, let’s recap what kind of engineers we are really looking for:&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;People are curious, empathetic and creative.&lt;/li&gt;
 &lt;li&gt;People can code, love to code and understand data structure or system design.&lt;/li&gt;
@@ -46,43 +45,42 @@
 &lt;li&gt;People value open communication and good teamwork.&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;Are we talking about open source contributors? Yes.&lt;/p&gt;
-&lt;h2 id=&quot;Hire-an-open-source-contributors&quot;&gt;&lt;a href=&quot;#Hire-an-open-source-contributors&quot; class=&quot;headerlink&quot; title=&quot;Hire an open source contributors&quot;&gt;&lt;/a&gt;Hire an open source contributors&lt;/h2&gt;&lt;blockquote&gt;
+&lt;h3 id=&quot;Hire-an-open-source-contributors&quot;&gt;&lt;a href=&quot;#Hire-an-open-source-contributors&quot; class=&quot;headerlink&quot; title=&quot;Hire an open source contributors&quot;&gt;&lt;/a&gt;Hire an open source contributors&lt;/h3&gt;&lt;blockquote&gt;
 &lt;p&gt;HR: “What kind of open source contributors we are talking about?”&lt;/p&gt;
 &lt;p&gt;Me: “Every programmer contributors to an open source project that your company is using.”&lt;/p&gt;
 &lt;p&gt;HR: “But there are some contributors just did some document work or even fix a typo!”&lt;/p&gt;
-&lt;p&gt;Me: “If fix a typo is so easy, we would have 7000 contributors instead of &lt;a href=&quot;https://github.com/python/cpython/graphs/contributors&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;700 in the CPython repo&lt;/a&gt;.”&lt;/p&gt;
-&lt;p&gt;HR: “But I can do that in 20 minutes, I don’t even know how to code!”&lt;/p&gt;
-&lt;p&gt;Me: “Welcome to the Python Software Foundation, :D.  &lt;strong&gt;Most of the core developers of large projects never available on the market.&lt;/strong&gt; So we should focus on the contributors who are underrated but have potencial to become a core developer one day. What’s more, when more and more people contribute to the project, it will be much harder to find a typo to fix. So the new contributors have to move forward and work for other topics which is more advanced.”&lt;/p&gt;
-&lt;p&gt;HR: “Tell me more about why we should hire them?”&lt;/p&gt;
+&lt;p&gt;Me: “If fix a typo is that easy, we would have 7000 contributors instead of &lt;a href=&quot;https://github.com/python/cpython/graphs/contributors&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;700 in the CPython repo&lt;/a&gt;.”&lt;/p&gt;
+&lt;p&gt;HR: “I can do that in 20 minutes, but I don’t even know how to code!”&lt;/p&gt;
+&lt;p&gt;Me: “Welcome, contributor, lots of us started by fixing a typo, :D.”&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;h3 id=&quot;They-are-easier-to-find&quot;&gt;&lt;a href=&quot;#They-are-easier-to-find&quot; class=&quot;headerlink&quot; title=&quot;They are easier to find&quot;&gt;&lt;/a&gt;They are easier to find&lt;/h3&gt;&lt;p&gt;Instead of waiting for applications, you can search on &lt;a href=&quot;www.osjobs.net&quot;&gt;Open Source Jobs&lt;/a&gt; to find the contributors who are looking for a job. Meanwhile, GitHub is also a good place to search for contributors. If your company is using Django, you can find about 900 contributors &lt;a href=&quot;https://github.com/django/django/blob/master/AUTHORS&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;here&lt;/a&gt;. &lt;a href=&quot;https://insights.stackoverflow.com/survey/2018#work-job-search-status&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Since 59.8 programmers open to new opportunities&lt;/a&gt;, now you have more than 500 potential Django core developers who know Django better than others.&lt;/p&gt;
-&lt;h3 id=&quot;They-are-easier-to-hire&quot;&gt;&lt;a href=&quot;#They-are-easier-to-hire&quot; class=&quot;headerlink&quot; title=&quot;They are easier to hire&quot;&gt;&lt;/a&gt;They are easier to hire&lt;/h3&gt;&lt;p&gt;Sometimes your company can only offer an exciting project instead of a high salary. Luckily, From &lt;a href=&quot;https://www.linuxfoundation.org/publications/2018/06/open-source-jobs-report-2018/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;2018 Open Source Jobs Report - The Linux Foundation&lt;/a&gt;:&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Due to most of the core developers never available on the market,&lt;/strong&gt; we should focus on the contributors who are underrated but have the potential to become a core developer. What’s more, when more and more people contribute to a project, it will be much harder to find a typo to fix. So the new contributor have to work for other topics which are more advanced, what a virtuous circle.&lt;/p&gt;
+&lt;h3 id=&quot;Any-other-reasons&quot;&gt;&lt;a href=&quot;#Any-other-reasons&quot; class=&quot;headerlink&quot; title=&quot;Any other reasons?&quot;&gt;&lt;/a&gt;Any other reasons?&lt;/h3&gt;&lt;h4 id=&quot;Contributors-are-easier-to-find&quot;&gt;&lt;a href=&quot;#Contributors-are-easier-to-find&quot; class=&quot;headerlink&quot; title=&quot;Contributors are easier to find&quot;&gt;&lt;/a&gt;Contributors are easier to find&lt;/h4&gt;&lt;p&gt;Instead of waiting for applications, you can search on &lt;a href=&quot;https://www.osjobs.net&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Open Source Jobs&lt;/a&gt; to find the contributors who are looking for a job. Meanwhile, GitHub is also a good place to search for contributors. If your company is using Django, you can find about 900 contributors &lt;a href=&quot;https://github.com/django/django/blob/master/AUTHORS&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;here&lt;/a&gt;. &lt;a href=&quot;https://insights.stackoverflow.com/survey/2018#work-job-search-status&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Since 59.8 programmers are open to new opportunities&lt;/a&gt;, now you have more than 500 potential Django core developers who know Django better than others.&lt;/p&gt;
+&lt;h4 id=&quot;Contributors-are-easier-to-hire&quot;&gt;&lt;a href=&quot;#Contributors-are-easier-to-hire&quot; class=&quot;headerlink&quot; title=&quot;Contributors are easier to hire&quot;&gt;&lt;/a&gt;Contributors are easier to hire&lt;/h4&gt;&lt;p&gt;Sometimes your company can only offer an exciting project instead of a high salary. Luckily, &lt;a href=&quot;https://www.linuxfoundation.org/publications/2018/06/open-source-jobs-report-2018/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;From 2018 Open Source Jobs Report - The Linux Foundation:&lt;/a&gt;&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Similarly, only 3% said money and perks were the best thing about their jobs, the same as last year.  Thirty percent cited the ability to work on interesting projects, collaborate with a global community (19%) and the opportunity to work on the most cuttingedge technology challenges (16%). These numbers are essentially unchanged from 2016 and 2017.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/Windsooon/blog/master/imgs/osjobs/moving_jobs.png&quot; alt=&quot;moving_jobs&quot;&gt;&lt;/p&gt;
-&lt;p&gt;Most contributors contribute just because they love the project. They are likely to join a project/company they love for a long term. As a startup, you should &lt;/p&gt;
+&lt;p&gt;Most contributors contribute just because they love the project. Once an enterprise&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Build an open source culture And companies are realizing that supporting open source projects can be a valuable recruiting and retention tool. &lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;h3 id=&quot;They-have-mentors-and-lots-of-friends&quot;&gt;&lt;a href=&quot;#They-have-mentors-and-lots-of-friends&quot; class=&quot;headerlink&quot; title=&quot;They have mentors and lots of friends&quot;&gt;&lt;/a&gt;They have mentors and lots of friends&lt;/h3&gt;&lt;p&gt;Another post &lt;a href=&quot;&quot;&gt;Who Killed The Junior Developer?&lt;/a&gt; points out:&lt;/p&gt;
+&lt;p&gt;Contributors are likely to join it for a long term.&lt;/p&gt;
+&lt;h4 id=&quot;Contributors-have-mentors-and-lots-of-friends&quot;&gt;&lt;a href=&quot;#Contributors-have-mentors-and-lots-of-friends&quot; class=&quot;headerlink&quot; title=&quot;Contributors have mentors and lots of friends&quot;&gt;&lt;/a&gt;Contributors have mentors and lots of friends&lt;/h4&gt;&lt;p&gt;Another post &lt;a href=&quot;https://medium.com/@melissamcewen/who-killed-the-junior-developer-33e9da2dc58c&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Who Killed The Junior Developer?&lt;/a&gt; points out:&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;But I know what companies have told me: “we don’t hire junior developers because we can’t afford to have our senior developers mentor them.”&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;7 months later, anything changed? No, we can only found one junior developer position in &lt;a href=&quot;https://news.ycombinator.com/item?id=17902901&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Ask HN: Who is hiring? (September 2018)&lt;/a&gt;. How to save the junior developer? My answer is, &lt;strong&gt;Ask them to become an open source contributor, then hire them.&lt;/strong&gt; Datalogue even proposes &lt;a href=&quot;https://medium.com/datalogue/open-source-hiring-84df05fdb357&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;a new way to hire&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;7 months later, anything changed? No, we can only found one junior developer position in &lt;a href=&quot;https://news.ycombinator.com/item?id=17902901&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Ask HN: Who is hiring? (September 2018)&lt;/a&gt;. How to save the junior developers? My answer is, &lt;strong&gt;ask them to become an open source contributor, then hire them.&lt;/strong&gt; &lt;/p&gt;
+&lt;p&gt;I begin contributing to CPython a few months ago, I learned a lot from the Python Software Foundation and I really appreciate their work. &lt;a href=&quot;https://github.com/python/cpython/pull/9035&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;I even discussed a document issue with Guido&lt;/a&gt; which only happens because I contribute to CPython. How much does it cost if a company ask Guido to mentor their developers, I don’t know. However, as long as I contribute to CPython, they will still be my mentors. &lt;strong&gt;Every programmer can find great mentors in the open source community when the company don’t need to pay a penny for it.&lt;/strong&gt; What’s more, contributors can really refer some great programmers to join the company because they really worked with the candidates. Datalogue proposes &lt;a href=&quot;https://medium.com/datalogue/open-source-hiring-84df05fdb357&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;a new way to hire&lt;/a&gt; which I think is a genius idea.&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Choose an open source project from our list, or that you are passionate about, and meaningfully contribute to it.&lt;/p&gt;
+&lt;p&gt;Choose an open source project from our list, or that you are passionate about, and meaningfully contribute to it.&lt;br&gt;…&lt;br&gt;And, of course we’d love to hire each applicant, but if the candidate doesn’t end up working for us, they aren’t left with a useless coding challenge repo, they are left with a meaningful contribution to a public, open-source project. They build their reputation with the community and have something awesome for their portfolio.&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;They set this challenge to learn what the candidate considers to be a meaningful contribution and how they work with others which is a genius idea.&lt;/p&gt;
-&lt;p&gt;I begin contributed to CPython a few months ago, I learned a lot from the Python Software Foundation and I really appreciate their work. &lt;a href=&quot;https://github.com/python/cpython/pull/9035&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;I even discussed a document issue with Guido&lt;/a&gt; which only happens because I contribute to CPython. How much does a company cost if they ask Guido to mentor their developers, I don’t know, however, as long as I contribute to CPython, they will still be my mentors. &lt;strong&gt;Every programmer can find great mentors in the open source community when the company don’t need to pay a penny for it.&lt;/strong&gt; What’s more, contributors can really refer some great programmers to join the company because they really worked with the candidates.&lt;/p&gt;
-&lt;h3 id=&quot;They-are-nice&quot;&gt;&lt;a href=&quot;#They-are-nice&quot; class=&quot;headerlink&quot; title=&quot;They are nice&quot;&gt;&lt;/a&gt;They are nice&lt;/h3&gt;&lt;p&gt;When the first time I applied for a job at the US, The company asked me to fill in an Equal Opportunity Employment Information form which I never saw before in my country. I don’t know does it works well. But open source contributors doing this every day. They mentor and discuss the issues no matter who you are and where you are. they wouldn’t blame me if I make a mistake or ask a silly question.&lt;/p&gt;
-&lt;h2 id=&quot;Conclusion&quot;&gt;&lt;a href=&quot;#Conclusion&quot; class=&quot;headerlink&quot; title=&quot;Conclusion&quot;&gt;&lt;/a&gt;Conclusion&lt;/h2&gt;&lt;p&gt;As a junior developer, you should contributor to an open source project. Add contributions near your GitHub URL because most HR wouldn’t click into your GitHub.&lt;br&gt;You can also hire open source contributors at &lt;a href=&quot;www.osjobs.net&quot;&gt;Open Source Jobs&lt;/a&gt; or hire me at &lt;a href=&quot;https://github.com/Windsooon&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;GitHub&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;learn what the candidate considers to be a meaningful contribution and how they work with others&lt;/strong&gt; is much more important then solve some Leetcode problems.&lt;/p&gt;
+&lt;h3 id=&quot;Conclusion&quot;&gt;&lt;a href=&quot;#Conclusion&quot; class=&quot;headerlink&quot; title=&quot;Conclusion&quot;&gt;&lt;/a&gt;Conclusion&lt;/h3&gt;&lt;p&gt;As a junior developer, you should contributor to an open source project you passionate with.&lt;br&gt;As a enterprise, you can hire open source contributors at &lt;a href=&quot;https://www.osjobs.net&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Open Source Jobs&lt;/a&gt; or hire me at &lt;a href=&quot;https://github.com/Windsooon&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;GitHub&lt;/a&gt;&lt;/p&gt;
 </content>
     
     <summary type="html">
     
-      &lt;p&gt;### &lt;/p&gt;
-&lt;p&gt;I launched &lt;a href=&quot;www.osjobs.net&quot;&gt;Open Source Jobs&lt;/a&gt; a week ago to let enterprises hire open source contributors, I try t
+      &lt;p&gt;I launched &lt;a href=&quot;https://www.osjobs.net&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Open Source Jobs&lt;/a&gt; a week ago to let enterprises hire open s
     
     </summary>
     
@@ -96,12 +94,12 @@
     <link href="https://windsooon.github.io/2018/09/22/Day%20Three/"/>
     <id>https://windsooon.github.io/2018/09/22/Day Three/</id>
     <published>2018-09-22T07:51:00.000Z</published>
-    <updated>2018-09-25T14:00:32.701Z</updated>
+    <updated>2018-10-08T11:54:27.431Z</updated>
     
     <content type="html">&lt;p&gt;&lt;a href=&quot;http://windsooon.github.io/2018/09/19/Day%20One/&quot;&gt;Day One: Coroutine or Coroutine Function&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://windsooon.github.io/2018/09/19/Day%20Two/&quot;&gt;Day Two: Remove redundant overflow checks&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Today I’m going to review &lt;a href=&quot;https://github.com/python/cpython/pull/9302&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;pull_9302&lt;/a&gt;&lt;/p&gt;
 &lt;h3 id=&quot;Step-1-discussion&quot;&gt;&lt;a href=&quot;#Step-1-discussion&quot; class=&quot;headerlink&quot; title=&quot;Step 1: discussion&quot;&gt;&lt;/a&gt;Step 1: discussion&lt;/h3&gt;&lt;blockquote&gt;
-&lt;p&gt;When using a mock and deleting a attribute reset_mock cannot be used anymore since it tries to call reset_mock on the _deleted sentinel value.&lt;/p&gt;
+&lt;p&gt;When using a mock and deleting an attribute reset_mock cannot be used anymore since it tries to call reset_mock on the _deleted sentinel value.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;pre&gt;&lt;code&gt;from unittest.mock import MagicMock
 mock = MagicMock()
@@ -118,7 +116,7 @@ AttributeError: &amp;apos;_SentinelObject&amp;apos; object has no attribute &amp
 &lt;p&gt;Skip deleted attributes while calling reset_mock&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h4 id=&quot;files-changed&quot;&gt;&lt;a href=&quot;#files-changed&quot; class=&quot;headerlink&quot; title=&quot;files changed:&quot;&gt;&lt;/a&gt;files changed:&lt;/h4&gt;&lt;p&gt;&lt;img src=&quot;&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;The PR add a or statment and some test cases, let’s move to next step.&lt;/p&gt;
+&lt;p&gt;So what actually reset_mock do?&lt;/p&gt;
 &lt;h3 id=&quot;Step-3-dive-into-the-code&quot;&gt;&lt;a href=&quot;#Step-3-dive-into-the-code&quot; class=&quot;headerlink&quot; title=&quot;Step 3: dive into the code&quot;&gt;&lt;/a&gt;Step 3: dive into the code&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;def reset_mock(self,  visited=None,*, return_value=False, side_effect=False):
     &amp;quot;Restore the mock object to its initial state.&amp;quot;
     ...
@@ -140,7 +138,40 @@ AttributeError: &amp;apos;_SentinelObject&amp;apos; object has no attribute &amp
 &lt;/blockquote&gt;
 &lt;/blockquote&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;I used [unittest.mock] couple of times but I never use reset_mock() featuer, It’s time to walk through the document.&lt;/p&gt;
+&lt;h3 id=&quot;Step-4-Fixed-it&quot;&gt;&lt;a href=&quot;#Step-4-Fixed-it&quot; class=&quot;headerlink&quot; title=&quot;Step 4: Fixed it&quot;&gt;&lt;/a&gt;Step 4: Fixed it&lt;/h3&gt;&lt;p&gt;But why we use _deleted instead of None? The PR propose a fix. Before understanding the fix, we have to understand Mock and Sentinel in python. &lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Mock and MagicMock objects create all attributes and methods as you access them and store details of how they have been used. You can configure them, to specify return values or limit what attributes are available, and then make assertions about how they have been used:&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;And from &lt;a href=&quot;https://www.revsys.com/tidbits/sentinel-values-python/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Sentinel&lt;/a&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Sometimes it is necessary to differentiate between an argument that has not been provided, and an argument provided with the value None. For that purpose, we create what’s called a ‘sentinel value’.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;We implement _SentinelObject class:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;class _SentinelObject(object):
+    &amp;quot;A unique, named, sentinel object.&amp;quot;
+    def __init__(self, name):
+        self.name = name
+
+    def __repr__(self):
+        return &amp;apos;sentinel.%s&amp;apos; % self.name
+
+    def __reduce__(self):
+        return &amp;apos;sentinel.%s&amp;apos; % self.name
+
+...
+sentinel = _Sentinel()
+
+DEFAULT = sentinel.DEFAULT
+_missing = sentinel.MISSING
+_deleted = sentinel.DELETED
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;After we delete an attr in the code, child become sentinel.DELETED instead of None. So I propose a better test case:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;def test_attribute_deletion_reset_mock(self):
+    mock = Mock()
+    mock.attr = &amp;apos;test&amp;apos;
+    del mock.attr
+    mock.reset_mock()
+    self.assertFalse(hasattr(mock, &amp;apos;attr&amp;apos;))
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;Conclusion&quot;&gt;&lt;a href=&quot;#Conclusion&quot; class=&quot;headerlink&quot; title=&quot;Conclusion&quot;&gt;&lt;/a&gt;Conclusion&lt;/h3&gt;&lt;p&gt;Instead of review PR every day, I found that write topic article depends on the pr/issue would be more helpful to readers. That is what I’m going to do next.&lt;/p&gt;
 </content>
     
     <summary type="html">
@@ -159,7 +190,7 @@ AttributeError: &amp;apos;_SentinelObject&amp;apos; object has no attribute &amp
     <link href="https://windsooon.github.io/2018/09/21/Day%20Two/"/>
     <id>https://windsooon.github.io/2018/09/21/Day Two/</id>
     <published>2018-09-21T03:49:00.000Z</published>
-    <updated>2018-09-25T14:00:30.144Z</updated>
+    <updated>2018-09-25T14:02:55.061Z</updated>
     
     <content type="html">&lt;p&gt;&lt;a href=&quot;http://windsooon.github.io/2018/09/19/Day%20One/&quot;&gt;Day One: Coroutine or Coroutine Function&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Today I’m going to review &lt;a href=&quot;https://github.com/python/cpython/pull/8757&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;pull_8757&lt;/a&gt;, My selection criteria it’s the PR should be &lt;/p&gt;
@@ -231,7 +262,7 @@ if (new_allocated &amp;gt; (size_t)PY_SSIZE_T_MAX / sizeof(PyObject *)) {
     <link href="https://windsooon.github.io/2018/09/19/Day%20One/"/>
     <id>https://windsooon.github.io/2018/09/19/Day One/</id>
     <published>2018-09-19T12:57:00.000Z</published>
-    <updated>2018-09-25T14:00:26.280Z</updated>
+    <updated>2018-09-25T14:13:10.677Z</updated>
     
     <content type="html">&lt;p&gt;I’m going to Review 30 &lt;a href=&quot;https://github.com/python/cpython/pulls&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;python pull requests&lt;/a&gt; in 30 days (In these series, python=cpython).&lt;/p&gt;
 &lt;h3 id=&quot;Why&quot;&gt;&lt;a href=&quot;#Why&quot; class=&quot;headerlink&quot; title=&quot;Why?&quot;&gt;&lt;/a&gt;Why?&lt;/h3&gt;&lt;ol&gt;

@@ -1,7 +1,7 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> Day 3 -  Skip deleted attributes while calling reset_mock · Tech blog of Unicooo</title><meta name="description" content="Day 3 -  Skip deleted attributes while calling reset_mock - Unicooo"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="short icon" href="/favicon.png"><link rel="stylesheet" href="/css/apollo.css"></head><body><div id="mask" style="display: none;"><img id="mask-image" src="#" style=" "></div><div class="wrap"><header><a href="/" class="logo-link"><img src="/favicon.png"></a><ul class="nav nav-list"><li class="nav-list-item"><a href="https://www.enginego.org" target="_blank" class="nav-list-link">编程基础</a></li><li class="nav-list-item"><a href="https://github.com/Windsooon" target="_blank" class="nav-list-link">GITHUB</a></li></ul></header><section class="container"><div class="post"><article class="post-block"><h1 class="post-title">Day 3 -  Skip deleted attributes while calling reset_mock</h1><div class="post-time">Sep 22, 2018</div><div class="post-content"><p><a href="http://windsooon.github.io/2018/09/19/Day%20One/">Day One: Coroutine or Coroutine Function</a><br><a href="http://windsooon.github.io/2018/09/19/Day%20Two/">Day Two: Remove redundant overflow checks</a></p>
 <p>Today I’m going to review <a href="https://github.com/python/cpython/pull/9302" target="_blank" rel="external">pull_9302</a></p>
 <h3 id="Step-1-discussion"><a href="#Step-1-discussion" class="headerlink" title="Step 1: discussion"></a>Step 1: discussion</h3><blockquote>
-<p>When using a mock and deleting a attribute reset_mock cannot be used anymore since it tries to call reset_mock on the _deleted sentinel value.</p>
+<p>When using a mock and deleting an attribute reset_mock cannot be used anymore since it tries to call reset_mock on the _deleted sentinel value.</p>
 </blockquote>
 <pre><code>from unittest.mock import MagicMock
 mock = MagicMock()
@@ -18,7 +18,7 @@ AttributeError: &apos;_SentinelObject&apos; object has no attribute &apos;reset_
 <p>Skip deleted attributes while calling reset_mock</p>
 </blockquote>
 <h4 id="files-changed"><a href="#files-changed" class="headerlink" title="files changed:"></a>files changed:</h4><p><img src="" alt=""></p>
-<p>The PR add a or statment and some test cases, let’s move to next step.</p>
+<p>So what actually reset_mock do?</p>
 <h3 id="Step-3-dive-into-the-code"><a href="#Step-3-dive-into-the-code" class="headerlink" title="Step 3: dive into the code"></a>Step 3: dive into the code</h3><pre><code>def reset_mock(self,  visited=None,*, return_value=False, side_effect=False):
     &quot;Restore the mock object to its initial state.&quot;
     ...
@@ -40,7 +40,40 @@ AttributeError: &apos;_SentinelObject&apos; object has no attribute &apos;reset_
 </blockquote>
 </blockquote>
 </blockquote>
-<p>I used [unittest.mock] couple of times but I never use reset_mock() featuer, It’s time to walk through the document.</p>
+<h3 id="Step-4-Fixed-it"><a href="#Step-4-Fixed-it" class="headerlink" title="Step 4: Fixed it"></a>Step 4: Fixed it</h3><p>But why we use _deleted instead of None? The PR propose a fix. Before understanding the fix, we have to understand Mock and Sentinel in python. </p>
+<blockquote>
+<p>Mock and MagicMock objects create all attributes and methods as you access them and store details of how they have been used. You can configure them, to specify return values or limit what attributes are available, and then make assertions about how they have been used:</p>
+</blockquote>
+<p>And from <a href="https://www.revsys.com/tidbits/sentinel-values-python/" target="_blank" rel="external">Sentinel</a></p>
+<blockquote>
+<p>Sometimes it is necessary to differentiate between an argument that has not been provided, and an argument provided with the value None. For that purpose, we create what’s called a ‘sentinel value’.</p>
+</blockquote>
+<p>We implement _SentinelObject class:</p>
+<pre><code>class _SentinelObject(object):
+    &quot;A unique, named, sentinel object.&quot;
+    def __init__(self, name):
+        self.name = name
+
+    def __repr__(self):
+        return &apos;sentinel.%s&apos; % self.name
+
+    def __reduce__(self):
+        return &apos;sentinel.%s&apos; % self.name
+
+...
+sentinel = _Sentinel()
+
+DEFAULT = sentinel.DEFAULT
+_missing = sentinel.MISSING
+_deleted = sentinel.DELETED
+</code></pre><p>After we delete an attr in the code, child become sentinel.DELETED instead of None. So I propose a better test case:</p>
+<pre><code>def test_attribute_deletion_reset_mock(self):
+    mock = Mock()
+    mock.attr = &apos;test&apos;
+    del mock.attr
+    mock.reset_mock()
+    self.assertFalse(hasattr(mock, &apos;attr&apos;))
+</code></pre><h3 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h3><p>Instead of review PR every day, I found that write topic article depends on the pr/issue would be more helpful to readers. That is what I’m going to do next.</p>
 </div></article></div></section><footer><div class="paginator"><a href="/2018/09/25/Why we should hire open source contributors/" class="prev">PREV</a><a href="/2018/09/21/Day Two/" class="next">NEXT</a></div><div id="disqus_thread"></div><script>var disqus_shortname = 'windsonYang';
 var disqus_identifier = '2018/09/22/Day Three/';
 var disqus_title = 'Day 3 -  Skip deleted attributes while calling reset_mock';
