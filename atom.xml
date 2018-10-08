@@ -94,7 +94,7 @@
     <link href="https://windsooon.github.io/2018/09/22/Day%20Three/"/>
     <id>https://windsooon.github.io/2018/09/22/Day Three/</id>
     <published>2018-09-22T07:51:00.000Z</published>
-    <updated>2018-10-08T11:54:27.431Z</updated>
+    <updated>2018-10-08T12:02:31.071Z</updated>
     
     <content type="html">&lt;p&gt;&lt;a href=&quot;http://windsooon.github.io/2018/09/19/Day%20One/&quot;&gt;Day One: Coroutine or Coroutine Function&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://windsooon.github.io/2018/09/19/Day%20Two/&quot;&gt;Day Two: Remove redundant overflow checks&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Today I’m going to review &lt;a href=&quot;https://github.com/python/cpython/pull/9302&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;pull_9302&lt;/a&gt;&lt;/p&gt;
@@ -115,7 +115,7 @@ AttributeError: &amp;apos;_SentinelObject&amp;apos; object has no attribute &amp
 &lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;Step-2-commit-messages-and-files-changed&quot;&gt;&lt;a href=&quot;#Step-2-commit-messages-and-files-changed&quot; class=&quot;headerlink&quot; title=&quot;Step 2: commit messages and files changed&quot;&gt;&lt;/a&gt;Step 2: commit messages and files changed&lt;/h3&gt;&lt;h4 id=&quot;commit-messages&quot;&gt;&lt;a href=&quot;#commit-messages&quot; class=&quot;headerlink&quot; title=&quot;commit messages:&quot;&gt;&lt;/a&gt;commit messages:&lt;/h4&gt;&lt;blockquote&gt;
 &lt;p&gt;Skip deleted attributes while calling reset_mock&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;h4 id=&quot;files-changed&quot;&gt;&lt;a href=&quot;#files-changed&quot; class=&quot;headerlink&quot; title=&quot;files changed:&quot;&gt;&lt;/a&gt;files changed:&lt;/h4&gt;&lt;p&gt;&lt;img src=&quot;&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h4 id=&quot;files-changed&quot;&gt;&lt;a href=&quot;#files-changed&quot; class=&quot;headerlink&quot; title=&quot;files changed:&quot;&gt;&lt;/a&gt;files changed:&lt;/h4&gt;&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/Windsooon/blog/master/imgs/30days/day2_pull_9302.png&quot; alt=&quot;pull_9302&quot;&gt;&lt;/p&gt;
 &lt;p&gt;So what actually reset_mock do?&lt;/p&gt;
 &lt;h3 id=&quot;Step-3-dive-into-the-code&quot;&gt;&lt;a href=&quot;#Step-3-dive-into-the-code&quot; class=&quot;headerlink&quot; title=&quot;Step 3: dive into the code&quot;&gt;&lt;/a&gt;Step 3: dive into the code&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;def reset_mock(self,  visited=None,*, return_value=False, side_effect=False):
     &amp;quot;Restore the mock object to its initial state.&amp;quot;
