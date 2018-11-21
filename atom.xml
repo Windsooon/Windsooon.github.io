@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://windsooon.github.io/"/>
-  <updated>2018-09-25T16:45:45.338Z</updated>
+  <updated>2018-09-25T16:45:45.339Z</updated>
   <id>https://windsooon.github.io/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="https://windsooon.github.io/2018/09/25/Why%20we%20should%20hire%20open%20source%20contributors/"/>
     <id>https://windsooon.github.io/2018/09/25/Why we should hire open source contributors/</id>
     <published>2018-09-25T13:57:00.000Z</published>
-    <updated>2018-09-25T16:45:45.338Z</updated>
+    <updated>2018-09-25T16:45:45.339Z</updated>
     
     <content type="html">&lt;p&gt;I launched &lt;a href=&quot;https://www.osjobs.net&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Open Source Jobs&lt;/a&gt; a week ago to let enterprises hire open source contributors, why I’m doing this?&lt;/p&gt;
 &lt;h3 id=&quot;Hiring-is-really-hard&quot;&gt;&lt;a href=&quot;#Hiring-is-really-hard&quot; class=&quot;headerlink&quot; title=&quot;Hiring is really hard&quot;&gt;&lt;/a&gt;Hiring is really hard&lt;/h3&gt;&lt;h4 id=&quot;Suitable-candidates-are-hard-to-find&quot;&gt;&lt;a href=&quot;#Suitable-candidates-are-hard-to-find&quot; class=&quot;headerlink&quot; title=&quot;Suitable candidates are hard to find&quot;&gt;&lt;/a&gt;Suitable candidates are hard to find&lt;/h4&gt;&lt;p&gt;I spent 2.5 years in a startup as a software engineer, we have 15 engineers and we proud of our products. Like other companies, we desire to hire the best engineers. But hiring is really hard, I remember a popular article in &lt;a href=&quot;https://danluu.com/programmer-moneyball/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;HN&lt;/a&gt;, the article quoted from &lt;a href=&quot;https://news.ycombinator.com/item?id=11290662&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Thomas Ptacek&lt;/a&gt;:&lt;/p&gt;
@@ -90,14 +90,13 @@
   </entry>
   
   <entry>
-    <title>Day 3 -  Skip deleted attributes while calling reset_mock</title>
-    <link href="https://windsooon.github.io/2018/09/22/Day%20Three/"/>
-    <id>https://windsooon.github.io/2018/09/22/Day Three/</id>
+    <title>Skip deleted attributes while calling reset_mock</title>
+    <link href="https://windsooon.github.io/2018/09/22/Skip%20deleted%20attributes/"/>
+    <id>https://windsooon.github.io/2018/09/22/Skip deleted attributes/</id>
     <published>2018-09-22T07:51:00.000Z</published>
-    <updated>2018-10-08T12:04:24.082Z</updated>
+    <updated>2018-11-21T11:02:32.515Z</updated>
     
-    <content type="html">&lt;p&gt;&lt;a href=&quot;http://windsooon.github.io/2018/09/19/Day%20One/&quot;&gt;Day One: Coroutine or Coroutine Function&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://windsooon.github.io/2018/09/19/Day%20Two/&quot;&gt;Day Two: Remove redundant overflow checks&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;Today I’m going to review &lt;a href=&quot;https://github.com/python/cpython/pull/9302&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;pull_9302&lt;/a&gt;&lt;/p&gt;
+    <content type="html">&lt;p&gt;Today I’m going to review &lt;a href=&quot;https://github.com/python/cpython/pull/9302&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;pull_9302&lt;/a&gt;&lt;/p&gt;
 &lt;h3 id=&quot;Step-1-discussion&quot;&gt;&lt;a href=&quot;#Step-1-discussion&quot; class=&quot;headerlink&quot; title=&quot;Step 1: discussion&quot;&gt;&lt;/a&gt;Step 1: discussion&lt;/h3&gt;&lt;blockquote&gt;
 &lt;p&gt;When using a mock and deleting an attribute reset_mock cannot be used anymore since it tries to call reset_mock on the _deleted sentinel value.&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -176,7 +175,8 @@ _deleted = sentinel.DELETED
     
     <summary type="html">
     
-      &lt;p&gt;&lt;a href=&quot;http://windsooon.github.io/2018/09/19/Day%20One/&quot;&gt;Day One: Coroutine or Coroutine Function&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://windsooon.gith
+      &lt;p&gt;Today I’m going to review &lt;a href=&quot;https://github.com/python/cpython/pull/9302&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;pull_9302&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;
     
     </summary>
     
@@ -186,11 +186,11 @@ _deleted = sentinel.DELETED
   </entry>
   
   <entry>
-    <title>Day 2 - Remove redundant overflow checks</title>
-    <link href="https://windsooon.github.io/2018/09/21/Day%20Two/"/>
-    <id>https://windsooon.github.io/2018/09/21/Day Two/</id>
+    <title>Remove redundant overflow checks</title>
+    <link href="https://windsooon.github.io/2018/09/21/Remove%20redundant%20overflow%20checks/"/>
+    <id>https://windsooon.github.io/2018/09/21/Remove redundant overflow checks/</id>
     <published>2018-09-21T03:49:00.000Z</published>
-    <updated>2018-09-25T14:02:55.061Z</updated>
+    <updated>2018-11-21T11:01:31.156Z</updated>
     
     <content type="html">&lt;p&gt;&lt;a href=&quot;http://windsooon.github.io/2018/09/19/Day%20One/&quot;&gt;Day One: Coroutine or Coroutine Function&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Today I’m going to review &lt;a href=&quot;https://github.com/python/cpython/pull/8757&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;pull_8757&lt;/a&gt;, My selection criteria it’s the PR should be &lt;/p&gt;
@@ -258,14 +258,13 @@ if (new_allocated &amp;gt; (size_t)PY_SSIZE_T_MAX / sizeof(PyObject *)) {
   </entry>
   
   <entry>
-    <title>Day 1 - Coroutine or Coroutine Function</title>
-    <link href="https://windsooon.github.io/2018/09/19/Day%20One/"/>
-    <id>https://windsooon.github.io/2018/09/19/Day One/</id>
+    <title>Coroutine or Coroutine Function</title>
+    <link href="https://windsooon.github.io/2018/09/19/Coroutine%20or%20Coroutine%20Function/"/>
+    <id>https://windsooon.github.io/2018/09/19/Coroutine or Coroutine Function/</id>
     <published>2018-09-19T12:57:00.000Z</published>
-    <updated>2018-09-25T14:13:10.677Z</updated>
+    <updated>2018-11-21T11:01:06.773Z</updated>
     
-    <content type="html">&lt;p&gt;I’m going to Review 30 &lt;a href=&quot;https://github.com/python/cpython/pulls&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;python pull requests&lt;/a&gt; in 30 days (In these series, python=cpython).&lt;/p&gt;
-&lt;h3 id=&quot;Why&quot;&gt;&lt;a href=&quot;#Why&quot; class=&quot;headerlink&quot; title=&quot;Why?&quot;&gt;&lt;/a&gt;Why?&lt;/h3&gt;&lt;ol&gt;
+    <content type="html">&lt;h3 id=&quot;Why-Review&quot;&gt;&lt;a href=&quot;#Why-Review&quot; class=&quot;headerlink&quot; title=&quot;Why Review?&quot;&gt;&lt;/a&gt;Why Review?&lt;/h3&gt;&lt;ol&gt;
 &lt;li&gt;&lt;p&gt;Python need reviewers&lt;/p&gt;
 &lt;p&gt; &lt;a href=&quot;https://devguide.python.org/pullrequest/#how-to-review-a-pull-request&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;developer guide&lt;/a&gt; points out:&lt;/p&gt;
 &lt;blockquote&gt;
@@ -390,12 +389,13 @@ asyncio.run(main())
 &lt;/blockquote&gt;
 &lt;p&gt;I can improve the document after this &lt;strong&gt;useless review.&lt;/strong&gt; and I created &lt;a href=&quot;https://bugs.python.org/issue34753&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;an issue&lt;/a&gt;&lt;/p&gt;
 &lt;h5 id=&quot;I-know-more-about-coroutine-now&quot;&gt;&lt;a href=&quot;#I-know-more-about-coroutine-now&quot; class=&quot;headerlink&quot; title=&quot;I know more about coroutine now&quot;&gt;&lt;/a&gt;I know more about coroutine now&lt;/h5&gt;&lt;p&gt;Concurrency is a hard topic in python and I want to be an expert in it. I’m kinda moving forward, right? &lt;/p&gt;
-&lt;p&gt;See you tomorrow and feel free to leave any suggestions.&lt;/p&gt;
 </content>
     
     <summary type="html">
     
-      &lt;p&gt;I’m going to Review 30 &lt;a href=&quot;https://github.com/python/cpython/pulls&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;python pull requests&lt;/a&gt; in 30 da
+      &lt;h3 id=&quot;Why-Review&quot;&gt;&lt;a href=&quot;#Why-Review&quot; class=&quot;headerlink&quot; title=&quot;Why Review?&quot;&gt;&lt;/a&gt;Why Review?&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;Python need reviewers&lt;/p&gt;
+&lt;
     
     </summary>
     
@@ -621,7 +621,7 @@ Facebook | Web-developer | Zurich
     <link href="https://windsooon.github.io/2017/06/14/How%20to%20use%20selenium%20with%20docker/"/>
     <id>https://windsooon.github.io/2017/06/14/How to use selenium with docker/</id>
     <published>2017-06-14T12:39:00.000Z</published>
-    <updated>2018-09-25T14:00:17.238Z</updated>
+    <updated>2018-09-25T14:00:17.239Z</updated>
     
     <content type="html">&lt;h3 id=&quot;TL-DR&quot;&gt;&lt;a href=&quot;#TL-DR&quot; class=&quot;headerlink&quot; title=&quot;TL;DR&quot;&gt;&lt;/a&gt;TL;DR&lt;/h3&gt;&lt;p&gt;Use &lt;a href=&quot;https://github.com/zalando/zalenium&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;zalenium&lt;/a&gt;(for video recording) or &lt;a href=&quot;https://github.com/SeleniumHQ/docker-selenium&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;docker-selenium&lt;/a&gt;, follow the docs, pay attantion to&lt;/p&gt;
 &lt;ul&gt;
