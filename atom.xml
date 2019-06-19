@@ -136,11 +136,11 @@ f.read(10)
   </entry>
   
   <entry>
-    <title>Let&#39;s talk about Newton&#39;s method</title>
+    <title>Let&#39;s talk about Newton&#39;s method (to be finished)</title>
     <link href="https://windsooon.github.io/2019/04/19/Let's%20talk%20about%20Newton's%20method/"/>
     <id>https://windsooon.github.io/2019/04/19/Let's talk about Newton's method/</id>
     <published>2019-04-19T12:57:00.000Z</published>
-    <updated>2019-04-30T05:43:58.787Z</updated>
+    <updated>2019-06-19T05:33:04.514Z</updated>
     
     <content type="html">&lt;h3 id=&quot;Basic&quot;&gt;&lt;a href=&quot;#Basic&quot; class=&quot;headerlink&quot; title=&quot;Basic&quot;&gt;&lt;/a&gt;Basic&lt;/h3&gt;&lt;p&gt;When I try to &lt;a href=&quot;https://leetcode.com/Windson/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;solve some Leetcode questions&lt;/a&gt; like &lt;a href=&quot;https://leetcode.com/problems/valid-perfect-square/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Valid Perfect Square&lt;/a&gt; and &lt;a href=&quot;https://leetcode.com/problems/sqrtx/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Sqrt(x)&lt;/a&gt; I found some discuss mention about Newton’s method. We use this method to find the root of a equation close enough. I guess I learned that in my college but I totally forgot. In this article I will explain it in the hard way.&lt;/p&gt;
 &lt;h3 id=&quot;What-Newton’s-method-for&quot;&gt;&lt;a href=&quot;#What-Newton’s-method-for&quot; class=&quot;headerlink&quot; title=&quot;What Newton’s method for&quot;&gt;&lt;/a&gt;What Newton’s method for&lt;/h3&gt;&lt;p&gt;When we want to solve an equation, sometimes it’s very find the answer. For instance, &lt;code&gt;y = x - 6&lt;/code&gt;, you can see when x equal to 6, we can get the expect answer. Sometims it’s kinda hard. &lt;code&gt;y = x*x - x - 10&lt;/code&gt;, you can still use formula to find the answer. But sometims pretty hard like &lt;code&gt;x*x*x*x - 3*x*x + 10&lt;/code&gt;. Ususally we can use binary search to find the approximated answer which it is quite useful, we all know that binary search is not that easy to write it correctly. &lt;/p&gt;
@@ -621,6 +621,40 @@ asyncio.run(main())
   </entry>
   
   <entry>
+    <title>How to make Python GIL better</title>
+    <link href="https://windsooon.github.io/2017/07/16/Everything%20you%20should%20know%20about%20GIL/"/>
+    <id>https://windsooon.github.io/2017/07/16/Everything you should know about GIL/</id>
+    <published>2017-07-16T12:00:00.000Z</published>
+    <updated>2019-05-20T14:57:42.411Z</updated>
+    
+    <content type="html">&lt;ol&gt;
+&lt;li&gt;How os system schele work&lt;/li&gt;
+&lt;li&gt;Now with GIL&lt;/li&gt;
+&lt;li&gt;multicore&lt;/li&gt;
+&lt;li&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;I assume you know what is GIL in python and some basic knowledgt to use the python threadding module. If you don’t, you may have a look at the article here. Let’s recap the os system&lt;/p&gt;
+&lt;h3 id=&quot;How-os-system-schele-work&quot;&gt;&lt;a href=&quot;#How-os-system-schele-work&quot; class=&quot;headerlink&quot; title=&quot;How os system schele work&quot;&gt;&lt;/a&gt;How os system schele work&lt;/h3&gt;&lt;p&gt;It’s not a easy topic, we speed quite a long time to search for a prefect scheduling policy. Since Linux 2.6.23, the default scheduler is CFS. What is CFS and why we need it? &lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;ol&gt;
+&lt;li&gt;How os system schele work&lt;/li&gt;
+&lt;li&gt;Now with GIL&lt;/li&gt;
+&lt;li&gt;multicore&lt;/li&gt;
+&lt;li&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;I assume you know what is GIL in python 
+    
+    </summary>
+    
+    
+      <category term="GIL Python" scheme="https://windsooon.github.io/tags/GIL-Python/"/>
+    
+  </entry>
+  
+  <entry>
     <title>How to make it to Product Hunt front page in 2 weeks</title>
     <link href="https://windsooon.github.io/2017/07/16/How%20to%20make%20it%20to%20Product%20Hunt%20front%20page%20in%202%20weeks/"/>
     <id>https://windsooon.github.io/2017/07/16/How to make it to Product Hunt front page in 2 weeks/</id>
@@ -758,40 +792,6 @@ Facebook | Web-developer | Zurich
     
     
       <category term="mvp django side-project" scheme="https://windsooon.github.io/tags/mvp-django-side-project/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>How to make Python GIL better</title>
-    <link href="https://windsooon.github.io/2017/07/16/Everything%20you%20should%20know%20about%20GIL/"/>
-    <id>https://windsooon.github.io/2017/07/16/Everything you should know about GIL/</id>
-    <published>2017-07-16T12:00:00.000Z</published>
-    <updated>2019-05-20T14:57:42.411Z</updated>
-    
-    <content type="html">&lt;ol&gt;
-&lt;li&gt;How os system schele work&lt;/li&gt;
-&lt;li&gt;Now with GIL&lt;/li&gt;
-&lt;li&gt;multicore&lt;/li&gt;
-&lt;li&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;I assume you know what is GIL in python and some basic knowledgt to use the python threadding module. If you don’t, you may have a look at the article here. Let’s recap the os system&lt;/p&gt;
-&lt;h3 id=&quot;How-os-system-schele-work&quot;&gt;&lt;a href=&quot;#How-os-system-schele-work&quot; class=&quot;headerlink&quot; title=&quot;How os system schele work&quot;&gt;&lt;/a&gt;How os system schele work&lt;/h3&gt;&lt;p&gt;It’s not a easy topic, we speed quite a long time to search for a prefect scheduling policy. Since Linux 2.6.23, the default scheduler is CFS. What is CFS and why we need it? &lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;ol&gt;
-&lt;li&gt;How os system schele work&lt;/li&gt;
-&lt;li&gt;Now with GIL&lt;/li&gt;
-&lt;li&gt;multicore&lt;/li&gt;
-&lt;li&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;I assume you know what is GIL in python 
-    
-    </summary>
-    
-    
-      <category term="GIL Python" scheme="https://windsooon.github.io/tags/GIL-Python/"/>
     
   </entry>
   
