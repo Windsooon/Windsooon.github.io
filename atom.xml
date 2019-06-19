@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://windsooon.github.io/"/>
-  <updated>2018-09-25T16:45:45.339Z</updated>
+  <updated>2019-06-19T05:27:24.055Z</updated>
   <id>https://windsooon.github.io/</id>
   
   <author>
@@ -14,6 +14,151 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>A crash course in cache (to be finished)</title>
+    <link href="https://windsooon.github.io/2019/06/13/Read,%20Write,%20Cache%20in%20Python/"/>
+    <id>https://windsooon.github.io/2019/06/13/Read, Write, Cache in Python/</id>
+    <published>2019-06-13T12:57:00.000Z</published>
+    <updated>2019-06-19T05:27:24.055Z</updated>
+    
+    <content type="html">&lt;h3 id=&quot;Different-level-of-Caches&quot;&gt;&lt;a href=&quot;#Different-level-of-Caches&quot; class=&quot;headerlink&quot; title=&quot;Different level of Caches&quot;&gt;&lt;/a&gt;Different level of Caches&lt;/h3&gt;&lt;p&gt;Even though the computer &lt;a href=&quot;https://computers-are-fast.github.io/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;run much faster&lt;/a&gt; then we expected nowadays, &lt;a href=&quot;https://gist.github.com/jboner/2841832#file-latency-txt&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;the speed between the different components are still very large&lt;/a&gt;. To solve this problem, we introduce different levels of caches. After access the data from storage, we store the most used (temporal locality) and the nearby data (spatial locality) in the current lever so we can aceesee them directly later. The term &lt;strong&gt;storage&lt;/strong&gt; here is relative. For example, main memory is a storage to CPU cache, and the disk is a storage to main memory. When running a program, it may reach several levels of caches. Let’s look closer to it:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;abc.jpg&quot; alt=&quot;cache_level&quot;&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;CPU cache&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;CPU built a pyramid-like cache architecture, each of them keeps a small piece of data and instructions in it.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;abc.jpg&quot; alt=&quot;cpu_cache&quot;&gt;&lt;/p&gt;
+&lt;p&gt;Every data or instruction form different kinds of applications may cache by the CPU cache which programmers can’t control. For more details, you may have a look at &lt;a href=&quot;https://www.extremetech.com/extreme/188776-how-l1-and-l2-cpu-caches-work-and-why-theyre-an-essential-part-of-modern-chips&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;How L1 and L2 CPU Caches Work&lt;/a&gt;.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;User cache&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Generally speaking, User cache is the most used cache form programmers. When we use a hashmap or dictionary to store some data for future use. User cache comes to our eyes. Here is a Python example to use cache or not for calculating the nth Fibonacci numbers:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# code without cache
+def fibonacci(n):
+    if n &amp;lt;= 1:
+        return n
+    return fibonacci(n-2) + fibonacci(n-1)
+
+# code with cache
+dic = {}
+def fibonacci(n):
+    if n in dic:
+        return dic[n]
+    if n &amp;lt;= 1:
+        return n
+    dic[n] = fibonacci(n-2) + fibonacci(n-1)
+    return dic[n]
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;With the help of the User cache, the time complexity of this problem drop from O(2**n) to O(n) which save a huge of time when n is large.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Program languages cache&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Since calling system call like read() or write() repeatedly in user space is expensive, some program languages try to avoid this by keeping a small piece of cache inside. The I/O module in Python use a small buffer (8 &lt;em&gt; 1024 bytes by default) to store some temporary data. When we try to read some data from &lt;/em&gt;f* using:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# Python code
+f.read(10)
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Python will search the data from its read buffer to see if the data already in it before calling a raw system call read(), we will show more details in the later capter.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;OS cache&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Disk I/O may be the slowest part of our computer. Therefore, after access the data from the disk, the OS system will keep the hotspot data (Which its size is dynamic) in main memory (In Linux, it called Page cache). Moreover, we can use a mechanism called virtual memory to swap this data to disk temporary if not enough main memory is available now.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Linux supports virtual memory, that is, using a disk as an extension of RAM so that the effective size of usable memory grows correspondingly. The kernel will write the contents of a currently unused block of memory to the hard disk so that the memory can be used for another purpose. When the original contents are needed again, they are read back into memory&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;Disk buffer&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Disk also has its &lt;a href=&quot;https://en.wikipedia.org/wiki/Disk_buffer&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;own way&lt;/a&gt; to speed up. Even though we use fsync() in our code, it doesn’t mean the data already written to the disk safely.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Calling fsync() does not necessarily ensure that the entry in the&lt;br&gt;directory containing the file has also reached disk.  For that an&lt;br&gt;explicit fsync() on a file descriptor for the directory is also&lt;br&gt;needed.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;Different-kind-of-caches-lookup&quot;&gt;&lt;a href=&quot;#Different-kind-of-caches-lookup&quot; class=&quot;headerlink&quot; title=&quot;Different kind of caches lookup&quot;&gt;&lt;/a&gt;Different kind of caches lookup&lt;/h3&gt;&lt;p&gt;The data search policy in cache is quite straightforward. We search the data from the top to the bottom. Let’s dive into the deep to see how a computer actually looks up the data in the cache. There is three popular way to do this nowadays. &lt;strong&gt;Set Associative, Fully Associative and Direct Mapped&lt;/strong&gt;. Luckily, the last two just a special case of Set Associative (Direct Mapped ≈ 1-way set Associative, Fully Associative ≈ N-way set associative). Here is a small 256 bytes cache which divides by four lines, every line contains 64 bytes (We call it 2-way 2 set associative because we have 2 sets and each set contains 2 lines in the cache).&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;abc.img&quot; alt=&quot;cache_size&quot;&gt;&lt;/p&gt;
+&lt;p&gt;When we want to read data from OxFF01 (Ob1111111100000001 in binary), First we divide the address into a different part&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;abc.img&quot; alt=&quot;address&quot;&gt;&lt;/p&gt;
+&lt;p&gt;The first part is the &lt;strong&gt;tag number&lt;/strong&gt;, every line in the cache also has its own tag number, when the tag number in the address matches the one in the cache, that means we found the correct address to read/write data. The second part is &lt;strong&gt;set index&lt;/strong&gt; used to identify which set the address belongs to. The last part is the &lt;strong&gt;data offset&lt;/strong&gt; in the line. The search policy is quite simple:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Search the set in the cache depend on the address’s set index ( which is 0 in this case).&lt;/li&gt;
+&lt;li&gt;Search if the tag number in the lines belongs to the set. If yes, (in our case cache hit) return the data depends on data offset. If no, cache miss.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;We used a 2-way 2 sets associative in this example, Can we do better than it? Well, first let’s imagine, if we only use one set for the cache. &lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;abc.img&quot; alt=&quot;one_set&quot;&gt;&lt;/p&gt;
+&lt;p&gt;we have to compare the tag number in each line from the top to bottom which would be slow in large cache. This is how Fully Associative works. Second, it looks like the search would be faster with more and more set. How about we create n set which n equals to the number of lines.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;abc.img&quot; alt=&quot;n_set&quot;&gt;&lt;/p&gt;
+&lt;p&gt;Great idea! This leads us to Direct Mapped, Direct Mapped is the quickest way to search data in the cache. However, there is a problem here, as we know, the cache is always smaller than the storage. If the storage is 10 times bigger than the cache. 10 locations in the storage will map to the same location. When we write data to the location, there is a high probability that we have to overwrite other useful data which map to the same lines. The problem will get worse when the storage is much bigger than the cache. &lt;/p&gt;
+&lt;p&gt;Set associative is a tradeoff, Set associative use multiple sets to narrow the search range, in the example, When we use 4 sets, we can do a search inside the set 0 which would be 4 times faster then Fully Associative. When we write the data to the cache, we can just write the data to the same set reduce conflict.&lt;/p&gt;
+&lt;h3 id=&quot;Cache-Policy&quot;&gt;&lt;a href=&quot;#Cache-Policy&quot; class=&quot;headerlink&quot; title=&quot;Cache Policy&quot;&gt;&lt;/a&gt;Cache Policy&lt;/h3&gt;&lt;p&gt;When we found the data in the cache, we call it cache hit, otherwise cache miss. The computer also has to decide what should do after a cache miss.&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;x&lt;/th&gt;
+&lt;th style=&quot;text-align:left&quot;&gt;cache miss&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;Read through&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;read data from storage, update the cache, return data to caller&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Write through&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;write data to the cache and the storange&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Write Around&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;write data to the storage directly&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Write back&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;writes data to the cache, marking them as dirty, after some delay, it writes the data back to the storange&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id=&quot;Cache-in-Python-I-O&quot;&gt;&lt;a href=&quot;#Cache-in-Python-I-O&quot; class=&quot;headerlink&quot; title=&quot;Cache in Python I/O&quot;&gt;&lt;/a&gt;Cache in Python I/O&lt;/h3&gt;&lt;p&gt;Python has three main types of I/O: text I/O, binary I/O and raw I/O, excepted the raw I/O, the first two I/O both use programming languages cache.&lt;/p&gt;
+&lt;h4 id=&quot;Text-I-O-and-Binary-I-O-Read&quot;&gt;&lt;a href=&quot;#Text-I-O-and-Binary-I-O-Read&quot; class=&quot;headerlink&quot; title=&quot;Text I/O and Binary I/O Read&quot;&gt;&lt;/a&gt;Text I/O and Binary I/O Read&lt;/h4&gt;&lt;p&gt;When we read data in python, there are several steps involved. &lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Read in Text I/O and Binary I/O&lt;br&gt;the function call stack looks like this:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4 id=&quot;Raw-I-O-Read&quot;&gt;&lt;a href=&quot;#Raw-I-O-Read&quot; class=&quot;headerlink&quot; title=&quot;Raw I/O Read&quot;&gt;&lt;/a&gt;Raw I/O Read&lt;/h4&gt;&lt;h4 id=&quot;Text-I-O-and-Binary-I-O-Write&quot;&gt;&lt;a href=&quot;#Text-I-O-and-Binary-I-O-Write&quot; class=&quot;headerlink&quot; title=&quot;Text I/O and Binary I/O Write&quot;&gt;&lt;/a&gt;Text I/O and Binary I/O Write&lt;/h4&gt;&lt;h4 id=&quot;Raw-I-O-Write&quot;&gt;&lt;a href=&quot;#Raw-I-O-Write&quot; class=&quot;headerlink&quot; title=&quot;Raw I/O Write&quot;&gt;&lt;/a&gt;Raw I/O Write&lt;/h4&gt;</content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;Different-level-of-Caches&quot;&gt;&lt;a href=&quot;#Different-level-of-Caches&quot; class=&quot;headerlink&quot; title=&quot;Different level of Caches&quot;&gt;&lt;/a&gt;Different l
+    
+    </summary>
+    
+    
+      <category term="cache, python" scheme="https://windsooon.github.io/tags/cache-python/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Let&#39;s talk about Newton&#39;s method</title>
+    <link href="https://windsooon.github.io/2019/04/19/Let's%20talk%20about%20Newton's%20method/"/>
+    <id>https://windsooon.github.io/2019/04/19/Let's talk about Newton's method/</id>
+    <published>2019-04-19T12:57:00.000Z</published>
+    <updated>2019-04-30T05:43:58.787Z</updated>
+    
+    <content type="html">&lt;h3 id=&quot;Basic&quot;&gt;&lt;a href=&quot;#Basic&quot; class=&quot;headerlink&quot; title=&quot;Basic&quot;&gt;&lt;/a&gt;Basic&lt;/h3&gt;&lt;p&gt;When I try to &lt;a href=&quot;https://leetcode.com/Windson/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;solve some Leetcode questions&lt;/a&gt; like &lt;a href=&quot;https://leetcode.com/problems/valid-perfect-square/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Valid Perfect Square&lt;/a&gt; and &lt;a href=&quot;https://leetcode.com/problems/sqrtx/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Sqrt(x)&lt;/a&gt; I found some discuss mention about Newton’s method. We use this method to find the root of a equation close enough. I guess I learned that in my college but I totally forgot. In this article I will explain it in the hard way.&lt;/p&gt;
+&lt;h3 id=&quot;What-Newton’s-method-for&quot;&gt;&lt;a href=&quot;#What-Newton’s-method-for&quot; class=&quot;headerlink&quot; title=&quot;What Newton’s method for&quot;&gt;&lt;/a&gt;What Newton’s method for&lt;/h3&gt;&lt;p&gt;When we want to solve an equation, sometimes it’s very find the answer. For instance, &lt;code&gt;y = x - 6&lt;/code&gt;, you can see when x equal to 6, we can get the expect answer. Sometims it’s kinda hard. &lt;code&gt;y = x*x - x - 10&lt;/code&gt;, you can still use formula to find the answer. But sometims pretty hard like &lt;code&gt;x*x*x*x - 3*x*x + 10&lt;/code&gt;. Ususally we can use binary search to find the approximated answer which it is quite useful, we all know that binary search is not that easy to write it correctly. &lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;&quot; alt=&quot;function&quot;&gt;&lt;/p&gt;
+&lt;p&gt;We guess the answer, then we apporch it step by step.&lt;/p&gt;
+&lt;h3 id=&quot;How-it-works&quot;&gt;&lt;a href=&quot;#How-it-works&quot; class=&quot;headerlink&quot; title=&quot;How it works&quot;&gt;&lt;/a&gt;How it works&lt;/h3&gt;&lt;p&gt;We have a function &lt;code&gt;x*x-4=0&lt;/code&gt; and we don’t know x, so we choose &lt;code&gt;4&lt;/code&gt; as the first answer then move to the correct answer. (we will show you why we choose 4 here and how we move to the correct answer later). &lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;Basic&quot;&gt;&lt;a href=&quot;#Basic&quot; class=&quot;headerlink&quot; title=&quot;Basic&quot;&gt;&lt;/a&gt;Basic&lt;/h3&gt;&lt;p&gt;When I try to &lt;a href=&quot;https://leetcode.com/Windson/&quot; targ
+    
+    </summary>
+    
+    
+      <category term="math leetcode" scheme="https://windsooon.github.io/tags/math-leetcode/"/>
+    
+  </entry>
   
   <entry>
     <title>Why we should hire open source contributors</title>
@@ -613,6 +758,40 @@ Facebook | Web-developer | Zurich
     
     
       <category term="mvp django side-project" scheme="https://windsooon.github.io/tags/mvp-django-side-project/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>How to make Python GIL better</title>
+    <link href="https://windsooon.github.io/2017/07/16/Everything%20you%20should%20know%20about%20GIL/"/>
+    <id>https://windsooon.github.io/2017/07/16/Everything you should know about GIL/</id>
+    <published>2017-07-16T12:00:00.000Z</published>
+    <updated>2019-05-20T14:57:42.411Z</updated>
+    
+    <content type="html">&lt;ol&gt;
+&lt;li&gt;How os system schele work&lt;/li&gt;
+&lt;li&gt;Now with GIL&lt;/li&gt;
+&lt;li&gt;multicore&lt;/li&gt;
+&lt;li&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;I assume you know what is GIL in python and some basic knowledgt to use the python threadding module. If you don’t, you may have a look at the article here. Let’s recap the os system&lt;/p&gt;
+&lt;h3 id=&quot;How-os-system-schele-work&quot;&gt;&lt;a href=&quot;#How-os-system-schele-work&quot; class=&quot;headerlink&quot; title=&quot;How os system schele work&quot;&gt;&lt;/a&gt;How os system schele work&lt;/h3&gt;&lt;p&gt;It’s not a easy topic, we speed quite a long time to search for a prefect scheduling policy. Since Linux 2.6.23, the default scheduler is CFS. What is CFS and why we need it? &lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;ol&gt;
+&lt;li&gt;How os system schele work&lt;/li&gt;
+&lt;li&gt;Now with GIL&lt;/li&gt;
+&lt;li&gt;multicore&lt;/li&gt;
+&lt;li&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;I assume you know what is GIL in python 
+    
+    </summary>
+    
+    
+      <category term="GIL Python" scheme="https://windsooon.github.io/tags/GIL-Python/"/>
     
   </entry>
   
