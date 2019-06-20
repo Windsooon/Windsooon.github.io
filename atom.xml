@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://windsooon.github.io/"/>
-  <updated>2019-06-20T02:06:22.042Z</updated>
+  <updated>2019-06-20T03:18:26.929Z</updated>
   <id>https://windsooon.github.io/</id>
   
   <author>
@@ -16,16 +16,16 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>A crash course in cache (to be finished)</title>
-    <link href="https://windsooon.github.io/2019/06/13/Read,%20Write,%20Cache%20in%20Python/"/>
-    <id>https://windsooon.github.io/2019/06/13/Read, Write, Cache in Python/</id>
+    <title>A crash course in cache</title>
+    <link href="https://windsooon.github.io/2019/06/13/A%20crash%20course%20in%20cache/"/>
+    <id>https://windsooon.github.io/2019/06/13/A crash course in cache/</id>
     <published>2019-06-13T12:57:00.000Z</published>
-    <updated>2019-06-20T02:06:22.042Z</updated>
+    <updated>2019-06-20T03:18:26.929Z</updated>
     
     <content type="html">&lt;h3 id=&quot;Different-level-of-Caches&quot;&gt;&lt;a href=&quot;#Different-level-of-Caches&quot; class=&quot;headerlink&quot; title=&quot;Different level of Caches&quot;&gt;&lt;/a&gt;Different level of Caches&lt;/h3&gt;&lt;p&gt;Even though the computer &lt;a href=&quot;https://computers-are-fast.github.io/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;run much faster&lt;/a&gt; then we expected nowadays, &lt;a href=&quot;https://gist.github.com/jboner/2841832#file-latency-txt&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;the speed between the different components are still very large&lt;/a&gt;. To solve this problem, we introduce different levels of caches. After access the data from storage, we store the most used (temporal locality) and the nearby data (spatial locality) in the current lever so we can aceesee them directly later. The term &lt;strong&gt;storage&lt;/strong&gt; here is relative. For example, main memory is a storage to CPU cache, and the disk is a storage to main memory. When running a program, it may reach several levels of caches. Let’s look closer to it:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/Windsooon/blog/master/imgs/cache/cache_level.png&quot; alt=&quot;cache_level&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img style=&quot;margin: 60px;&quot; src=&quot;https://raw.githubusercontent.com/Windsooon/blog/master/imgs/cache/cache_level.png&quot;&gt;&lt;/p&gt;
 &lt;h4 id=&quot;CPU-cache&quot;&gt;&lt;a href=&quot;#CPU-cache&quot; class=&quot;headerlink&quot; title=&quot;CPU cache&quot;&gt;&lt;/a&gt;CPU cache&lt;/h4&gt;&lt;p&gt;CPU built a pyramid-like cache architecture, each of them keeps a small piece of data and instructions in it.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/Windsooon/blog/master/imgs/cache/cpu_cache.png&quot; alt=&quot;cpu_cache&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img style=&quot;margin: 60px;&quot; src=&quot;https://raw.githubusercontent.com/Windsooon/blog/master/imgs/cache/cpu_cache.png&quot;&gt;&lt;/p&gt;
 &lt;p&gt;Every data or instruction form different kinds of applications may cache by the CPU cache which programmers can’t control. For more details, you may have a look at &lt;a href=&quot;https://www.extremetech.com/extreme/188776-how-l1-and-l2-cpu-caches-work-and-why-theyre-an-essential-part-of-modern-chips&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;How L1 and L2 CPU Caches Work&lt;/a&gt;.&lt;/p&gt;
 &lt;h4 id=&quot;User-cache&quot;&gt;&lt;a href=&quot;#User-cache&quot; class=&quot;headerlink&quot; title=&quot;User cache&quot;&gt;&lt;/a&gt;User cache&lt;/h4&gt;&lt;p&gt;Generally speaking, User cache is the most used cache form programmers. When we use a hashmap or dictionary to store some data for future use. User cache comes to our eyes. Here is a Python example to use cache or not for calculating the nth Fibonacci numbers:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;# code without cache
@@ -57,18 +57,18 @@ f.read(10)
 &lt;p&gt;Calling fsync() does not necessarily ensure that the entry in the&lt;br&gt;directory containing the file has also reached disk.  For that an&lt;br&gt;explicit fsync() on a file descriptor for the directory is also&lt;br&gt;needed.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h3 id=&quot;Different-kind-of-caches-lookup&quot;&gt;&lt;a href=&quot;#Different-kind-of-caches-lookup&quot; class=&quot;headerlink&quot; title=&quot;Different kind of caches lookup&quot;&gt;&lt;/a&gt;Different kind of caches lookup&lt;/h3&gt;&lt;p&gt;The data search policy in cache is quite straightforward. We search the data from the top to the bottom. Let’s dive into the deep to see how a computer actually looks up the data in the cache. There is three popular way to do this nowadays. &lt;strong&gt;Set Associative, Fully Associative and Direct Mapped&lt;/strong&gt;. Luckily, the last two just a special case of Set Associative (Direct Mapped ≈ 1-way set Associative, Fully Associative ≈ N-way set associative). Here is a small 256 bytes cache which divides by four lines, every line contains 64 bytes (We call it 2-way 2 set associative because we have 2 sets and each set contains 2 lines in the cache).&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/Windsooon/blog/master/imgs/cache/set_cache.png&quot; alt=&quot;cache_size&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img style=&quot;margin: 60px;&quot; src=&quot;https://raw.githubusercontent.com/Windsooon/blog/master/imgs/cache/set_cache.png&quot;&gt;&lt;/p&gt;
 &lt;p&gt;When we want to read data from OxFF01 (Ob1111111100000001 in binary), First we divide the address into a different part&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/Windsooon/blog/master/imgs/cache/address.png&quot; alt=&quot;address&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img style=&quot;margin: 60px;&quot; src=&quot;https://raw.githubusercontent.com/Windsooon/blog/master/imgs/cache/address.png&quot;&gt;&lt;/p&gt;
 &lt;p&gt;The first part is the &lt;strong&gt;tag number&lt;/strong&gt;, every line in the cache also has its own tag number, when the tag number in the address matches the one in the cache, that means we found the correct address to read/write data. The second part is &lt;strong&gt;set index&lt;/strong&gt; used to identify which set the address belongs to. The last part is the &lt;strong&gt;data offset&lt;/strong&gt; in the line. The search policy is quite simple:&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;Search the set in the cache depend on the address’s set index ( which is 0 in this case).&lt;/li&gt;
 &lt;li&gt;Search if the tag number in the lines belongs to the set. If yes, (in our case cache hit) return the data depends on data offset. If no, cache miss.&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;We used a 2-way 2 sets associative in this example, Can we do better than it? Well, first let’s imagine, if we only use one set for the cache. &lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;abc.img&quot; alt=&quot;one_set&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img style=&quot;margin: 60px;&quot; src=&quot;https://raw.githubusercontent.com/Windsooon/blog/master/imgs/cache/one_set.png&quot;&gt;&lt;/p&gt;
 &lt;p&gt;we have to compare the tag number in each line from the top to bottom which would be slow in large cache. This is how Fully Associative works. Second, it looks like the search would be faster with more and more set. How about we create n set which n equals to the number of lines.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;abc.img&quot; alt=&quot;n_set&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img style=&quot;margin: 60px;&quot; src=&quot;https://raw.githubusercontent.com/Windsooon/blog/master/imgs/cache/n_set.png&quot;&gt;&lt;/p&gt;
 &lt;p&gt;Great idea! This leads us to Direct Mapped, Direct Mapped is the quickest way to search data in the cache. However, there is a problem here, as we know, the cache is always smaller than the storage. If the storage is 10 times bigger than the cache. 10 locations in the storage will map to the same location. When we write data to the location, there is a high probability that we have to overwrite other useful data which map to the same lines. The problem will get worse when the storage is much bigger than the cache. &lt;/p&gt;
 &lt;p&gt;Set associative is a tradeoff, Set associative use multiple sets to narrow the search range, in the example, When we use 4 sets, we can do a search inside the set 0 which would be 4 times faster then Fully Associative. When we write the data to the cache, we can just write the data to the same set reduce conflict.&lt;/p&gt;
 &lt;h3 id=&quot;Cache-Policy&quot;&gt;&lt;a href=&quot;#Cache-Policy&quot; class=&quot;headerlink&quot; title=&quot;Cache Policy&quot;&gt;&lt;/a&gt;Cache Policy&lt;/h3&gt;&lt;p&gt;When we found the data in the cache, we call it cache hit, otherwise cache miss. The computer also has to decide what should do after a cache miss.&lt;/p&gt;
@@ -102,12 +102,7 @@ f.read(10)
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;h3 id=&quot;Cache-in-Python-I-O&quot;&gt;&lt;a href=&quot;#Cache-in-Python-I-O&quot; class=&quot;headerlink&quot; title=&quot;Cache in Python I/O&quot;&gt;&lt;/a&gt;Cache in Python I/O&lt;/h3&gt;&lt;p&gt;Python has three main types of I/O: text I/O, binary I/O and raw I/O, excepted the raw I/O, the first two I/O both use programming languages cache.&lt;/p&gt;
-&lt;h4 id=&quot;Text-I-O-and-Binary-I-O-Read&quot;&gt;&lt;a href=&quot;#Text-I-O-and-Binary-I-O-Read&quot; class=&quot;headerlink&quot; title=&quot;Text I/O and Binary I/O Read&quot;&gt;&lt;/a&gt;Text I/O and Binary I/O Read&lt;/h4&gt;&lt;p&gt;When we read data in python, there are several steps involved. &lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;Read in Text I/O and Binary I/O&lt;br&gt;the function call stack looks like this:&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h4 id=&quot;Raw-I-O-Read&quot;&gt;&lt;a href=&quot;#Raw-I-O-Read&quot; class=&quot;headerlink&quot; title=&quot;Raw I/O Read&quot;&gt;&lt;/a&gt;Raw I/O Read&lt;/h4&gt;&lt;h4 id=&quot;Text-I-O-and-Binary-I-O-Write&quot;&gt;&lt;a href=&quot;#Text-I-O-and-Binary-I-O-Write&quot; class=&quot;headerlink&quot; title=&quot;Text I/O and Binary I/O Write&quot;&gt;&lt;/a&gt;Text I/O and Binary I/O Write&lt;/h4&gt;&lt;h4 id=&quot;Raw-I-O-Write&quot;&gt;&lt;a href=&quot;#Raw-I-O-Write&quot; class=&quot;headerlink&quot; title=&quot;Raw I/O Write&quot;&gt;&lt;/a&gt;Raw I/O Write&lt;/h4&gt;</content>
+</content>
     
     <summary type="html">
     
