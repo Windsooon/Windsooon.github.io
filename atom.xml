@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://windsooon.github.io/"/>
-  <updated>2019-06-19T05:27:24.055Z</updated>
+  <updated>2019-06-20T02:06:22.042Z</updated>
   <id>https://windsooon.github.io/</id>
   
   <author>
@@ -20,20 +20,14 @@
     <link href="https://windsooon.github.io/2019/06/13/Read,%20Write,%20Cache%20in%20Python/"/>
     <id>https://windsooon.github.io/2019/06/13/Read, Write, Cache in Python/</id>
     <published>2019-06-13T12:57:00.000Z</published>
-    <updated>2019-06-19T05:27:24.055Z</updated>
+    <updated>2019-06-20T02:06:22.042Z</updated>
     
     <content type="html">&lt;h3 id=&quot;Different-level-of-Caches&quot;&gt;&lt;a href=&quot;#Different-level-of-Caches&quot; class=&quot;headerlink&quot; title=&quot;Different level of Caches&quot;&gt;&lt;/a&gt;Different level of Caches&lt;/h3&gt;&lt;p&gt;Even though the computer &lt;a href=&quot;https://computers-are-fast.github.io/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;run much faster&lt;/a&gt; then we expected nowadays, &lt;a href=&quot;https://gist.github.com/jboner/2841832#file-latency-txt&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;the speed between the different components are still very large&lt;/a&gt;. To solve this problem, we introduce different levels of caches. After access the data from storage, we store the most used (temporal locality) and the nearby data (spatial locality) in the current lever so we can aceesee them directly later. The term &lt;strong&gt;storage&lt;/strong&gt; here is relative. For example, main memory is a storage to CPU cache, and the disk is a storage to main memory. When running a program, it may reach several levels of caches. Let’s look closer to it:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;abc.jpg&quot; alt=&quot;cache_level&quot;&gt;&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;CPU cache&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;CPU built a pyramid-like cache architecture, each of them keeps a small piece of data and instructions in it.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;abc.jpg&quot; alt=&quot;cpu_cache&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/Windsooon/blog/master/imgs/cache/cache_level.png&quot; alt=&quot;cache_level&quot;&gt;&lt;/p&gt;
+&lt;h4 id=&quot;CPU-cache&quot;&gt;&lt;a href=&quot;#CPU-cache&quot; class=&quot;headerlink&quot; title=&quot;CPU cache&quot;&gt;&lt;/a&gt;CPU cache&lt;/h4&gt;&lt;p&gt;CPU built a pyramid-like cache architecture, each of them keeps a small piece of data and instructions in it.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/Windsooon/blog/master/imgs/cache/cpu_cache.png&quot; alt=&quot;cpu_cache&quot;&gt;&lt;/p&gt;
 &lt;p&gt;Every data or instruction form different kinds of applications may cache by the CPU cache which programmers can’t control. For more details, you may have a look at &lt;a href=&quot;https://www.extremetech.com/extreme/188776-how-l1-and-l2-cpu-caches-work-and-why-theyre-an-essential-part-of-modern-chips&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;How L1 and L2 CPU Caches Work&lt;/a&gt;.&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;User cache&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;Generally speaking, User cache is the most used cache form programmers. When we use a hashmap or dictionary to store some data for future use. User cache comes to our eyes. Here is a Python example to use cache or not for calculating the nth Fibonacci numbers:&lt;/p&gt;
+&lt;h4 id=&quot;User-cache&quot;&gt;&lt;a href=&quot;#User-cache&quot; class=&quot;headerlink&quot; title=&quot;User cache&quot;&gt;&lt;/a&gt;User cache&lt;/h4&gt;&lt;p&gt;Generally speaking, User cache is the most used cache form programmers. When we use a hashmap or dictionary to store some data for future use. User cache comes to our eyes. Here is a Python example to use cache or not for calculating the nth Fibonacci numbers:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;# code without cache
 def fibonacci(n):
     if n &amp;lt;= 1:
@@ -50,31 +44,22 @@ def fibonacci(n):
     dic[n] = fibonacci(n-2) + fibonacci(n-1)
     return dic[n]
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;With the help of the User cache, the time complexity of this problem drop from O(2**n) to O(n) which save a huge of time when n is large.&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;Program languages cache&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;Since calling system call like read() or write() repeatedly in user space is expensive, some program languages try to avoid this by keeping a small piece of cache inside. The I/O module in Python use a small buffer (8 &lt;em&gt; 1024 bytes by default) to store some temporary data. When we try to read some data from &lt;/em&gt;f* using:&lt;/p&gt;
+&lt;h4 id=&quot;Program-languages-cache&quot;&gt;&lt;a href=&quot;#Program-languages-cache&quot; class=&quot;headerlink&quot; title=&quot;Program languages cache&quot;&gt;&lt;/a&gt;Program languages cache&lt;/h4&gt;&lt;p&gt;Since calling system call like read() or write() repeatedly in user space is expensive, some program languages try to avoid this by keeping a small piece of cache inside. The I/O module in Python use a small buffer (8 &lt;em&gt; 1024 bytes by default) to store some temporary data. When we try to read some data from &lt;/em&gt;f* using:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;# Python code
 f.read(10)
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Python will search the data from its read buffer to see if the data already in it before calling a raw system call read(), we will show more details in the later capter.&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;OS cache&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;Disk I/O may be the slowest part of our computer. Therefore, after access the data from the disk, the OS system will keep the hotspot data (Which its size is dynamic) in main memory (In Linux, it called Page cache). Moreover, we can use a mechanism called virtual memory to swap this data to disk temporary if not enough main memory is available now.&lt;/p&gt;
+&lt;h4 id=&quot;OS-cache&quot;&gt;&lt;a href=&quot;#OS-cache&quot; class=&quot;headerlink&quot; title=&quot;OS cache&quot;&gt;&lt;/a&gt;OS cache&lt;/h4&gt;&lt;p&gt;Disk I/O may be the slowest part of our computer. Therefore, after access the data from the disk, the OS system will keep the hotspot data (Which its size is dynamic) in main memory (In Linux, it called Page cache). Moreover, we can use a mechanism called virtual memory to swap this data to disk temporary if not enough main memory is available now.&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Linux supports virtual memory, that is, using a disk as an extension of RAM so that the effective size of usable memory grows correspondingly. The kernel will write the contents of a currently unused block of memory to the hard disk so that the memory can be used for another purpose. When the original contents are needed again, they are read back into memory&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;ol&gt;
-&lt;li&gt;Disk buffer&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;Disk also has its &lt;a href=&quot;https://en.wikipedia.org/wiki/Disk_buffer&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;own way&lt;/a&gt; to speed up. Even though we use fsync() in our code, it doesn’t mean the data already written to the disk safely.&lt;/p&gt;
+&lt;h4 id=&quot;Disk-buffer&quot;&gt;&lt;a href=&quot;#Disk-buffer&quot; class=&quot;headerlink&quot; title=&quot;Disk buffer&quot;&gt;&lt;/a&gt;Disk buffer&lt;/h4&gt;&lt;p&gt;Disk also has its &lt;a href=&quot;https://en.wikipedia.org/wiki/Disk_buffer&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;own way&lt;/a&gt; to speed up. Even though we use fsync() in our code, it doesn’t mean the data already written to the disk safely.&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Calling fsync() does not necessarily ensure that the entry in the&lt;br&gt;directory containing the file has also reached disk.  For that an&lt;br&gt;explicit fsync() on a file descriptor for the directory is also&lt;br&gt;needed.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h3 id=&quot;Different-kind-of-caches-lookup&quot;&gt;&lt;a href=&quot;#Different-kind-of-caches-lookup&quot; class=&quot;headerlink&quot; title=&quot;Different kind of caches lookup&quot;&gt;&lt;/a&gt;Different kind of caches lookup&lt;/h3&gt;&lt;p&gt;The data search policy in cache is quite straightforward. We search the data from the top to the bottom. Let’s dive into the deep to see how a computer actually looks up the data in the cache. There is three popular way to do this nowadays. &lt;strong&gt;Set Associative, Fully Associative and Direct Mapped&lt;/strong&gt;. Luckily, the last two just a special case of Set Associative (Direct Mapped ≈ 1-way set Associative, Fully Associative ≈ N-way set associative). Here is a small 256 bytes cache which divides by four lines, every line contains 64 bytes (We call it 2-way 2 set associative because we have 2 sets and each set contains 2 lines in the cache).&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;abc.img&quot; alt=&quot;cache_size&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/Windsooon/blog/master/imgs/cache/set_cache.png&quot; alt=&quot;cache_size&quot;&gt;&lt;/p&gt;
 &lt;p&gt;When we want to read data from OxFF01 (Ob1111111100000001 in binary), First we divide the address into a different part&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;abc.img&quot; alt=&quot;address&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/Windsooon/blog/master/imgs/cache/address.png&quot; alt=&quot;address&quot;&gt;&lt;/p&gt;
 &lt;p&gt;The first part is the &lt;strong&gt;tag number&lt;/strong&gt;, every line in the cache also has its own tag number, when the tag number in the address matches the one in the cache, that means we found the correct address to read/write data. The second part is &lt;strong&gt;set index&lt;/strong&gt; used to identify which set the address belongs to. The last part is the &lt;strong&gt;data offset&lt;/strong&gt; in the line. The search policy is quite simple:&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;Search the set in the cache depend on the address’s set index ( which is 0 in this case).&lt;/li&gt;
