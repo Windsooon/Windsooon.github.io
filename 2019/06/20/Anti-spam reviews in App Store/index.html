@@ -1,0 +1,36 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> Anti spam reviews in App Store · Tech blog of Unicooo</title><meta name="description" content="Anti spam reviews in App Store - Unicooo"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="short icon" href="/favicon.png"><link rel="stylesheet" href="/css/apollo.css"></head><body><div id="mask" style="display: none;"><img id="mask-image" src="#" style=" "></div><div class="wrap"><header><a href="/" class="logo-link"><img src="/favicon.png"></a><ul class="nav nav-list"><li class="nav-list-item"><a href="https://www.enginego.org" target="_blank" class="nav-list-link">编程基础</a></li><li class="nav-list-item"><a href="https://github.com/Windsooon" target="_blank" class="nav-list-link">GITHUB</a></li></ul></header><section class="container"><div class="post"><article class="post-block"><h1 class="post-title">Anti spam reviews in App Store</h1><div class="post-time">Jun 20, 2019</div><div class="post-content"><p>App Store 的垃圾评论不是一天两天了，垃圾短信</p>
+<h4 id="苹果的不作为"><a href="#苹果的不作为" class="headerlink" title="苹果的不作为"></a>苹果的不作为</h4><p>我不清楚为什么苹果并没有用心在过滤垃圾评价这里，垃圾评价多得我几乎找不到正常的评价，而且我在美国区的 APP STORE 找不到这些情况，我不确定是因为美国区刷评价情况比较少（但是 刷亚马逊评价的多得一塌糊涂，即使现在比较少，将来刷评价的也会多）还是苹果放弃了这一块。苹果或者觉得减少垃圾评价对它的业绩毫无帮助，作为一名开发者，当看到别的应用因为刷评价排到搜索的前面而自己却在后面的时候，很难开心得起来。这篇文章让我们用一些简单常用的方法来识别垃圾评价，顺便学习下数据分析吧。</p>
+<h4 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h4><p>看起来我们的目标很一致，过滤垃圾评价，保留正常用户的真实评价。不过这里对于“真实”可能大家的理解不一致，每个用户的背景以及受教育程度同，评低分的原因也各不相同（有的可能因为这个应用要求评分就评低分，有的可能仅仅是发泄情绪，有的为了让评论能置顶所以评5星，但是里面的实际内容却是差评），所以这里我们的目标并不是筛选海军/机器人刷的评论，而是找出对用户最有用的评论，这里在 App Store 的默认评价也可以看到，虽然，往往出来的都没有用。</p>
+<p><img src="useful.jpg" alt="app_store_most_useful"></p>
+<h4 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h4><p>虽然最终我们会通过我实现的代码来找到这些有用的评价，但是代码以及算法本身却不是最重要的，如何理解数据并且懂得对数据进行不同维度的分析才是最应该学习的地方，这篇文章不会涉及太多代码以及技术细节，你们可以把它当成一个即开即用的工具就好，问题是如何使用这些工具，以什么顺序，什么方式来使用，如何测量最终的结果。</p>
+<h4 id="有用的评价"><a href="#有用的评价" class="headerlink" title="有用的评价"></a>有用的评价</h4><p>直接想什么是有用的评价可能不是太容易，我们先判断什么是没用的</p>
+<ol>
+<li>打广告的，让大家去哪里下载什么的</li>
+</ol>
+<p><img src="" alt=""></p>
+<ol>
+<li>评价字数过短的，没有实际信息的</li>
+</ol>
+<p><img src="" alt=""></p>
+<ol>
+<li>语法错误问题严重的，语句不通顺</li>
+</ol>
+<p><img src="" alt=""></p>
+<ol>
+<li>评价与应用主题不相关的</li>
+</ol>
+<p><img src="" alt=""></p>
+<ol>
+<li>评价之间重复程度过多</li>
+</ol>
+<p><img src="" alt=""></p>
+<p>当然，还有其他标准，这里只列举最常见的几种。中国区的评价数量都较多，我们可以列举最有用的50条评价，我想已经足够大家去了解这个应用的情况。让我们一条条来分析，</p>
+</div></article></div></section><footer><div class="paginator"><a href="/2019/06/20/How to solve DFS problem in Leetcode/" class="prev">PREV</a><a href="/2019/06/13/A crash course in cache/" class="next">NEXT</a></div><div id="disqus_thread"></div><script>var disqus_shortname = 'windsonYang';
+var disqus_identifier = '2019/06/20/Anti-spam reviews in App Store/';
+var disqus_title = 'Anti spam reviews in App Store';
+var disqus_url = 'https://windsooon.github.io/2019/06/20/Anti-spam reviews in App Store/';
+(function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();</script><script id="dsq-count-scr" src="//windsonYang.disqus.com/count.js" async></script><div class="copyright"><p>© 2016 - 2019 <a href="https://windsooon.github.io">Unicooo</a>, unless otherwise noted.</p></div></footer></div><script>(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;e=o.createElement(i);r=o.getElementsByTagName(i)[0];e.src='//www.google-analytics.com/analytics.js';r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));ga('create',"UA-65933410-1",'auto');ga('send','pageview');</script><script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script></body></html>
