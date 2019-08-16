@@ -2,9 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://windsooon.github.io/2018/09/22/Skip%20deleted%20attributes/</loc>
+    
+    <lastmod>2019-08-16T06:24:10.532Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://windsooon.github.io/2019/08/14/How%20Python%20read%20or%20write%20files%20under%20the%20hood%20(unfinished)/</loc>
     
-    <lastmod>2019-08-16T06:18:51.287Z</lastmod>
+    <lastmod>2019-08-16T06:24:07.563Z</lastmod>
     
   </url>
   
@@ -33,13 +40,6 @@
     <loc>https://windsooon.github.io/2017/11/23/Why%20we%20never%20thank%20open%20source%20maintainers/</loc>
     
     <lastmod>2018-11-22T06:51:10.693Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://windsooon.github.io/2018/09/22/Skip%20deleted%20attributes/</loc>
-    
-    <lastmod>2018-11-21T11:02:32.515Z</lastmod>
     
   </url>
   

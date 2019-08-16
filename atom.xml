@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://windsooon.github.io/"/>
-  <updated>2019-08-16T06:18:51.287Z</updated>
+  <updated>2019-08-16T06:24:07.563Z</updated>
   <id>https://windsooon.github.io/</id>
   
   <author>
@@ -16,11 +16,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>How Python read or write files under the hood</title>
+    <title>How Python read or write files under the hood (unfinished)</title>
     <link href="https://windsooon.github.io/2019/08/14/How%20Python%20read%20or%20write%20files%20under%20the%20hood%20(unfinished)/"/>
     <id>https://windsooon.github.io/2019/08/14/How Python read or write files under the hood (unfinished)/</id>
     <published>2019-08-14T00:57:00.000Z</published>
-    <updated>2019-08-16T06:18:51.287Z</updated>
+    <updated>2019-08-16T06:24:07.563Z</updated>
     
     <content type="html">&lt;h3 id=&quot;Base&quot;&gt;&lt;a href=&quot;#Base&quot; class=&quot;headerlink&quot; title=&quot;Base&quot;&gt;&lt;/a&gt;Base&lt;/h3&gt;&lt;p&gt;We talked about Cpython here, Python do a great job to hide the implement details how to read or write the files. &lt;/p&gt;
 &lt;h3 id=&quot;Python-modules&quot;&gt;&lt;a href=&quot;#Python-modules&quot; class=&quot;headerlink&quot; title=&quot;Python modules&quot;&gt;&lt;/a&gt;Python modules&lt;/h3&gt;&lt;p&gt;From &lt;a href=&quot;https://www.python.org/dev/peps/pep-0399/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;PEP 399&lt;/a&gt;, python need to implement its module in pure python and C. When we look up the code about openning files, we can find files in Modules/_io/_iomodule.c and Lib/pyio.py. Both of them did the same job. We will &lt;/p&gt;
@@ -295,7 +295,7 @@ f.read(10)
     <link href="https://windsooon.github.io/2018/09/22/Skip%20deleted%20attributes/"/>
     <id>https://windsooon.github.io/2018/09/22/Skip deleted attributes/</id>
     <published>2018-09-22T07:51:00.000Z</published>
-    <updated>2018-11-21T11:02:32.515Z</updated>
+    <updated>2019-08-16T06:24:10.532Z</updated>
     
     <content type="html">&lt;p&gt;Today I’m going to review &lt;a href=&quot;https://github.com/python/cpython/pull/9302&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;pull_9302&lt;/a&gt;&lt;/p&gt;
 &lt;h3 id=&quot;Step-1-discussion&quot;&gt;&lt;a href=&quot;#Step-1-discussion&quot; class=&quot;headerlink&quot; title=&quot;Step 1: discussion&quot;&gt;&lt;/a&gt;Step 1: discussion&lt;/h3&gt;&lt;blockquote&gt;
