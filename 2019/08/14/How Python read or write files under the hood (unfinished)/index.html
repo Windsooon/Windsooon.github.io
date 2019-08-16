@@ -1,0 +1,34 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> How Python read or write files under the hood · Tech blog of Unicooo</title><meta name="description" content="How Python read or write files under the hood - Unicooo"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="short icon" href="/favicon.png"><link rel="stylesheet" href="/css/apollo.css"></head><body><div id="mask" style="display: none;"><img id="mask-image" src="#" style=" "></div><div class="wrap"><header><a href="/" class="logo-link"><img src="/favicon.png"></a><ul class="nav nav-list"><li class="nav-list-item"><a href="https://www.enginego.org" target="_blank" class="nav-list-link">编程基础</a></li><li class="nav-list-item"><a href="https://github.com/Windsooon" target="_blank" class="nav-list-link">GITHUB</a></li></ul></header><section class="container"><div class="post"><article class="post-block"><h1 class="post-title">How Python read or write files under the hood</h1><div class="post-time">Aug 14, 2019</div><div class="post-content"><h3 id="Base"><a href="#Base" class="headerlink" title="Base"></a>Base</h3><p>We talked about Cpython here, Python do a great job to hide the implement details how to read or write the files. </p>
+<h3 id="Python-modules"><a href="#Python-modules" class="headerlink" title="Python modules"></a>Python modules</h3><p>From <a href="https://www.python.org/dev/peps/pep-0399/" target="_blank" rel="external">PEP 399</a>, python need to implement its module in pure python and C. When we look up the code about openning files, we can find files in Modules/_io/_iomodule.c and Lib/pyio.py. Both of them did the same job. We will </p>
+<h4 id="Python2"><a href="#Python2" class="headerlink" title="Python2"></a>Python2</h4><p>In Python2, we use  standard I/O library (often simply called stdio)in C for caching (i.e. fopen, fclose, fread), Python let C to handle the cache. In Python3, we take the job for cross-platform performance, If you are not familiar with caching, you may have a look at <a href="">link</a>. There are three different kind of buffering:</p>
+<blockquote>
+<p>No buffering: When you write characters to an unbuffered stream, the operating system writes them to the file as soon as possible.<br>Line buffering: When you write characters to a line-buffered stream, the operating system writes them to the file when it encounters a newline character.<br>Full buffering: When you write characters to a fully-buffered stream, the operating system writes them to the file in blocks of arbitrary size.</p>
+</blockquote>
+<p>Which we implement both of them in Python3</p>
+<h4 id="open"><a href="#open" class="headerlink" title="open"></a>open</h4><p>Open file is the first thing we need to do before reading or writing, the C function located in <a href="https://github.com/python/cpython/blob/762f93ff2efd6b7ef0177cad57939c0ab2002eac/Modules/_io/_iomodule.c#L233" target="_blank" rel="external">_io_open_impl</a>, there are lots of error check in this function, but basiclly, the function acpect the parameter we pass then call the system call open(), just like the document said, we have Text I/O, Binary I/O and Raw I/O.</p>
+<pre><code># Base IO
+&gt;&gt;&gt; textio = open(&apos;example.py&apos;, &apos;r&apos;)
+&gt;&gt;&gt; type(textio)
+&lt;class &apos;_io.TextIOWrapper&apos;&gt;
+# Binary IO
+&gt;&gt;&gt; binaryio = open(&apos;example.py&apos;, &apos;rb&apos;)
+&gt;&gt;&gt; type(binaryio)
+&lt;class &apos;_io.BufferedReader&apos;&gt;
+# No buffering IO
+&gt;&gt;&gt; fileio = open(&quot;example.py&quot;, &quot;rb&quot;, buffering=0)
+&gt;&gt;&gt; type(fileio)
+&lt;class &apos;_io.FileIO&apos;&gt;
+</code></pre><p>We can see that depend on different input, the return tyep is also different. Which leads us to different class. Excecpt the last one, the first two class both use buffering (althought the binary IO (also called buffered I/O) which is confused.) </p>
+<blockquote>
+<p>Reads and writes are internally buffered in order to speed things up.<br>However, any read will first flush the write buffer if itsn’t empty.</p>
+</blockquote>
+<h4 id="TextIO-and-StringIO"><a href="#TextIO-and-StringIO" class="headerlink" title="TextIO and StringIO"></a>TextIO and StringIO</h4><p>Let’s start with TextIO, as you may guess, TextIO only handle string, when we try to write(strings) to files, the TextIOWrapper class<br>we use bytearray to create a buffer, then use DEFAULT_BUFFER_SIZE</p>
+<h4 id="TextIO-and-StringIO-1"><a href="#TextIO-and-StringIO-1" class="headerlink" title="TextIO and StringIO"></a>TextIO and StringIO</h4></div></article></div></section><footer><div class="paginator"><a href="/2019/08/13/Anti-Spam reviews in App Store/" class="next">NEXT</a></div><div id="disqus_thread"></div><script>var disqus_shortname = 'windsonYang';
+var disqus_identifier = '2019/08/14/How Python read or write files under the hood (unfinished)/';
+var disqus_title = 'How Python read or write files under the hood';
+var disqus_url = 'https://windsooon.github.io/2019/08/14/How Python read or write files under the hood (unfinished)/';
+(function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();</script><script id="dsq-count-scr" src="//windsonYang.disqus.com/count.js" async></script><div class="copyright"><p>© 2016 - 2019 <a href="https://windsooon.github.io">Unicooo</a>, unless otherwise noted.</p></div></footer></div><script>(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;e=o.createElement(i);r=o.getElementsByTagName(i)[0];e.src='//www.google-analytics.com/analytics.js';r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));ga('create',"UA-65933410-1",'auto');ga('send','pageview');</script><script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script></body></html>
