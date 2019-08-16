@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://windsooon.github.io/"/>
-  <updated>2019-07-02T06:20:52.963Z</updated>
+  <updated>2019-08-16T06:18:51.287Z</updated>
   <id>https://windsooon.github.io/</id>
   
   <author>
@@ -16,50 +16,103 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Anti spam reviews in App Store</title>
-    <link href="https://windsooon.github.io/2019/06/20/Anti-spam%20reviews%20in%20App%20Store/"/>
-    <id>https://windsooon.github.io/2019/06/20/Anti-spam reviews in App Store/</id>
-    <published>2019-06-20T02:21:00.000Z</published>
-    <updated>2019-07-02T06:20:52.963Z</updated>
+    <title>How Python read or write files under the hood</title>
+    <link href="https://windsooon.github.io/2019/08/14/How%20Python%20read%20or%20write%20files%20under%20the%20hood/"/>
+    <id>https://windsooon.github.io/2019/08/14/How Python read or write files under the hood/</id>
+    <published>2019-08-14T00:57:00.000Z</published>
+    <updated>2019-08-16T06:18:51.287Z</updated>
     
-    <content type="html">&lt;p&gt;App Store 的垃圾评论不是一天两天了，垃圾短信&lt;/p&gt;
-&lt;h4 id=&quot;苹果的不作为&quot;&gt;&lt;a href=&quot;#苹果的不作为&quot; class=&quot;headerlink&quot; title=&quot;苹果的不作为&quot;&gt;&lt;/a&gt;苹果的不作为&lt;/h4&gt;&lt;p&gt;我不清楚为什么苹果并没有用心在过滤垃圾评价这里，垃圾评价多得我几乎找不到正常的评价，而且我在美国区的 APP STORE 找不到这些情况，我不确定是因为美国区刷评价情况比较少（但是 刷亚马逊评价的多得一塌糊涂，即使现在比较少，将来刷评价的也会多）还是苹果放弃了这一块。苹果或者觉得减少垃圾评价对它的业绩毫无帮助，作为一名开发者，当看到别的应用因为刷评价排到搜索的前面而自己却在后面的时候，很难开心得起来。这篇文章让我们用一些简单常用的方法来识别垃圾评价，顺便学习下数据分析吧。&lt;/p&gt;
-&lt;h4 id=&quot;目标&quot;&gt;&lt;a href=&quot;#目标&quot; class=&quot;headerlink&quot; title=&quot;目标&quot;&gt;&lt;/a&gt;目标&lt;/h4&gt;&lt;p&gt;看起来我们的目标很一致，过滤垃圾评价，保留正常用户的真实评价。不过这里对于“真实”可能大家的理解不一致，每个用户的背景以及受教育程度同，评低分的原因也各不相同（有的可能因为这个应用要求评分就评低分，有的可能仅仅是发泄情绪，有的为了让评论能置顶所以评5星，但是里面的实际内容却是差评），所以这里我们的目标并不是筛选海军/机器人刷的评论，而是找出对用户最有用的评论，这里在 App Store 的默认评价也可以看到，虽然，往往出来的都没有用。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;useful.jpg&quot; alt=&quot;app_store_most_useful&quot;&gt;&lt;/p&gt;
-&lt;h4 id=&quot;结果&quot;&gt;&lt;a href=&quot;#结果&quot; class=&quot;headerlink&quot; title=&quot;结果&quot;&gt;&lt;/a&gt;结果&lt;/h4&gt;&lt;p&gt;虽然最终我们会通过我实现的代码来找到这些有用的评价，但是代码以及算法本身却不是最重要的，如何理解数据并且懂得对数据进行不同维度的分析才是最应该学习的地方，这篇文章不会涉及太多代码以及技术细节，你们可以把它当成一个即开即用的工具就好，问题是如何使用这些工具，以什么顺序，什么方式来使用，如何测量最终的结果。&lt;/p&gt;
-&lt;h4 id=&quot;有用的评价&quot;&gt;&lt;a href=&quot;#有用的评价&quot; class=&quot;headerlink&quot; title=&quot;有用的评价&quot;&gt;&lt;/a&gt;有用的评价&lt;/h4&gt;&lt;p&gt;直接想什么是有用的评价可能不是太容易，我们先判断什么是没用的&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;打广告的，让大家去哪里下载什么的&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;&lt;img src=&quot;&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;评价字数过短的，没有实际信息的&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;&lt;img src=&quot;&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;语法错误问题严重的，语句不通顺&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;&lt;img src=&quot;&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;评价与应用主题不相关的&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;&lt;img src=&quot;&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;评价之间重复程度过多&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;&lt;img src=&quot;&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;当然，还有其他标准，这里只列举最常见的几种。中国区的评价数量都较多，我们可以列举最有用的50条评价，我想已经足够大家去了解这个应用的情况。让我们一条条来分析，&lt;/p&gt;
-</content>
+    <content type="html">&lt;h3 id=&quot;Base&quot;&gt;&lt;a href=&quot;#Base&quot; class=&quot;headerlink&quot; title=&quot;Base&quot;&gt;&lt;/a&gt;Base&lt;/h3&gt;&lt;p&gt;We talked about Cpython here, Python do a great job to hide the implement details how to read or write the files. &lt;/p&gt;
+&lt;h3 id=&quot;Python-modules&quot;&gt;&lt;a href=&quot;#Python-modules&quot; class=&quot;headerlink&quot; title=&quot;Python modules&quot;&gt;&lt;/a&gt;Python modules&lt;/h3&gt;&lt;p&gt;From &lt;a href=&quot;https://www.python.org/dev/peps/pep-0399/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;PEP 399&lt;/a&gt;, python need to implement its module in pure python and C. When we look up the code about openning files, we can find files in Modules/_io/_iomodule.c and Lib/pyio.py. Both of them did the same job. We will &lt;/p&gt;
+&lt;h4 id=&quot;Python2&quot;&gt;&lt;a href=&quot;#Python2&quot; class=&quot;headerlink&quot; title=&quot;Python2&quot;&gt;&lt;/a&gt;Python2&lt;/h4&gt;&lt;p&gt;In Python2, we use  standard I/O library (often simply called stdio)in C for caching (i.e. fopen, fclose, fread), Python let C to handle the cache. In Python3, we take the job for cross-platform performance, If you are not familiar with caching, you may have a look at &lt;a href=&quot;&quot;&gt;link&lt;/a&gt;. There are three different kind of buffering:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;No buffering: When you write characters to an unbuffered stream, the operating system writes them to the file as soon as possible.&lt;br&gt;Line buffering: When you write characters to a line-buffered stream, the operating system writes them to the file when it encounters a newline character.&lt;br&gt;Full buffering: When you write characters to a fully-buffered stream, the operating system writes them to the file in blocks of arbitrary size.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Which we implement both of them in Python3&lt;/p&gt;
+&lt;h4 id=&quot;open&quot;&gt;&lt;a href=&quot;#open&quot; class=&quot;headerlink&quot; title=&quot;open&quot;&gt;&lt;/a&gt;open&lt;/h4&gt;&lt;p&gt;Open file is the first thing we need to do before reading or writing, the C function located in &lt;a href=&quot;https://github.com/python/cpython/blob/762f93ff2efd6b7ef0177cad57939c0ab2002eac/Modules/_io/_iomodule.c#L233&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;_io_open_impl&lt;/a&gt;, there are lots of error check in this function, but basiclly, the function acpect the parameter we pass then call the system call open(), just like the document said, we have Text I/O, Binary I/O and Raw I/O.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# Base IO
+&amp;gt;&amp;gt;&amp;gt; textio = open(&amp;apos;example.py&amp;apos;, &amp;apos;r&amp;apos;)
+&amp;gt;&amp;gt;&amp;gt; type(textio)
+&amp;lt;class &amp;apos;_io.TextIOWrapper&amp;apos;&amp;gt;
+# Binary IO
+&amp;gt;&amp;gt;&amp;gt; binaryio = open(&amp;apos;example.py&amp;apos;, &amp;apos;rb&amp;apos;)
+&amp;gt;&amp;gt;&amp;gt; type(binaryio)
+&amp;lt;class &amp;apos;_io.BufferedReader&amp;apos;&amp;gt;
+# No buffering IO
+&amp;gt;&amp;gt;&amp;gt; fileio = open(&amp;quot;example.py&amp;quot;, &amp;quot;rb&amp;quot;, buffering=0)
+&amp;gt;&amp;gt;&amp;gt; type(fileio)
+&amp;lt;class &amp;apos;_io.FileIO&amp;apos;&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;We can see that depend on different input, the return tyep is also different. Which leads us to different class. Excecpt the last one, the first two class both use buffering (althought the binary IO (also called buffered I/O) which is confused.) &lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Reads and writes are internally buffered in order to speed things up.&lt;br&gt;However, any read will first flush the write buffer if itsn’t empty.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&quot;TextIO-and-StringIO&quot;&gt;&lt;a href=&quot;#TextIO-and-StringIO&quot; class=&quot;headerlink&quot; title=&quot;TextIO and StringIO&quot;&gt;&lt;/a&gt;TextIO and StringIO&lt;/h4&gt;&lt;p&gt;Let’s start with TextIO, as you may guess, TextIO only handle string, when we try to write(strings) to files, the TextIOWrapper class&lt;br&gt;we use bytearray to create a buffer, then use DEFAULT_BUFFER_SIZE&lt;/p&gt;
+&lt;h4 id=&quot;TextIO-and-StringIO-1&quot;&gt;&lt;a href=&quot;#TextIO-and-StringIO-1&quot; class=&quot;headerlink&quot; title=&quot;TextIO and StringIO&quot;&gt;&lt;/a&gt;TextIO and StringIO&lt;/h4&gt;</content>
     
     <summary type="html">
     
-      &lt;p&gt;App Store 的垃圾评论不是一天两天了，垃圾短信&lt;/p&gt;
-&lt;h4 id=&quot;苹果的不作为&quot;&gt;&lt;a href=&quot;#苹果的不作为&quot; class=&quot;headerlink&quot; title=&quot;苹果的不作为&quot;&gt;&lt;/a&gt;苹果的不作为&lt;/h4&gt;&lt;p&gt;我不清楚为什么苹果并没有用心在过滤垃圾
+      &lt;h3 id=&quot;Base&quot;&gt;&lt;a href=&quot;#Base&quot; class=&quot;headerlink&quot; title=&quot;Base&quot;&gt;&lt;/a&gt;Base&lt;/h3&gt;&lt;p&gt;We talked about Cpython here, Python do a great job to hide th
     
     </summary>
     
     
-      <category term="anti-spam, machine learning" scheme="https://windsooon.github.io/tags/anti-spam-machine-learning/"/>
+      <category term="read, write, python" scheme="https://windsooon.github.io/tags/read-write-python/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Anti Spam reviews in App store</title>
+    <link href="https://windsooon.github.io/2019/08/13/Anti-Spam%20reviews%20in%20App%20Store/"/>
+    <id>https://windsooon.github.io/2019/08/13/Anti-Spam reviews in App Store/</id>
+    <published>2019-08-13T06:57:00.000Z</published>
+    <updated>2019-08-16T06:18:25.884Z</updated>
+    
+    <content type="html">&lt;h3 id=&quot;Domain-Background&quot;&gt;&lt;a href=&quot;#Domain-Background&quot; class=&quot;headerlink&quot; title=&quot;Domain Background&quot;&gt;&lt;/a&gt;Domain Background&lt;/h3&gt;&lt;p&gt;Back to the 1980s, the NLP systems still based on complex sets of hand-written rules. These rules become hard to maintain since it grows exponential depend on the length of sentences. Moreover, new words pop up every day so we also have to maintain the old roles before developing any new one. Most important, we can’t use these rules on other languages since the rules are languages-specify.&lt;br&gt;With the power of the modern computer, we tried machine learning algorithms like decision trees to replace some of the hand-written rules. As we gain more and more data, we start using statistical models like hidden markov models to predict the probability of the word depends on the input data. Nowadays, with the help from the deep neural network, &lt;strong&gt;word embeddings&lt;/strong&gt; help us to convert a word from higher dimension space to a lower one. &lt;/p&gt;
+&lt;h3 id=&quot;Spam-reviews-problem&quot;&gt;&lt;a href=&quot;#Spam-reviews-problem&quot; class=&quot;headerlink&quot; title=&quot;Spam reviews problem&quot;&gt;&lt;/a&gt;Spam reviews problem&lt;/h3&gt;&lt;p&gt;The spam reviews problem in China’s app store is serious. With my observation, more than 40% of customer reviews are not helpful. most of them just random words, spam, ads, unrelated contents or mean reviews which didn’t help users or the application itself. I don’t know why Apple choose to ignore this problem since the ranking of the app mostly depends on its rankings. We can also find other similar problems like amazon fake reviews or Taobao fake reviews.&lt;/p&gt;
+&lt;h3 id=&quot;Problem-Statement&quot;&gt;&lt;a href=&quot;#Problem-Statement&quot; class=&quot;headerlink&quot; title=&quot;Problem Statement&quot;&gt;&lt;/a&gt;Problem Statement&lt;/h3&gt;&lt;p&gt;I try to solve a general problem, how to find useful reviews and how to detect spam or fake reviews. This problem also exists in other country’s app store, but since China is a big market, so it looks more obvious. In this project, I’m going to use hybrid algorithms to detect the useful reviews.&lt;/p&gt;
+&lt;h3 id=&quot;Datasets-and-Inputs&quot;&gt;&lt;a href=&quot;#Datasets-and-Inputs&quot; class=&quot;headerlink&quot; title=&quot;Datasets and Inputs&quot;&gt;&lt;/a&gt;Datasets and Inputs&lt;/h3&gt;&lt;p&gt;The datasets contain 13000 customer reviews from the Apple review API,&lt;br&gt;each data point includes a username, rankings, title, and review.&lt;br&gt;The customer reviews come from top 5 free applications from 6 different categories in China’s app store. Each application includes 400 data points, 200 of them from most recent reviews and the left from most helpful reviews. I labeled all the customer reviews as useful or useless.&lt;/p&gt;
+&lt;h3 id=&quot;Solution-Statement&quot;&gt;&lt;a href=&quot;#Solution-Statement&quot; class=&quot;headerlink&quot; title=&quot;Solution Statement&quot;&gt;&lt;/a&gt;Solution Statement&lt;/h3&gt;&lt;p&gt;In this section, I want to discuss what kind of reviews should be considered useless.&lt;/p&gt;
+&lt;h4 id=&quot;The-review-is-too-short&quot;&gt;&lt;a href=&quot;#The-review-is-too-short&quot; class=&quot;headerlink&quot; title=&quot;The review is too short&quot;&gt;&lt;/a&gt;The review is too short&lt;/h4&gt;&lt;p&gt;When a review is too short, It didn’t provide enough information for the user. For instance, reviews like these didn’t help, because they didn’t provide the reason why they like or hate the application.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;quot;喜欢&amp;quot; （I like it)
+&amp;quot;不错&amp;quot;  (Nice app)
+&amp;quot;下载用不了&amp;quot;（Can&amp;apos;t use it after downloaded)
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Even though this review was written by a real user, but we choose to ignore it.&lt;/p&gt;
+&lt;h4 id=&quot;The-review-is-too-long&quot;&gt;&lt;a href=&quot;#The-review-is-too-long&quot; class=&quot;headerlink&quot; title=&quot;The review is too long&quot;&gt;&lt;/a&gt;The review is too long&lt;/h4&gt;&lt;p&gt;Usually, users would not take too much time to read a single review. Second, &lt;strong&gt;If you look at the &lt;/strong&gt;most useful reviews&lt;strong&gt; display by Apple, you would found most of them are a super long sentence (more than 200 words)&lt;/strong&gt; which means Apple use the length of reviews to identify the quality of the reviews heavily. Unfortunately, spammer also noticed this. A spammer can type in lots of random words and a 5-star ranking to let an application gets a better score. Example below&lt;/p&gt;
+&lt;p&gt;“比寂寞更多的人和人和事情的不同在于不懂你说话了？？不会有一个人说你会让孩子更坚强……不知道是不是真的没有办法了？我们可以接受现实生活”（Random words)&lt;/p&gt;
+&lt;h4 id=&quot;Grammatical-errors&quot;&gt;&lt;a href=&quot;#Grammatical-errors&quot; class=&quot;headerlink&quot; title=&quot;Grammatical errors&quot;&gt;&lt;/a&gt;Grammatical errors&lt;/h4&gt;&lt;p&gt;Sometimes the review has lots of grammatical errors so the user doesn’t understand what the review means. We can calculate the probability of the part of speech from the review by using POS transition matrix. In the meantime, we can also solve random words problem with this algorithm.&lt;/p&gt;
+&lt;h4 id=&quot;Ads&quot;&gt;&lt;a href=&quot;#Ads&quot; class=&quot;headerlink&quot; title=&quot;Ads&quot;&gt;&lt;/a&gt;Ads&lt;/h4&gt;&lt;p&gt;Ads about gambling are everywhere, we can use Bayes algorithm to detect these ads. &lt;/p&gt;
+&lt;h3 id=&quot;Benchmark-Model&quot;&gt;&lt;a href=&quot;#Benchmark-Model&quot; class=&quot;headerlink&quot; title=&quot;Benchmark Model&quot;&gt;&lt;/a&gt;Benchmark Model&lt;/h3&gt;&lt;p&gt;Since we use several algorithms here, I choose to benchmark the model by comparing the final hybrid algorithms with the one only use POS transition matrix or Bayes algorithm.&lt;/p&gt;
+&lt;h3 id=&quot;Evaluation-Metrics&quot;&gt;&lt;a href=&quot;#Evaluation-Metrics&quot; class=&quot;headerlink&quot; title=&quot;Evaluation Metrics&quot;&gt;&lt;/a&gt;Evaluation Metrics&lt;/h3&gt;&lt;p&gt;F1 score, Accuracy score, Precision score, Recall score to be used to quantify the performance of the model&lt;/p&gt;
+&lt;h3 id=&quot;Project-Design&quot;&gt;&lt;a href=&quot;#Project-Design&quot; class=&quot;headerlink&quot; title=&quot;Project Design&quot;&gt;&lt;/a&gt;Project Design&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;Data collection&lt;br&gt;I collected all the data from the Apple Review API, &lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;https://itunes.apple.com/cn/rss/customerreviews/id={0}/sortBy=mostRecent/page={1}/json
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Data label&lt;br&gt;I labeled 13000 reviews by myself. After that, I did a little trick here.&lt;br&gt;for all reviews, I calculated their Jaccard similarity between each other. If some of the reviews have more than 80% similarity. (At the end of the project, I found I can use SVD to speed up the process.) I  assume that both of them are spam review, then mark both of them as useless. &lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&quot;Detection&quot;&gt;&lt;a href=&quot;#Detection&quot; class=&quot;headerlink&quot; title=&quot;Detection&quot;&gt;&lt;/a&gt;Detection&lt;/h3&gt;&lt;h4 id=&quot;Random-guess&quot;&gt;&lt;a href=&quot;#Random-guess&quot; class=&quot;headerlink&quot; title=&quot;Random guess&quot;&gt;&lt;/a&gt;Random guess&lt;/h4&gt;&lt;p&gt;The first method is a random guess, we guess all the review is useful.&lt;br&gt;&lt;img src=&quot;https://raw.githubusercontent.com/Windsooon/Comments/master/img/random_guess.png&quot; alt=&quot;random guess&quot;&gt;&lt;/p&gt;
+&lt;h4 id=&quot;The-review-is-too-short-or-too-long&quot;&gt;&lt;a href=&quot;#The-review-is-too-short-or-too-long&quot; class=&quot;headerlink&quot; title=&quot;The review is too short or too long&quot;&gt;&lt;/a&gt;The review is too short or too long&lt;/h4&gt;&lt;p&gt;Here is the distribution for the sentence length of &lt;strong&gt;useful reviews.&lt;/strong&gt;&lt;br&gt;&lt;img src=&quot;https://raw.githubusercontent.com/Windsooon/Comments/master/img/useful.png&quot; alt=&quot;useful length&quot;&gt;&lt;/p&gt;
+&lt;p&gt;And the distribution for the sentence length of &lt;strong&gt;useless reviews.&lt;/strong&gt;&lt;br&gt;&lt;img src=&quot;https://raw.githubusercontent.com/Windsooon/Comments/master/img/useless.png&quot; alt=&quot;useful length&quot;&gt;&lt;/p&gt;
+&lt;p&gt;After calculation, I found that 99.5% of the length of the useful reviews are between (10, 465). So I set the reviews out of the range to be useless.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/Windsooon/Comments/master/img/long_or_short.png&quot; alt=&quot;random guess&quot;&gt;&lt;/p&gt;
+&lt;h4 id=&quot;Grammar-problem&quot;&gt;&lt;a href=&quot;#Grammar-problem&quot; class=&quot;headerlink&quot; title=&quot;Grammar problem&quot;&gt;&lt;/a&gt;Grammar problem&lt;/h4&gt;&lt;p&gt;I use a POS matrix which contains the transition probability between all kind of POS. For instance, the probability from adj to n is 10%. I calculated the probability after tokenizer the review. If it is too small then what expected, we mark this review has grammatical errors. Here is the distribution for useful and useless reviews. &lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/Windsooon/Comments/master/img/pro.png&quot; alt=&quot;useful_pro&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/Windsooon/Comments/master/img/pro_less.png&quot; alt=&quot;useless_pro&quot;&gt;&lt;/p&gt;
+&lt;p&gt;Unfortunately, when I labeled the reviews I only labeled useful and useless instead of useful, useless, grammatical errors, ads so this method didn’t help at all. But if we correctly labeled the reviews, I’m sure we can benefit from it.&lt;/p&gt;
+&lt;h4 id=&quot;Ads-1&quot;&gt;&lt;a href=&quot;#Ads-1&quot; class=&quot;headerlink&quot; title=&quot;Ads&quot;&gt;&lt;/a&gt;Ads&lt;/h4&gt;&lt;p&gt;We use Naive Bayes to detect ads, we use pkuseg to tokenizer and MultinomialNB in sklearn.&lt;br&gt;&lt;img src=&quot;https://raw.githubusercontent.com/Windsooon/Comments/master/img/native_bayes.png&quot; alt=&quot;native_bayes&quot;&gt;&lt;/p&gt;
+&lt;h4 id=&quot;Combine-all-of-them&quot;&gt;&lt;a href=&quot;#Combine-all-of-them&quot; class=&quot;headerlink&quot; title=&quot;Combine all of them&quot;&gt;&lt;/a&gt;Combine all of them&lt;/h4&gt;&lt;p&gt;If we use multiple algorithms together, we can get a better result.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/Windsooon/Comments/master/img/hybrid.png&quot; alt=&quot;hybrid&quot;&gt;&lt;/p&gt;
+&lt;h3 id=&quot;Conclusion&quot;&gt;&lt;a href=&quot;#Conclusion&quot; class=&quot;headerlink&quot; title=&quot;Conclusion&quot;&gt;&lt;/a&gt;Conclusion&lt;/h3&gt;&lt;p&gt;Base on our current implementation, we helped Apple detected&lt;br&gt;There are lots of other methods to detect useless reviews. &lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;Domain-Background&quot;&gt;&lt;a href=&quot;#Domain-Background&quot; class=&quot;headerlink&quot; title=&quot;Domain Background&quot;&gt;&lt;/a&gt;Domain Background&lt;/h3&gt;&lt;p&gt;Back to th
+    
+    </summary>
+    
+    
+      <category term="anti spam, machine learning" scheme="https://windsooon.github.io/tags/anti-spam-machine-learning/"/>
     
   </entry>
   
@@ -160,31 +213,6 @@ f.read(10)
     
     
       <category term="cache, python" scheme="https://windsooon.github.io/tags/cache-python/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Let&#39;s talk about Newton&#39;s method (to be finished)</title>
-    <link href="https://windsooon.github.io/2019/04/19/Let's%20talk%20about%20Newton's%20method/"/>
-    <id>https://windsooon.github.io/2019/04/19/Let's talk about Newton's method/</id>
-    <published>2019-04-19T12:57:00.000Z</published>
-    <updated>2019-06-19T05:33:04.514Z</updated>
-    
-    <content type="html">&lt;h3 id=&quot;Basic&quot;&gt;&lt;a href=&quot;#Basic&quot; class=&quot;headerlink&quot; title=&quot;Basic&quot;&gt;&lt;/a&gt;Basic&lt;/h3&gt;&lt;p&gt;When I try to &lt;a href=&quot;https://leetcode.com/Windson/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;solve some Leetcode questions&lt;/a&gt; like &lt;a href=&quot;https://leetcode.com/problems/valid-perfect-square/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Valid Perfect Square&lt;/a&gt; and &lt;a href=&quot;https://leetcode.com/problems/sqrtx/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Sqrt(x)&lt;/a&gt; I found some discuss mention about Newton’s method. We use this method to find the root of a equation close enough. I guess I learned that in my college but I totally forgot. In this article I will explain it in the hard way.&lt;/p&gt;
-&lt;h3 id=&quot;What-Newton’s-method-for&quot;&gt;&lt;a href=&quot;#What-Newton’s-method-for&quot; class=&quot;headerlink&quot; title=&quot;What Newton’s method for&quot;&gt;&lt;/a&gt;What Newton’s method for&lt;/h3&gt;&lt;p&gt;When we want to solve an equation, sometimes it’s very find the answer. For instance, &lt;code&gt;y = x - 6&lt;/code&gt;, you can see when x equal to 6, we can get the expect answer. Sometims it’s kinda hard. &lt;code&gt;y = x*x - x - 10&lt;/code&gt;, you can still use formula to find the answer. But sometims pretty hard like &lt;code&gt;x*x*x*x - 3*x*x + 10&lt;/code&gt;. Ususally we can use binary search to find the approximated answer which it is quite useful, we all know that binary search is not that easy to write it correctly. &lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;&quot; alt=&quot;function&quot;&gt;&lt;/p&gt;
-&lt;p&gt;We guess the answer, then we apporch it step by step.&lt;/p&gt;
-&lt;h3 id=&quot;How-it-works&quot;&gt;&lt;a href=&quot;#How-it-works&quot; class=&quot;headerlink&quot; title=&quot;How it works&quot;&gt;&lt;/a&gt;How it works&lt;/h3&gt;&lt;p&gt;We have a function &lt;code&gt;x*x-4=0&lt;/code&gt; and we don’t know x, so we choose &lt;code&gt;4&lt;/code&gt; as the first answer then move to the correct answer. (we will show you why we choose 4 here and how we move to the correct answer later). &lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;Basic&quot;&gt;&lt;a href=&quot;#Basic&quot; class=&quot;headerlink&quot; title=&quot;Basic&quot;&gt;&lt;/a&gt;Basic&lt;/h3&gt;&lt;p&gt;When I try to &lt;a href=&quot;https://leetcode.com/Windson/&quot; targ
-    
-    </summary>
-    
-    
-      <category term="math leetcode" scheme="https://windsooon.github.io/tags/math-leetcode/"/>
     
   </entry>
   
@@ -649,6 +677,40 @@ asyncio.run(main())
   </entry>
   
   <entry>
+    <title>How to make Python GIL better (To be finished)</title>
+    <link href="https://windsooon.github.io/2017/07/16/Everything%20you%20should%20know%20about%20GIL/"/>
+    <id>https://windsooon.github.io/2017/07/16/Everything you should know about GIL/</id>
+    <published>2017-07-16T12:00:00.000Z</published>
+    <updated>2019-07-02T02:05:12.533Z</updated>
+    
+    <content type="html">&lt;ol&gt;
+&lt;li&gt;How os system schele work&lt;/li&gt;
+&lt;li&gt;Now with GIL&lt;/li&gt;
+&lt;li&gt;multicore&lt;/li&gt;
+&lt;li&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;I assume you know what is GIL in python and some basic knowledgt to use the python threadding module. If you don’t, you may have a look at the article here. Let’s recap the os system&lt;/p&gt;
+&lt;h3 id=&quot;How-os-system-schele-work&quot;&gt;&lt;a href=&quot;#How-os-system-schele-work&quot; class=&quot;headerlink&quot; title=&quot;How os system schele work&quot;&gt;&lt;/a&gt;How os system schele work&lt;/h3&gt;&lt;p&gt;It’s not a easy topic, we speed quite a long time to search for a prefect scheduling policy. Since Linux 2.6.23, the default scheduler is CFS. What is CFS and why we need it? &lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;ol&gt;
+&lt;li&gt;How os system schele work&lt;/li&gt;
+&lt;li&gt;Now with GIL&lt;/li&gt;
+&lt;li&gt;multicore&lt;/li&gt;
+&lt;li&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;I assume you know what is GIL in python 
+    
+    </summary>
+    
+    
+      <category term="GIL Python" scheme="https://windsooon.github.io/tags/GIL-Python/"/>
+    
+  </entry>
+  
+  <entry>
     <title>How to make it to Product Hunt front page in 2 weeks</title>
     <link href="https://windsooon.github.io/2017/07/16/How%20to%20make%20it%20to%20Product%20Hunt%20front%20page%20in%202%20weeks/"/>
     <id>https://windsooon.github.io/2017/07/16/How to make it to Product Hunt front page in 2 weeks/</id>
@@ -786,40 +848,6 @@ Facebook | Web-developer | Zurich
     
     
       <category term="mvp django side-project" scheme="https://windsooon.github.io/tags/mvp-django-side-project/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>How to make Python GIL better (To be finished)</title>
-    <link href="https://windsooon.github.io/2017/07/16/Everything%20you%20should%20know%20about%20GIL/"/>
-    <id>https://windsooon.github.io/2017/07/16/Everything you should know about GIL/</id>
-    <published>2017-07-16T12:00:00.000Z</published>
-    <updated>2019-07-02T02:05:12.533Z</updated>
-    
-    <content type="html">&lt;ol&gt;
-&lt;li&gt;How os system schele work&lt;/li&gt;
-&lt;li&gt;Now with GIL&lt;/li&gt;
-&lt;li&gt;multicore&lt;/li&gt;
-&lt;li&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;I assume you know what is GIL in python and some basic knowledgt to use the python threadding module. If you don’t, you may have a look at the article here. Let’s recap the os system&lt;/p&gt;
-&lt;h3 id=&quot;How-os-system-schele-work&quot;&gt;&lt;a href=&quot;#How-os-system-schele-work&quot; class=&quot;headerlink&quot; title=&quot;How os system schele work&quot;&gt;&lt;/a&gt;How os system schele work&lt;/h3&gt;&lt;p&gt;It’s not a easy topic, we speed quite a long time to search for a prefect scheduling policy. Since Linux 2.6.23, the default scheduler is CFS. What is CFS and why we need it? &lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;ol&gt;
-&lt;li&gt;How os system schele work&lt;/li&gt;
-&lt;li&gt;Now with GIL&lt;/li&gt;
-&lt;li&gt;multicore&lt;/li&gt;
-&lt;li&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;I assume you know what is GIL in python 
-    
-    </summary>
-    
-    
-      <category term="GIL Python" scheme="https://windsooon.github.io/tags/GIL-Python/"/>
     
   </entry>
   
