@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://windsooon.github.io/"/>
-  <updated>2019-08-16T07:30:43.074Z</updated>
+  <updated>2019-08-16T07:32:13.530Z</updated>
   <id>https://windsooon.github.io/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="https://windsooon.github.io/2019/08/14/How%20Python%20read%20or%20write%20files%20under%20the%20hood%20(unfinished)/"/>
     <id>https://windsooon.github.io/2019/08/14/How Python read or write files under the hood (unfinished)/</id>
     <published>2019-08-14T00:57:00.000Z</published>
-    <updated>2019-08-16T07:30:43.074Z</updated>
+    <updated>2019-08-16T07:32:13.530Z</updated>
     
     <content type="html">&lt;h3 id=&quot;Background&quot;&gt;&lt;a href=&quot;#Background&quot; class=&quot;headerlink&quot; title=&quot;Background&quot;&gt;&lt;/a&gt;Background&lt;/h3&gt;&lt;p&gt;Python makes the user easy to operate files by hiding the implementation details. This article aim in discourse more detail about how it works. From &lt;a href=&quot;https://www.python.org/dev/peps/pep-0399/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;PEP 399&lt;/a&gt;, Python implemented its module in pure Python and C, both of them did the same thing. Most of the code located in Modules/_io/_iomodule.c as well as Lib/pyio.py.&lt;/p&gt;
 &lt;h4 id=&quot;Python-2-and-Python-3&quot;&gt;&lt;a href=&quot;#Python-2-and-Python-3&quot; class=&quot;headerlink&quot; title=&quot;Python 2 and Python 3&quot;&gt;&lt;/a&gt;Python 2 and Python 3&lt;/h4&gt;&lt;p&gt;In Python 2, we use FILE streams (i.e. fopen, fclose, fread) in C for performance optimization. In Python 3, there are three main types of I/O (raw, buffered, text) aims to be more reliably cross-platform than C FILE streams. Python 3 still uses FILE streams library internally in some cases (e.g. to read pyvenv.cfg at startup), (Thanks eryk sun). Python 3 uses different kinds of cache for performance. If you are not familiar with cache, you may have a look at &lt;a href=&quot;https://windsooon.github.io/2019/06/13/A%20crash%20course%20in%20cache/&quot;&gt;cache&lt;/a&gt;. Python 3 handle user-space cache. There are three different kinds of buffering:&lt;/p&gt;
@@ -44,7 +44,7 @@
 &amp;gt;&amp;gt;&amp;gt; fileio = open(&amp;quot;example.py&amp;quot;, &amp;quot;rb&amp;quot;, buffering=0)
 &amp;gt;&amp;gt;&amp;gt; type(fileio)
 &amp;lt;class &amp;apos;_io.FileIO&amp;apos;&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&quot;TextIO-and-StringIO&quot;&gt;&lt;a href=&quot;#TextIO-and-StringIO&quot; class=&quot;headerlink&quot; title=&quot;TextIO and StringIO&quot;&gt;&lt;/a&gt;TextIO and StringIO&lt;/h4&gt;&lt;p&gt;&lt;strong&gt;The different between Text I/O and Binary I/O is Text I/O will do some extra job (i.e try to encode the string to bytes-like &lt;a href=&quot;https://github.com/python/cpython/blob/master/Lib/_pyio.py#L2502&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;read() function&lt;/a&gt;) before reading or writing data.&lt;/strong&gt; Both of them use their read buffer and write buffer (bytearray) for caching. From the comments, Text IO and Binary IO &lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&quot;TextIO-and-StringIO&quot;&gt;&lt;a href=&quot;#TextIO-and-StringIO&quot; class=&quot;headerlink&quot; title=&quot;TextIO and StringIO&quot;&gt;&lt;/a&gt;TextIO and StringIO&lt;/h4&gt;&lt;p&gt;&lt;strong&gt;The different between Text I/O and Binary I/O is Text I/O will do some extra job (i.e try to encode the string to bytes, like &lt;a href=&quot;https://github.com/python/cpython/blob/master/Lib/_pyio.py#L2502&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;read() function&lt;/a&gt;) before reading or writing data.&lt;/strong&gt; Both of them use their read buffer and write buffer (bytearray) for caching. From the comments, Text IO and Binary IO &lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Reads and writes are internally buffered to speed things up.&lt;br&gt;However, any read will first flush the write buffer if it isn’t empty.&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -681,6 +681,40 @@ asyncio.run(main())
   </entry>
   
   <entry>
+    <title>How to make Python GIL better (To be finished)</title>
+    <link href="https://windsooon.github.io/2017/07/16/Everything%20you%20should%20know%20about%20GIL/"/>
+    <id>https://windsooon.github.io/2017/07/16/Everything you should know about GIL/</id>
+    <published>2017-07-16T12:00:00.000Z</published>
+    <updated>2019-07-02T02:05:12.533Z</updated>
+    
+    <content type="html">&lt;ol&gt;
+&lt;li&gt;How os system schele work&lt;/li&gt;
+&lt;li&gt;Now with GIL&lt;/li&gt;
+&lt;li&gt;multicore&lt;/li&gt;
+&lt;li&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;I assume you know what is GIL in python and some basic knowledgt to use the python threadding module. If you don’t, you may have a look at the article here. Let’s recap the os system&lt;/p&gt;
+&lt;h3 id=&quot;How-os-system-schele-work&quot;&gt;&lt;a href=&quot;#How-os-system-schele-work&quot; class=&quot;headerlink&quot; title=&quot;How os system schele work&quot;&gt;&lt;/a&gt;How os system schele work&lt;/h3&gt;&lt;p&gt;It’s not a easy topic, we speed quite a long time to search for a prefect scheduling policy. Since Linux 2.6.23, the default scheduler is CFS. What is CFS and why we need it? &lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;ol&gt;
+&lt;li&gt;How os system schele work&lt;/li&gt;
+&lt;li&gt;Now with GIL&lt;/li&gt;
+&lt;li&gt;multicore&lt;/li&gt;
+&lt;li&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;I assume you know what is GIL in python 
+    
+    </summary>
+    
+    
+      <category term="GIL Python" scheme="https://windsooon.github.io/tags/GIL-Python/"/>
+    
+  </entry>
+  
+  <entry>
     <title>How to make it to Product Hunt front page in 2 weeks</title>
     <link href="https://windsooon.github.io/2017/07/16/How%20to%20make%20it%20to%20Product%20Hunt%20front%20page%20in%202%20weeks/"/>
     <id>https://windsooon.github.io/2017/07/16/How to make it to Product Hunt front page in 2 weeks/</id>
@@ -818,40 +852,6 @@ Facebook | Web-developer | Zurich
     
     
       <category term="mvp django side-project" scheme="https://windsooon.github.io/tags/mvp-django-side-project/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>How to make Python GIL better (To be finished)</title>
-    <link href="https://windsooon.github.io/2017/07/16/Everything%20you%20should%20know%20about%20GIL/"/>
-    <id>https://windsooon.github.io/2017/07/16/Everything you should know about GIL/</id>
-    <published>2017-07-16T12:00:00.000Z</published>
-    <updated>2019-07-02T02:05:12.533Z</updated>
-    
-    <content type="html">&lt;ol&gt;
-&lt;li&gt;How os system schele work&lt;/li&gt;
-&lt;li&gt;Now with GIL&lt;/li&gt;
-&lt;li&gt;multicore&lt;/li&gt;
-&lt;li&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;I assume you know what is GIL in python and some basic knowledgt to use the python threadding module. If you don’t, you may have a look at the article here. Let’s recap the os system&lt;/p&gt;
-&lt;h3 id=&quot;How-os-system-schele-work&quot;&gt;&lt;a href=&quot;#How-os-system-schele-work&quot; class=&quot;headerlink&quot; title=&quot;How os system schele work&quot;&gt;&lt;/a&gt;How os system schele work&lt;/h3&gt;&lt;p&gt;It’s not a easy topic, we speed quite a long time to search for a prefect scheduling policy. Since Linux 2.6.23, the default scheduler is CFS. What is CFS and why we need it? &lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;ol&gt;
-&lt;li&gt;How os system schele work&lt;/li&gt;
-&lt;li&gt;Now with GIL&lt;/li&gt;
-&lt;li&gt;multicore&lt;/li&gt;
-&lt;li&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;I assume you know what is GIL in python 
-    
-    </summary>
-    
-    
-      <category term="GIL Python" scheme="https://windsooon.github.io/tags/GIL-Python/"/>
     
   </entry>
   

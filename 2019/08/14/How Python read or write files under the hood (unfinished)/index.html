@@ -20,7 +20,7 @@
 &gt;&gt;&gt; fileio = open(&quot;example.py&quot;, &quot;rb&quot;, buffering=0)
 &gt;&gt;&gt; type(fileio)
 &lt;class &apos;_io.FileIO&apos;&gt;
-</code></pre><h4 id="TextIO-and-StringIO"><a href="#TextIO-and-StringIO" class="headerlink" title="TextIO and StringIO"></a>TextIO and StringIO</h4><p><strong>The different between Text I/O and Binary I/O is Text I/O will do some extra job (i.e try to encode the string to bytes-like <a href="https://github.com/python/cpython/blob/master/Lib/_pyio.py#L2502" target="_blank" rel="external">read() function</a>) before reading or writing data.</strong> Both of them use their read buffer and write buffer (bytearray) for caching. From the comments, Text IO and Binary IO </p>
+</code></pre><h4 id="TextIO-and-StringIO"><a href="#TextIO-and-StringIO" class="headerlink" title="TextIO and StringIO"></a>TextIO and StringIO</h4><p><strong>The different between Text I/O and Binary I/O is Text I/O will do some extra job (i.e try to encode the string to bytes, like <a href="https://github.com/python/cpython/blob/master/Lib/_pyio.py#L2502" target="_blank" rel="external">read() function</a>) before reading or writing data.</strong> Both of them use their read buffer and write buffer (bytearray) for caching. From the comments, Text IO and Binary IO </p>
 <blockquote>
 <p>Reads and writes are internally buffered to speed things up.<br>However, any read will first flush the write buffer if it isn’t empty.</p>
 </blockquote>
