@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://windsooon.github.io/"/>
-  <updated>2019-08-16T07:32:13.530Z</updated>
+  <updated>2019-08-16T08:25:24.790Z</updated>
   <id>https://windsooon.github.io/</id>
   
   <author>
@@ -16,11 +16,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>How Python read or write files under the hood (unfinished)</title>
+    <title>How Python read or write files under the hood</title>
     <link href="https://windsooon.github.io/2019/08/14/How%20Python%20read%20or%20write%20files%20under%20the%20hood/"/>
     <id>https://windsooon.github.io/2019/08/14/How Python read or write files under the hood/</id>
     <published>2019-08-14T00:57:00.000Z</published>
-    <updated>2019-08-16T07:32:13.530Z</updated>
+    <updated>2019-08-16T08:25:24.790Z</updated>
     
     <content type="html">&lt;h3 id=&quot;Background&quot;&gt;&lt;a href=&quot;#Background&quot; class=&quot;headerlink&quot; title=&quot;Background&quot;&gt;&lt;/a&gt;Background&lt;/h3&gt;&lt;p&gt;Python makes the user easy to operate files by hiding the implementation details. This article aim in discourse more detail about how it works. From &lt;a href=&quot;https://www.python.org/dev/peps/pep-0399/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;PEP 399&lt;/a&gt;, Python implemented its module in pure Python and C, both of them did the same thing. Most of the code located in Modules/_io/_iomodule.c as well as Lib/pyio.py.&lt;/p&gt;
 &lt;h4 id=&quot;Python-2-and-Python-3&quot;&gt;&lt;a href=&quot;#Python-2-and-Python-3&quot; class=&quot;headerlink&quot; title=&quot;Python 2 and Python 3&quot;&gt;&lt;/a&gt;Python 2 and Python 3&lt;/h4&gt;&lt;p&gt;In Python 2, we use FILE streams (i.e. fopen, fclose, fread) in C for performance optimization. In Python 3, there are three main types of I/O (raw, buffered, text) aims to be more reliably cross-platform than C FILE streams. Python 3 still uses FILE streams library internally in some cases (e.g. to read pyvenv.cfg at startup), (Thanks eryk sun). Python 3 uses different kinds of cache for performance. If you are not familiar with cache, you may have a look at &lt;a href=&quot;https://windsooon.github.io/2019/06/13/A%20crash%20course%20in%20cache/&quot;&gt;cache&lt;/a&gt;. Python 3 handle user-space cache. There are three different kinds of buffering:&lt;/p&gt;
