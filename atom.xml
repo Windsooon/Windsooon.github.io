@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://windsooon.github.io/"/>
-  <updated>2019-08-17T05:07:20.684Z</updated>
+  <updated>2019-08-17T05:20:15.281Z</updated>
   <id>https://windsooon.github.io/</id>
   
   <author>
@@ -20,10 +20,11 @@
     <link href="https://windsooon.github.io/2019/08/14/How%20Python%20read%20or%20write%20files%20under%20the%20hood/"/>
     <id>https://windsooon.github.io/2019/08/14/How Python read or write files under the hood/</id>
     <published>2019-08-14T00:57:00.000Z</published>
-    <updated>2019-08-17T05:07:20.684Z</updated>
+    <updated>2019-08-17T05:20:15.281Z</updated>
     
-    <content type="html">&lt;h3 id=&quot;Background&quot;&gt;&lt;a href=&quot;#Background&quot; class=&quot;headerlink&quot; title=&quot;Background&quot;&gt;&lt;/a&gt;Background&lt;/h3&gt;&lt;p&gt;Python makes users easy to operate files by hiding the implementation details for the IO module. This article aim in discourse more details about how it works for people who want to know more about it. &lt;/p&gt;
-&lt;h4 id=&quot;What-is-the-code&quot;&gt;&lt;a href=&quot;#What-is-the-code&quot; class=&quot;headerlink&quot; title=&quot;What is the code&quot;&gt;&lt;/a&gt;What is the code&lt;/h4&gt;&lt;p&gt;From &lt;a href=&quot;https://www.python.org/dev/peps/pep-0399/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;PEP 399&lt;/a&gt;&lt;/p&gt;
+    <content type="html">&lt;p&gt;Python makes users easy to operate files by hiding the implementation details for the IO module. This article aim in discourse more details about how it works for people who want to know more about it. &lt;/p&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;h4 id=&quot;The-code&quot;&gt;&lt;a href=&quot;#The-code&quot; class=&quot;headerlink&quot; title=&quot;The code&quot;&gt;&lt;/a&gt;The code&lt;/h4&gt;&lt;p&gt;From &lt;a href=&quot;https://www.python.org/dev/peps/pep-0399/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;PEP 399&lt;/a&gt;&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;The purpose of this PEP is to minimize this duplicate effort by mandating that all new modules added to Python’s standard library must have a pure Python implementation unless special dispensation is given. &lt;/p&gt;
 &lt;/blockquote&gt;
@@ -86,7 +87,7 @@
     
     <summary type="html">
     
-      &lt;h3 id=&quot;Background&quot;&gt;&lt;a href=&quot;#Background&quot; class=&quot;headerlink&quot; title=&quot;Background&quot;&gt;&lt;/a&gt;Background&lt;/h3&gt;&lt;p&gt;Python makes users easy to operate fil
+      &lt;p&gt;Python makes users easy to operate files by hiding the implementation details for the IO module. This article aim in discourse more details about how it works for people who want to know more about it. &lt;/p&gt;
     
     </summary>
     
@@ -100,9 +101,10 @@
     <link href="https://windsooon.github.io/2019/08/13/Anti-Spam%20reviews%20in%20App%20Store/"/>
     <id>https://windsooon.github.io/2019/08/13/Anti-Spam reviews in App Store/</id>
     <published>2019-08-13T06:57:00.000Z</published>
-    <updated>2019-08-16T06:18:25.884Z</updated>
+    <updated>2019-08-17T05:20:43.032Z</updated>
     
-    <content type="html">&lt;h3 id=&quot;Domain-Background&quot;&gt;&lt;a href=&quot;#Domain-Background&quot; class=&quot;headerlink&quot; title=&quot;Domain Background&quot;&gt;&lt;/a&gt;Domain Background&lt;/h3&gt;&lt;p&gt;Back to the 1980s, the NLP systems still based on complex sets of hand-written rules. These rules become hard to maintain since it grows exponential depend on the length of sentences. Moreover, new words pop up every day so we also have to maintain the old roles before developing any new one. Most important, we can’t use these rules on other languages since the rules are languages-specify.&lt;br&gt;With the power of the modern computer, we tried machine learning algorithms like decision trees to replace some of the hand-written rules. As we gain more and more data, we start using statistical models like hidden markov models to predict the probability of the word depends on the input data. Nowadays, with the help from the deep neural network, &lt;strong&gt;word embeddings&lt;/strong&gt; help us to convert a word from higher dimension space to a lower one. &lt;/p&gt;
+    <content type="html">&lt;p&gt;Back to the 1980s, the NLP systems still based on complex sets of hand-written rules. These rules become hard to maintain since it grows exponential depend on the length of sentences. Moreover, new words pop up every day so we also have to maintain the old roles before developing any new one. Most important, we can’t use these rules on other languages since the rules are languages-specify.&lt;br&gt;With the power of the modern computer, we tried machine learning algorithms like decision trees to replace some of the hand-written rules. As we gain more and more data, we start using statistical models like hidden markov models to predict the probability of the word depends on the input data. Nowadays, with the help from the deep neural network, &lt;strong&gt;word embeddings&lt;/strong&gt; help us to convert a word from higher dimension space to a lower one. &lt;/p&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
 &lt;h3 id=&quot;Spam-reviews-problem&quot;&gt;&lt;a href=&quot;#Spam-reviews-problem&quot; class=&quot;headerlink&quot; title=&quot;Spam reviews problem&quot;&gt;&lt;/a&gt;Spam reviews problem&lt;/h3&gt;&lt;p&gt;The spam reviews problem in China’s app store is serious. With my observation, more than 40% of customer reviews are not helpful. most of them just random words, spam, ads, unrelated contents or mean reviews which didn’t help users or the application itself. I don’t know why Apple choose to ignore this problem since the ranking of the app mostly depends on its rankings. We can also find other similar problems like amazon fake reviews or Taobao fake reviews.&lt;/p&gt;
 &lt;h3 id=&quot;Problem-Statement&quot;&gt;&lt;a href=&quot;#Problem-Statement&quot; class=&quot;headerlink&quot; title=&quot;Problem Statement&quot;&gt;&lt;/a&gt;Problem Statement&lt;/h3&gt;&lt;p&gt;I try to solve a general problem, how to find useful reviews and how to detect spam or fake reviews. This problem also exists in other country’s app store, but since China is a big market, so it looks more obvious. In this project, I’m going to use hybrid algorithms to detect the useful reviews.&lt;/p&gt;
 &lt;h3 id=&quot;Datasets-and-Inputs&quot;&gt;&lt;a href=&quot;#Datasets-and-Inputs&quot; class=&quot;headerlink&quot; title=&quot;Datasets and Inputs&quot;&gt;&lt;/a&gt;Datasets and Inputs&lt;/h3&gt;&lt;p&gt;The datasets contain 13000 customer reviews from the Apple review API,&lt;br&gt;each data point includes a username, rankings, title, and review.&lt;br&gt;The customer reviews come from top 5 free applications from 6 different categories in China’s app store. Each application includes 400 data points, 200 of them from most recent reviews and the left from most helpful reviews. I labeled all the customer reviews as useful or useless.&lt;/p&gt;
@@ -142,7 +144,7 @@
     
     <summary type="html">
     
-      &lt;h3 id=&quot;Domain-Background&quot;&gt;&lt;a href=&quot;#Domain-Background&quot; class=&quot;headerlink&quot; title=&quot;Domain Background&quot;&gt;&lt;/a&gt;Domain Background&lt;/h3&gt;&lt;p&gt;Back to th
+      &lt;p&gt;Back to the 1980s, the NLP systems still based on complex sets of hand-written rules. These rules become hard to maintain since it grows exponential depend on the length of sentences. Moreover, new words pop up every day so we also have to maintain the old roles before developing any new one. Most important, we can’t use these rules on other languages since the rules are languages-specify.&lt;br&gt;With the power of the modern computer, we tried machine learning algorithms like decision trees to replace some of the hand-written rules. As we gain more and more data, we start using statistical models like hidden markov models to predict the probability of the word depends on the input data. Nowadays, with the help from the deep neural network, &lt;strong&gt;word embeddings&lt;/strong&gt; help us to convert a word from higher dimension space to a lower one. &lt;/p&gt;
     
     </summary>
     
@@ -156,9 +158,10 @@
     <link href="https://windsooon.github.io/2019/06/13/A%20crash%20course%20in%20computer%20Cache/"/>
     <id>https://windsooon.github.io/2019/06/13/A crash course in computer Cache/</id>
     <published>2019-06-13T12:57:00.000Z</published>
-    <updated>2019-08-16T07:36:34.568Z</updated>
+    <updated>2019-08-17T05:21:05.026Z</updated>
     
-    <content type="html">&lt;h3 id=&quot;Different-level-of-Caches&quot;&gt;&lt;a href=&quot;#Different-level-of-Caches&quot; class=&quot;headerlink&quot; title=&quot;Different level of Caches&quot;&gt;&lt;/a&gt;Different level of Caches&lt;/h3&gt;&lt;p&gt;Even though the computer &lt;a href=&quot;https://computers-are-fast.github.io/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;run much faster&lt;/a&gt; then we expected nowadays, &lt;a href=&quot;https://gist.github.com/jboner/2841832#file-latency-txt&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;the speed between the different components are still very large&lt;/a&gt;. To solve this problem, we introduce different levels of caches. After access the data from storage, we store the most used (temporal locality) and the nearby data (spatial locality) in the current lever so we can aceesee them directly later. The term &lt;strong&gt;storage&lt;/strong&gt; here is relative. For example, main memory is a storage to CPU cache, and the disk is a storage to main memory. When running a program, it may reach several levels of caches. Let’s look closer to it:&lt;/p&gt;
+    <content type="html">&lt;p&gt;Even though the computer &lt;a href=&quot;https://computers-are-fast.github.io/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;run much faster&lt;/a&gt; then we expected nowadays, &lt;a href=&quot;https://gist.github.com/jboner/2841832#file-latency-txt&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;the speed between the different components are still very large&lt;/a&gt;. To solve this problem, we introduce different levels of caches. After access the data from storage, we store the most used (temporal locality) and the nearby data (spatial locality) in the current lever so we can aceesee them directly later. The term &lt;strong&gt;storage&lt;/strong&gt; here is relative. For example, main memory is a storage to CPU cache, and the disk is a storage to main memory. When running a program, it may reach several levels of caches. Let’s look closer to it:&lt;/p&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
 &lt;p&gt;&lt;img style=&quot;margin: 60px;&quot; src=&quot;https://raw.githubusercontent.com/Windsooon/blog/master/imgs/cache/cache_level.png&quot;&gt;&lt;/p&gt;
 &lt;h4 id=&quot;CPU-cache&quot;&gt;&lt;a href=&quot;#CPU-cache&quot; class=&quot;headerlink&quot; title=&quot;CPU cache&quot;&gt;&lt;/a&gt;CPU cache&lt;/h4&gt;&lt;p&gt;CPU built a pyramid-like cache architecture, each of them keeps a small piece of data and instructions in it.&lt;/p&gt;
 &lt;p&gt;&lt;img style=&quot;margin: 60px;&quot; src=&quot;https://raw.githubusercontent.com/Windsooon/blog/master/imgs/cache/cpu_cache.png&quot;&gt;&lt;/p&gt;
@@ -242,7 +245,7 @@ f.read(10)
     
     <summary type="html">
     
-      &lt;h3 id=&quot;Different-level-of-Caches&quot;&gt;&lt;a href=&quot;#Different-level-of-Caches&quot; class=&quot;headerlink&quot; title=&quot;Different level of Caches&quot;&gt;&lt;/a&gt;Different l
+      &lt;p&gt;Even though the computer &lt;a href=&quot;https://computers-are-fast.github.io/&quot;&gt;run much faster&lt;/a&gt; then we expected nowadays, &lt;a href=&quot;https://gist.github.com/jboner/2841832#file-latency-txt&quot;&gt;the speed between the different components are still very large&lt;/a&gt;. To solve this problem, we introduce different levels of caches. After access the data from storage, we store the most used (temporal locality) and the nearby data (spatial locality) in the current lever so we can aceesee them directly later. The term &lt;strong&gt;storage&lt;/strong&gt; here is relative. For example, main memory is a storage to CPU cache, and the disk is a storage to main memory. When running a program, it may reach several levels of caches. Let’s look closer to it:&lt;/p&gt;
     
     </summary>
     
@@ -256,10 +259,11 @@ f.read(10)
     <link href="https://windsooon.github.io/2018/09/25/Why%20we%20should%20hire%20open%20source%20contributors/"/>
     <id>https://windsooon.github.io/2018/09/25/Why we should hire open source contributors/</id>
     <published>2018-09-25T13:57:00.000Z</published>
-    <updated>2018-09-25T16:45:45.339Z</updated>
+    <updated>2019-08-17T05:18:46.918Z</updated>
     
-    <content type="html">&lt;p&gt;I launched &lt;a href=&quot;https://www.osjobs.net&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Open Source Jobs&lt;/a&gt; a week ago to let enterprises hire open source contributors, why I’m doing this?&lt;/p&gt;
-&lt;h3 id=&quot;Hiring-is-really-hard&quot;&gt;&lt;a href=&quot;#Hiring-is-really-hard&quot; class=&quot;headerlink&quot; title=&quot;Hiring is really hard&quot;&gt;&lt;/a&gt;Hiring is really hard&lt;/h3&gt;&lt;h4 id=&quot;Suitable-candidates-are-hard-to-find&quot;&gt;&lt;a href=&quot;#Suitable-candidates-are-hard-to-find&quot; class=&quot;headerlink&quot; title=&quot;Suitable candidates are hard to find&quot;&gt;&lt;/a&gt;Suitable candidates are hard to find&lt;/h4&gt;&lt;p&gt;I spent 2.5 years in a startup as a software engineer, we have 15 engineers and we proud of our products. Like other companies, we desire to hire the best engineers. But hiring is really hard, I remember a popular article in &lt;a href=&quot;https://danluu.com/programmer-moneyball/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;HN&lt;/a&gt;, the article quoted from &lt;a href=&quot;https://news.ycombinator.com/item?id=11290662&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Thomas Ptacek&lt;/a&gt;:&lt;/p&gt;
+    <content type="html">&lt;p&gt;I spent 2 years in a startup as a software engineer, we have 15 engineers and we proud of our products. Like other companies, we desire to hire the best engineers. But hiring is really hard, I remember a popular article in &lt;a href=&quot;https://danluu.com/programmer-moneyball/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;HN&lt;/a&gt;, the article quoted from &lt;a href=&quot;https://news.ycombinator.com/item?id=11290662&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Thomas Ptacek&lt;/a&gt;:&lt;/p&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;h3 id=&quot;Hiring-is-really-hard&quot;&gt;&lt;a href=&quot;#Hiring-is-really-hard&quot; class=&quot;headerlink&quot; title=&quot;Hiring is really hard&quot;&gt;&lt;/a&gt;Hiring is really hard&lt;/h3&gt;&lt;h4 id=&quot;Suitable-candidates-are-hard-to-find&quot;&gt;&lt;a href=&quot;#Suitable-candidates-are-hard-to-find&quot; class=&quot;headerlink&quot; title=&quot;Suitable candidates are hard to find&quot;&gt;&lt;/a&gt;Suitable candidates are hard to find&lt;/h4&gt;&lt;p&gt;I spent 2 years in a startup as a software engineer, we have 15 engineers and we proud of our products. Like other companies, we desire to hire the best engineers. But hiring is really hard, I remember a popular article in &lt;a href=&quot;https://danluu.com/programmer-moneyball/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;HN&lt;/a&gt;, the article quoted from &lt;a href=&quot;https://news.ycombinator.com/item?id=11290662&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Thomas Ptacek&lt;/a&gt;:&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;My experience is that running a hiring process that lights up only on the kind of talent that qualifies itself with a standard tech interview is ludicrously expensive. People that do well in standard tech interviews can work anywhere they want. If you can only hire those people, you are competing for talent with the wealthiest (or most overfunded) tech companies in the market.&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -316,7 +320,7 @@ f.read(10)
     
     <summary type="html">
     
-      &lt;p&gt;I launched &lt;a href=&quot;https://www.osjobs.net&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Open Source Jobs&lt;/a&gt; a week ago to let enterprises hire open s
+      &lt;p&gt;I spent 2 years in a startup as a software engineer, we have 15 engineers and we proud of our products. Like other companies, we desire to hire the best engineers. But hiring is really hard, I remember a popular article in &lt;a href=&quot;https://danluu.com/programmer-moneyball/&quot;&gt;HN&lt;/a&gt;, the article quoted from &lt;a href=&quot;https://news.ycombinator.com/item?id=11290662&quot;&gt;Thomas Ptacek&lt;/a&gt;:&lt;/p&gt;
     
     </summary>
     
@@ -330,9 +334,10 @@ f.read(10)
     <link href="https://windsooon.github.io/2018/09/22/Skip%20deleted%20attributes/"/>
     <id>https://windsooon.github.io/2018/09/22/Skip deleted attributes/</id>
     <published>2018-09-22T07:51:00.000Z</published>
-    <updated>2019-08-16T06:24:10.532Z</updated>
+    <updated>2019-08-17T05:20:03.440Z</updated>
     
     <content type="html">&lt;p&gt;Today I’m going to review &lt;a href=&quot;https://github.com/python/cpython/pull/9302&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;pull_9302&lt;/a&gt;&lt;/p&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
 &lt;h3 id=&quot;Step-1-discussion&quot;&gt;&lt;a href=&quot;#Step-1-discussion&quot; class=&quot;headerlink&quot; title=&quot;Step 1: discussion&quot;&gt;&lt;/a&gt;Step 1: discussion&lt;/h3&gt;&lt;blockquote&gt;
 &lt;p&gt;When using a mock and deleting an attribute reset_mock cannot be used anymore since it tries to call reset_mock on the _deleted sentinel value.&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -411,8 +416,7 @@ _deleted = sentinel.DELETED
     
     <summary type="html">
     
-      &lt;p&gt;Today I’m going to review &lt;a href=&quot;https://github.com/python/cpython/pull/9302&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;pull_9302&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&quot;
+      &lt;p&gt;Today I’m going to review &lt;a href=&quot;https://github.com/python/cpython/pull/9302&quot;&gt;pull_9302&lt;/a&gt;&lt;/p&gt;
     
     </summary>
     
@@ -426,16 +430,16 @@ _deleted = sentinel.DELETED
     <link href="https://windsooon.github.io/2018/09/21/Remove%20redundant%20overflow%20checks/"/>
     <id>https://windsooon.github.io/2018/09/21/Remove redundant overflow checks/</id>
     <published>2018-09-21T03:49:00.000Z</published>
-    <updated>2018-11-21T11:01:31.156Z</updated>
+    <updated>2019-08-17T05:21:46.522Z</updated>
     
-    <content type="html">&lt;p&gt;&lt;a href=&quot;http://windsooon.github.io/2018/09/19/Day%20One/&quot;&gt;Day One: Coroutine or Coroutine Function&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;Today I’m going to review &lt;a href=&quot;https://github.com/python/cpython/pull/8757&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;pull_8757&lt;/a&gt;, My selection criteria it’s the PR should be &lt;/p&gt;
+    <content type="html">&lt;p&gt;Today I’m going to review &lt;a href=&quot;https://github.com/python/cpython/pull/8757&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;pull_8757&lt;/a&gt;, My selection criteria it’s the PR should be &lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;Neither too new or too old&lt;/li&gt;
 &lt;li&gt;Passed most of the tests and been labeled &lt;strong&gt;awaiting review&lt;/strong&gt; &lt;/li&gt;
 &lt;li&gt;I can review it in a day.&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;(Another python contributor &lt;strong&gt;Tal Einat&lt;/strong&gt; gave me so many advises in my yesterday post, Thank you so much, Tal.)&lt;/p&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
 &lt;h3 id=&quot;Step-1-discussion&quot;&gt;&lt;a href=&quot;#Step-1-discussion&quot; class=&quot;headerlink&quot; title=&quot;Step 1: discussion&quot;&gt;&lt;/a&gt;Step 1: discussion&lt;/h3&gt;&lt;p&gt;I Searched the &lt;a href=&quot;https://bugs.python.org/issue34397&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;issue discussion&lt;/a&gt;&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Max size of list and tuples is limited by &lt;strong&gt;PY_SSIZE_T_MAX / sizeof(PyObject*)&lt;/strong&gt;, so the sum of any two list/tuples sizes always &amp;lt;= &lt;strong&gt;PY_SSIZE_T_MAX&lt;/strong&gt; if &lt;strong&gt;sizeof(PyObject*)&lt;/strong&gt; &amp;gt; 1, which seems true for all supported (existing?) platforms.&lt;br&gt;It means that overflow checks in app1, ins1, list_concat and tupleconcat are redundant and can be safely removed.&lt;/p&gt;
@@ -483,8 +487,13 @@ if (new_allocated &amp;gt; (size_t)PY_SSIZE_T_MAX / sizeof(PyObject *)) {
     
     <summary type="html">
     
-      &lt;p&gt;&lt;a href=&quot;http://windsooon.github.io/2018/09/19/Day%20One/&quot;&gt;Day One: Coroutine or Coroutine Function&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;Today I’m going to review 
+      &lt;p&gt;Today I’m going to review &lt;a href=&quot;https://github.com/python/cpython/pull/8757&quot;&gt;pull_8757&lt;/a&gt;, My selection criteria it’s the PR should be &lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Neither too new or too old&lt;/li&gt;
+&lt;li&gt;Passed most of the tests and been labeled &lt;strong&gt;awaiting review&lt;/strong&gt; &lt;/li&gt;
+&lt;li&gt;I can review it in a day.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;(Another python contributor &lt;strong&gt;Tal Einat&lt;/strong&gt; gave me so many advises in my yesterday post, Thank you so much, Tal.)&lt;/p&gt;
     
     </summary>
     
@@ -498,9 +507,11 @@ if (new_allocated &amp;gt; (size_t)PY_SSIZE_T_MAX / sizeof(PyObject *)) {
     <link href="https://windsooon.github.io/2018/09/19/Coroutine%20or%20Coroutine%20Function/"/>
     <id>https://windsooon.github.io/2018/09/19/Coroutine or Coroutine Function/</id>
     <published>2018-09-19T12:57:00.000Z</published>
-    <updated>2018-11-21T11:01:06.773Z</updated>
+    <updated>2019-08-17T05:22:40.719Z</updated>
     
-    <content type="html">&lt;h3 id=&quot;Why-Review&quot;&gt;&lt;a href=&quot;#Why-Review&quot; class=&quot;headerlink&quot; title=&quot;Why Review?&quot;&gt;&lt;/a&gt;Why Review?&lt;/h3&gt;&lt;ol&gt;
+    <content type="html">&lt;p&gt;I’m going to review some PR from the Cpython repo this week.&lt;/p&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;h3 id=&quot;Why-Review&quot;&gt;&lt;a href=&quot;#Why-Review&quot; class=&quot;headerlink&quot; title=&quot;Why Review?&quot;&gt;&lt;/a&gt;Why Review?&lt;/h3&gt;&lt;ol&gt;
 &lt;li&gt;&lt;p&gt;Python need reviewers&lt;/p&gt;
 &lt;p&gt; &lt;a href=&quot;https://devguide.python.org/pullrequest/#how-to-review-a-pull-request&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;developer guide&lt;/a&gt; points out:&lt;/p&gt;
 &lt;blockquote&gt;
@@ -629,9 +640,7 @@ asyncio.run(main())
     
     <summary type="html">
     
-      &lt;h3 id=&quot;Why-Review&quot;&gt;&lt;a href=&quot;#Why-Review&quot; class=&quot;headerlink&quot; title=&quot;Why Review?&quot;&gt;&lt;/a&gt;Why Review?&lt;/h3&gt;&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;Python need reviewers&lt;/p&gt;
-&lt;
+      &lt;p&gt;I’m going to review some PR from the Cpython repo this week.&lt;/p&gt;
     
     </summary>
     
@@ -708,6 +717,40 @@ asyncio.run(main())
     
     
       <category term="thank you open source" scheme="https://windsooon.github.io/tags/thank-you-open-source/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>How to make Python GIL better (To be finished)</title>
+    <link href="https://windsooon.github.io/2017/07/16/Everything%20you%20should%20know%20about%20GIL/"/>
+    <id>https://windsooon.github.io/2017/07/16/Everything you should know about GIL/</id>
+    <published>2017-07-16T12:00:00.000Z</published>
+    <updated>2019-07-02T02:05:12.533Z</updated>
+    
+    <content type="html">&lt;ol&gt;
+&lt;li&gt;How os system schele work&lt;/li&gt;
+&lt;li&gt;Now with GIL&lt;/li&gt;
+&lt;li&gt;multicore&lt;/li&gt;
+&lt;li&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;I assume you know what is GIL in python and some basic knowledgt to use the python threadding module. If you don’t, you may have a look at the article here. Let’s recap the os system&lt;/p&gt;
+&lt;h3 id=&quot;How-os-system-schele-work&quot;&gt;&lt;a href=&quot;#How-os-system-schele-work&quot; class=&quot;headerlink&quot; title=&quot;How os system schele work&quot;&gt;&lt;/a&gt;How os system schele work&lt;/h3&gt;&lt;p&gt;It’s not a easy topic, we speed quite a long time to search for a prefect scheduling policy. Since Linux 2.6.23, the default scheduler is CFS. What is CFS and why we need it? &lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;ol&gt;
+&lt;li&gt;How os system schele work&lt;/li&gt;
+&lt;li&gt;Now with GIL&lt;/li&gt;
+&lt;li&gt;multicore&lt;/li&gt;
+&lt;li&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;I assume you know what is GIL in python 
+    
+    </summary>
+    
+    
+      <category term="GIL Python" scheme="https://windsooon.github.io/tags/GIL-Python/"/>
     
   </entry>
   
@@ -849,40 +892,6 @@ Facebook | Web-developer | Zurich
     
     
       <category term="mvp django side-project" scheme="https://windsooon.github.io/tags/mvp-django-side-project/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>How to make Python GIL better (To be finished)</title>
-    <link href="https://windsooon.github.io/2017/07/16/Everything%20you%20should%20know%20about%20GIL/"/>
-    <id>https://windsooon.github.io/2017/07/16/Everything you should know about GIL/</id>
-    <published>2017-07-16T12:00:00.000Z</published>
-    <updated>2019-07-02T02:05:12.533Z</updated>
-    
-    <content type="html">&lt;ol&gt;
-&lt;li&gt;How os system schele work&lt;/li&gt;
-&lt;li&gt;Now with GIL&lt;/li&gt;
-&lt;li&gt;multicore&lt;/li&gt;
-&lt;li&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;I assume you know what is GIL in python and some basic knowledgt to use the python threadding module. If you don’t, you may have a look at the article here. Let’s recap the os system&lt;/p&gt;
-&lt;h3 id=&quot;How-os-system-schele-work&quot;&gt;&lt;a href=&quot;#How-os-system-schele-work&quot; class=&quot;headerlink&quot; title=&quot;How os system schele work&quot;&gt;&lt;/a&gt;How os system schele work&lt;/h3&gt;&lt;p&gt;It’s not a easy topic, we speed quite a long time to search for a prefect scheduling policy. Since Linux 2.6.23, the default scheduler is CFS. What is CFS and why we need it? &lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;ol&gt;
-&lt;li&gt;How os system schele work&lt;/li&gt;
-&lt;li&gt;Now with GIL&lt;/li&gt;
-&lt;li&gt;multicore&lt;/li&gt;
-&lt;li&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;I assume you know what is GIL in python 
-    
-    </summary>
-    
-    
-      <category term="GIL Python" scheme="https://windsooon.github.io/tags/GIL-Python/"/>
     
   </entry>
   

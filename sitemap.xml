@@ -2,30 +2,51 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://windsooon.github.io/2019/08/14/How%20Python%20read%20or%20write%20files%20under%20the%20hood/</loc>
+    <loc>https://windsooon.github.io/2018/09/19/Coroutine%20or%20Coroutine%20Function/</loc>
     
-    <lastmod>2019-08-17T05:07:20.684Z</lastmod>
+    <lastmod>2019-08-17T05:22:40.719Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://windsooon.github.io/2018/09/21/Remove%20redundant%20overflow%20checks/</loc>
+    
+    <lastmod>2019-08-17T05:21:46.522Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://windsooon.github.io/2019/06/13/A%20crash%20course%20in%20computer%20Cache/</loc>
     
-    <lastmod>2019-08-16T07:36:34.568Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://windsooon.github.io/2018/09/22/Skip%20deleted%20attributes/</loc>
-    
-    <lastmod>2019-08-16T06:24:10.532Z</lastmod>
+    <lastmod>2019-08-17T05:21:05.026Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://windsooon.github.io/2019/08/13/Anti-Spam%20reviews%20in%20App%20Store/</loc>
     
-    <lastmod>2019-08-16T06:18:25.884Z</lastmod>
+    <lastmod>2019-08-17T05:20:43.032Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://windsooon.github.io/2019/08/14/How%20Python%20read%20or%20write%20files%20under%20the%20hood/</loc>
+    
+    <lastmod>2019-08-17T05:20:15.281Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://windsooon.github.io/2018/09/22/Skip%20deleted%20attributes/</loc>
+    
+    <lastmod>2019-08-17T05:20:03.440Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://windsooon.github.io/2018/09/25/Why%20we%20should%20hire%20open%20source%20contributors/</loc>
+    
+    <lastmod>2019-08-17T05:18:46.918Z</lastmod>
     
   </url>
   
@@ -40,27 +61,6 @@
     <loc>https://windsooon.github.io/2017/11/23/Why%20we%20never%20thank%20open%20source%20maintainers/</loc>
     
     <lastmod>2018-11-22T06:51:10.693Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://windsooon.github.io/2018/09/21/Remove%20redundant%20overflow%20checks/</loc>
-    
-    <lastmod>2018-11-21T11:01:31.156Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://windsooon.github.io/2018/09/19/Coroutine%20or%20Coroutine%20Function/</loc>
-    
-    <lastmod>2018-11-21T11:01:06.773Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://windsooon.github.io/2018/09/25/Why%20we%20should%20hire%20open%20source%20contributors/</loc>
-    
-    <lastmod>2018-09-25T16:45:45.339Z</lastmod>
     
   </url>
   
