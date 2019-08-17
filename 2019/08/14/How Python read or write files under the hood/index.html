@@ -1,32 +1,63 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> How Python read or write files under the hood · Tech blog of Unicooo</title><meta name="description" content="How Python read or write files under the hood - Unicooo"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="short icon" href="/favicon.png"><link rel="stylesheet" href="/css/apollo.css"></head><body><div id="mask" style="display: none;"><img id="mask-image" src="#" style=" "></div><div class="wrap"><header><a href="/" class="logo-link"><img src="/favicon.png"></a><ul class="nav nav-list"><li class="nav-list-item"><a href="https://www.enginego.org" target="_blank" class="nav-list-link">编程基础</a></li><li class="nav-list-item"><a href="https://github.com/Windsooon" target="_blank" class="nav-list-link">GITHUB</a></li></ul></header><section class="container"><div class="post"><article class="post-block"><h1 class="post-title">How Python read or write files under the hood</h1><div class="post-time">Aug 14, 2019</div><div class="post-content"><h3 id="Background"><a href="#Background" class="headerlink" title="Background"></a>Background</h3><p>Python makes the user easy to operate files by hiding the implementation details. This article aim in discourse more detail about how it works. From <a href="https://www.python.org/dev/peps/pep-0399/" target="_blank" rel="external">PEP 399</a>, Python implemented its module in pure Python and C, both of them did the same thing. Most of the code located in Modules/_io/_iomodule.c as well as Lib/pyio.py.</p>
-<h4 id="Python-2-and-Python-3"><a href="#Python-2-and-Python-3" class="headerlink" title="Python 2 and Python 3"></a>Python 2 and Python 3</h4><p>In Python 2, we use FILE streams (i.e. fopen, fclose, fread) in C for performance optimization. In Python 3, there are three main types of I/O (raw, buffered, text) aims to be more reliably cross-platform than C FILE streams. Python 3 still uses FILE streams library internally in some cases (e.g. to read pyvenv.cfg at startup), (Thanks eryk sun). Python 3 uses different kinds of cache for performance. If you are not familiar with cache, you may have a look at <a href="https://windsooon.github.io/2019/06/13/A%20crash%20course%20in%20cache/">cache</a>. Python 3 handle user-space cache. There are three different kinds of buffering:</p>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> How Python read or write files under the hood · Tech blog of Unicooo</title><meta name="description" content="How Python read or write files under the hood - Unicooo"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="short icon" href="/favicon.png"><link rel="stylesheet" href="/css/apollo.css"></head><body><div id="mask" style="display: none;"><img id="mask-image" src="#" style=" "></div><div class="wrap"><header><a href="/" class="logo-link"><img src="/favicon.png"></a><ul class="nav nav-list"><li class="nav-list-item"><a href="https://www.enginego.org" target="_blank" class="nav-list-link">编程基础</a></li><li class="nav-list-item"><a href="https://github.com/Windsooon" target="_blank" class="nav-list-link">GITHUB</a></li></ul></header><section class="container"><div class="post"><article class="post-block"><h1 class="post-title">How Python read or write files under the hood</h1><div class="post-time">Aug 14, 2019</div><div class="post-content"><h3 id="Background"><a href="#Background" class="headerlink" title="Background"></a>Background</h3><p>Python makes users easy to operate files by hiding the implementation details for the IO module. This article aim in discourse more details about how it works for people who want to know more about it. </p>
+<h4 id="What-is-the-code"><a href="#What-is-the-code" class="headerlink" title="What is the code"></a>What is the code</h4><p>From <a href="https://www.python.org/dev/peps/pep-0399/" target="_blank" rel="external">PEP 399</a></p>
 <blockquote>
-<p>No buffering: When you write characters to an unbuffered stream, the operating system writes them to the file as soon as possible.<br>Line buffering: When you write characters to a line-buffered stream, the operating system writes them to the file when it encounters a newline character.<br>Full buffering: When you write characters to a fully-buffered stream, the operating system writes them to the file in blocks of arbitrary size.</p>
+<p>The purpose of this PEP is to minimize this duplicate effort by mandating that all new modules added to Python’s standard library must have a pure Python implementation unless special dispensation is given. </p>
 </blockquote>
-<p>We implement both of them in Python 3, most of our job will focus on <strong>open()</strong>, <strong>read()</strong> and <strong>write()</strong>, let’s talk more about it.</p>
-<h4 id="Open-files"><a href="#Open-files" class="headerlink" title="Open files"></a>Open files</h4><p>Open file is the first thing we need to do before reading or writing, the C function located in <a href="https://github.com/python/cpython/blob/762f93ff2efd6b7ef0177cad57939c0ab2002eac/Modules/_io/_iomodule.c#L233" target="_blank" rel="external">_io_open_impl</a>. The function involve lots of error check and other details. but basiclly, the function acpect the parameter than pass them to the open() system call, just like the <a href="">document</a> said, we have Text I/O, Binary I/O and Raw I/O. When we open a file with different mode, we will get a different object: </p>
-<pre><code># Text IO will return TextIOWrapper object
+<p>We can find the code in IO module in <a href="https://github.com/python/cpython/blob/master/Modules/_io/_iomodule.c" target="_blank" rel="external">Modules/_io/_iomodule.c</a> as well as <a href="https://github.com/python/cpython/blob/master/Lib/_pyio.py" target="_blank" rel="external">Lib/pyio.py</a>. </p>
+<h4 id="Python-2-and-Python-3"><a href="#Python-2-and-Python-3" class="headerlink" title="Python 2 and Python 3"></a>Python 2 and Python 3</h4><p>In Python 2, we use FILE streams (i.e. fopen, fclose, fread) for performance optimization. However, since The python community wants to be more reliably cross-platform than C FILE streams. Python 3 implements its user space cache (i.e. write buffer and read buffer). If you are not familiar with cache, you may have a look at <a href="https://windsooon.github.io/2019/06/13/A%20crash%20course%20in%20cache/">cache</a>. There are three main types of I/O (Text, Binary, Raw). Python 3 still uses FILE streams library internally in some cases (e.g. to read pyvenv.cfg at startup), (Thanks eryk sun). </p>
+<h4 id="Open-files"><a href="#Open-files" class="headerlink" title="Open files"></a>Open files</h4><p>Open file is the first thing we need to do before reading or writing files. Before we actually call the system call open(), we have to do some configure depend on the input parameters. For instance, the buffering arg from the build-in open() function:</p>
+<pre><code>open(file, mode=&apos;r&apos;, buffering=-1, encoding=None, errors=None, newline=None, closefd=True, opener=None)
+</code></pre><blockquote>
+<p>buffering is an optional integer used to set the buffering policy. Pass 0 to switch buffering off (only allowed in binary mode), 1 to select line buffering (only usable in text mode), and an integer &gt; 1 to indicate the size in bytes of a fixed-size chunk buffer. When no buffering argument is given, the default buffering policy works as follows:</p>
+<p>Binary files are buffered in fixed-size chunks; the size of the buffer is chosen using a heuristic trying to determine the underlying device’s “block size” and falling back on io.DEFAULT_BUFFER_SIZE. On many systems, the buffer will typically be 4096 or 8192 bytes long.</p>
+<p>“Interactive” text files (files for which isatty() returns True) use line buffering. Other text files use the policy described above for binary files.</p>
+</blockquote>
+<p>Moreover, different kinds of open mode will return different objects:</p>
+<table>
+<thead>
+<tr>
+<th>IO</th>
+<th>Object</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Text I/O</td>
+<td>TextIOWrapper</td>
+</tr>
+<tr>
+<td>Binary I/O</td>
+<td>BufferedReader / BufferedWriter / BufferedRandom</td>
+</tr>
+<tr>
+<td>Raw I/O</td>
+<td>FileIO </td>
+</tr>
+</tbody>
+</table>
+<pre><code># Operate the file with text mode
 &gt;&gt;&gt; textio = open(&apos;example.py&apos;, &apos;r&apos;)
 &gt;&gt;&gt; type(textio)
 &lt;class &apos;_io.TextIOWrapper&apos;&gt;
-# Binary IO will return BufferedReader/BufferedWriter/BufferedRandom
+# Operate the file with binary mode
 &gt;&gt;&gt; binaryio = open(&apos;example.py&apos;, &apos;rb&apos;)
 &gt;&gt;&gt; type(binaryio)
 &lt;class &apos;_io.BufferedReader&apos;&gt;
 &gt;&gt;&gt; binaryio = open(&apos;example.py&apos;, &apos;wb&apos;)
 &gt;&gt;&gt; type(binaryio)
 &lt;class &apos;_io.BufferedWriter&apos;&gt;
-# No buffering IO
+# set buffering=0 
 &gt;&gt;&gt; fileio = open(&quot;example.py&quot;, &quot;rb&quot;, buffering=0)
 &gt;&gt;&gt; type(fileio)
 &lt;class &apos;_io.FileIO&apos;&gt;
-</code></pre><h4 id="TextIO-and-StringIO"><a href="#TextIO-and-StringIO" class="headerlink" title="TextIO and StringIO"></a>TextIO and StringIO</h4><p><strong>The different between Text I/O and Binary I/O is Text I/O will do some extra job (i.e try to encode the string to bytes, like <a href="https://github.com/python/cpython/blob/master/Lib/_pyio.py#L2502" target="_blank" rel="external">read() function</a>) before reading or writing data.</strong> Both of them use their read buffer and write buffer (bytearray) for caching. From the comments, Text IO and Binary IO </p>
-<blockquote>
-<p>Reads and writes are internally buffered to speed things up.<br>However, any read will first flush the write buffer if it isn’t empty.</p>
-</blockquote>
-<p>The whole process looks like this:</p>
-<h4 id="Read"><a href="#Read" class="headerlink" title="Read"></a>Read</h4><p><img src="https://raw.githubusercontent.com/Windsooon/blog/master/imgs/python%20io/TextIo%20Read.png" alt="read"></p>
-<h4 id="Write"><a href="#Write" class="headerlink" title="Write"></a>Write</h4><p><img src="https://raw.githubusercontent.com/Windsooon/blog/master/imgs/python%20io/TextIO_write.png" alt="write"></p>
+</code></pre><p><strong>Both of Text I/O and Binary I/O has their read buffer and write buffer (bytearray). The difference between them is Text I/O (TextIOWrapper object) is a wrapper on Binary I/O. It will do some extra job (i.e try to encode the string to bytes at first) before operating the data.</strong> For example, in the <a href="https://github.com/python/cpython/blob/master/Lib/_pyio.py#L2502" target="_blank" rel="external">TextIOWrapper read() function</a></p>
+<pre><code>result = (self._get_decoded_chars() + decoder.decode(self.buffer.read(), final=True))
+</code></pre><p>Text I/O will call <code>self.buffer.read()</code> which is handled by Binary I/O after encoding/decoding.</p>
+<h4 id="Text-I-O-and-Binary-I-O-Read"><a href="#Text-I-O-and-Binary-I-O-Read" class="headerlink" title="Text I/O and Binary I/O Read"></a>Text I/O and Binary I/O Read</h4><p>Both of them did very similar jobs in Reading and Writing:</p>
+<p><img src="https://raw.githubusercontent.com/Windsooon/blog/master/imgs/python%20io/TextIo%20Read.png" alt="read"></p>
+<h4 id="Text-I-O-and-Binary-I-O-Write"><a href="#Text-I-O-and-Binary-I-O-Write" class="headerlink" title="Text I/O and Binary I/O Write"></a>Text I/O and Binary I/O Write</h4><p><img src="https://raw.githubusercontent.com/Windsooon/blog/master/imgs/python%20io/TextIO_write.png" alt="write"></p>
+<h4 id="File-I-O-read-and-write"><a href="#File-I-O-read-and-write" class="headerlink" title="File I/O read and write"></a>File I/O read and write</h4><p>The File I/O didn’t use the buffer at all so its process will be easy to understand<br><img src="https://raw.githubusercontent.com/Windsooon/blog/master/imgs/python%20io/Nobuffer.png" alt="file_io"></p>
+<h4 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h4><p>Both of Text I/O and Binary I/O Write use their buffer, File I/O didn’t’ use any buffer by itself. (although both of them will use kernel buffer). Text I/O just a wrapper on Binary I/O. Their read and write process is quite similar.</p>
 </div></article></div></section><footer><div class="paginator"><a href="/2019/08/13/Anti-Spam reviews in App Store/" class="next">NEXT</a></div><div id="disqus_thread"></div><script>var disqus_shortname = 'windsonYang';
 var disqus_identifier = '2019/08/14/How Python read or write files under the hood/';
 var disqus_title = 'How Python read or write files under the hood';

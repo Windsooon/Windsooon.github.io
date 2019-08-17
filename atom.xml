@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://windsooon.github.io/"/>
-  <updated>2019-08-16T08:25:24.790Z</updated>
+  <updated>2019-08-17T05:07:20.684Z</updated>
   <id>https://windsooon.github.io/</id>
   
   <author>
@@ -20,42 +20,73 @@
     <link href="https://windsooon.github.io/2019/08/14/How%20Python%20read%20or%20write%20files%20under%20the%20hood/"/>
     <id>https://windsooon.github.io/2019/08/14/How Python read or write files under the hood/</id>
     <published>2019-08-14T00:57:00.000Z</published>
-    <updated>2019-08-16T08:25:24.790Z</updated>
+    <updated>2019-08-17T05:07:20.684Z</updated>
     
-    <content type="html">&lt;h3 id=&quot;Background&quot;&gt;&lt;a href=&quot;#Background&quot; class=&quot;headerlink&quot; title=&quot;Background&quot;&gt;&lt;/a&gt;Background&lt;/h3&gt;&lt;p&gt;Python makes the user easy to operate files by hiding the implementation details. This article aim in discourse more detail about how it works. From &lt;a href=&quot;https://www.python.org/dev/peps/pep-0399/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;PEP 399&lt;/a&gt;, Python implemented its module in pure Python and C, both of them did the same thing. Most of the code located in Modules/_io/_iomodule.c as well as Lib/pyio.py.&lt;/p&gt;
-&lt;h4 id=&quot;Python-2-and-Python-3&quot;&gt;&lt;a href=&quot;#Python-2-and-Python-3&quot; class=&quot;headerlink&quot; title=&quot;Python 2 and Python 3&quot;&gt;&lt;/a&gt;Python 2 and Python 3&lt;/h4&gt;&lt;p&gt;In Python 2, we use FILE streams (i.e. fopen, fclose, fread) in C for performance optimization. In Python 3, there are three main types of I/O (raw, buffered, text) aims to be more reliably cross-platform than C FILE streams. Python 3 still uses FILE streams library internally in some cases (e.g. to read pyvenv.cfg at startup), (Thanks eryk sun). Python 3 uses different kinds of cache for performance. If you are not familiar with cache, you may have a look at &lt;a href=&quot;https://windsooon.github.io/2019/06/13/A%20crash%20course%20in%20cache/&quot;&gt;cache&lt;/a&gt;. Python 3 handle user-space cache. There are three different kinds of buffering:&lt;/p&gt;
+    <content type="html">&lt;h3 id=&quot;Background&quot;&gt;&lt;a href=&quot;#Background&quot; class=&quot;headerlink&quot; title=&quot;Background&quot;&gt;&lt;/a&gt;Background&lt;/h3&gt;&lt;p&gt;Python makes users easy to operate files by hiding the implementation details for the IO module. This article aim in discourse more details about how it works for people who want to know more about it. &lt;/p&gt;
+&lt;h4 id=&quot;What-is-the-code&quot;&gt;&lt;a href=&quot;#What-is-the-code&quot; class=&quot;headerlink&quot; title=&quot;What is the code&quot;&gt;&lt;/a&gt;What is the code&lt;/h4&gt;&lt;p&gt;From &lt;a href=&quot;https://www.python.org/dev/peps/pep-0399/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;PEP 399&lt;/a&gt;&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;No buffering: When you write characters to an unbuffered stream, the operating system writes them to the file as soon as possible.&lt;br&gt;Line buffering: When you write characters to a line-buffered stream, the operating system writes them to the file when it encounters a newline character.&lt;br&gt;Full buffering: When you write characters to a fully-buffered stream, the operating system writes them to the file in blocks of arbitrary size.&lt;/p&gt;
+&lt;p&gt;The purpose of this PEP is to minimize this duplicate effort by mandating that all new modules added to Python’s standard library must have a pure Python implementation unless special dispensation is given. &lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;We implement both of them in Python 3, most of our job will focus on &lt;strong&gt;open()&lt;/strong&gt;, &lt;strong&gt;read()&lt;/strong&gt; and &lt;strong&gt;write()&lt;/strong&gt;, let’s talk more about it.&lt;/p&gt;
-&lt;h4 id=&quot;Open-files&quot;&gt;&lt;a href=&quot;#Open-files&quot; class=&quot;headerlink&quot; title=&quot;Open files&quot;&gt;&lt;/a&gt;Open files&lt;/h4&gt;&lt;p&gt;Open file is the first thing we need to do before reading or writing, the C function located in &lt;a href=&quot;https://github.com/python/cpython/blob/762f93ff2efd6b7ef0177cad57939c0ab2002eac/Modules/_io/_iomodule.c#L233&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;_io_open_impl&lt;/a&gt;. The function involve lots of error check and other details. but basiclly, the function acpect the parameter than pass them to the open() system call, just like the &lt;a href=&quot;&quot;&gt;document&lt;/a&gt; said, we have Text I/O, Binary I/O and Raw I/O. When we open a file with different mode, we will get a different object: &lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;# Text IO will return TextIOWrapper object
+&lt;p&gt;We can find the code in IO module in &lt;a href=&quot;https://github.com/python/cpython/blob/master/Modules/_io/_iomodule.c&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Modules/_io/_iomodule.c&lt;/a&gt; as well as &lt;a href=&quot;https://github.com/python/cpython/blob/master/Lib/_pyio.py&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Lib/pyio.py&lt;/a&gt;. &lt;/p&gt;
+&lt;h4 id=&quot;Python-2-and-Python-3&quot;&gt;&lt;a href=&quot;#Python-2-and-Python-3&quot; class=&quot;headerlink&quot; title=&quot;Python 2 and Python 3&quot;&gt;&lt;/a&gt;Python 2 and Python 3&lt;/h4&gt;&lt;p&gt;In Python 2, we use FILE streams (i.e. fopen, fclose, fread) for performance optimization. However, since The python community wants to be more reliably cross-platform than C FILE streams. Python 3 implements its user space cache (i.e. write buffer and read buffer). If you are not familiar with cache, you may have a look at &lt;a href=&quot;https://windsooon.github.io/2019/06/13/A%20crash%20course%20in%20cache/&quot;&gt;cache&lt;/a&gt;. There are three main types of I/O (Text, Binary, Raw). Python 3 still uses FILE streams library internally in some cases (e.g. to read pyvenv.cfg at startup), (Thanks eryk sun). &lt;/p&gt;
+&lt;h4 id=&quot;Open-files&quot;&gt;&lt;a href=&quot;#Open-files&quot; class=&quot;headerlink&quot; title=&quot;Open files&quot;&gt;&lt;/a&gt;Open files&lt;/h4&gt;&lt;p&gt;Open file is the first thing we need to do before reading or writing files. Before we actually call the system call open(), we have to do some configure depend on the input parameters. For instance, the buffering arg from the build-in open() function:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;open(file, mode=&amp;apos;r&amp;apos;, buffering=-1, encoding=None, errors=None, newline=None, closefd=True, opener=None)
+&lt;/code&gt;&lt;/pre&gt;&lt;blockquote&gt;
+&lt;p&gt;buffering is an optional integer used to set the buffering policy. Pass 0 to switch buffering off (only allowed in binary mode), 1 to select line buffering (only usable in text mode), and an integer &amp;gt; 1 to indicate the size in bytes of a fixed-size chunk buffer. When no buffering argument is given, the default buffering policy works as follows:&lt;/p&gt;
+&lt;p&gt;Binary files are buffered in fixed-size chunks; the size of the buffer is chosen using a heuristic trying to determine the underlying device’s “block size” and falling back on io.DEFAULT_BUFFER_SIZE. On many systems, the buffer will typically be 4096 or 8192 bytes long.&lt;/p&gt;
+&lt;p&gt;“Interactive” text files (files for which isatty() returns True) use line buffering. Other text files use the policy described above for binary files.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Moreover, different kinds of open mode will return different objects:&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;IO&lt;/th&gt;
+&lt;th&gt;Object&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;Text I/O&lt;/td&gt;
+&lt;td&gt;TextIOWrapper&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Binary I/O&lt;/td&gt;
+&lt;td&gt;BufferedReader / BufferedWriter / BufferedRandom&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Raw I/O&lt;/td&gt;
+&lt;td&gt;FileIO &lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;pre&gt;&lt;code&gt;# Operate the file with text mode
 &amp;gt;&amp;gt;&amp;gt; textio = open(&amp;apos;example.py&amp;apos;, &amp;apos;r&amp;apos;)
 &amp;gt;&amp;gt;&amp;gt; type(textio)
 &amp;lt;class &amp;apos;_io.TextIOWrapper&amp;apos;&amp;gt;
-# Binary IO will return BufferedReader/BufferedWriter/BufferedRandom
+# Operate the file with binary mode
 &amp;gt;&amp;gt;&amp;gt; binaryio = open(&amp;apos;example.py&amp;apos;, &amp;apos;rb&amp;apos;)
 &amp;gt;&amp;gt;&amp;gt; type(binaryio)
 &amp;lt;class &amp;apos;_io.BufferedReader&amp;apos;&amp;gt;
 &amp;gt;&amp;gt;&amp;gt; binaryio = open(&amp;apos;example.py&amp;apos;, &amp;apos;wb&amp;apos;)
 &amp;gt;&amp;gt;&amp;gt; type(binaryio)
 &amp;lt;class &amp;apos;_io.BufferedWriter&amp;apos;&amp;gt;
-# No buffering IO
+# set buffering=0 
 &amp;gt;&amp;gt;&amp;gt; fileio = open(&amp;quot;example.py&amp;quot;, &amp;quot;rb&amp;quot;, buffering=0)
 &amp;gt;&amp;gt;&amp;gt; type(fileio)
 &amp;lt;class &amp;apos;_io.FileIO&amp;apos;&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&quot;TextIO-and-StringIO&quot;&gt;&lt;a href=&quot;#TextIO-and-StringIO&quot; class=&quot;headerlink&quot; title=&quot;TextIO and StringIO&quot;&gt;&lt;/a&gt;TextIO and StringIO&lt;/h4&gt;&lt;p&gt;&lt;strong&gt;The different between Text I/O and Binary I/O is Text I/O will do some extra job (i.e try to encode the string to bytes, like &lt;a href=&quot;https://github.com/python/cpython/blob/master/Lib/_pyio.py#L2502&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;read() function&lt;/a&gt;) before reading or writing data.&lt;/strong&gt; Both of them use their read buffer and write buffer (bytearray) for caching. From the comments, Text IO and Binary IO &lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Reads and writes are internally buffered to speed things up.&lt;br&gt;However, any read will first flush the write buffer if it isn’t empty.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;The whole process looks like this:&lt;/p&gt;
-&lt;h4 id=&quot;Read&quot;&gt;&lt;a href=&quot;#Read&quot; class=&quot;headerlink&quot; title=&quot;Read&quot;&gt;&lt;/a&gt;Read&lt;/h4&gt;&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/Windsooon/blog/master/imgs/python%20io/TextIo%20Read.png&quot; alt=&quot;read&quot;&gt;&lt;/p&gt;
-&lt;h4 id=&quot;Write&quot;&gt;&lt;a href=&quot;#Write&quot; class=&quot;headerlink&quot; title=&quot;Write&quot;&gt;&lt;/a&gt;Write&lt;/h4&gt;&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/Windsooon/blog/master/imgs/python%20io/TextIO_write.png&quot; alt=&quot;write&quot;&gt;&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;Both of Text I/O and Binary I/O has their read buffer and write buffer (bytearray). The difference between them is Text I/O (TextIOWrapper object) is a wrapper on Binary I/O. It will do some extra job (i.e try to encode the string to bytes at first) before operating the data.&lt;/strong&gt; For example, in the &lt;a href=&quot;https://github.com/python/cpython/blob/master/Lib/_pyio.py#L2502&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;TextIOWrapper read() function&lt;/a&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;result = (self._get_decoded_chars() + decoder.decode(self.buffer.read(), final=True))
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Text I/O will call &lt;code&gt;self.buffer.read()&lt;/code&gt; which is handled by Binary I/O after encoding/decoding.&lt;/p&gt;
+&lt;h4 id=&quot;Text-I-O-and-Binary-I-O-Read&quot;&gt;&lt;a href=&quot;#Text-I-O-and-Binary-I-O-Read&quot; class=&quot;headerlink&quot; title=&quot;Text I/O and Binary I/O Read&quot;&gt;&lt;/a&gt;Text I/O and Binary I/O Read&lt;/h4&gt;&lt;p&gt;Both of them did very similar jobs in Reading and Writing:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/Windsooon/blog/master/imgs/python%20io/TextIo%20Read.png&quot; alt=&quot;read&quot;&gt;&lt;/p&gt;
+&lt;h4 id=&quot;Text-I-O-and-Binary-I-O-Write&quot;&gt;&lt;a href=&quot;#Text-I-O-and-Binary-I-O-Write&quot; class=&quot;headerlink&quot; title=&quot;Text I/O and Binary I/O Write&quot;&gt;&lt;/a&gt;Text I/O and Binary I/O Write&lt;/h4&gt;&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/Windsooon/blog/master/imgs/python%20io/TextIO_write.png&quot; alt=&quot;write&quot;&gt;&lt;/p&gt;
+&lt;h4 id=&quot;File-I-O-read-and-write&quot;&gt;&lt;a href=&quot;#File-I-O-read-and-write&quot; class=&quot;headerlink&quot; title=&quot;File I/O read and write&quot;&gt;&lt;/a&gt;File I/O read and write&lt;/h4&gt;&lt;p&gt;The File I/O didn’t use the buffer at all so its process will be easy to understand&lt;br&gt;&lt;img src=&quot;https://raw.githubusercontent.com/Windsooon/blog/master/imgs/python%20io/Nobuffer.png&quot; alt=&quot;file_io&quot;&gt;&lt;/p&gt;
+&lt;h4 id=&quot;Summary&quot;&gt;&lt;a href=&quot;#Summary&quot; class=&quot;headerlink&quot; title=&quot;Summary&quot;&gt;&lt;/a&gt;Summary&lt;/h4&gt;&lt;p&gt;Both of Text I/O and Binary I/O Write use their buffer, File I/O didn’t’ use any buffer by itself. (although both of them will use kernel buffer). Text I/O just a wrapper on Binary I/O. Their read and write process is quite similar.&lt;/p&gt;
 </content>
     
     <summary type="html">
     
-      &lt;h3 id=&quot;Background&quot;&gt;&lt;a href=&quot;#Background&quot; class=&quot;headerlink&quot; title=&quot;Background&quot;&gt;&lt;/a&gt;Background&lt;/h3&gt;&lt;p&gt;Python makes the user easy to operate 
+      &lt;h3 id=&quot;Background&quot;&gt;&lt;a href=&quot;#Background&quot; class=&quot;headerlink&quot; title=&quot;Background&quot;&gt;&lt;/a&gt;Background&lt;/h3&gt;&lt;p&gt;Python makes users easy to operate fil
     
     </summary>
     
@@ -681,40 +712,6 @@ asyncio.run(main())
   </entry>
   
   <entry>
-    <title>How to make Python GIL better (To be finished)</title>
-    <link href="https://windsooon.github.io/2017/07/16/Everything%20you%20should%20know%20about%20GIL/"/>
-    <id>https://windsooon.github.io/2017/07/16/Everything you should know about GIL/</id>
-    <published>2017-07-16T12:00:00.000Z</published>
-    <updated>2019-07-02T02:05:12.533Z</updated>
-    
-    <content type="html">&lt;ol&gt;
-&lt;li&gt;How os system schele work&lt;/li&gt;
-&lt;li&gt;Now with GIL&lt;/li&gt;
-&lt;li&gt;multicore&lt;/li&gt;
-&lt;li&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;I assume you know what is GIL in python and some basic knowledgt to use the python threadding module. If you don’t, you may have a look at the article here. Let’s recap the os system&lt;/p&gt;
-&lt;h3 id=&quot;How-os-system-schele-work&quot;&gt;&lt;a href=&quot;#How-os-system-schele-work&quot; class=&quot;headerlink&quot; title=&quot;How os system schele work&quot;&gt;&lt;/a&gt;How os system schele work&lt;/h3&gt;&lt;p&gt;It’s not a easy topic, we speed quite a long time to search for a prefect scheduling policy. Since Linux 2.6.23, the default scheduler is CFS. What is CFS and why we need it? &lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;ol&gt;
-&lt;li&gt;How os system schele work&lt;/li&gt;
-&lt;li&gt;Now with GIL&lt;/li&gt;
-&lt;li&gt;multicore&lt;/li&gt;
-&lt;li&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;I assume you know what is GIL in python 
-    
-    </summary>
-    
-    
-      <category term="GIL Python" scheme="https://windsooon.github.io/tags/GIL-Python/"/>
-    
-  </entry>
-  
-  <entry>
     <title>How to make it to Product Hunt front page in 2 weeks</title>
     <link href="https://windsooon.github.io/2017/07/16/How%20to%20make%20it%20to%20Product%20Hunt%20front%20page%20in%202%20weeks/"/>
     <id>https://windsooon.github.io/2017/07/16/How to make it to Product Hunt front page in 2 weeks/</id>
@@ -852,6 +849,40 @@ Facebook | Web-developer | Zurich
     
     
       <category term="mvp django side-project" scheme="https://windsooon.github.io/tags/mvp-django-side-project/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>How to make Python GIL better (To be finished)</title>
+    <link href="https://windsooon.github.io/2017/07/16/Everything%20you%20should%20know%20about%20GIL/"/>
+    <id>https://windsooon.github.io/2017/07/16/Everything you should know about GIL/</id>
+    <published>2017-07-16T12:00:00.000Z</published>
+    <updated>2019-07-02T02:05:12.533Z</updated>
+    
+    <content type="html">&lt;ol&gt;
+&lt;li&gt;How os system schele work&lt;/li&gt;
+&lt;li&gt;Now with GIL&lt;/li&gt;
+&lt;li&gt;multicore&lt;/li&gt;
+&lt;li&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;I assume you know what is GIL in python and some basic knowledgt to use the python threadding module. If you don’t, you may have a look at the article here. Let’s recap the os system&lt;/p&gt;
+&lt;h3 id=&quot;How-os-system-schele-work&quot;&gt;&lt;a href=&quot;#How-os-system-schele-work&quot; class=&quot;headerlink&quot; title=&quot;How os system schele work&quot;&gt;&lt;/a&gt;How os system schele work&lt;/h3&gt;&lt;p&gt;It’s not a easy topic, we speed quite a long time to search for a prefect scheduling policy. Since Linux 2.6.23, the default scheduler is CFS. What is CFS and why we need it? &lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;ol&gt;
+&lt;li&gt;How os system schele work&lt;/li&gt;
+&lt;li&gt;Now with GIL&lt;/li&gt;
+&lt;li&gt;multicore&lt;/li&gt;
+&lt;li&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;I assume you know what is GIL in python 
+    
+    </summary>
+    
+    
+      <category term="GIL Python" scheme="https://windsooon.github.io/tags/GIL-Python/"/>
     
   </entry>
   
