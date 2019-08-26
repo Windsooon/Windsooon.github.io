@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://windsooon.github.io/"/>
-  <updated>2019-08-26T03:03:56.897Z</updated>
+  <updated>2019-08-26T03:07:28.502Z</updated>
   <id>https://windsooon.github.io/</id>
   
   <author>
@@ -16,11 +16,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>How to use global variables correctly in Python?</title>
-    <link href="https://windsooon.github.io/2019/08/23/How%20to%20use%20global%20variables%20correctly?/"/>
-    <id>https://windsooon.github.io/2019/08/23/How to use global variables correctly?/</id>
+    <title>How to use global variables correctly in Python</title>
+    <link href="https://windsooon.github.io/2019/08/23/How%20to%20use%20global%20variables%20correctly/"/>
+    <id>https://windsooon.github.io/2019/08/23/How to use global variables correctly/</id>
     <published>2019-08-23T12:00:00.000Z</published>
-    <updated>2019-08-26T03:03:56.897Z</updated>
+    <updated>2019-08-26T03:07:28.502Z</updated>
     
     <content type="html">&lt;p&gt;I just accomplish an online algorithm test for an interview, one of the problems ask me to travel thought a tree structure and calculate how many paths satisfied the condition. It can be easily solved by traditional DFS algorithm. I answered this (pseudocode):&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;counter = 0
@@ -878,40 +878,6 @@ asyncio.run(main())
   </entry>
   
   <entry>
-    <title>How to make Python GIL better (To be finished)</title>
-    <link href="https://windsooon.github.io/2017/07/16/Everything%20you%20should%20know%20about%20GIL/"/>
-    <id>https://windsooon.github.io/2017/07/16/Everything you should know about GIL/</id>
-    <published>2017-07-16T12:00:00.000Z</published>
-    <updated>2019-08-23T12:14:38.393Z</updated>
-    
-    <content type="html">&lt;ol&gt;
-&lt;li&gt;How os system schele work&lt;/li&gt;
-&lt;li&gt;Now with GIL&lt;/li&gt;
-&lt;li&gt;multicore&lt;/li&gt;
-&lt;li&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;I assume you know what is GIL in python and some basic knowledgt to use the python threadding module. If you don’t, you may have a look at the article here. Let’s recap the os system&lt;/p&gt;
-&lt;h3 id=&quot;How-os-system-schele-work&quot;&gt;&lt;a href=&quot;#How-os-system-schele-work&quot; class=&quot;headerlink&quot; title=&quot;How os system schele work&quot;&gt;&lt;/a&gt;How os system schele work&lt;/h3&gt;&lt;p&gt;It’s not a easy topic, we speed quite a long time to search for a prefect scheduling policy. Since Linux 2.6.23, the default scheduler is CFS. What is CFS and why we need it? &lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;ol&gt;
-&lt;li&gt;How os system schele work&lt;/li&gt;
-&lt;li&gt;Now with GIL&lt;/li&gt;
-&lt;li&gt;multicore&lt;/li&gt;
-&lt;li&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;I assume you know what is GIL in python 
-    
-    </summary>
-    
-    
-      <category term="GIL Python" scheme="https://windsooon.github.io/tags/GIL-Python/"/>
-    
-  </entry>
-  
-  <entry>
     <title>How to make it to Product Hunt front page in 2 weeks</title>
     <link href="https://windsooon.github.io/2017/07/16/How%20to%20make%20it%20to%20Product%20Hunt%20front%20page%20in%202%20weeks/"/>
     <id>https://windsooon.github.io/2017/07/16/How to make it to Product Hunt front page in 2 weeks/</id>
@@ -1049,6 +1015,40 @@ Facebook | Web-developer | Zurich
     
     
       <category term="mvp django side-project" scheme="https://windsooon.github.io/tags/mvp-django-side-project/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>How to make Python GIL better (To be finished)</title>
+    <link href="https://windsooon.github.io/2017/07/16/Everything%20you%20should%20know%20about%20GIL/"/>
+    <id>https://windsooon.github.io/2017/07/16/Everything you should know about GIL/</id>
+    <published>2017-07-16T12:00:00.000Z</published>
+    <updated>2019-08-23T12:14:38.393Z</updated>
+    
+    <content type="html">&lt;ol&gt;
+&lt;li&gt;How os system schele work&lt;/li&gt;
+&lt;li&gt;Now with GIL&lt;/li&gt;
+&lt;li&gt;multicore&lt;/li&gt;
+&lt;li&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;I assume you know what is GIL in python and some basic knowledgt to use the python threadding module. If you don’t, you may have a look at the article here. Let’s recap the os system&lt;/p&gt;
+&lt;h3 id=&quot;How-os-system-schele-work&quot;&gt;&lt;a href=&quot;#How-os-system-schele-work&quot; class=&quot;headerlink&quot; title=&quot;How os system schele work&quot;&gt;&lt;/a&gt;How os system schele work&lt;/h3&gt;&lt;p&gt;It’s not a easy topic, we speed quite a long time to search for a prefect scheduling policy. Since Linux 2.6.23, the default scheduler is CFS. What is CFS and why we need it? &lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;ol&gt;
+&lt;li&gt;How os system schele work&lt;/li&gt;
+&lt;li&gt;Now with GIL&lt;/li&gt;
+&lt;li&gt;multicore&lt;/li&gt;
+&lt;li&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;I assume you know what is GIL in python 
+    
+    </summary>
+    
+    
+      <category term="GIL Python" scheme="https://windsooon.github.io/tags/GIL-Python/"/>
     
   </entry>
   
