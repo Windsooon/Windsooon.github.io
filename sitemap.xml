@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://windsooon.github.io/2019/08/23/How%20to%20use%20global%20variables%20correctly?/</loc>
+    
+    <lastmod>2019-08-26T03:03:56.897Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://windsooon.github.io/2017/07/16/Everything%20you%20should%20know%20about%20GIL/</loc>
+    
+    <lastmod>2019-08-23T12:14:38.393Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://windsooon.github.io/2018/09/19/Coroutine%20or%20Coroutine%20Function/</loc>
     
     <lastmod>2019-08-17T05:22:40.719Z</lastmod>
@@ -47,13 +61,6 @@
     <loc>https://windsooon.github.io/2018/09/25/Why%20we%20should%20hire%20open%20source%20contributors/</loc>
     
     <lastmod>2019-08-17T05:18:46.918Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://windsooon.github.io/2017/07/16/Everything%20you%20should%20know%20about%20GIL/</loc>
-    
-    <lastmod>2019-07-02T02:05:12.533Z</lastmod>
     
   </url>
   

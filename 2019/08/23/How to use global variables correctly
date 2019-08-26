@@ -1,0 +1,146 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> How to use global variables correctly in Python? · Tech blog of Unicooo</title><meta name="description" content="How to use global variables correctly in Python? - Unicooo"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="short icon" href="/favicon.png"><link rel="stylesheet" href="/css/apollo.css"></head><body><div id="mask" style="display: none;"><img id="mask-image" src="#" style=" "></div><div class="wrap"><header><a href="/" class="logo-link"><img src="/favicon.png"></a><ul class="nav nav-list"><li class="nav-list-item"><a href="https://www.enginego.org" target="_blank" class="nav-list-link">编程基础</a></li><li class="nav-list-item"><a href="https://github.com/Windsooon" target="_blank" class="nav-list-link">GITHUB</a></li></ul></header><section class="container"><div class="post"><article class="post-block"><h1 class="post-title">How to use global variables correctly in Python?</h1><div class="post-time">Aug 23, 2019</div><div class="post-content"><p>I just accomplish an online algorithm test for an interview, one of the problems ask me to travel thought a tree structure and calculate how many paths satisfied the condition. It can be easily solved by traditional DFS algorithm. I answered this (pseudocode):</p>
+<pre><code>counter = 0
+
+def dfs(root, current_state):
+    # We should not use global variale in production
+    # only use it at the interview
+    global counter
+    if current_state satisified condisition:
+        counter += 1
+    for node in root.children:
+        new_state = current_state + something
+        dfs(node, new_state)
+
+def main(root):
+    dfs(root, init_state)
+    return counter
+</code></pre><p>The code works well and passes all the test cases. Sadly, the reviews form the dev team didn’t like my solution since I use a global variable here. I know that global variable is evil and I never use it in practice (that is why I left some comments in the code). I will likely agree with them when I see the keyword like <code>global, eval()</code> in production code even I haven’t understand the logic. There are multiple ways to avoid using global variable, the first solution is to use class or nested function (pseudocode):</p>
+<pre><code>class Solution:
+    def main(root):
+        self.counter = 0
+        dfs(root, init_state)
+        return self.counter 
+
+    def dfs(root, current_state):
+        if current_state match satisified:
+            self.counter += 1
+        for node in root.children:
+            new_state = current_state + something
+            dfs(node, new_state)
+</code></pre><p>another solution is to use a stack for iterable instead of recursion.</p>
+<pre><code>def main(root):
+    counter = 0
+    stack = [root, init_state]
+    while stack:
+        root, current_state = stack.pop()
+        if current_state match satisified:
+            count += 1
+        for node in root.children:
+            new_state = current_state + something
+            stack.append(node, new_state)
+    return counter
+
+nested function
+</code></pre><p>However, should we never use global variable or eval() in production? I know that it’s not true. <strong>If we want to know how to avoiding using them we should also learn how to use them correctly.</strong> Understand your enemy, right?</p>
+<h3 id="What-is-global-variable-in-Python"><a href="#What-is-global-variable-in-Python" class="headerlink" title="What is global variable in Python"></a>What is global variable in Python</h3><p>If you come from C/C++, the global variable in Python like static variable instead of external variable. It’s only visible inside a py file (we call it module in python). Here is an example of how to use it.</p>
+<pre><code>foo = 100
+def bar():
+    # foo here is global variable
+    # even thought we didn&apos;t use global keyword
+    if foo == 100:
+        # the function will return True
+        return True
+    return False
+
+foo = 100
+
+def bar():
+    # foo become local variable
+    foo = 10
+    if foo == 100:
+        return True
+    # the function will return False
+    return False
+
+foo = 100
+def bar():
+    # we can&apos;t modify the global variable inside a function without &apos;global&apos; keyword
+    # so it will raise an error
+    foo += 10
+    if foo == 100:
+        return True
+    return False
+
+foo = 100
+def bar():
+    # Now it works
+    global foo
+    foo += 10
+    if foo == 100:
+        return True
+    # the function will return False
+    return False
+</code></pre><p>As you can see, the global keyword itself help developers to know which variable is global variable explicitly.</p>
+<h4 id="When-you-should-not-use-global-variable-in-Python"><a href="#When-you-should-not-use-global-variable-in-Python" class="headerlink" title="When you should not use global variable in Python?"></a>When you should not use global variable in Python?</h4><p>Thread safety and Unit tests can be messed up by using the global variable because lots of functions can modify it. There is a lot of articles tell you not to use a global variable, like <a href="http://wiki.c2.com/?GlobalVariablesAreBad" target="_blank" rel="external">Global Variables Are Bad</a> and <a href="https://stackoverflow.com/questions/19158339/why-are-global-variables-evil" target="_blank" rel="external">Why are global variables evil?</a>.</p>
+<h4 id="When-you-should-use-global-variable-in-Python"><a href="#When-you-should-use-global-variable-in-Python" class="headerlink" title="When you should use global variable in Python?"></a>When you should use global variable in Python?</h4><p>So when should you use it? I dug into the CPython source code to see how to use it correctly. There is some situation we can use it. </p>
+<h4 id="Cache"><a href="#Cache" class="headerlink" title="Cache"></a>Cache</h4><p>In <a href="https://github.com/python/cpython/blob/master/Lib/zipfile.py#L561" target="_blank" rel="external">zipfile.py/_ZipDecrypter</a>. we use global varialbe <code>_crctable</code> so we don’t have to call time consuming <code>_gen_crc function</code> repeatly. </p>
+<pre><code>_crctable = None
+def _gen_crc(crc):
+    for j in range(8):
+        if crc &amp; 1:
+            crc = (crc &gt;&gt; 1) ^ 0xEDB88320
+        else:
+            crc &gt;&gt;= 1
+    return crc
+
+def _ZipDecrypter(pwd):
+    key0 = 305419896
+    key1 = 591751049
+    key2 = 878082192
+
+    global _crctable
+    if _crctable is None:
+        _crctable = list(map(_gen_crc, range(256)))
+    crctable = _crctable
+</code></pre><h4 id="Global-State"><a href="#Global-State" class="headerlink" title="Global State"></a>Global State</h4><p>In <a href="https://github.com/python/cpython/blob/master/Lib/shutil.py#L53" target="_blank" rel="external">shutil.py/_USE_CP_SENDFILE</a>, We use <code>_USE_CP_SENDFILE</code> to remember if the current variable has <code>sendfile()</code> attr or not.</p>
+<pre><code>_USE_CP_SENDFILE = hasattr(os, &quot;sendfile&quot;) and sys.platform.startswith(&quot;linux&quot;)
+
+def copyfile(src, dst, *, follow_symlinks=True):
+    ...
+    if err.errno == errno.ENOTSOCK:
+        # sendfile() on this platform (probably Linux &lt; 2.6.33)
+        # does not support copies between regular files (only
+        # sockets).
+        _USE_CP_SENDFILE = False
+        raise _GiveupOnFastCopy(err)
+</code></pre><h4 id="Global-data"><a href="#Global-data" class="headerlink" title="Global data"></a>Global data</h4><p>If we want to share data that should be known by default. In <a href="https://github.com/python/cpython/blob/9fc720e5e4f772598013ea48a3f0d22b2b6b04fa/Lib/mimetypes.py#L384" target="_blank" rel="external">mimetypes.py/_default_mime_types</a>, we use <code>suffix_map</code> to store default suffix of mime_types.</p>
+<pre><code>def _default_mime_types():
+    global suffix_map, _suffix_map_default
+    global encodings_map, _encodings_map_default
+    global types_map, _types_map_default
+    global common_types, _common_types_default
+
+    suffix_map = _suffix_map_default = {
+        &apos;.svgz&apos;: &apos;.svg.gz&apos;,
+        &apos;.tgz&apos;: &apos;.tar.gz&apos;,
+        &apos;.taz&apos;: &apos;.tar.gz&apos;,
+        &apos;.tz&apos;: &apos;.tar.gz&apos;,
+        &apos;.tbz2&apos;: &apos;.tar.bz2&apos;,
+        &apos;.txz&apos;: &apos;.tar.xz&apos;,
+        }
+</code></pre><h4 id="Initialization"><a href="#Initialization" class="headerlink" title="Initialization"></a>Initialization</h4><p>Just to be clear, <strong>most of the time there should be only one function can update the value of the global variable, and other functions just refer it.</strong> In <a href="https://github.com/python/cpython/blob/master/Lib/gettext.py#L636" target="_blank" rel="external">gettext/textdomain</a> , only textdomain function can modify <code>_current_domain</code>.</p>
+<pre><code>def textdomain(domain=None):
+    global _current_domain
+    if domain is not None:
+        _current_domain = domain
+    return _current_domain
+</code></pre><h4 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h4><p>I think global variable is not that evil when you understand how to use it correctly, :D</p>
+</div></article></div></section><footer><div class="paginator"><a href="/2019/08/14/How Python read or write files under the hood/" class="next">NEXT</a></div><div id="disqus_thread"></div><script>var disqus_shortname = 'windsonYang';
+var disqus_identifier = '2019/08/23/How to use global variables correctly?/';
+var disqus_title = 'How to use global variables correctly in Python?';
+var disqus_url = 'https://windsooon.github.io/2019/08/23/How to use global variables correctly?/';
+(function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();</script><script id="dsq-count-scr" src="//windsonYang.disqus.com/count.js" async></script><div class="copyright"><p>© 2016 - 2019 <a href="https://windsooon.github.io">Unicooo</a>, unless otherwise noted.</p></div></footer></div><script>(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;e=o.createElement(i);r=o.getElementsByTagName(i)[0];e.src='//www.google-analytics.com/analytics.js';r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));ga('create',"UA-65933410-1",'auto');ga('send','pageview');</script><script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script></body></html>
