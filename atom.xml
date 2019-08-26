@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://windsooon.github.io/"/>
-  <updated>2019-08-26T03:21:34.559Z</updated>
+  <updated>2019-08-26T03:23:59.561Z</updated>
   <id>https://windsooon.github.io/</id>
   
   <author>
@@ -20,9 +20,10 @@
     <link href="https://windsooon.github.io/2019/08/23/How%20to%20use%20global%20variables%20correctly/"/>
     <id>https://windsooon.github.io/2019/08/23/How to use global variables correctly/</id>
     <published>2019-08-23T12:00:00.000Z</published>
-    <updated>2019-08-26T03:21:34.559Z</updated>
+    <updated>2019-08-26T03:23:59.561Z</updated>
     
     <content type="html">&lt;p&gt;I just accomplish an online algorithm test for an interview, one of the problems ask me to travel thought a tree structure and calculate how many paths satisfied the condition. It can be easily solved by traditional DFS algorithm. I answered this (pseudocode):&lt;/p&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
 &lt;pre&gt;&lt;code&gt;counter = 0
 
 def dfs(root, current_state):
@@ -161,7 +162,7 @@ def copyfile(src, dst, *, follow_symlinks=True):
     
     <summary type="html">
     
-      &lt;p&gt;I just accomplish an online algorithm test for an interview, one of the problems ask me to travel thought a tree structure and calculate 
+      &lt;p&gt;I just accomplish an online algorithm test for an interview, one of the problems ask me to travel thought a tree structure and calculate how many paths satisfied the condition. It can be easily solved by traditional DFS algorithm. I answered this (pseudocode):&lt;/p&gt;
     
     </summary>
     
