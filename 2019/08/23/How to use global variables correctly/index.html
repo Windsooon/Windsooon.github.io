@@ -14,7 +14,7 @@ def dfs(root, current_state):
 def main(root):
     dfs(root, init_state)
     return counter
-</code></pre><p>The code works well and passes all the test cases. Sadly, the reviews form the dev team didn’t like my solution since I use a global variable here. I know that global variable is evil and I never use it in practice (that is why I left some comments in the code). I will likely agree with them when I see the keyword like <code>global, eval()</code> in production code even I haven’t understand the logic. There are multiple ways to avoid using global variable, the first solution is to use class or nested function (pseudocode):</p>
+</code></pre><p>The code works well and passes all the test cases. Sadly, the reviews form the dev team didn’t like my solution since I use a global variable here. I know that global variable is evil and I never use it in practice (that is why I left some comments in the code). I will likely agree with them that <code>global, eval()</code> may likely lead to bad code. There are multiple ways to avoid using the global variable, the first solution is to use class or nested function (pseudocode):</p>
 <pre><code>class Solution:
     def main(root):
         self.counter = 0
@@ -27,7 +27,7 @@ def main(root):
         for node in root.children:
             new_state = current_state + something
             dfs(node, new_state)
-</code></pre><p>another solution is to use a stack for iterable instead of recursion.</p>
+</code></pre><p>Another solution is to use a stack for iterable instead of recursion.</p>
 <pre><code>def main(root):
     counter = 0
     stack = [root, init_state]
@@ -39,9 +39,7 @@ def main(root):
             new_state = current_state + something
             stack.append(node, new_state)
     return counter
-
-nested function
-</code></pre><p>However, should we never use global variable or eval() in production? I know that it’s not true. <strong>If we want to know how to avoiding using them we should also learn how to use them correctly.</strong> Understand your enemy, right?</p>
+</code></pre><p>We know how to avoid using it. However, should we never use <code>global or eval()</code> in production? I know that it’s not true. <strong>If we want to know how to avoiding using them we should also learn how to use them correctly.</strong> Understand your enemy, understand him well, right?</p>
 <h3 id="What-is-global-variable-in-Python"><a href="#What-is-global-variable-in-Python" class="headerlink" title="What is global variable in Python"></a>What is global variable in Python</h3><p>If you come from C/C++, the global variable in Python like static variable instead of external variable. It’s only visible inside a py file (we call it module in python). Here is an example of how to use it.</p>
 <pre><code>foo = 100
 def bar():
@@ -81,9 +79,9 @@ def bar():
     # the function will return False
     return False
 </code></pre><p>As you can see, the global keyword itself help developers to know which variable is global variable explicitly.</p>
-<h4 id="When-you-should-not-use-global-variable-in-Python"><a href="#When-you-should-not-use-global-variable-in-Python" class="headerlink" title="When you should not use global variable in Python?"></a>When you should not use global variable in Python?</h4><p>Thread safety and Unit tests can be messed up by using the global variable because lots of functions can modify it. There is a lot of articles tell you not to use a global variable, like <a href="http://wiki.c2.com/?GlobalVariablesAreBad" target="_blank" rel="external">Global Variables Are Bad</a> and <a href="https://stackoverflow.com/questions/19158339/why-are-global-variables-evil" target="_blank" rel="external">Why are global variables evil?</a>.</p>
-<h4 id="When-you-should-use-global-variable-in-Python"><a href="#When-you-should-use-global-variable-in-Python" class="headerlink" title="When you should use global variable in Python?"></a>When you should use global variable in Python?</h4><p>So when should you use it? I dug into the CPython source code to see how to use it correctly. There is some situation we can use it. </p>
-<h4 id="Cache"><a href="#Cache" class="headerlink" title="Cache"></a>Cache</h4><p>In <a href="https://github.com/python/cpython/blob/master/Lib/zipfile.py#L561" target="_blank" rel="external">zipfile.py/_ZipDecrypter</a>. we use global varialbe <code>_crctable</code> so we don’t have to call time consuming <code>_gen_crc function</code> repeatly. </p>
+<h4 id="When-not-to-use-it"><a href="#When-not-to-use-it" class="headerlink" title="When not to use it"></a>When not to use it</h4><p>Thread safety and Unit tests can be messed up by using the global variable because lots of functions can modify it. There is a lot of articles tell you why not to use a global variable, like <a href="http://wiki.c2.com/?GlobalVariablesAreBad" target="_blank" rel="external">Global Variables Are Bad</a> and <a href="https://stackoverflow.com/questions/19158339/why-are-global-variables-evil" target="_blank" rel="external">Why are global variables evil?</a>.</p>
+<h4 id="When-to-use-it"><a href="#When-to-use-it" class="headerlink" title="When to use it"></a>When to use it</h4><p>I dug into the CPython source code to see how to use it correctly. There is some situations we can use it. </p>
+<h5 id="1-Cache"><a href="#1-Cache" class="headerlink" title="1. Cache"></a>1. Cache</h5><p>In <a href="https://github.com/python/cpython/blob/master/Lib/zipfile.py#L561" target="_blank" rel="external">zipfile.py/_ZipDecrypter</a>. we use global varialbe <code>_crctable</code> so we don’t have to call the time consuming <code>_gen_crc function</code> repeatly. </p>
 <pre><code>_crctable = None
 def _gen_crc(crc):
     for j in range(8):
@@ -102,7 +100,7 @@ def _ZipDecrypter(pwd):
     if _crctable is None:
         _crctable = list(map(_gen_crc, range(256)))
     crctable = _crctable
-</code></pre><h4 id="Global-State"><a href="#Global-State" class="headerlink" title="Global State"></a>Global State</h4><p>In <a href="https://github.com/python/cpython/blob/master/Lib/shutil.py#L53" target="_blank" rel="external">shutil.py/_USE_CP_SENDFILE</a>, We use <code>_USE_CP_SENDFILE</code> to remember if the current variable has <code>sendfile()</code> attr or not.</p>
+</code></pre><h5 id="2-Global-State"><a href="#2-Global-State" class="headerlink" title="2. Global State"></a>2. Global State</h5><p>In <a href="https://github.com/python/cpython/blob/master/Lib/shutil.py#L53" target="_blank" rel="external">shutil.py/_USE_CP_SENDFILE</a>, We use <code>_USE_CP_SENDFILE</code> to remember if the current variable has <code>sendfile()</code> attr or not.</p>
 <pre><code>_USE_CP_SENDFILE = hasattr(os, &quot;sendfile&quot;) and sys.platform.startswith(&quot;linux&quot;)
 
 def copyfile(src, dst, *, follow_symlinks=True):
@@ -113,7 +111,7 @@ def copyfile(src, dst, *, follow_symlinks=True):
         # sockets).
         _USE_CP_SENDFILE = False
         raise _GiveupOnFastCopy(err)
-</code></pre><h4 id="Global-data"><a href="#Global-data" class="headerlink" title="Global data"></a>Global data</h4><p>If we want to share data that should be known by default. In <a href="https://github.com/python/cpython/blob/9fc720e5e4f772598013ea48a3f0d22b2b6b04fa/Lib/mimetypes.py#L384" target="_blank" rel="external">mimetypes.py/_default_mime_types</a>, we use <code>suffix_map</code> to store default suffix of mime_types.</p>
+</code></pre><h5 id="3-Global-data"><a href="#3-Global-data" class="headerlink" title="3. Global data"></a>3. Global data</h5><p>If we want to share data that should be known by default. In <a href="https://github.com/python/cpython/blob/9fc720e5e4f772598013ea48a3f0d22b2b6b04fa/Lib/mimetypes.py#L384" target="_blank" rel="external">mimetypes.py/_default_mime_types</a>, we use <code>suffix_map</code> to store default suffix of mime_types.</p>
 <pre><code>def _default_mime_types():
     global suffix_map, _suffix_map_default
     global encodings_map, _encodings_map_default
@@ -128,13 +126,13 @@ def copyfile(src, dst, *, follow_symlinks=True):
         &apos;.tbz2&apos;: &apos;.tar.bz2&apos;,
         &apos;.txz&apos;: &apos;.tar.xz&apos;,
         }
-</code></pre><h4 id="Initialization"><a href="#Initialization" class="headerlink" title="Initialization"></a>Initialization</h4><p>Just to be clear, <strong>most of the time there should be only one function can update the value of the global variable, and other functions just refer it.</strong> In <a href="https://github.com/python/cpython/blob/master/Lib/gettext.py#L636" target="_blank" rel="external">gettext/textdomain</a> , only textdomain function can modify <code>_current_domain</code>.</p>
+</code></pre><h5 id="4-Initialization"><a href="#4-Initialization" class="headerlink" title="4. Initialization"></a>4. Initialization</h5><p>Just to be clear, <strong>most of the time there should be only one function can update the value of the global variable, and other functions just refer it.</strong> In <a href="https://github.com/python/cpython/blob/master/Lib/gettext.py#L636" target="_blank" rel="external">gettext/textdomain</a> , only textdomain function can modify <code>_current_domain</code>.</p>
 <pre><code>def textdomain(domain=None):
     global _current_domain
     if domain is not None:
         _current_domain = domain
     return _current_domain
-</code></pre><h4 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h4><p>I think global variable is not that evil when you understand how to use it correctly, :D</p>
+</code></pre><h4 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h4><p>I think global variable is not that evil when you understand how to use it correctly. :D</p>
 </div></article></div></section><footer><div class="paginator"><a href="/2019/08/14/How Python read or write files under the hood/" class="next">NEXT</a></div><div id="disqus_thread"></div><script>var disqus_shortname = 'windsonYang';
 var disqus_identifier = '2019/08/23/How to use global variables correctly/';
 var disqus_title = 'How to use global variables correctly in Python';

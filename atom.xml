@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://windsooon.github.io/"/>
-  <updated>2019-08-26T03:07:28.502Z</updated>
+  <updated>2019-08-26T03:21:34.559Z</updated>
   <id>https://windsooon.github.io/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="https://windsooon.github.io/2019/08/23/How%20to%20use%20global%20variables%20correctly/"/>
     <id>https://windsooon.github.io/2019/08/23/How to use global variables correctly/</id>
     <published>2019-08-23T12:00:00.000Z</published>
-    <updated>2019-08-26T03:07:28.502Z</updated>
+    <updated>2019-08-26T03:21:34.559Z</updated>
     
     <content type="html">&lt;p&gt;I just accomplish an online algorithm test for an interview, one of the problems ask me to travel thought a tree structure and calculate how many paths satisfied the condition. It can be easily solved by traditional DFS algorithm. I answered this (pseudocode):&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;counter = 0
@@ -38,7 +38,7 @@ def dfs(root, current_state):
 def main(root):
     dfs(root, init_state)
     return counter
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;The code works well and passes all the test cases. Sadly, the reviews form the dev team didn’t like my solution since I use a global variable here. I know that global variable is evil and I never use it in practice (that is why I left some comments in the code). I will likely agree with them when I see the keyword like &lt;code&gt;global, eval()&lt;/code&gt; in production code even I haven’t understand the logic. There are multiple ways to avoid using global variable, the first solution is to use class or nested function (pseudocode):&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;The code works well and passes all the test cases. Sadly, the reviews form the dev team didn’t like my solution since I use a global variable here. I know that global variable is evil and I never use it in practice (that is why I left some comments in the code). I will likely agree with them that &lt;code&gt;global, eval()&lt;/code&gt; may likely lead to bad code. There are multiple ways to avoid using the global variable, the first solution is to use class or nested function (pseudocode):&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;class Solution:
     def main(root):
         self.counter = 0
@@ -51,7 +51,7 @@ def main(root):
         for node in root.children:
             new_state = current_state + something
             dfs(node, new_state)
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;another solution is to use a stack for iterable instead of recursion.&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Another solution is to use a stack for iterable instead of recursion.&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;def main(root):
     counter = 0
     stack = [root, init_state]
@@ -63,9 +63,7 @@ def main(root):
             new_state = current_state + something
             stack.append(node, new_state)
     return counter
-
-nested function
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;However, should we never use global variable or eval() in production? I know that it’s not true. &lt;strong&gt;If we want to know how to avoiding using them we should also learn how to use them correctly.&lt;/strong&gt; Understand your enemy, right?&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;We know how to avoid using it. However, should we never use &lt;code&gt;global or eval()&lt;/code&gt; in production? I know that it’s not true. &lt;strong&gt;If we want to know how to avoiding using them we should also learn how to use them correctly.&lt;/strong&gt; Understand your enemy, understand him well, right?&lt;/p&gt;
 &lt;h3 id=&quot;What-is-global-variable-in-Python&quot;&gt;&lt;a href=&quot;#What-is-global-variable-in-Python&quot; class=&quot;headerlink&quot; title=&quot;What is global variable in Python&quot;&gt;&lt;/a&gt;What is global variable in Python&lt;/h3&gt;&lt;p&gt;If you come from C/C++, the global variable in Python like static variable instead of external variable. It’s only visible inside a py file (we call it module in python). Here is an example of how to use it.&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;foo = 100
 def bar():
@@ -105,9 +103,9 @@ def bar():
     # the function will return False
     return False
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;As you can see, the global keyword itself help developers to know which variable is global variable explicitly.&lt;/p&gt;
-&lt;h4 id=&quot;When-you-should-not-use-global-variable-in-Python&quot;&gt;&lt;a href=&quot;#When-you-should-not-use-global-variable-in-Python&quot; class=&quot;headerlink&quot; title=&quot;When you should not use global variable in Python?&quot;&gt;&lt;/a&gt;When you should not use global variable in Python?&lt;/h4&gt;&lt;p&gt;Thread safety and Unit tests can be messed up by using the global variable because lots of functions can modify it. There is a lot of articles tell you not to use a global variable, like &lt;a href=&quot;http://wiki.c2.com/?GlobalVariablesAreBad&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Global Variables Are Bad&lt;/a&gt; and &lt;a href=&quot;https://stackoverflow.com/questions/19158339/why-are-global-variables-evil&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Why are global variables evil?&lt;/a&gt;.&lt;/p&gt;
-&lt;h4 id=&quot;When-you-should-use-global-variable-in-Python&quot;&gt;&lt;a href=&quot;#When-you-should-use-global-variable-in-Python&quot; class=&quot;headerlink&quot; title=&quot;When you should use global variable in Python?&quot;&gt;&lt;/a&gt;When you should use global variable in Python?&lt;/h4&gt;&lt;p&gt;So when should you use it? I dug into the CPython source code to see how to use it correctly. There is some situation we can use it. &lt;/p&gt;
-&lt;h4 id=&quot;Cache&quot;&gt;&lt;a href=&quot;#Cache&quot; class=&quot;headerlink&quot; title=&quot;Cache&quot;&gt;&lt;/a&gt;Cache&lt;/h4&gt;&lt;p&gt;In &lt;a href=&quot;https://github.com/python/cpython/blob/master/Lib/zipfile.py#L561&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;zipfile.py/_ZipDecrypter&lt;/a&gt;. we use global varialbe &lt;code&gt;_crctable&lt;/code&gt; so we don’t have to call time consuming &lt;code&gt;_gen_crc function&lt;/code&gt; repeatly. &lt;/p&gt;
+&lt;h4 id=&quot;When-not-to-use-it&quot;&gt;&lt;a href=&quot;#When-not-to-use-it&quot; class=&quot;headerlink&quot; title=&quot;When not to use it&quot;&gt;&lt;/a&gt;When not to use it&lt;/h4&gt;&lt;p&gt;Thread safety and Unit tests can be messed up by using the global variable because lots of functions can modify it. There is a lot of articles tell you why not to use a global variable, like &lt;a href=&quot;http://wiki.c2.com/?GlobalVariablesAreBad&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Global Variables Are Bad&lt;/a&gt; and &lt;a href=&quot;https://stackoverflow.com/questions/19158339/why-are-global-variables-evil&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Why are global variables evil?&lt;/a&gt;.&lt;/p&gt;
+&lt;h4 id=&quot;When-to-use-it&quot;&gt;&lt;a href=&quot;#When-to-use-it&quot; class=&quot;headerlink&quot; title=&quot;When to use it&quot;&gt;&lt;/a&gt;When to use it&lt;/h4&gt;&lt;p&gt;I dug into the CPython source code to see how to use it correctly. There is some situations we can use it. &lt;/p&gt;
+&lt;h5 id=&quot;1-Cache&quot;&gt;&lt;a href=&quot;#1-Cache&quot; class=&quot;headerlink&quot; title=&quot;1. Cache&quot;&gt;&lt;/a&gt;1. Cache&lt;/h5&gt;&lt;p&gt;In &lt;a href=&quot;https://github.com/python/cpython/blob/master/Lib/zipfile.py#L561&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;zipfile.py/_ZipDecrypter&lt;/a&gt;. we use global varialbe &lt;code&gt;_crctable&lt;/code&gt; so we don’t have to call the time consuming &lt;code&gt;_gen_crc function&lt;/code&gt; repeatly. &lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;_crctable = None
 def _gen_crc(crc):
     for j in range(8):
@@ -126,7 +124,7 @@ def _ZipDecrypter(pwd):
     if _crctable is None:
         _crctable = list(map(_gen_crc, range(256)))
     crctable = _crctable
-&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&quot;Global-State&quot;&gt;&lt;a href=&quot;#Global-State&quot; class=&quot;headerlink&quot; title=&quot;Global State&quot;&gt;&lt;/a&gt;Global State&lt;/h4&gt;&lt;p&gt;In &lt;a href=&quot;https://github.com/python/cpython/blob/master/Lib/shutil.py#L53&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;shutil.py/_USE_CP_SENDFILE&lt;/a&gt;, We use &lt;code&gt;_USE_CP_SENDFILE&lt;/code&gt; to remember if the current variable has &lt;code&gt;sendfile()&lt;/code&gt; attr or not.&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;h5 id=&quot;2-Global-State&quot;&gt;&lt;a href=&quot;#2-Global-State&quot; class=&quot;headerlink&quot; title=&quot;2. Global State&quot;&gt;&lt;/a&gt;2. Global State&lt;/h5&gt;&lt;p&gt;In &lt;a href=&quot;https://github.com/python/cpython/blob/master/Lib/shutil.py#L53&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;shutil.py/_USE_CP_SENDFILE&lt;/a&gt;, We use &lt;code&gt;_USE_CP_SENDFILE&lt;/code&gt; to remember if the current variable has &lt;code&gt;sendfile()&lt;/code&gt; attr or not.&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;_USE_CP_SENDFILE = hasattr(os, &amp;quot;sendfile&amp;quot;) and sys.platform.startswith(&amp;quot;linux&amp;quot;)
 
 def copyfile(src, dst, *, follow_symlinks=True):
@@ -137,7 +135,7 @@ def copyfile(src, dst, *, follow_symlinks=True):
         # sockets).
         _USE_CP_SENDFILE = False
         raise _GiveupOnFastCopy(err)
-&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&quot;Global-data&quot;&gt;&lt;a href=&quot;#Global-data&quot; class=&quot;headerlink&quot; title=&quot;Global data&quot;&gt;&lt;/a&gt;Global data&lt;/h4&gt;&lt;p&gt;If we want to share data that should be known by default. In &lt;a href=&quot;https://github.com/python/cpython/blob/9fc720e5e4f772598013ea48a3f0d22b2b6b04fa/Lib/mimetypes.py#L384&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;mimetypes.py/_default_mime_types&lt;/a&gt;, we use &lt;code&gt;suffix_map&lt;/code&gt; to store default suffix of mime_types.&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;h5 id=&quot;3-Global-data&quot;&gt;&lt;a href=&quot;#3-Global-data&quot; class=&quot;headerlink&quot; title=&quot;3. Global data&quot;&gt;&lt;/a&gt;3. Global data&lt;/h5&gt;&lt;p&gt;If we want to share data that should be known by default. In &lt;a href=&quot;https://github.com/python/cpython/blob/9fc720e5e4f772598013ea48a3f0d22b2b6b04fa/Lib/mimetypes.py#L384&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;mimetypes.py/_default_mime_types&lt;/a&gt;, we use &lt;code&gt;suffix_map&lt;/code&gt; to store default suffix of mime_types.&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;def _default_mime_types():
     global suffix_map, _suffix_map_default
     global encodings_map, _encodings_map_default
@@ -152,13 +150,13 @@ def copyfile(src, dst, *, follow_symlinks=True):
         &amp;apos;.tbz2&amp;apos;: &amp;apos;.tar.bz2&amp;apos;,
         &amp;apos;.txz&amp;apos;: &amp;apos;.tar.xz&amp;apos;,
         }
-&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&quot;Initialization&quot;&gt;&lt;a href=&quot;#Initialization&quot; class=&quot;headerlink&quot; title=&quot;Initialization&quot;&gt;&lt;/a&gt;Initialization&lt;/h4&gt;&lt;p&gt;Just to be clear, &lt;strong&gt;most of the time there should be only one function can update the value of the global variable, and other functions just refer it.&lt;/strong&gt; In &lt;a href=&quot;https://github.com/python/cpython/blob/master/Lib/gettext.py#L636&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;gettext/textdomain&lt;/a&gt; , only textdomain function can modify &lt;code&gt;_current_domain&lt;/code&gt;.&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;h5 id=&quot;4-Initialization&quot;&gt;&lt;a href=&quot;#4-Initialization&quot; class=&quot;headerlink&quot; title=&quot;4. Initialization&quot;&gt;&lt;/a&gt;4. Initialization&lt;/h5&gt;&lt;p&gt;Just to be clear, &lt;strong&gt;most of the time there should be only one function can update the value of the global variable, and other functions just refer it.&lt;/strong&gt; In &lt;a href=&quot;https://github.com/python/cpython/blob/master/Lib/gettext.py#L636&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;gettext/textdomain&lt;/a&gt; , only textdomain function can modify &lt;code&gt;_current_domain&lt;/code&gt;.&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;def textdomain(domain=None):
     global _current_domain
     if domain is not None:
         _current_domain = domain
     return _current_domain
-&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&quot;Summary&quot;&gt;&lt;a href=&quot;#Summary&quot; class=&quot;headerlink&quot; title=&quot;Summary&quot;&gt;&lt;/a&gt;Summary&lt;/h4&gt;&lt;p&gt;I think global variable is not that evil when you understand how to use it correctly, :D&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&quot;Summary&quot;&gt;&lt;a href=&quot;#Summary&quot; class=&quot;headerlink&quot; title=&quot;Summary&quot;&gt;&lt;/a&gt;Summary&lt;/h4&gt;&lt;p&gt;I think global variable is not that evil when you understand how to use it correctly. :D&lt;/p&gt;
 </content>
     
     <summary type="html">
@@ -878,6 +876,40 @@ asyncio.run(main())
   </entry>
   
   <entry>
+    <title>How to make Python GIL better (To be finished)</title>
+    <link href="https://windsooon.github.io/2017/07/16/Everything%20you%20should%20know%20about%20GIL/"/>
+    <id>https://windsooon.github.io/2017/07/16/Everything you should know about GIL/</id>
+    <published>2017-07-16T12:00:00.000Z</published>
+    <updated>2019-08-23T12:14:38.393Z</updated>
+    
+    <content type="html">&lt;ol&gt;
+&lt;li&gt;How os system schele work&lt;/li&gt;
+&lt;li&gt;Now with GIL&lt;/li&gt;
+&lt;li&gt;multicore&lt;/li&gt;
+&lt;li&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;I assume you know what is GIL in python and some basic knowledgt to use the python threadding module. If you don’t, you may have a look at the article here. Let’s recap the os system&lt;/p&gt;
+&lt;h3 id=&quot;How-os-system-schele-work&quot;&gt;&lt;a href=&quot;#How-os-system-schele-work&quot; class=&quot;headerlink&quot; title=&quot;How os system schele work&quot;&gt;&lt;/a&gt;How os system schele work&lt;/h3&gt;&lt;p&gt;It’s not a easy topic, we speed quite a long time to search for a prefect scheduling policy. Since Linux 2.6.23, the default scheduler is CFS. What is CFS and why we need it? &lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;ol&gt;
+&lt;li&gt;How os system schele work&lt;/li&gt;
+&lt;li&gt;Now with GIL&lt;/li&gt;
+&lt;li&gt;multicore&lt;/li&gt;
+&lt;li&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;I assume you know what is GIL in python 
+    
+    </summary>
+    
+    
+      <category term="GIL Python" scheme="https://windsooon.github.io/tags/GIL-Python/"/>
+    
+  </entry>
+  
+  <entry>
     <title>How to make it to Product Hunt front page in 2 weeks</title>
     <link href="https://windsooon.github.io/2017/07/16/How%20to%20make%20it%20to%20Product%20Hunt%20front%20page%20in%202%20weeks/"/>
     <id>https://windsooon.github.io/2017/07/16/How to make it to Product Hunt front page in 2 weeks/</id>
@@ -1015,40 +1047,6 @@ Facebook | Web-developer | Zurich
     
     
       <category term="mvp django side-project" scheme="https://windsooon.github.io/tags/mvp-django-side-project/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>How to make Python GIL better (To be finished)</title>
-    <link href="https://windsooon.github.io/2017/07/16/Everything%20you%20should%20know%20about%20GIL/"/>
-    <id>https://windsooon.github.io/2017/07/16/Everything you should know about GIL/</id>
-    <published>2017-07-16T12:00:00.000Z</published>
-    <updated>2019-08-23T12:14:38.393Z</updated>
-    
-    <content type="html">&lt;ol&gt;
-&lt;li&gt;How os system schele work&lt;/li&gt;
-&lt;li&gt;Now with GIL&lt;/li&gt;
-&lt;li&gt;multicore&lt;/li&gt;
-&lt;li&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;I assume you know what is GIL in python and some basic knowledgt to use the python threadding module. If you don’t, you may have a look at the article here. Let’s recap the os system&lt;/p&gt;
-&lt;h3 id=&quot;How-os-system-schele-work&quot;&gt;&lt;a href=&quot;#How-os-system-schele-work&quot; class=&quot;headerlink&quot; title=&quot;How os system schele work&quot;&gt;&lt;/a&gt;How os system schele work&lt;/h3&gt;&lt;p&gt;It’s not a easy topic, we speed quite a long time to search for a prefect scheduling policy. Since Linux 2.6.23, the default scheduler is CFS. What is CFS and why we need it? &lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;ol&gt;
-&lt;li&gt;How os system schele work&lt;/li&gt;
-&lt;li&gt;Now with GIL&lt;/li&gt;
-&lt;li&gt;multicore&lt;/li&gt;
-&lt;li&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;I assume you know what is GIL in python 
-    
-    </summary>
-    
-    
-      <category term="GIL Python" scheme="https://windsooon.github.io/tags/GIL-Python/"/>
     
   </entry>
   
